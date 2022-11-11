@@ -25,6 +25,8 @@
   </div>
   
   <div class="govuk-grid-column-full">
+
+  {#
     <h2 class="govuk-heading-l govuk-!-margin-top-6">
       Hypotheses
     </h1>
@@ -269,12 +271,15 @@
         </dd>
       </div>
     </dl>
+    #}
 
     {{ govukButton({
       text: "Start now",
-      href: "../v1/index"
+      href: "../v1/index",
+      classes: "govuk-!-margin-top-6"
     }) }}
 
+    {#
     <h2 class="govuk-heading-l govuk-!-margin-top-8">
       Research
     </h2>
@@ -309,6 +314,7 @@
         </dd>
       </div>
     </dl>
+    #}
   </div>
 </div>
 
