@@ -1,0 +1,94 @@
+{% extends "../layouts/v1-layout.html" %}
+
+{% block pageTitle %}
+  Name and address – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" method="post">
+
+        {% call govukFieldset({
+          legend: {
+            text: "Company name and address",
+            classes: "govuk-fieldset__legend--l",
+            isPageHeading: true
+          }
+        }) %}
+
+        {{ govukInput({
+          label: {
+            text: "Company name"
+          },
+          id: "company-name",
+          name: "company-name",
+          value: data['company-name']
+        }) }}
+
+          {{ govukInput({
+            label: {
+              html: 'Building and street <span class="govuk-visually-hidden">line 1 of 2</span>'
+            },
+            id: "company-address-line-1",
+            name: "company-address-line-1",
+            value: data['company-address-line-1'],
+            autocomplete: "address-line1"
+          }) }}
+        
+          {{ govukInput({
+            label: {
+              html: '<span class="govuk-visually-hidden">Building and street line 2 of 2</span>'
+            },
+            id: "company-address-line-2",
+            name: "company-address-line-2",
+            value: data['company-address-line-2'],
+            autocomplete: "address-line2"
+          }) }}
+        
+          {{ govukInput({
+            label: {
+              text: "Town or city"
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "company-address-town",
+            name: "company-address-town",
+            value: data['company-address-town'],
+            autocomplete: "address-level2"
+          }) }}
+        
+          {{ govukInput({
+            label: {
+              text: "County"
+            },
+            classes: "govuk-!-width-two-thirds",
+            id: "company-address-county",
+            name: "company-address-county",
+            value: data['company-address-county']
+          }) }}
+        
+          {{ govukInput({
+            label: {
+              text: "Postcode"
+            },
+            classes: "govuk-input--width-10 govuk-!-margin-bottom-2",
+            id: "company-address-postcode",
+            name: "company-address-postcode",
+            value: data['company-address-postcode'],
+            autocomplete: "postal-code"
+          }) }}
+        
+        {% endcall %}
+
+        {{ govukButton({
+          text: 'Continue'
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

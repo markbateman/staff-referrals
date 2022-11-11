@@ -1,0 +1,214 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  What do you think is happening? – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" method="post">
+
+<div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="contact-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
+        What do you think is happening?
+      </h1>
+    </legend>
+    <div id="contact-hint" class="govuk-hint">
+      Select all that apply.
+    </div>
+
+    <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+      
+      {# LIVING TOGETHER #}
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="one" name="one" type="checkbox" value="email" data-aria-controls="conditional-one">
+        <label class="govuk-label govuk-checkboxes__label" for="one">
+          Living together
+        </label>
+      </div>
+      <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-one">
+        <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="1500">
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="one-hint">
+              Include as much information as you can
+            </label>
+            <div id="one-hint-hint" class="govuk-hint">
+              For example the alleged partner name and any addresses involved.
+            </div>
+            <textarea class="govuk-textarea govuk-js-character-count" id="one-hint" name="one-hint" rows="5" aria-describedby="one-hint-info one-hint-hint"></textarea>
+          </div>
+          <div id="one-hint-info" class="govuk-hint govuk-character-count__message">
+            You can enter up to 1,500 characters
+          </div>
+        </div>
+      </div>
+
+      {# WORKING AND CLAIMING #}
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="two" name="two" type="checkbox" value="email" data-aria-controls="conditional-two">
+        <label class="govuk-label govuk-checkboxes__label" for="two">
+          Working and claiming
+        </label>
+      </div>
+      <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-two">
+        <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="1500">
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="two-hint">
+              Include as much information as you can
+            </label>
+            <div id="two-hint-hint" class="govuk-hint">
+              For example their employer's details, how they travel to work and details of their routine.
+            </div>
+            <textarea class="govuk-textarea govuk-js-character-count" id="two-hint" name="two-hint" rows="5" aria-describedby="two-hint-info two-hint-hint"></textarea>
+          </div>
+          <div id="two-hint-info" class="govuk-hint govuk-character-count__message">
+            You can enter up to 1,500 characters
+          </div>
+        </div>
+      </div>
+
+      {# CAPITAL #}
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="three" name="three" type="checkbox" value="email" data-aria-controls="conditional-three">
+        <label class="govuk-label govuk-checkboxes__label" for="three">
+          Capital
+        </label>
+      </div>
+      <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-three">
+        <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="1500">
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="three-hint">
+              Include as much information as you can
+            </label>
+            <div id="three-hint-hint" class="govuk-hint">
+              For example the amount, when they received it and where it came from.
+            </div>
+            <textarea class="govuk-textarea govuk-js-character-count" id="three-hint" name="three-hint" rows="5" aria-describedby="three-hint-info three-hint-hint"></textarea>
+          </div>
+          <div id="three-hint-info" class="govuk-hint govuk-character-count__message">
+            You can enter up to 1,500 characters
+          </div>
+        </div>
+      </div>
+
+      {# OTHER INCOME #}
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="four" name="four" type="checkbox" value="email" data-aria-controls="conditional-four">
+        <label class="govuk-label govuk-checkboxes__label" for="four">
+          Other income
+        </label>
+      </div>
+      <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-four">
+        <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="1500">
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="four-hint">
+              Include as much information as you can
+            </label>
+            <div id="four-hint-hint" class="govuk-hint">
+              For example where the income comes from.
+            </div>
+            <textarea class="govuk-textarea govuk-js-character-count" id="four-hint" name="four-hint" rows="5" aria-describedby="four-hint-info four-hint-hint"></textarea>
+          </div>
+          <div id="four-hint-info" class="govuk-hint govuk-character-count__message">
+            You can enter up to 1,500 characters
+          </div>
+        </div>
+      </div>
+
+      {# ABROAD FRAUD #}
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="five" name="five" type="checkbox" value="email" data-aria-controls="conditional-five">
+        <label class="govuk-label govuk-checkboxes__label" for="five">
+          Abroad fraud
+        </label>
+      </div>
+      <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-five">
+        <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="1500">
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="five-hint">
+              Include as much information as you can
+            </label>
+            <div id="five-hint-hint" class="govuk-hint">
+              For example where they have gone, when they went and how long they have been abroad.
+            </div>
+            <textarea class="govuk-textarea govuk-js-character-count" id="five-hint" name="five-hint" rows="5" aria-describedby="five-hint-info five-hint-hint"></textarea>
+          </div>
+          <div id="five-hint-info" class="govuk-hint govuk-character-count__message">
+            You can enter up to 1,500 characters
+          </div>
+        </div>
+      </div>
+
+      {# DOUBTFUL DISABILITY #}
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="six" name="six" type="checkbox" value="email" data-aria-controls="conditional-six">
+        <label class="govuk-label govuk-checkboxes__label" for="six">
+          Doubtful disability
+        </label>
+      </div>
+      <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-six">
+        <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="1500">
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="three-hint">
+              Include as much information as you can
+            </label>
+            <div id="six-hint-hint" class="govuk-hint">
+              For example the type of disability, any disability equipment they use, and why you think the disability is in doubt.
+            </div>
+            <textarea class="govuk-textarea govuk-js-character-count" id="six-hint" name="six-hint" rows="5" aria-describedby="six-hint-info six-hint-hint"></textarea>
+          </div>
+          <div id="six-hint-info" class="govuk-hint govuk-character-count__message">
+            You can enter up to 1,500 characters
+          </div>
+        </div>
+      </div>
+
+      {# HOUSING RELATED #}
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="seven" name="seven" type="checkbox" value="email" data-aria-controls="conditional-seven">
+        <label class="govuk-label govuk-checkboxes__label" for="seven">
+          Housing related
+        </label>
+      </div>
+      <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-seven">
+        <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="1500">
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="seven-hint">
+              Include as much information as you can
+            </label>
+            <div id="seven-hint-hint" class="govuk-hint">
+              For example why you think they are not at the address, and if they return to it.
+            </div>
+            <textarea class="govuk-textarea govuk-js-character-count" id="seven-hint" name="seven-hint" rows="5" aria-describedby="seven-hint-info seven-hint-hint"></textarea>
+          </div>
+          <div id="seven-hint-info" class="govuk-hint govuk-character-count__message">
+            You can enter up to 1,500 characters
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </fieldset>
+</div>
+
+
+        {{ govukButton({
+          text: 'Continue',
+          classes: "govuk-!-margin-top-2"
+        }) }}
+</form>
+
+    </div>
+  </div>
+
+{% endblock %}

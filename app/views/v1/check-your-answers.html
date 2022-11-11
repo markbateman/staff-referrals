@@ -1,0 +1,82 @@
+{% extends "../layouts/v1-layout.html" %}
+
+{% block pageTitle %}
+  Check your answers
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">
+        Check your answers
+      </h1>
+
+      {# CAPTURED ADDRESS #}
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
+            Captured address
+          </dt>
+          <dd class="govuk-summary-list__actions govuk-body" style="margin: 0; padding: 0; border-bottom: 0;">
+            <a class="govuk-link" href="address">
+              Change<span class="govuk-visually-hidden"> address</span>
+            </a>
+          </dd> 
+        </div>
+      </dl>
+
+      <dl class="govuk-summary-list">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['company-name'] }}
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key govuk-!-width-one-third">
+            Address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['company-address-line-1'] != '' %}
+              {{ data['company-address-line-1'] }}<br>
+            {% endif %}
+            {% if data['company-address-line-2'] != '' %}
+              {{ data['company-address-line-2'] }}<br>
+            {% endif %}
+            {% if data['company-address-town'] != '' %}
+              {{ data['company-address-town'] }}<br>
+            {% endif %}
+            {% if data['company-address-county'] != '' %}
+              {{ data['company-address-county'] }}<br>
+            {% endif %}
+            {% if data['company-address-postcode'] != '' %}
+              {{ data['company-address-postcode'] }}<br>
+            {% endif %}
+          </dd>
+        </div>
+      </dl>
+
+      <form method="post" novalidate>
+        <input type="hidden" name="answers-checked" value="true">
+        <button class="govuk-button" data-module="govuk-button">
+          Confirm and submit
+        </button>
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

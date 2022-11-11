@@ -1,0 +1,108 @@
+{% set serviceName = "Dev/Stable" %}
+
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="govuk-grid-row">
+	<div class="govuk-grid-column-full">
+		<div class="govuk-form-group">{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+			{{ govukPhaseBanner({
+			  tag: {
+			    text: "Prototype"
+			  },
+			  html: 'Dev/Stable version'
+			}) }}
+		</div>
+		{{ govukBackLink({
+		  text: 'Back',
+		  href: 'javascript:history.go(-1)'
+		})}}
+	</div>
+	<div class="govuk-grid-column-full">
+		<h1 class="govuk-heading-l">Journey map</h1>
+		<p class="govuk-body">
+			<a href="#" class="govuk-link">{Link through to Miro/Mural board}</a>
+		</p>
+	</div>
+	<div class="govuk-grid-column-one-third">
+		<h2 class="govuk-heading-l">Pages</h2>
+		<div class="govuk-form-group">
+			<ol class="govuk-list govuk-list--number to-do">
+				<li class="done"><a href="/stable/dashboard">Start</li>
+				<li class="done"><a href="/stable/choose-scanner">Choose scanner</a>
+					<ul>
+						<li><a href="/stable/no-scanners-found">B: No scanners found</a></li>
+						<li><a href="/stable/scanner-busy">C: Scanner busy</a></li>
+						<li><a href="/stable/problem-scanning-document">D: Problem scanning</a></li>
+					</ul>
+				</li>
+				<li class="done"><a href="/stable/scan-results">Check preview</a></li>
+				<li class="done"><a href="/stable/doc-type">Choose doc type</a></li>
+				<li class="done"><a href="/stable/doc-reference">Enter official number</a></li>
+				<li class="done"><a href="/stable/check-answers">Check record</a>
+					<ul>
+						<li><a href="/stable/view-scan">B: Check preview</a></li>
+						<li><a href="/stable/doc-type">C: Choose doc type</a> (UI as per #4)</li>
+						<li><a href="/stable/doc-reference">D: Enter official number</a> (UI as per #5)</li>
+					</ul>
+				</li>
+				<li class="done"><a href="/stable/confirmation">Confirm record saved</a></li>
+				<li class="done"><a href="/stable/find-ac">AC find documents</a></li>
+				<li class="done"><a href="/stable/ac-results">AC results</a></li>
+				<li class="done"><a href="/stable/pdf-container-ac1.html">AC view PDF</a> (AC1 example)</li>
+				<li class="done"><a href="/stable/check-answers">AC change record</a> (UI as per #6)</li>
+				<li class="done"><a href="/stable/find-lc">LC find documents</a></li>
+				<li class="done"><a href="/stable/lc-results">LC results</a></li>
+				<li class="done"><a href="/stable/pdf-container-lc1">LC view PDF</a></li>
+				<li class="done"><a href="/stable/update-lc">LC change record</a>
+					<ul>
+						<li><a href="/stable/view-plan">B: Check preview</a></li>
+						<li><a href="/stable/lc-reg-change">C: Registration number</a></li>
+						<li><a href="/stable/lc-date-change">D: Date of registration</a></li>
+					</ul>
+				</li>
+			</ol>
+		</div>
+	</div>
+	<div class="govuk-grid-column-one-third">
+		<h2 class="govuk-heading-l">Validation</h2>
+		<div class="govuk-form-group">
+			<ol class="govuk-list">
+				<li class="done"><a href="/stable/validation-choose-scanner">Choose scanner</a></li>
+				<li class="done"><a href="/stable/validation-scan-results">Check preview</a></li>
+				<li class="done"><a href="/stable/validation-doc-type">Choose doc type</a></li>
+				<li class="done"><a href="/stable/validation-doc-reference">Enter official number</a></li>
+				<li class="done"><a href="/stable/validation-check-answers">Check record</a></li>
+				<li class="done"><a href="/stable/validation-find-ac">AC find documents</a></li>
+				<li class="done">LC find documents</li>
+				<ul>
+					<li><a href="/stable/validation-find-lc-registration-number">Registration number</a></li>
+					<li><a href="/stable/validation-find-lc-registration-no-date-entered">No date entered</a></li>
+					<li><a href="/stable/validation-find-lc-registration-incorrect-date-entered">Incorrect date entered</a></li>
+					<li><a href="/stable/validation-find-lc-registration-future-date-entered">Future date entered</a></li>
+					<li>Date elements:</li>
+					<ul>
+						<li><a href="/stable/validation-find-lc-registration-no-day-entered">No DAY</a></li>
+						<li><a href="/stable/validation-find-lc-registration-no-month-entered">No MONTH</a></li>
+						<li><a href="/stable/validation-find-lc-registration-no-year-entered">No YEAR</a></li>
+						<li><a href="/stable/validation-find-lc-registration-no-day-and-month-entered">No DAY and MONTH</a></li>
+						<li><a href="/stable/validation-find-lc-registration-no-day-and-year-entered">No DAY and YEAR</a></li>
+						<li><a href="/stable/validation-find-lc-registration-no-month-and-year-entered">No MONTH and YEAR</a></li>
+					</ul>
+				</ul>
+			</ol>
+		</div>
+	</div>
+	<div class="govuk-grid-column-one-third">
+		<div class="govuk-form-group">
+			<h2 class="govuk-heading-l">Defaults</h2>
+			<ul class="govuk-list to-do">
+				<li class="done"><a href="/dev-stable/page-not-found">Page not found</a> <strong class="govuk-tag govuk-tag--turquoise">Done</strong></li>
+				<li class="done"><a href="/dev-stable/problem-with-the-service">Problem with the service</a> <strong class="govuk-tag govuk-tag--turquoise">Done</strong></li>
+				<li class="done"><a href="/dev-stable/service-unavailable">Service unavailable</a> <strong class="govuk-tag govuk-tag--turquoise">Done</strong></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

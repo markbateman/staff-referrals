@@ -1,0 +1,89 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        {{ serviceName }}
+      </h1>
+      
+      <p class="govuk-body">You can use this service to report someone you suspect of benefit fraud.</p>
+      <p class="govuk-body">Complete as much as you can. Don't worry if you don't know the answers to some of the questions.</p>
+      <p class="govuk-body">If known, please provide the NINO for the suspected person.</p>
+
+      {{ govukButton({
+        text: "Start fraud referral",
+        href: "who-do-you-want-to-report",
+        isStartButton: true
+      }) }}
+
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+      <aside class="app-related-items" role="complementary">
+        <h2 class="govuk-heading-m" id="subsection-title">
+          Useful phone numbers
+        </h2>
+        <nav role="navigation" aria-labelledby="subsection-title">
+
+        <h3 class="govuk-heading-s">Great Britain</h3>
+          <ul class="govuk-list govuk-!-font-size-16">
+            <li>
+              <strong>Benefit Fraud Hotline</strong>
+            </li>
+            <li>
+              0800 854 440 (English)
+            </li>
+            <li>
+              0800 678 3722 (Welsh)
+            </li>
+          </ul>
+          <ul class="govuk-list govuk-!-font-size-16">
+            <li>
+              <strong>Textphone users</strong>
+            </li>
+            <li>
+              0800 328 0512
+            </li>
+          </ul>
+
+        <h3 class="govuk-heading-s">Northern Ireland</h3>
+          <ul class="govuk-list govuk-!-font-size-16">
+            <li>
+              <strong>Benefit Fraud Hotline</strong>
+            </li>
+            <li>
+              0800 975 6050
+            </li>
+          </ul>
+          <ul class="govuk-list govuk-!-font-size-16">
+            <li>
+              <strong>Textphone users</strong>
+            </li>
+            <li>
+              028 9055 6991
+            </li>
+          </ul>
+         
+        </nav>
+      </aside>
+    </div>
+
+  </div>
+
+{% endblock %}
