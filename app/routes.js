@@ -18,6 +18,15 @@ router.use('/v1/', (req, res, next) => {
     return require(`./views/v1/_routes`)(req, res, next);
   })
 
+ // SET GLOBAL PREVIOUS PAGE
+router.use('/', (req, res, next) => {
+  req.session.data.gPreviousLocation = req.get('Referrer');
+  req.session.data.gCurrentLocation = req.originalUrl;
+  console.log('gPreviousLocation was : ' + req.session.data.gPreviousLocation);
+  console.log('gCurrentLocation is   : ' + req.session.data.gCurrentLocation);
+  next();
+});
+
 // GET SPRINT NAME - useful for relative templates
 router.use('/', (req, res, next) => {
     res.locals.currentURL = req.originalUrl; //current screen

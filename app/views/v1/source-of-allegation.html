@@ -5,6 +5,12 @@
 {% endblock %}
 
 {% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
   <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
 {% endblock %}
 
@@ -15,75 +21,75 @@
 
       <form class="form" method="post">
 
-<div class="govuk-form-group">
-  <fieldset class="govuk-fieldset">
-    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-      <h1 class="govuk-fieldset__heading">
-        Source of allegation
-      </h1>
-    </legend>
-    <div class="govuk-radios" data-module="govuk-radios">
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="where-do-you-live-3" name="where-do-you-live" type="radio" value="wales">
-        <label class="govuk-label govuk-radios__label" for="where-do-you-live-3">
-          HMRC
-        </label>
-      </div>
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="where-do-you-live" name="where-do-you-live" type="radio" value="england">
-        <label class="govuk-label govuk-radios__label" for="where-do-you-live">
-          Internet
-        </label>
-      </div>
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="where-do-you-live-2" name="where-do-you-live" type="radio" value="scotland">
-        <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
-          Local authority
-        </label>
-      </div>
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Source of allegation
+              </h1>
+            </legend>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="source-of-allegation" name="source-of-allegation" type="radio" value="hmrc" {{ checked("source-of-allegation", "hmrc") }} >
+                <label class="govuk-label govuk-radios__label" for="source-of-allegation">
+                  HMRC
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="source-of-allegation-2" name="source-of-allegation" type="radio" value="internet" {{ checked("source-of-allegation", "internet") }} >
+                <label class="govuk-label govuk-radios__label" for="source-of-allegation-2">
+                  Internet
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="source-of-allegation-3" name="source-of-allegation" type="radio" value="local-authority" {{ checked("source-of-allegation", "local-authority") }} >
+                <label class="govuk-label govuk-radios__label" for="source-of-allegation-3">
+                  Local authority
+                </label>
+              </div>
 
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="where-do-you-live-4" name="where-do-you-live" type="radio" value="northern-ireland">
-        <label class="govuk-label govuk-radios__label" for="where-do-you-live-4">
-          Member of public
-        </label>
-      </div>
-    <div class="govuk-radios" data-module="govuk-radios">
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="where-do-you-live" name="where-do-you-live" type="radio" value="england">
-        <label class="govuk-label govuk-radios__label" for="where-do-you-live">
-          National Benefit Fraud Hotline
-        </label>
-      </div>
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="where-do-you-live-4" name="where-do-you-live" type="radio" value="northern-ireland">
-        <label class="govuk-label govuk-radios__label" for="where-do-you-live-4">
-          Performance measure referral
-        </label>
-      </div>
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="where-do-you-live-3" name="where-do-you-live" type="radio" value="wales">
-        <label class="govuk-label govuk-radios__label" for="where-do-you-live-3">
-          Spanish Hotline
-        </label>
-      </div>
-      <div class="govuk-radios__item">
-        <input class="govuk-radios__input" id="where-do-you-live-2" name="where-do-you-live" type="radio" value="scotland">
-        <label class="govuk-label govuk-radios__label" for="where-do-you-live-2">
-          Staff referral
-        </label>
-      </div>
-    </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="source-of-allegation-4" name="source-of-allegation" type="radio" value="member-of-public" {{ checked("source-of-allegation", "member-of-public") }} >
+                <label class="govuk-label govuk-radios__label" for="source-of-allegation-4">
+                  Member of public
+                </label>
+              </div>
+              <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="source-of-allegation-5" name="source-of-allegation" type="radio" value="national-benefit-fraud-hotline" {{ checked("source-of-allegation", "national-benefit-fraud-hotline") }} >
+                  <label class="govuk-label govuk-radios__label" for="source-of-allegation-5">
+                    National Benefit Fraud Hotline
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="source-of-allegation-6" name="source-of-allegation" type="radio" value="performance-measure-referral" {{ checked("source-of-allegation", "performance-measure-referral") }} >
+                  <label class="govuk-label govuk-radios__label" for="source-of-allegation-6">
+                    Performance measure referral
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="source-of-allegation-7" name="source-of-allegation" type="radio" value="spanish-hotline" {{ checked("source-of-allegation", "spanish-hotline") }} >
+                  <label class="govuk-label govuk-radios__label" for="source-of-allegation-7">
+                    Spanish Hotline
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="source-of-allegation-8" name="source-of-allegation" type="radio" value="staff-referral" {{ checked("source-of-allegation", "staff-referral") }} >
+                  <label class="govuk-label govuk-radios__label" for="source-of-allegation-8">
+                    Staff referral
+                  </label>
+                </div>
+              </div>
 
-  </fieldset>
-</div>
-
+          </fieldset>
+        </div>
 
         {{ govukButton({
           text: 'Continue',
           classes: "govuk-!-margin-top-2"
         }) }}
-</form>
+
+      </form>
 
     </div>
   </div>

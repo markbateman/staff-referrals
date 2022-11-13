@@ -1,7 +1,7 @@
-{% extends "../layouts/v1-layout.html" %}
+{% extends "layout.html" %}
 
 {% block pageTitle %}
-  Check your answers
+  Check your answers – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block beforeContent %}
@@ -21,59 +21,410 @@
         Check your answers
       </h1>
 
-      {# CAPTURED ADDRESS #}
-
-      <dl class="govuk-summary-list">
+      {# WHO DO YOU WANT TO REPORT? #}
+      <h2 class="govuk-heading-m" id="section-who-do-you-want-to-report">
+        Who do you want to report?
+      </h2>
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
         <div class="govuk-summary-list__row">
-          <dt class="govuk-heading-m" style="margin: 0; padding: 0;">
-            Captured address
+          <dt class="govuk-summary-list__key">
+            Who do you want to report?
           </dt>
-          <dd class="govuk-summary-list__actions govuk-body" style="margin: 0; padding: 0; border-bottom: 0;">
-            <a class="govuk-link" href="address">
-              Change<span class="govuk-visually-hidden"> address</span>
+          <dd class="govuk-summary-list__value">
+            {% if data['who-do-you-want-to-report'] == 'person' %}
+              Person
+            {% elif data['who-do-you-want-to-report'] == 'employer' %}
+              Employer
+            {% elif data['who-do-you-want-to-report'] == 'organisation' %}
+              Organisation
+            {% elif data['who-do-you-want-to-report'] == 'dwp-staff-member' %}
+              DWP staff member
+            {% else %}
+              Person
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="who-do-you-want-to-report">
+              Change<span class="govuk-visually-hidden"> who do you want to report</span>
             </a>
-          </dd> 
-        </div>
-      </dl>
-
-      <dl class="govuk-summary-list">
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-third">
-            Name
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{ data['company-name'] }}
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key govuk-!-width-one-third">
-            Address
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {% if data['company-address-line-1'] != '' %}
-              {{ data['company-address-line-1'] }}<br>
-            {% endif %}
-            {% if data['company-address-line-2'] != '' %}
-              {{ data['company-address-line-2'] }}<br>
-            {% endif %}
-            {% if data['company-address-town'] != '' %}
-              {{ data['company-address-town'] }}<br>
-            {% endif %}
-            {% if data['company-address-county'] != '' %}
-              {{ data['company-address-county'] }}<br>
-            {% endif %}
-            {% if data['company-address-postcode'] != '' %}
-              {{ data['company-address-postcode'] }}<br>
-            {% endif %}
           </dd>
         </div>
       </dl>
 
-      <form method="post" novalidate>
+      {# CUSTOMER DETAILS #}
+      <h2 class="govuk-heading-m" id="section-customer-details">
+        Customer details
+      </h2>
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            <span class="govuk-visually-hidden">Customer </span>First name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['customer-first-name'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="customer-details#customer-first-name">
+              Change<span class="govuk-visually-hidden"> customer first name</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            <span class="govuk-visually-hidden">Customer </span>Last name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['customer-last-name'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="customer-details#customer-last-name">
+              Change<span class="govuk-visually-hidden"> customer last name</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            <span class="govuk-visually-hidden">Customer </span>Known by another name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['known-by-another-name'] == 'yes' %}
+              {{ data['known-by-another-name-full-name'] }}
+            {% else %}
+              No
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="customer-details#known-by-another-name-full-name">
+              Change<span class="govuk-visually-hidden"> known by another name</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            <span class="govuk-visually-hidden">Customer </span>National Insurance number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['customer-ni-number'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="customer-details#customer-ni-number">
+              Change<span class="govuk-visually-hidden"> customer National Insurance number</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            <span class="govuk-visually-hidden">Customer </span>Address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['customer-address-line-1'] != '' %}
+              {{ data['customer-address-line-1'] }}<br>
+            {% endif %}
+            {% if data['customer-address-line-2'] != '' %}
+              {{ data['customer-address-line-2'] }}<br>
+            {% endif %}
+            {% if data['customer-address-town'] != '' %}
+              {{ data['customer-address-town'] }}<br>
+            {% endif %}
+            {% if data['customer-address-county'] != '' %}
+              {{ data['customer-address-county'] }}<br>
+            {% endif %}
+            {% if data['customer-address-postcode'] != '' %}
+              {{ data['customer-address-postcode'] }}<br>
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="customer-details#customer-addressr">
+              Change<span class="govuk-visually-hidden"> customer address</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            <span class="govuk-visually-hidden">Customer </span>Date of birth
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['customer-date-of-birth-day'] }} 
+            {% if data['customer-date-of-birth-month'] == '1' or data['customer-date-of-birth-month'] == '01' %}
+              January 
+            {% elif data['customer-date-of-birth-month'] == '2' or data['customer-date-of-birth-month'] == '02' %}
+              February 
+            {% elif data['customer-date-of-birth-month'] == '3' or data['customer-date-of-birth-month'] == '03' %}
+              March 
+            {% elif data['customer-date-of-birth-month'] == '4' or data['customer-date-of-birth-month'] == '04' %}
+              April 
+            {% elif data['customer-date-of-birth-month'] == '5' or data['customer-date-of-birth-month'] == '05' %}
+              May 
+            {% elif data['customer-date-of-birth-month'] == '6' or data['customer-date-of-birth-month'] == '06' %}
+              June 
+            {% elif data['customer-date-of-birth-month'] == '7' or data['customer-date-of-birth-month'] == '07' %}
+              July 
+            {% elif data['customer-date-of-birth-month'] == '8' or data['customer-date-of-birth-month'] == '08' %}
+              August 
+            {% elif data['customer-date-of-birth-month'] == '9' or data['customer-date-of-birth-month'] == '09' %}
+              September 
+            {% elif data['customer-date-of-birth-month'] == '10' or data['customer-date-of-birth-month'] == '10' %}
+              October 
+            {% elif data['customer-date-of-birth-month'] == '11' or data['customer-date-of-birth-month'] == '11' %}
+              November 
+            {% elif data['customer-date-of-birth-month'] == '12' or data['customer-date-of-birth-month'] == '12' %}
+              December 
+            {% else %}
+              January 
+            {% endif %}
+            {{ data['customer-date-of-birth-year'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="customer-details#customer-date-of-birth">
+              Change<span class="govuk-visually-hidden"> customer date of birth</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            <span class="govuk-visually-hidden">Customer </span>Telephone number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['customer-telephone-number'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="customer-details#customer-telephone-number">
+              Change<span class="govuk-visually-hidden"> customer telephone number</span>
+            </a>
+          </dd>
+        </div>
+      </dl>
+
+      {# SOURCE OF ALLEGATION #}
+      <h2 class="govuk-heading-m" id="section-source-of-allegation">
+        Source of allegation
+      </h2>
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Source of allegation
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['source-of-allegation'] == 'hmrc' %}
+              HMRC
+            {% elif data['source-of-allegation'] == 'internet' %}
+              Internet
+            {% elif data['source-of-allegation'] == 'local-authority' %}
+              Local authority
+            {% elif data['source-of-allegation'] == 'member-of-public' %}
+              Member of public
+            {% elif data['source-of-allegation'] == 'national-benefit-fraud-hotline' %}
+              National Benefit Fraud Hotline
+            {% elif data['source-of-allegation'] == 'performance-measure-referral' %}
+              Performance measure referral
+            {% elif data['source-of-allegation'] == 'spanish-hotline' %}
+              Spanish Hotline
+            {% elif data['source-of-allegation'] == 'staff-referral' %}
+              Staff referral
+            {% else %}
+              HMRC
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="source-of-allegation">
+              Change<span class="govuk-visually-hidden"> source of allegation</span>
+            </a>
+          </dd>
+        </div>
+      </dl>
+
+      {# WHAT DO YOU THINK IS HAPPENING? #}
+      <h2 class="govuk-heading-m" id="section-what-do-you-think-is-happening">
+        What do you think is happening?
+      </h2>
+
+      {# LIVING TOGETHER #}
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Living together
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['living-together'] == 'living-together' %}
+              {{ data['living-together-hint'] }}
+            {% else %}
+              Not applicable
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="what-do-you-think-is-happening#living-together">
+              Change<span class="govuk-visually-hidden"> living together</span>
+            </a>
+          </dd>
+        </div>
+
+        {# WORKING AND CLAIMING #}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Working and claiming
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['working-and-claiming'] == 'working-and-claiming' %}
+              {{ data['working-and-claiming-hint'] }}
+            {% else %}
+              Not applicable
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="what-do-you-think-is-happening#working-and-claiming">
+              Change<span class="govuk-visually-hidden"> working and claiming</span>
+            </a>
+          </dd>
+        </div>
+
+        {# CAPITAL #}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Capital
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['capital'] == 'capital' %}
+              {{ data['capital-hint'] }}
+            {% else %}
+              Not applicable
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="what-do-you-think-is-happening#capital">
+              Change<span class="govuk-visually-hidden"> capital</span>
+            </a>
+          </dd>
+        </div>
+
+        {# OTHER INCOME #}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Other income
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['other-income'] == 'other-income' %}
+              {{ data['other-income-hint'] }}
+            {% else %}
+              Not applicable
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="what-do-you-think-is-happening#other-income">
+              Change<span class="govuk-visually-hidden"> other income</span>
+            </a>
+          </dd>
+        </div>
+
+        {# ABROAD FRAUD #}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Abroad fraud
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['abroad-fraud'] == 'abroad-fraud' %}
+              {{ data['abroad-fraud-hint'] }}
+            {% else %}
+              Not applicable
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="what-do-you-think-is-happening#abroad-fraud">
+              Change<span class="govuk-visually-hidden"> abroad fraud</span>
+            </a>
+          </dd>
+        </div>
+
+        {# DOUBTFUL DISABILITY #}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Doubtful disability
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['doubtful-disability'] == 'doubtful-disability' %}
+              {{ data['doubtful-disability-hint'] }}
+            {% else %}
+              Not applicable
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="what-do-you-think-is-happening#doubtful-disability">
+              Change<span class="govuk-visually-hidden"> doubtful disability</span>
+            </a>
+          </dd>
+        </div>
+
+        {# HOUSING RELATED #}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Housing related
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['housing-related'] == 'housing-related' %}
+              {{ data['housing-related-hint'] }}
+            {% else %}
+              Not applicable
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="what-do-you-think-is-happening#housing-related">
+              Change<span class="govuk-visually-hidden"> housing related</span>
+            </a>
+          </dd>
+        </div>
+
+      </dl>
+
+      {# SUBMITTER DETAILS #}
+      <h2 class="govuk-heading-m" id="section-submitter-details">
+        Submitter details
+      </h2>
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            <span class="govuk-visually-hidden">Submitter </span>First name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['submitter-first-name'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="submitter-details#submitter-first-name">
+              Change<span class="govuk-visually-hidden"> submitter first name</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            <span class="govuk-visually-hidden">Submitter </span>Last name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['submitter-last-name'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="submitter-details#submitter-last-name">
+              Change<span class="govuk-visually-hidden"> submitter last name</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            <span class="govuk-visually-hidden">Submitter </span>Email address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['submitter-email-address'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="submitter-details#submitter-email-address">
+              Change<span class="govuk-visually-hidden"> submitter email address</span>
+            </a>
+          </dd>
+        </div>
+      </dl>
+
+      <form action="confirmation" method="post" novalidate>
         <input type="hidden" name="answers-checked" value="true">
-        <button class="govuk-button" data-module="govuk-button">
-          Confirm and submit
-        </button>
+          <button data-prevent-double-click="true" class="govuk-button" data-module="govuk-button">
+            Confirm and submit
+          </button>
       </form>
 
     </div>

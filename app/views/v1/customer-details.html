@@ -5,144 +5,189 @@
 {% endblock %}
 
 {% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
   <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
 {% endblock %}
 
 {% block content %}
 
   <div class="govuk-grid-row">
+
     <div class="govuk-grid-column-two-thirds">
 
       <form class="form" method="post">
 
-      <div class="govuk-form-group">
-        <fieldset class="govuk-fieldset">
-          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-            <h1 class="govuk-fieldset__heading">
-              Customer details
-            </h1>
-          </legend>
-
-<div class="govuk-form-group">
-  <label class="govuk-label" for="event-name">
-    First name
-  </label>
-  <input class="govuk-input" id="event-name" name="event-name" type="text">
-</div>
-
-<div class="govuk-form-group">
-  <label class="govuk-label" for="event-name">
-    Last name
-  </label>
-  <input class="govuk-input" id="event-name" name="event-name" type="text">
-</div>
-
-  <div class="govuk-form-group">
-    <label class="govuk-label" for="address-line-1">
-      Is the person known by another name? (optional)
-    </label>
-    <input class="govuk-input" id="address-line-1" name="address-line-1" type="text" autocomplete="address-line1">
-  </div>
-  <div class="govuk-form-group">
-    <label class="govuk-label" for="address-line-1">
-      National Insurance number
-    </label>
-    <input class="govuk-input" id="address-line-1" name="address-line-1" type="text" autocomplete="address-line1">
-  </div>
-
-
-<fieldset class="govuk-fieldset">
-
-  <div class="govuk-form-group">
-    <label class="govuk-label" for="address-line-1">
-      Address line 1
-    </label>
-    <input class="govuk-input" id="address-line-1" name="address-line-1" type="text" autocomplete="address-line1">
-  </div>
-
-  <div class="govuk-form-group">
-    <label class="govuk-label" for="address-line-2">
-      Address line 2 (optional)
-    </label>
-    <input class="govuk-input" id="address-line-2" name="address-line-2" type="text" autocomplete="address-line2">
-  </div>
-
-  <div class="govuk-form-group">
-    <label class="govuk-label" for="address-town">
-      Town or city
-    </label>
-    <input class="govuk-input govuk-!-width-two-thirds" id="address-town" name="address-town" type="text" autocomplete="address-level2">
-  </div>
-
-  <div class="govuk-form-group">
-    <label class="govuk-label" for="address-county">
-      County (optional)
-    </label>
-    <input class="govuk-input govuk-!-width-two-thirds" id="address-county" name="address-county" type="text">
-  </div>
-
-  <div class="govuk-form-group">
-    <label class="govuk-label" for="address-postcode">
-      Postcode
-    </label>
-    <input class="govuk-input govuk-input--width-10" id="address-postcode" name="address-postcode" type="text" autocomplete="postal-code">
-  </div>
-
-</fieldset>
-
-
-<div class="govuk-form-group">
-  <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
-    <legend class="govuk-fieldset__legend govuk-body govuk-!-padding-top-6">
-        Date of birth
-    </legend>
-    <div id="passport-issued-hint" class="govuk-hint">
-      For example, 27 3 2007
-    </div>
-    <div class="govuk-date-input" id="passport-issued">
-      <div class="govuk-date-input__item">
         <div class="govuk-form-group">
-          <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
-            Day
-          </label>
-          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day" name="passport-issued-day" type="text" inputmode="numeric">
-        </div>
-      </div>
-      <div class="govuk-date-input__item">
-        <div class="govuk-form-group">
-          <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
-            Month
-          </label>
-          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month" name="passport-issued-month" type="text" inputmode="numeric">
-        </div>
-      </div>
-      <div class="govuk-date-input__item">
-        <div class="govuk-form-group">
-          <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
-            Year
-          </label>
-          <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year" name="passport-issued-year" type="text" inputmode="numeric">
-        </div>
-      </div>
-    </div>
 
-  </fieldset>
-</div>
+          <h1 class="govuk-heading-l">
+            Customer details
+          </h1>
 
-<div class="govuk-form-group">
-  <label class="govuk-label" for="telephone-number">
-    Telephone number
-  </label>
-  <input class="govuk-input govuk-input--width-20" id="telephone-number" name="telephone-number" type="tel" autocomplete="tel">
-</div>
+          <fieldset class="govuk-fieldset">
 
-  </fieldset>
-</div>
+            {#<legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              <h2 class="govuk-fieldset__heading">
+                Customer name
+              </h2>
+            </legend>#}
+
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-label--m" for="customer-first-name">
+                First name
+              </label>
+              <input class="govuk-input" id="customer-first-name" name="customer-first-name" value="{{ data['customer-first-name'] }}" type="text">
+            </div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-label--m" for="customer-last-name">
+                Last name
+              </label>
+              <input class="govuk-input" id="customer-last-name" name="customer-last-name" value="{{ data['customer-last-name'] }}" type="text">
+            </div>
+
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset" aria-describedby="known-by-another-name-hint">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                  Is the person known by another name?
+                </legend>
+                <div class="govuk-radios" data-module="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="known-by-another-name" name="known-by-another-name" type="radio" value="yes" {{ checked("known-by-another-name", "yes") }} data-aria-controls="conditional-known-by-another-name">
+                    <label class="govuk-label govuk-radios__label" for="known-by-another-name">
+                      Yes
+                    </label>
+                  </div>
+                  <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-known-by-another-name">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label" for="known-by-another-name-full-name">
+                        Full name
+                      </label>
+                      <input class="govuk-input" id="known-by-another-name-full-name" name="known-by-another-name-full-name" value="{{ data['known-by-another-name-full-name'] }}" type="text" spellcheck="false">
+                    </div>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="known-by-another-name-2" name="known-by-another-name" type="radio" value="no" {{ checked("known-by-another-name", "no") }} data-aria-controls="conditional-known-by-another-name-2">
+                    <label class="govuk-label govuk-radios__label" for="known-by-another-name-2">
+                      No
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-label--m" for="customer-ni-number">
+                National Insurance number
+              </label>
+              <input class="govuk-input" id="customer-ni-number" name="customer-ni-number" value="{{ data['customer-ni-number'] }}" type="text">
+            </div>
+            
+            <fieldset class="govuk-fieldset">
+
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                <h2 class="govuk-fieldset__heading">
+                  Customer address
+                </h2>
+              </legend>
+
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="customer-address-line-1">
+                  Address line 1
+                </label>
+                <input class="govuk-input" id="customer-address-line-1" name="customer-address-line-1" value="{{ data['customer-address-line-1'] }}" type="text" autocomplete="address-line1">
+              </div>
+
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="customer-address-line-2">
+                  Address line 2 (optional)
+                </label>
+                <input class="govuk-input" id="customer-address-line-2" name="customer-address-line-2" value="{{ data['customer-address-line-2'] }}" type="text" autocomplete="address-line2">
+              </div>
+
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="customer-address-town">
+                  Town or city
+                </label>
+                <input class="govuk-input govuk-!-width-two-thirds" id="customer-address-town" name="customer-address-town" value="{{ data['customer-address-town'] }}" type="text" autocomplete="address-level2">
+              </div>
+
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="customer-address-county">
+                  County (optional)
+                </label>
+                <input class="govuk-input govuk-!-width-two-thirds" id="customer-address-county" name="customer-address-county" value="{{ data['customer-address-county'] }}" type="text">
+              </div>
+
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="customer-address-postcode">
+                  Postcode
+                </label>
+                <input class="govuk-input govuk-input--width-10" id="customer-address-postcode" name="customer-address-postcode" value="{{ data['customer-address-postcode'] }}" type="text" autocomplete="postal-code">
+              </div>
+            </fieldset>
+
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset" role="group" aria-describedby="customer-date-of-birth-hint">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m govuk-body govuk-!-padding-top-6">
+                  <h2 class="govuk-fieldset__heading">
+                    Date of birth
+                  </h2>
+                </legend>
+                <div id="customer-date-of-birth-hint" class="govuk-hint">
+                  For example, 27 3 2007
+                </div>
+                <div class="govuk-date-input" id="customer-date-of-birth">
+                  <div class="govuk-date-input__item">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label govuk-date-input__label" for="customer-date-of-birth-day">
+                        Day
+                      </label>
+                      <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="customer-date-of-birth-day" name="customer-date-of-birth-day" value="{{ data['customer-date-of-birth-day'] }}" type="text" inputmode="numeric">
+                    </div>
+                  </div>
+                  <div class="govuk-date-input__item">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label govuk-date-input__label" for="customer-date-of-birth-month">
+                        Month
+                      </label>
+                      <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="customer-date-of-birth-month" name="customer-date-of-birth-month" value="{{ data['customer-date-of-birth-month'] }}" type="text" inputmode="numeric">
+                    </div>
+                  </div>
+                  <div class="govuk-date-input__item">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label govuk-date-input__label" for="date-of-birth-year">
+                        Year
+                      </label>
+                      <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="customer-date-of-birth-year" name="customer-date-of-birth-year" value="{{ data['customer-date-of-birth-year'] }}" type="text" inputmode="numeric">
+                    </div>
+                  </div>
+                </div>
+              </fieldset>
+            </div>
+
+            <div class="govuk-form-group">
+              <h2 class="govuk-label-wrapper">
+                <label class="govuk-label govuk-label--m" for="customer-telephone-number">
+                  Telephone number
+                </label>
+              </h2>
+              <input class="govuk-input govuk-input--width-20" id="customer-telephone-number" name="customer-telephone-number" value="{{ data['customer-telephone-number'] }}"type="tel" autocomplete="tel">
+            </div>
+
+          </fieldset>
+        </div>
+
         {{ govukButton({
           text: 'Continue',
           classes: "govuk-!-margin-top-2"
         }) }}
-</form>
+
+      </form>
 
     </div>
   </div>

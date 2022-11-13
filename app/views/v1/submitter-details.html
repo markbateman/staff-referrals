@@ -5,6 +5,12 @@
 {% endblock %}
 
 {% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
   <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
 {% endblock %}
 
@@ -24,27 +30,33 @@
             </legend>
 
             <div class="govuk-form-group">
-              <label class="govuk-label" for="event-name">
-                First name
-              </label>
-              <input class="govuk-input" id="event-name" name="event-name" type="text">
+
+              <h2 class="govuk-label-wrapper">
+                <label class="govuk-label govuk-label--m" for="submitter-first-name">
+                  First name
+                </label>
+              </h2>
+              <input class="govuk-input" id="submitter-first-name" name="submitter-first-name" type="text" value="{{ data['submitter-first-name'] }}">
             </div>
 
             <div class="govuk-form-group">
-              <label class="govuk-label" for="event-name">
-                Last name
-              </label>
-              <input class="govuk-input" id="event-name" name="event-name" type="text">
+              <h2 class="govuk-label-wrapper">
+                <label class="govuk-label govuk-label--m" for="submitter-last-name">
+                  Last name
+                </label>
+              </h2>
+              <input class="govuk-input" id="submitter-last-name" name="submitter-last-name" type="text" value="{{ data['submitter-last-name'] }}">
             </div>
 
             <div class="govuk-form-group">
-              <label class="govuk-label" for="email">
-                Email address
-              </label>
-              <div id="email-hint" class="govuk-hint">
+              <h2 class="govuk-label-wrapper"><label class="govuk-label govuk-label--m" for="submitter-email-address">
+                  Email address
+                </label>
+              </h2>
+              <div id="submitter-email-address-hint" class="govuk-hint">
                 E.g. DWP email address.
               </div>
-              <input class="govuk-input" id="email" name="email" type="email" spellcheck="false" aria-describedby="email-hint" autocomplete="email">
+              <input class="govuk-input" id="submitter-email-address" name="submitter-email-address" type="email" spellcheck="false" aria-describedby="submitter-email-address-hint" autocomplete="email" value="{{ data['submitter-email-address'] }}">
             </div>
 
           </fieldset>
