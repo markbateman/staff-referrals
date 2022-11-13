@@ -1,6 +1,56 @@
 const express = require('express')
 const router = express.Router()
 
+// index
+router.post('/index', function(req, res) {
+    // Reset all known V1 variables, listed out by page
+
+    // who-do-you-want-to-report.html
+    req.session.data['who-do-you-want-to-report'] = null;
+
+    // customer-details.html
+    req.session.data['customer-first-name'] = null;
+    req.session.data['customer-last-name'] = null;
+    req.session.data['known-by-another-name'] = null
+    req.session.data['known-by-another-name-full-name'] = null
+    req.session.data['customer-ni-number'] =null;
+    req.session.data['customer-address-line-1'] = null;
+    req.session.data['customer-address-line-2'] = null;
+    req.session.data['customer-address-town'] = null;
+    req.session.data['customer-address-county'] =null;
+    req.session.data['customer-address-postcode'] = null;
+    req.session.data['customer-date-of-birth-day'] = null;
+    req.session.data['customer-date-of-birth-month'] = null;
+    req.session.data['customer-date-of-birth-year'] = null;
+    req.session.data['customer-telephone-number'] = null;
+
+    // source-of-allegation.html
+    req.session.data['source-of-allegation'] = null;
+
+    // what-do-you-think-is-happening.html
+    req.session.data['living-together'] = null;
+    req.session.data['living-together-hint'] = null;
+    req.session.data['working-and-claiming'] = null;
+    req.session.data['working-and-claiming-hint'] = null;
+    req.session.data['capital'] = null;
+    req.session.data['capital-hint'] = null;
+    req.session.data['other-income'] = null;
+    req.session.data['other-income-hint'] = null;
+    req.session.data['abroad-fraud'] = null;
+    req.session.data['abroad-fraud-hint'] = null;
+    req.session.data['doubtful-disability'] = null;
+    req.session.data['doubtful-disability-hint'] = null;
+    req.session.data['housing-related'] = null;
+    req.session.data['housing-related-hint'] = null;
+
+    // submitter-details.html
+    req.session.data['submitter-first-name'] = null;
+    req.session.data['submitter-last-name'] = null;
+    req.session.data['submitter-email-address'] = null;
+
+    res.redirect('who-do-you-want-to-report');
+})
+
 // who-do-you-want-to-report
 router.post('/who-do-you-want-to-report', function(req, res) {
     if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
@@ -42,7 +92,7 @@ router.post('/submitter-details', function(req, res) {
     if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
         res.redirect('check-your-answers#section-submitter-details');
     } else {
-        res.redirect('check-your-answer');
+        res.redirect('check-your-answers');
     }
 })
 

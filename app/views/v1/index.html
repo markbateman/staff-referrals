@@ -26,11 +26,12 @@
       <p class="govuk-body">Complete as much as you can. Don't worry if you don't know the answers to some of the questions.</p>
       <p class="govuk-body">If known, please provide the NINO for the suspected person.</p>
 
-      {{ govukButton({
-        text: "Start now",
-        href: "who-do-you-want-to-report",
-        isStartButton: true
-      }) }}
+      <form class="form" method="post">
+        {{ govukButton({
+          text: "Start now",
+          isStartButton: true
+        }) }}
+      </form>
 
     </div>
 
