@@ -8,21 +8,21 @@ router.post('/index', function(req, res) {
     // who-do-you-want-to-report.html
     req.session.data['who-do-you-want-to-report'] = null;
 
-    // customer-details.html
-    req.session.data['customer-first-name'] = null;
-    req.session.data['customer-last-name'] = null;
+    // suspect-details.html
+    req.session.data['suspect-first-name'] = null;
+    req.session.data['suspect-last-name'] = null;
     req.session.data['known-by-another-name'] = null
     req.session.data['known-by-another-name-full-name'] = null
-    req.session.data['customer-ni-number'] =null;
-    req.session.data['customer-address-line-1'] = null;
-    req.session.data['customer-address-line-2'] = null;
-    req.session.data['customer-address-town'] = null;
-    req.session.data['customer-address-county'] =null;
-    req.session.data['customer-address-postcode'] = null;
-    req.session.data['customer-date-of-birth-day'] = null;
-    req.session.data['customer-date-of-birth-month'] = null;
-    req.session.data['customer-date-of-birth-year'] = null;
-    req.session.data['customer-telephone-number'] = null;
+    req.session.data['suspect-ni-number'] =null;
+    req.session.data['suspect-address-line-1'] = null;
+    req.session.data['suspect-address-line-2'] = null;
+    req.session.data['suspect-address-town'] = null;
+    req.session.data['suspect-address-county'] =null;
+    req.session.data['suspect-address-postcode'] = null;
+    req.session.data['suspect-date-of-birth-day'] = null;
+    req.session.data['suspect-date-of-birth-month'] = null;
+    req.session.data['suspect-date-of-birth-year'] = null;
+    req.session.data['suspect-telephone-number'] = null;
 
     // source-of-allegation.html
     req.session.data['source-of-allegation'] = null;
@@ -56,14 +56,14 @@ router.post('/who-do-you-want-to-report', function(req, res) {
     if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
         res.redirect('check-your-answers#section-who-do-you-want-to-report');
     } else {
-        res.redirect('customer-details');
+        res.redirect('suspect-details');
     }
 })
 
-// customer-details
-router.post('/customer-details', function(req, res) {
+// suspect-details
+router.post('/suspect-details', function(req, res) {
     if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
-        res.redirect('check-your-answers#section-customer-details');
+        res.redirect('check-your-answers#section-suspect-details');
     } else {
         res.redirect('source-of-allegation');
     }
