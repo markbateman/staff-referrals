@@ -21,9 +21,10 @@
         Check your answers
       </h1>
 
-      {# WHO DO YOU WANT TO REPORT? #}
-      <h2 class="govuk-heading-m" id="section-who-do-you-want-to-report">
-        Who do you want to report?
+      {# WHO DO YOU WANT TO REPORT? and SOURCE OF ALLEGATION #}
+      {# Two seperate pages brought into a single grouped section as they're contextual #}
+      <h2 class="govuk-heading-m" id="section-allegation-details">
+        Allegation details
       </h2>
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
         <div class="govuk-summary-list__row">
@@ -49,157 +50,6 @@
             </a>
           </dd>
         </div>
-      </dl>
-
-      {# SUSPECT DETAILS #}
-      <h2 class="govuk-heading-m" id="section-suspect-details">
-        Suspect details
-      </h2>
-      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            <span class="govuk-visually-hidden">Suspect </span>First name
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{ data['suspect-first-name'] }}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="suspect-details#suspect-first-name">
-              Change<span class="govuk-visually-hidden"> suspect first name</span>
-            </a>
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            <span class="govuk-visually-hidden">Suspect </span>Last name
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{ data['suspect-last-name'] }}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="suspect-details#suspect-last-name">
-              Change<span class="govuk-visually-hidden"> suspect last name</span>
-            </a>
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            <span class="govuk-visually-hidden">Suspect </span>Known by another name
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {% if data['known-by-another-name'] == 'yes' %}
-              {{ data['known-by-another-name-full-name'] }}
-            {% else %}
-              No
-            {% endif %}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="suspect-details#known-by-another-name-full-name">
-              Change<span class="govuk-visually-hidden"> known by another name</span>
-            </a>
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            <span class="govuk-visually-hidden">Suspect </span>National Insurance number
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{ data['suspect-ni-number'] }}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="suspect-details#suspect-ni-number">
-              Change<span class="govuk-visually-hidden"> suspect National Insurance number</span>
-            </a>
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            <span class="govuk-visually-hidden">Suspect </span>Address
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {% if data['suspect-address-line-1'] != '' %}
-              {{ data['suspect-address-line-1'] }}<br>
-            {% endif %}
-            {% if data['suspect-address-line-2'] != '' %}
-              {{ data['suspect-address-line-2'] }}<br>
-            {% endif %}
-            {% if data['suspect-address-town'] != '' %}
-              {{ data['suspect-address-town'] }}<br>
-            {% endif %}
-            {% if data['suspect-address-county'] != '' %}
-              {{ data['suspect-address-county'] }}<br>
-            {% endif %}
-            {% if data['suspect-address-postcode'] != '' %}
-              {{ data['suspect-address-postcode'] }}<br>
-            {% endif %}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="suspect-details#suspect-address-line-1">
-              Change<span class="govuk-visually-hidden"> suspect address</span>
-            </a>
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            <span class="govuk-visually-hidden">Suspect </span>Date of birth
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{ data['suspect-date-of-birth-day'] }} 
-            {% if data['suspect-date-of-birth-month'] == '1' or data['suspect-date-of-birth-month'] == '01' %}
-              January 
-            {% elif data['suspect-date-of-birth-month'] == '2' or data['suspect-date-of-birth-month'] == '02' %}
-              February 
-            {% elif data['suspect-date-of-birth-month'] == '3' or data['suspect-date-of-birth-month'] == '03' %}
-              March 
-            {% elif data['suspect-date-of-birth-month'] == '4' or data['suspect-date-of-birth-month'] == '04' %}
-              April 
-            {% elif data['suspect-date-of-birth-month'] == '5' or data['suspect-date-of-birth-month'] == '05' %}
-              May 
-            {% elif data['suspect-date-of-birth-month'] == '6' or data['suspect-date-of-birth-month'] == '06' %}
-              June 
-            {% elif data['suspect-date-of-birth-month'] == '7' or data['suspect-date-of-birth-month'] == '07' %}
-              July 
-            {% elif data['suspect-date-of-birth-month'] == '8' or data['suspect-date-of-birth-month'] == '08' %}
-              August 
-            {% elif data['suspect-date-of-birth-month'] == '9' or data['suspect-date-of-birth-month'] == '09' %}
-              September 
-            {% elif data['suspect-date-of-birth-month'] == '10' or data['suspect-date-of-birth-month'] == '10' %}
-              October 
-            {% elif data['suspect-date-of-birth-month'] == '11' or data['suspect-date-of-birth-month'] == '11' %}
-              November 
-            {% elif data['suspect-date-of-birth-month'] == '12' or data['suspect-date-of-birth-month'] == '12' %}
-              December 
-            {% else %}
-              January 
-            {% endif %}
-            {{ data['suspect-date-of-birth-year'] }}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="suspect-details#suspect-date-of-birth-day">
-              Change<span class="govuk-visually-hidden"> suspect date of birth</span>
-            </a>
-          </dd>
-        </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            <span class="govuk-visually-hidden">Suspect </span>Telephone number
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {{ data['suspect-telephone-number'] }}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="suspect-details#suspect-telephone-number">
-              Change<span class="govuk-visually-hidden"> suspect telephone number</span>
-            </a>
-          </dd>
-        </div>
-      </dl>
-
-      {# SOURCE OF ALLEGATION #}
-      <h2 class="govuk-heading-m" id="section-source-of-allegation">
-        Source of allegation
-      </h2>
-      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
             Source of allegation
@@ -228,6 +78,150 @@
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="source-of-allegation">
               Change<span class="govuk-visually-hidden"> source of allegation</span>
+            </a>
+          </dd>
+        </div>
+      </dl>
+
+      {# SUSPECTS DETAILS #}
+      <h2 class="govuk-heading-m" id="section-suspects-details">
+        Suspect's details
+      </h2>
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            <span class="govuk-visually-hidden">Suspect's </span>First name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['suspects-first-name'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="suspects-details#section-suspects-first-name">
+              Change<span class="govuk-visually-hidden"> suspect's first name</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            <span class="govuk-visually-hidden">Suspect's </span>Last name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['suspects-last-name'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="suspects-details#section-suspects-last-name">
+              Change<span class="govuk-visually-hidden"> suspect's last name</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            <span class="govuk-visually-hidden">Suspect </span>Known by another name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['known-by-another-name'] == 'yes' %}
+              {{ data['known-by-another-name-full-name'] }}
+            {% else %}
+              No
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="suspects-details#section-known-by-another-name">
+              Change<span class="govuk-visually-hidden"> known by another name</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            <span class="govuk-visually-hidden">Suspect's </span>National Insurance number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['suspects-ni-number'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="suspects-details#section-suspects-ni-number">
+              Change<span class="govuk-visually-hidden"> suspect's National Insurance number</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            <span class="govuk-visually-hidden">Suspect's </span>Address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['suspects-address-line-1'] != '' %}
+              {{ data['suspects-address-line-1'] }}<br>
+            {% endif %}
+            {% if data['suspects-address-line-2'] != '' %}
+              {{ data['suspects-address-line-2'] }}<br>
+            {% endif %}
+            {% if data['suspects-address-town'] != '' %}
+              {{ data['suspects-address-town'] }}<br>
+            {% endif %}
+            {% if data['suspects-address-county'] != '' %}
+              {{ data['suspects-address-county'] }}<br>
+            {% endif %}
+            {% if data['suspects-address-postcode'] != '' %}
+              {{ data['suspects-address-postcode'] }}<br>
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="suspects-details#section-suspects-address">
+              Change<span class="govuk-visually-hidden"> suspect's address</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            <span class="govuk-visually-hidden">Suspect's </span>Date of birth
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['suspects-date-of-birth-day'] }} 
+            {% if data['suspects-date-of-birth-month'] == '1' or data['suspects-date-of-birth-month'] == '01' %}
+              January 
+            {% elif data['suspects-date-of-birth-month'] == '2' or data['suspects-date-of-birth-month'] == '02' %}
+              February 
+            {% elif data['suspects-date-of-birth-month'] == '3' or data['suspects-date-of-birth-month'] == '03' %}
+              March 
+            {% elif data['suspects-date-of-birth-month'] == '4' or data['suspects-date-of-birth-month'] == '04' %}
+              April 
+            {% elif data['suspects-date-of-birth-month'] == '5' or data['suspects-date-of-birth-month'] == '05' %}
+              May 
+            {% elif data['suspects-date-of-birth-month'] == '6' or data['suspects-date-of-birth-month'] == '06' %}
+              June 
+            {% elif data['suspects-date-of-birth-month'] == '7' or data['suspects-date-of-birth-month'] == '07' %}
+              July 
+            {% elif data['suspects-date-of-birth-month'] == '8' or data['suspects-date-of-birth-month'] == '08' %}
+              August 
+            {% elif data['suspects-date-of-birth-month'] == '9' or data['suspects-date-of-birth-month'] == '09' %}
+              September 
+            {% elif data['suspects-date-of-birth-month'] == '10' or data['suspects-date-of-birth-month'] == '10' %}
+              October 
+            {% elif data['suspects-date-of-birth-month'] == '11' or data['suspects-date-of-birth-month'] == '11' %}
+              November 
+            {% elif data['suspects-date-of-birth-month'] == '12' or data['suspects-date-of-birth-month'] == '12' %}
+              December 
+            {% else %}
+              January 
+            {% endif %}
+            {{ data['suspects-date-of-birth-year'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="suspects-details#section-suspects-date-of-birth">
+              Change<span class="govuk-visually-hidden"> suspect's date of birth</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            <span class="govuk-visually-hidden">Suspect's </span>Telephone number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {{ data['suspects-telephone-number'] }}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="suspects-details#section-suspects-telephone-number">
+              Change<span class="govuk-visually-hidden"> suspect's telephone number</span>
             </a>
           </dd>
         </div>
@@ -374,9 +368,9 @@
 
       </dl>
 
-      {# SUBMITTER DETAILS #}
-      <h2 class="govuk-heading-m" id="section-submitter-details">
-        Submitter details
+      {# SUBMITTER'S DETAILS #}
+      <h2 class="govuk-heading-m" id="section-submitters-details">
+        Submitter's details
       </h2>
       <dl class="govuk-summary-list govuk-!-margin-bottom-9">
         <div class="govuk-summary-list__row">
@@ -384,37 +378,37 @@
             <span class="govuk-visually-hidden">Submitter </span>First name
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['submitter-first-name'] }}
+            {{ data['submitters-first-name'] }}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="submitter-details#submitter-first-name">
-              Change<span class="govuk-visually-hidden"> submitter first name</span>
+            <a class="govuk-link" href="submitters-details#section-submitters-first-name">
+              Change<span class="govuk-visually-hidden"> submitter's first name</span>
             </a>
           </dd>
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            <span class="govuk-visually-hidden">Submitter </span>Last name
+            <span class="govuk-visually-hidden">Submitter's </span>Last name
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['submitter-last-name'] }}
+            {{ data['submitters-last-name'] }}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="submitter-details#submitter-last-name">
-              Change<span class="govuk-visually-hidden"> submitter last name</span>
+            <a class="govuk-link" href="submitters-details#section-submitters-last-name">
+              Change<span class="govuk-visually-hidden"> submitter's last name</span>
             </a>
           </dd>
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            <span class="govuk-visually-hidden">Submitter </span>Email address
+            <span class="govuk-visually-hidden">Submitter's </span>Email address
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['submitter-email-address'] }}
+            {{ data['submitters-email-address'] }}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="submitter-details#submitter-email-address">
-              Change<span class="govuk-visually-hidden"> submitter email address</span>
+            <a class="govuk-link" href="submitters-details#section-submitters-email-address">
+              Change<span class="govuk-visually-hidden"> submitter's email address</span>
             </a>
           </dd>
         </div>

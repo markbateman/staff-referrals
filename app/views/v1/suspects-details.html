@@ -25,28 +25,28 @@
         <div class="govuk-form-group">
 
           <h1 class="govuk-heading-l">
-            Suspect details
+            Suspect's details
           </h1>
 
           <fieldset class="govuk-fieldset">
 
             <div class="govuk-form-group">
-              <label class="govuk-label govuk-label--m" for="suspect-first-name">
+              <label class="govuk-label govuk-label--m" for="suspects-first-name" id="section-suspects-first-name">
                 First name
               </label>
-              <input class="govuk-input" id="suspect-first-name" name="suspect-first-name" value="{{ data['suspect-first-name'] }}" type="text">
+              <input class="govuk-input" id="suspects-first-name" name="suspects-first-name" value="{{ data['suspects-first-name'] }}" type="text">
             </div>
 
             <div class="govuk-form-group">
-              <label class="govuk-label govuk-label--m" for="suspect-last-name">
+              <label class="govuk-label govuk-label--m" for="suspects-last-name" id="section-suspects-last-name">
                 Last name
               </label>
-              <input class="govuk-input" id="suspect-last-name" name="suspect-last-name" value="{{ data['suspect-last-name'] }}" type="text">
+              <input class="govuk-input" id="suspects-last-name" name="suspects-last-name" value="{{ data['suspects-last-name'] }}" type="text">
             </div>
 
             <div class="govuk-form-group">
               <fieldset class="govuk-fieldset" aria-describedby="known-by-another-name-hint">
-                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m" id="section-known-by-another-name">
                   Is the suspect known by another name?
                 </legend>
                 <div class="govuk-radios" data-module="govuk-radios">
@@ -75,92 +75,92 @@
             </div>
 
             <div class="govuk-form-group">
-              <label class="govuk-label govuk-label--m" for="suspect-ni-number">
+              <label class="govuk-label govuk-label--m" for="suspects-ni-number" id="section-suspects-ni-number">
                 National Insurance number
               </label>
-              <div id="suspect-ni-number-hint" class="govuk-hint">
+              <div id="suspects-ni-number-hint" class="govuk-hint">
                 For example, 'QQ 12 34 56 C'.
               </div>
-              <input class="govuk-input" id="suspect-ni-number" name="suspect-ni-number" value="{{ data['suspect-ni-number'] }}" type="text">
+              <input class="govuk-input govuk-input--width-10" id="suspects-ni-number" name="suspects-ni-number" value="{{ data['suspects-ni-number'] }}" type="text">
             </div>
             
             <fieldset class="govuk-fieldset">
 
               <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-                <h2 class="govuk-fieldset__heading">
-                  Suspect address
+                <h2 class="govuk-fieldset__heading" id="section-suspects-address">
+                  Suspect's address
                 </h2>
               </legend>
 
               <div class="govuk-form-group">
-                <label class="govuk-label" for="suspect-address-line-1">
+                <label class="govuk-label" for="suspects-address-line-1">
                   Address line 1
                 </label>
-                <input class="govuk-input" id="suspect-address-line-1" name="suspect-address-line-1" value="{{ data['suspect-address-line-1'] }}" type="text" autocomplete="address-line1">
+                <input class="govuk-input" id="suspects-address-line-1" name="suspects-address-line-1" value="{{ data['suspects-address-line-1'] }}" type="text" autocomplete="address-line1">
               </div>
 
               <div class="govuk-form-group">
-                <label class="govuk-label" for="suspect-address-line-2">
+                <label class="govuk-label" for="suspects-address-line-2">
                   Address line 2 (optional)
                 </label>
-                <input class="govuk-input" id="suspect-address-line-2" name="suspect-address-line-2" value="{{ data['suspect-address-line-2'] }}" type="text" autocomplete="address-line2">
+                <input class="govuk-input" id="suspects-address-line-2" name="suspects-address-line-2" value="{{ data['suspects-address-line-2'] }}" type="text" autocomplete="address-line2">
               </div>
 
               <div class="govuk-form-group">
-                <label class="govuk-label" for="suspect-address-town">
+                <label class="govuk-label" for="suspects-address-town">
                   Town or city
                 </label>
-                <input class="govuk-input govuk-!-width-two-thirds" id="suspect-address-town" name="suspect-address-town" value="{{ data['suspect-address-town'] }}" type="text" autocomplete="address-level2">
+                <input class="govuk-input govuk-!-width-two-thirds" id="suspects-address-town" name="suspects-address-town" value="{{ data['suspects-address-town'] }}" type="text" autocomplete="address-level2">
               </div>
 
               <div class="govuk-form-group">
-                <label class="govuk-label" for="suspect-address-county">
+                <label class="govuk-label" for="suspects-address-county">
                   County (optional)
                 </label>
-                <input class="govuk-input govuk-!-width-two-thirds" id="suspect-address-county" name="suspect-address-county" value="{{ data['suspect-address-county'] }}" type="text">
+                <input class="govuk-input govuk-!-width-two-thirds" id="suspects-address-county" name="suspects-address-county" value="{{ data['suspects-address-county'] }}" type="text">
               </div>
 
               <div class="govuk-form-group">
-                <label class="govuk-label" for="suspect-address-postcode">
+                <label class="govuk-label" for="suspects-address-postcode">
                   Postcode
                 </label>
-                <input class="govuk-input govuk-input--width-10" id="suspect-address-postcode" name="suspect-address-postcode" value="{{ data['suspect-address-postcode'] }}" type="text" autocomplete="postal-code">
+                <input class="govuk-input govuk-input--width-10" id="suspects-address-postcode" name="suspects-address-postcode" value="{{ data['suspects-address-postcode'] }}" type="text" autocomplete="postal-code">
               </div>
             </fieldset>
 
             <div class="govuk-form-group">
-              <fieldset class="govuk-fieldset" role="group" aria-describedby="suspect-date-of-birth-hint">
+              <fieldset class="govuk-fieldset" role="group" aria-describedby="suspects-date-of-birth-hint">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--m govuk-body govuk-!-padding-top-6">
-                  <h2 class="govuk-fieldset__heading">
+                  <h2 class="govuk-fieldset__heading" id="section-suspects-date-of-birth">
                     Date of birth
                   </h2>
                 </legend>
-                <div id="suspect-date-of-birth-hint" class="govuk-hint">
+                <div id="suspects-date-of-birth-hint" class="govuk-hint">
                   For example, 27 3 2007
                 </div>
-                <div class="govuk-date-input" id="suspect-date-of-birth">
+                <div class="govuk-date-input" id="suspects-date-of-birth">
                   <div class="govuk-date-input__item">
                     <div class="govuk-form-group">
-                      <label class="govuk-label govuk-date-input__label" for="suspect-date-of-birth-day">
+                      <label class="govuk-label govuk-date-input__label" for="suspects-date-of-birth-day">
                         Day
                       </label>
-                      <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="suspect-date-of-birth-day" name="suspect-date-of-birth-day" value="{{ data['suspect-date-of-birth-day'] }}" type="text" inputmode="numeric">
+                      <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="suspects-date-of-birth-day" name="suspects-date-of-birth-day" value="{{ data['suspects-date-of-birth-day'] }}" type="text" inputmode="numeric">
                     </div>
                   </div>
                   <div class="govuk-date-input__item">
                     <div class="govuk-form-group">
-                      <label class="govuk-label govuk-date-input__label" for="suspect-date-of-birth-month">
+                      <label class="govuk-label govuk-date-input__label" for="suspects-date-of-birth-month">
                         Month
                       </label>
-                      <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="suspect-date-of-birth-month" name="suspect-date-of-birth-month" value="{{ data['suspect-date-of-birth-month'] }}" type="text" inputmode="numeric">
+                      <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="suspects-date-of-birth-month" name="suspects-date-of-birth-month" value="{{ data['suspects-date-of-birth-month'] }}" type="text" inputmode="numeric">
                     </div>
                   </div>
                   <div class="govuk-date-input__item">
                     <div class="govuk-form-group">
-                      <label class="govuk-label govuk-date-input__label" for="suspect-date-of-birth-year">
+                      <label class="govuk-label govuk-date-input__label" for="suspects-date-of-birth-year">
                         Year
                       </label>
-                      <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="suspect-date-of-birth-year" name="suspect-date-of-birth-year" value="{{ data['suspect-date-of-birth-year'] }}" type="text" inputmode="numeric">
+                      <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="suspects-date-of-birth-year" name="suspects-date-of-birth-year" value="{{ data['suspects-date-of-birth-year'] }}" type="text" inputmode="numeric">
                     </div>
                   </div>
                 </div>
@@ -169,11 +169,11 @@
 
             <div class="govuk-form-group">
               <h2 class="govuk-label-wrapper">
-                <label class="govuk-label govuk-label--m" for="suspect-telephone-number">
+                <label class="govuk-label govuk-label--m" for="suspects-telephone-number" id="section-suspects-telephone-number">
                   Telephone number
                 </label>
               </h2>
-              <input class="govuk-input govuk-input--width-20" id="suspect-telephone-number" name="suspect-telephone-number" value="{{ data['suspect-telephone-number'] }}"type="tel" autocomplete="tel">
+              <input class="govuk-input govuk-input--width-20" id="suspects-telephone-number" name="suspects-telephone-number" value="{{ data['suspects-telephone-number'] }}"type="tel" autocomplete="tel">
             </div>
 
           </fieldset>

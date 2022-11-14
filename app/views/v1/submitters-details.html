@@ -25,38 +25,38 @@
           <fieldset class="govuk-fieldset">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
-                Submitter details
+                Submitter's details
               </h1>
             </legend>
 
             <div class="govuk-form-group">
 
               <h2 class="govuk-label-wrapper">
-                <label class="govuk-label govuk-label--m" for="submitter-first-name">
+                <label class="govuk-label govuk-label--m" for="submitters-first-name" id="section-submitters-first-name">
                   First name
                 </label>
               </h2>
-              <input class="govuk-input" id="submitter-first-name" name="submitter-first-name" type="text" value="{{ data['submitter-first-name'] }}">
+              <input class="govuk-input" id="submitters-first-name" name="submitters-first-name" type="text" value="{{ data['submitters-first-name'] }}">
             </div>
 
             <div class="govuk-form-group">
               <h2 class="govuk-label-wrapper">
-                <label class="govuk-label govuk-label--m" for="submitter-last-name">
+                <label class="govuk-label govuk-label--m" for="submitters-last-name" id="section-submitters-last-name">
                   Last name
                 </label>
               </h2>
-              <input class="govuk-input" id="submitter-last-name" name="submitter-last-name" type="text" value="{{ data['submitter-last-name'] }}">
+              <input class="govuk-input" id="submitters-last-name" name="submitters-last-name" type="text" value="{{ data['submitters-last-name'] }}">
             </div>
 
             <div class="govuk-form-group">
-              <h2 class="govuk-label-wrapper"><label class="govuk-label govuk-label--m" for="submitter-email-address">
+              <h2 class="govuk-label-wrapper"><label class="govuk-label govuk-label--m" for="submitters-email-address" id="section-submitters-email-address">
                   Email address
                 </label>
               </h2>
-              <div id="submitter-email-address-hint" class="govuk-hint">
+              <div id="submitters-email-address-hint" class="govuk-hint">
                 For example, a DWP email address.
               </div>
-              <input class="govuk-input" id="submitter-email-address" name="submitter-email-address" type="email" spellcheck="false" aria-describedby="submitter-email-address-hint" autocomplete="email" value="{{ data['submitter-email-address'] }}">
+              <input class="govuk-input" id="submitters-email-address" name="submitters-email-address" type="email" spellcheck="false" aria-describedby="submitters-email-address-hint" autocomplete="email" value="{{ data['submitters-email-address'] }}">
             </div>
 
           </fieldset>
