@@ -22,22 +22,38 @@
         {{ serviceName }}
       </h1>
       
-      <p class="govuk-body">You can use this service to report someone you suspect of benefit fraud.</p>
+      <p class="govuk-body">
+        You can use this service to report someone you suspect of benefit fraud.
+      </p>
 
-      <div class="govuk-inset-text">
-        <p class="govuk-body">
+      <p class="govuk-body">
         When completing the fraud referral form to make a referral, only report the information you already have or are told 
-        about as part of the conversation. <strong>Do not</strong> search any departmental systems for more details or to clarify any 
-        information you have or are given.
-        </p>
-        <p class="govuk-body">
-        Any attempt to access departmental systems in these circumstances could be treated as unauthorised access and you 
-        could face disciplinary action as a result.
-        </p>
+        about as part of the conversation.
+      </p>
+
+      <p class="govuk-body">
+        <strong>Do not</strong> search any departmental systems for more details or to clarify any information you have or 
+        are given.
+      </p>
+
+      <div class="govuk-warning-text govuk-!-margin-bottom-2">
+        <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+        <strong class="govuk-warning-text__text">
+          <span class="govuk-warning-text__assistive">
+            Warning
+          </span>
+          Any attempt to access departmental systems in these circumstances could be treated as unauthorised access and you 
+          could face disciplinary action as a result.
+        </strong>
       </div>
 
-      <p class="govuk-body">Complete as much as you can. Don't worry if you don't know the answers to some of the questions.</p>
-      <p class="govuk-body">If you know it, provide the person's National Insurance number.</p>
+      <p class="govuk-body">
+        Complete as much as you can. Don't worry if you don't know the answers to some of the questions.
+      </p>
+      
+      <p class="govuk-body">
+        If you know it, provide the person's National Insurance number.
+      </p>
 
       <form class="form" method="post">
         {{ govukButton({
