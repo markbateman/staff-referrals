@@ -21,7 +21,31 @@
       <h1 class="govuk-heading-xl">
         {{ serviceName }}
       </h1>
-      
+
+      <p class="govuk-body">
+        Use this service to report someone you suspect of benefit fraud.
+      </p>
+
+      <p class="govuk-body">
+        Enter as much detail as you can, including the person's National Insurance number if you know it.
+      </p>
+
+      <p class="govuk-body">
+        <strong>Do not</strong> search any departmental systems for more details or to check any information you are given.
+      </p>
+
+      <div class="govuk-warning-text">
+        <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+        <strong class="govuk-warning-text__text">
+          <span class="govuk-warning-text__assistive">
+            Warning
+          </span>
+          Searching departmental systems for this information could be treated as unauthorised access and 
+          may result in disciplinary action.
+        </strong>
+      </div>
+
+      {#
       <p class="govuk-body">
         You can use this service to report someone you suspect of benefit fraud.
       </p>
@@ -54,6 +78,7 @@
       <p class="govuk-body">
         If you know it, provide the person's National Insurance number.
       </p>
+      #}
 
       <form class="form" method="post">
         {{ govukButton({
