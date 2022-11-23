@@ -28,3 +28,16 @@ $to-do: #b1b4b6;
 .to-do {
   color:$to-do
 }
+
+// Spinner
+.spinner {
+  background-image: url("../images/spinner.gif");
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 150px;
+  margin-bottom: 2rem;
+}
+
+.spinner-text {
+  text-align: center;
+}

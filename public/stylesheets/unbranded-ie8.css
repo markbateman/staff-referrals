@@ -5894,3 +5894,15 @@ x:-moz-any-link {
 .to-do {
   color: #b1b4b6;
 }
+
+.spinner {
+  background-image: url("../images/spinner.gif");
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 150px;
+  margin-bottom: 2rem;
+}
+
+.spinner-text {
+  text-align: center;
+}
