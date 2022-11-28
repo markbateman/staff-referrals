@@ -1,0 +1,78 @@
+{% extends "../layouts/v1-layout.html" %}
+
+{% block pageTitle %}
+  How long has the fraud been going on? – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" method="post">
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                How long has the fraud been going on?
+              </h1>
+            </legend>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="how-long-has-the-fraud" name="how-long-has-the-fraud" type="radio" value="less-than-three-months" {{ checked("how-long-has-the-fraud", "less-than-three-months") }}>
+                <label class="govuk-label govuk-radios__label" for="how-long-has-the-fraud">
+                  Less than 3 months
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="how-long-has-the-fraud-2" name="how-long-has-the-fraud" type="radio" value="three-to-six-months" {{ checked("how-long-has-the-fraud", "three-to-six-months") }}>
+                <label class="govuk-label govuk-radios__label" for="how-long-has-the-fraud-2">
+                  3 to 6 months
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="how-long-has-the-fraud-3" name="how-long-has-the-fraud" type="radio" value="more-than-six-months-but-less-than-a-year" {{ checked("how-long-has-the-fraud", "more-than-six-months-but-less-than-a-year") }}>
+                <label class="govuk-label govuk-radios__label" for="how-long-has-the-fraud-3">
+                  More than 6 months but less than a year
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="how-long-has-the-fraud-4" name="how-long-has-the-fraud" type="radio" value="more-than-a-year" {{ checked("how-long-has-the-fraud", "more-than-a-year") }}>
+                <label class="govuk-label govuk-radios__label" for="how-long-has-the-fraud-4">
+                  More than a year
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="how-long-has-the-fraud-5" name="how-long-has-the-fraud" type="radio" value="i-dont-know" {{ checked("how-long-has-the-fraud", "i-dont-know") }}>
+                <label class="govuk-label govuk-radios__label" for="how-long-has-the-fraud-5">
+                  I don't know
+                </label>
+              </div>
+            </div>
+
+          </fieldset>
+          
+        </div>
+
+        {{ govukButton({
+          text: 'Continue',
+          classes: "govuk-!-margin-top-2"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

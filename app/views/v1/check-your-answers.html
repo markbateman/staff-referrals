@@ -83,6 +83,31 @@
             </a>
           </dd>
         </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            How long has the fraud been going on
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['how-long-has-the-fraud'] == 'less-than-three-months' %}
+              Less than 3 months
+            {% elif data['how-long-has-the-fraud'] == 'three-to-six-months' %}
+              3 to 6 months
+            {% elif data['how-long-has-the-fraud'] == 'more-than-six-months-but-less-than-a-year' %}
+              More than 6 months but less than a year
+            {% elif data['how-long-has-the-fraud'] == 'more-than-a-year' %}
+              More than a year
+            {% elif data['how-long-has-the-fraud'] == 'i-dont-know' %}
+              I don't know
+            {% else %}
+              I don't know
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="how-long-has-the-fraud">
+              Change<span class="govuk-visually-hidden"> how long the fraud has been going on</span>
+            </a>
+          </dd>
+        </div>
       </dl>
 
       {# SUSPECTS DETAILS #}
@@ -165,6 +190,27 @@
             {% endif %}
             {% if data['suspects-address-postcode'] != '' %}
               {{ data['suspects-address-postcode'] }}<br>
+            {% endif %}
+            {% if data['suspects-address-region'] != 'choose' %}
+              {% if data['suspects-address-region'] == 'scotland' %}
+                Scotland
+              {% elif data['suspects-address-region'] == 'northeastengland' %}
+                North East England
+              {% elif data['suspects-address-region'] == 'northwestengland' %}
+                North West England
+              {% elif data['suspects-address-region'] == 'centralengland' %}
+                Central England
+              {% elif data['suspects-address-region'] == 'wales' %}
+                Wales
+              {% elif data['suspects-address-region'] == 'londonandthehomecounties' %}
+                London and the Home counties
+              {% elif data['suspects-address-region'] == 'southernengland' %}
+                Southern England
+              {% elif data['suspects-address-region'] == 'northernengland' %}
+                Northern England
+              {% else %}
+                SOMEWHERE ELSE
+              {% endif %}
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
@@ -364,6 +410,25 @@
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="what-do-you-think-is-happening#housing-related">
               Change<span class="govuk-visually-hidden"> housing related</span>
+            </a>
+          </dd>
+        </div>
+
+        {# OTHER #}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Other
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['other'] == 'other' %}
+              {{ data['other-hint'] }}
+            {% else %}
+              Not applicable
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="what-do-you-think-is-happening#other">
+              Change<span class="govuk-visually-hidden"> other</span>
             </a>
           </dd>
         </div>

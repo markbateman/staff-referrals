@@ -19,6 +19,7 @@ router.post('/index', function(req, res) {
     req.session.data['suspects-address-town'] = null;
     req.session.data['suspects-address-county'] =null;
     req.session.data['suspects-address-postcode'] = null;
+    req.session.data['suspects-address-region'] = null;
     req.session.data['suspects-date-of-birth-day'] = null;
     req.session.data['suspects-date-of-birth-month'] = null;
     req.session.data['suspects-date-of-birth-year'] = null;
@@ -42,7 +43,12 @@ router.post('/index', function(req, res) {
     req.session.data['doubtful-disability-hint'] = null;
     req.session.data['housing-related'] = null;
     req.session.data['housing-related-hint'] = null;
+    req.session.data['other'] = null;
+    req.session.data['other-hint'] = null;
 
+    // how-long-has-the-fraud.html
+    req.session.data['how-long-has-the-fraud'] = null;
+    
     // submitter-details.html
     req.session.data['submitters-first-name'] = null;
     req.session.data['submitters-last-name'] = null;
@@ -82,6 +88,15 @@ router.post('/source-of-allegation', function(req, res) {
 router.post('/what-do-you-think-is-happening', function(req, res) {
     if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
         res.redirect('check-your-answers#section-what-do-you-think-is-happening');
+    } else {
+        res.redirect('how-long-has-the-fraud');
+    }
+})
+
+// how-long-has-the-fraud
+router.post('/how-long-has-the-fraud', function(req, res) {
+    if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
+        res.redirect('check-your-answers#section-allegation-details');
     } else {
         res.redirect('submitters-details');
     }
