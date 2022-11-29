@@ -192,22 +192,22 @@
               {{ data['suspects-address-postcode'] }}<br>
             {% endif %}
             {% if data['suspects-address-region'] != 'choose' %}
-              {% if data['suspects-address-region'] == 'scotland' %}
-                Scotland
+              {% if data['suspects-address-region'] == 'centralengland' %}
+                Central England
+              {% elif data['suspects-address-region'] == 'londonandthehomecounties' %}
+                London and the Home Counties
               {% elif data['suspects-address-region'] == 'northeastengland' %}
                 North East England
+              {% elif data['suspects-address-region'] == 'northernireland' %}
+                Northern Ireland
               {% elif data['suspects-address-region'] == 'northwestengland' %}
                 North West England
-              {% elif data['suspects-address-region'] == 'centralengland' %}
-                Central England
-              {% elif data['suspects-address-region'] == 'wales' %}
-                Wales
-              {% elif data['suspects-address-region'] == 'londonandthehomecounties' %}
-                London and the Home counties
+              {% elif data['suspects-address-region'] == 'scotland' %}
+                Scotland
               {% elif data['suspects-address-region'] == 'southernengland' %}
                 Southern England
-              {% elif data['suspects-address-region'] == 'northernengland' %}
-                Northern England
+              {% elif ['suspects-address-region'] == 'wales' %}
+                Wales
               {% else %}
                 SOMEWHERE ELSE
               {% endif %}
