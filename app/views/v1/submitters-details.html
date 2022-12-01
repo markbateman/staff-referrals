@@ -50,13 +50,16 @@
 
             <div class="govuk-form-group">
               <h2 class="govuk-label-wrapper"><label class="govuk-label govuk-label--m" for="submitters-email-address" id="section-submitters-email-address">
-                  Email address
+                  Email address (optional)
                 </label>
               </h2>
               <div id="submitters-email-address-hint" class="govuk-hint">
                 For example, a DWP email address.
               </div>
               <input class="govuk-input" id="submitters-email-address" name="submitters-email-address" type="email" spellcheck="false" aria-describedby="submitters-email-address-hint" autocomplete="email" value="{{ data['submitters-email-address'] }}">
+              <div class="govuk-inset-text">
+                Should you wish to know the outcome, or if we we need to get hold of you for further information.
+              </div>
             </div>
 
           </fieldset>

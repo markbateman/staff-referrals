@@ -471,7 +471,11 @@
             <span class="govuk-visually-hidden">Submitter's </span>Email address
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['submitters-email-address'] }}
+            {% if data['submitters-email-address'] == null or data['submitters-email-address'] == '' %}
+              Not entered
+            {% else %}
+              {{ data['submitters-email-address'] }}
+            {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="submitters-details#section-submitters-email-address">
