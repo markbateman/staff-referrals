@@ -1,0 +1,79 @@
+{% extends "../layouts/v2-layout.html" %}
+
+{% block pageTitle %}
+  Submitter's details – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" method="post">
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Submitter's details
+              </h1>
+            </legend>
+
+            <div class="govuk-form-group">
+
+              <h2 class="govuk-label-wrapper">
+                <label class="govuk-label govuk-label--m" for="submitters-first-name" id="section-submitters-first-name">
+                  First name
+                </label>
+              </h2>
+              <input class="govuk-input" id="submitters-first-name" name="submitters-first-name" type="text" value="{{ data['submitters-first-name'] }}">
+            </div>
+
+            <div class="govuk-form-group">
+              <h2 class="govuk-label-wrapper">
+                <label class="govuk-label govuk-label--m" for="submitters-last-name" id="section-submitters-last-name">
+                  Last name
+                </label>
+              </h2>
+              <input class="govuk-input" id="submitters-last-name" name="submitters-last-name" type="text" value="{{ data['submitters-last-name'] }}">
+            </div>
+
+            <div class="govuk-form-group">
+              <h2 class="govuk-label-wrapper"><label class="govuk-label govuk-label--m" for="submitters-email-address" id="section-submitters-email-address">
+                  Email address (optional)
+                </label>
+              </h2>
+              <div id="submitters-email-address-hint" class="govuk-hint">
+                For example, a DWP email address.
+              </div>
+              <input class="govuk-input" id="submitters-email-address" name="submitters-email-address" type="email" spellcheck="false" aria-describedby="submitters-email-address-hint" autocomplete="email" value="{{ data['submitters-email-address'] }}">
+              <div class="govuk-inset-text">
+                We will only use this to contact you if we need further information, or to let you know the outcome.
+              </div>
+            </div>
+
+          </fieldset>
+        
+        </div>
+
+        {{ govukButton({
+          text: 'Continue',
+          classes: "govuk-!-margin-top-2"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

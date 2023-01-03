@@ -7,7 +7,7 @@
 {% block beforeContent %}
   {{ govukBackLink({
     text: 'Back',
-    href: 'javascript:history.go(-1)'
+    href: '/index'
   })}}
 {% endblock %}
 
@@ -25,6 +25,7 @@
   </div>
   
   <div class="govuk-grid-column-full">
+
     <h2 class="govuk-heading-l govuk-!-margin-top-6">
       Hypotheses
     </h1>
@@ -33,7 +34,10 @@
         <dt class="govuk-summary-list__key">
           Journey
         </dt>
+        <dt class="govuk-summary-list">
+        </dt>
       </div>
+
       <div class="govuk-summary-list__row">
         <dt class="govuk-summary-list__key">
           { Journey title }
@@ -43,29 +47,27 @@
             <li>
               <p class="govuk-body">Breakdown of journey into more discrete tasks with our hypothesis clearly defined using the <strong>we believe X will result in Y</strong> format.</p>
               <p class="govuk-body"></p>Each is then tagged as to whether the hypothesis has been <strong>validated</strong>, or if <strong>more research is needed</strong>.</p>
-            </li>
-            <div class="govuk-form-group">
-              <strong class="govuk-tag govuk-tag--green">
-                Validated
-              </strong>
-              <strong class="govuk-tag govuk-tag--grey">
-                More research needed
-              </strong>
-            </div>
-            <details class="govuk-details" data-module="govuk-details">
-              <summary class="govuk-details__summary">
-                <span class="govuk-details__summary-text">
-                  Tests
-                </span>
-              </summary>
-              <div class="govuk-details__text">  
-                <ul class="govuk-list">
-                  <li>
-                    <p class="govuk-body">Detail as to what was actually conducted as part of this discrete test that makes up this hypothesis within the context of the journey</p>
-                  </li>
-                </ul>
+              <div class="govuk-form-group">
+                <strong class="govuk-tag govuk-tag--green">
+                  Validated
+                </strong>
+                <strong class="govuk-tag govuk-tag--grey">
+                  More research needed
+                </strong>
               </div>
-            </details>
+              <details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                  <span class="govuk-details__summary-text">
+                    Tests
+                  </span>
+                </summary>
+                <div class="govuk-details__text">
+                  <ul class="govuk-list">
+                    <p class="govuk-body">Detail as to what was actually conducted as part of this discrete test that makes up this hypothesis within the context of the journey</p>
+                  </ul>
+                </div>
+              </details>
+            </li>
           </ul>
         </dd>
       </div>
@@ -73,7 +75,8 @@
 
     {{ govukButton({
       text: "Start now",
-      href: "../v1/index"
+      href: "../v2/index",
+      classes: "govuk-!-margin-top-6"
     }) }}
 
     <h2 class="govuk-heading-l govuk-!-margin-top-8">
@@ -95,9 +98,10 @@
           Participants
         </dt>
         <dd class="govuk-summary-list__value">
-          <ul class="govuk-list">
+          <ul class="govuk-list govuk-list--bullet">
             <li>7 x { User persona type one }</li>
             <li>1 x { User persona type two }</li>
+          </ul>
         </dd>
       </div>
       
@@ -110,6 +114,7 @@
         </dd>
       </div>
     </dl>
+    
   </div>
 </div>
 

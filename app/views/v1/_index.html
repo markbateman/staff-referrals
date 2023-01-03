@@ -7,7 +7,7 @@
 {% block beforeContent %}
   {{ govukBackLink({
     text: 'Back',
-    href: 'javascript:history.go(-1)'
+    href: '/index'
   })}}
 {% endblock %}
 
@@ -89,7 +89,7 @@
           Session dates
         </dt>
         <dd class="govuk-summary-list__value">
-          { Date range }
+          Monday 5th December 2022 to Monday 12th December 2022
         </dd>
       </div>
       
@@ -98,9 +98,11 @@
           Participants
         </dt>
         <dd class="govuk-summary-list__value">
-          <ul class="govuk-list">
-            <li>7 x { User persona type one }</li>
-            <li>1 x { User persona type two }</li>
+          <ul class="govuk-list govuk-list--bullet">
+            <li>20x sessions</li>
+            <li>Mix of functions, benefit lines, assistive tech use, frequency of use and fraud type experience</li>
+            <li>Additional emphasis on frequent users (case prep and national benefit fraud hotline NBFH)</li>
+          </ul>
         </dd>
       </div>
       
@@ -109,7 +111,7 @@
           Insights
         </dt>
         <dd class="govuk-summary-list__value">
-          <a href="#/">Round X research findings</a>
+          <a href="#/">Research findings</a>
         </dd>
       </div>
     </dl>

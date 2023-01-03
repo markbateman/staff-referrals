@@ -1,92 +1,111 @@
 {% extends "../layouts/v2-layout.html" %}
 
-{% block pageTitle %}
-  Start page template – {{ serviceName }} – GOV.UK Prototype Kit
-{% endblock %}
+{% set serviceName %}
+{% endset %}
 
-{% block header %}
-  <!-- Blank header with no service name for the start page -->
-  {{ govukHeader() }}
+{% block pageTitle %}
+  Staff referrals – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block beforeContent %}
-  <div class="govuk-breadcrumbs">
-    <ol class="govuk-breadcrumbs__list">
-      <li class="govuk-breadcrumbs__list-item">
-        <a class="govuk-breadcrumbs__link" href="https://www.gov.uk">Home</a>
-      </li>
-      <li class="govuk-breadcrumbs__list-item">
-        <a class="govuk-breadcrumbs__link" href="#">Section</a>
-      </li>
-      <li class="govuk-breadcrumbs__list-item">
-        <a class="govuk-breadcrumbs__link">Subsection</a>
-      </li>
-    </ol>
-  </div>
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
 {% endblock %}
 
 {% block content %}
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-
       <h1 class="govuk-heading-xl">
-        {% if serviceName %} {{ serviceName }} {% endif %}
+        Staff referrals
       </h1>
 
-      <p>Use this service to:</p>
+      <p class="govuk-body">
+        Use this service to report someone you suspect of benefit fraud.
+      </p>
 
-      <ul class="govuk-list govuk-list--bullet">
-        <li>do something</li>
-        <li>update your name, address or other details</li>
-        <li>do something else</li>
-      </ul>
+      <p class="govuk-body">
+        Enter as much detail as you can, including the person's National Insurance number if you know it.
+      </p>
 
-      <p>Registering takes around 5 minutes.</p>
+      <p class="govuk-body">
+        <strong>Do not</strong> search any departmental systems for more details or to check any information you are given.
+      </p>
 
-      <a href="content" role="button" draggable="false" class="govuk-button govuk-button--start govuk-!-margin-top-2 govuk-!-margin-bottom-8"  data-module="govuk-button">
-        Start now
-        <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
-          <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"></path>
-        </svg>
-      </a>
+      <div class="govuk-warning-text">
+        <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+        <strong class="govuk-warning-text__text">
+          <span class="govuk-warning-text__assistive">
+            Warning
+          </span>
+          Searching departmental systems for this information could be treated as unauthorised access and 
+          may result in disciplinary action.
+        </strong>
+      </div>
 
-      <h2 class="govuk-heading-m">Before you start</h2>
-
-      <p>You can also <a href="#">register by post</a>.</p>
-
-      <p>The online service is also <a href="#">available in Welsh (ar gael yn Gymraeg)</a>.</p>
-
-      <p>You can’t register for this service if you’re in the UK illegally.</p>
+      <form class="form" method="post">
+        {{ govukButton({
+          text: "Start now",
+          isStartButton: true
+        }) }}
+      </form>
 
     </div>
 
     <div class="govuk-grid-column-one-third">
-
       <aside class="app-related-items" role="complementary">
         <h2 class="govuk-heading-m" id="subsection-title">
-          Subsection
+          Useful phone numbers
         </h2>
         <nav role="navigation" aria-labelledby="subsection-title">
+
+        <h3 class="govuk-heading-s">Great Britain</h3>
           <ul class="govuk-list govuk-!-font-size-16">
             <li>
-              <a href="#">
-                Related link
-              </a>
+              <strong>Benefit Fraud Hotline</strong>
             </li>
             <li>
-              <a href="#">
-                Related link
-              </a>
+              0800 854 440 (English)
             </li>
             <li>
-              <a href="#" class="govuk-!-font-weight-bold">
-                More <span class="govuk-visually-hidden">in Subsection</span>
-              </a>
+              0800 678 3722 (Welsh)
             </li>
           </ul>
+          <ul class="govuk-list govuk-!-font-size-16">
+            <li>
+              <strong>Textphone users</strong>
+            </li>
+            <li>
+              0800 328 0512
+            </li>
+          </ul>
+
+        <h3 class="govuk-heading-s">Northern Ireland</h3>
+          <ul class="govuk-list govuk-!-font-size-16">
+            <li>
+              <strong>Benefit Fraud Hotline</strong>
+            </li>
+            <li>
+              0800 975 6050
+            </li>
+          </ul>
+          <ul class="govuk-list govuk-!-font-size-16">
+            <li>
+              <strong>Textphone users</strong>
+            </li>
+            <li>
+              028 9055 6991
+            </li>
+          </ul>
+         
         </nav>
       </aside>
-
     </div>
+
   </div>
+
 {% endblock %}

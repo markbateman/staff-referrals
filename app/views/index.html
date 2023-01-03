@@ -10,13 +10,6 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    {{ govukButton({
-      text: "Begin Staff referrals prototype",
-      href: "v1/index",
-      classes: "govuk-!-margin-top-6"
-    }) }}
-
-    <!--
     {% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
       {{ govukPhaseBanner({
         tag: {
@@ -42,10 +35,9 @@
         </tr>
       </thead>
       <tbody class="govuk-table__body">
-        {#
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">
-            <a href="v3/_index">V3</a>
+            <a href="v2/_index">V2</a>
           </td>
           <td class="govuk-table__cell">
             { Sprint number }
@@ -59,23 +51,6 @@
             </strong>
           </td>
         </tr>
-        <tr class="govuk-table__row">
-          <td class="govuk-table__cell">
-            <a href="v2/_index">V2</a>
-          </td>
-          <td class="govuk-table__cell">
-            { Sprint number }
-          </td>
-          <td class="govuk-table__cell">
-            { Date }
-          </td>
-          <td class="govuk-table__cell">
-            <strong class="govuk-tag govuk-tag--grey">
-              Complete
-            </strong>
-          </td>
-        </tr>
-        #}
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">
             <a href="v1/_index">V1</a>
@@ -92,7 +67,6 @@
             </strong>
           </td>
         </tr>
-        {#
         <tr class="govuk-table__row">
           <td class="govuk-table__cell">
             <a href="/dev-stable">Dev / stable</a></li>
@@ -107,7 +81,6 @@
             </strong>
           </td>
         </tr>
-        #}
       </tbody>
     </table>
 
@@ -180,7 +153,6 @@
       </tbody>
     </table>
     #}
-    -->
 
   </div>
 </div>

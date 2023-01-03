@@ -32,7 +32,7 @@
 {% from "govuk/components/textarea/macro.njk"            import govukTextarea %}
 {% from "govuk/components/warning-text/macro.njk"        import govukWarningText %}
 
-{% set serviceName = "Prototype layout template V3" %}
+{% set serviceName = "Dev/Stable" %}
 
 {% block head %}
   {% include "includes/head.html" %}
@@ -47,7 +47,7 @@
   {{ govukHeader({
     homepageUrl: "/",
     serviceName: serviceName,
-    serviceUrl: "/",
+    serviceUrl: "./index",
     containerClasses: "govuk-width-container"
   }) }}
 {% endblock %}
@@ -66,6 +66,10 @@
           {
             href: "/prototype-admin/clear-data",
             text: "Clear data"
+          },
+          {
+            href: "/dev-stable/index",
+            text: "Dev/Stable index"
           }
         ],
         visuallyHiddenTitle: "Footer links"

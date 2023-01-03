@@ -1,0 +1,58 @@
+{% extends "../layouts/v2-layout.html" %}
+
+{% block pageTitle %}
+  Referral submitted – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "prototype"
+    },
+    html: 'This is not a live service.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper govuk-main-wrapper--l" id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <div class="govuk-panel govuk-panel--confirmation">
+          <h1 class="govuk-panel__title">
+            Referral submitted
+          </h1>
+          {#
+          <div class="govuk-panel__body">
+            Your reference number<br><strong>HDJ2123F</strong>
+          </div>
+          #}
+        </div>
+
+        {% if data['submitters-email-address'] == null or data['submitters-email-address'] == '' %}
+          {# No email address captured #}
+          <h2 class="govuk-heading-m">What happens next</h2>
+          <p class="govuk-body">
+            We have sent your referral to the relevant team. This may take several weeks for the team to investigate.
+          </p>
+        {% else %}
+          {# Email address has been captured #}
+          <p class="govuk-body">We have sent you a confirmation email.</p>
+          <h2 class="govuk-heading-m">What happens next</h2>
+          <p class="govuk-body">
+            We have sent your referral to the relevant team. They will contact you by email if they need further information or 
+            to let you know the outcome. This may take several weeks for the team to investigate.
+          </p>
+        {% endif %}
+
+        <p class="govuk-body">
+          <a href="index" class="govuk-link">Make another referral</a>.
+        </p>
+
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}
