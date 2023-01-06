@@ -45,7 +45,7 @@
             {% elif data['who-do-you-want-to-report'] == 'dwp-staff-member' %}
               A DWP staff member
             {% else %}
-              Person
+              Not provided
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
@@ -73,12 +73,12 @@
               Performance measure referral
             {% elif data['source-of-allegation'] == 'police' %}
               Police
-            {% elif data['source-of-allegation'] == 'spanish-hotline' %}
-              Spanish Hotline
+            {% elif data['source-of-allegation'] == 'spain-benefit-fraud-hotline' %}
+              Spain Benefit Fraud Hotline
             {% elif data['source-of-allegation'] == 'staff-referral' %}
               Staff referral
             {% else %}
-              HMRC
+              Not provided
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
@@ -103,7 +103,7 @@
             {% elif data['how-long-has-the-fraud'] == 'i-dont-know' %}
               I don't know
             {% else %}
-              I don't know
+              Not provided
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
@@ -124,7 +124,11 @@
             <span class="govuk-visually-hidden">Suspect's </span>First name
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['suspects-first-name'] }}
+            {% if data['suspects-first-name'] == null or data['suspects-first-name'] == '' %}
+              Not provided
+            {% else %}
+              {{ data['suspects-first-name'] }}
+            {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="suspects-details#section-suspects-first-name">
@@ -137,7 +141,11 @@
             <span class="govuk-visually-hidden">Suspect's </span>Last name
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['suspects-last-name'] }}
+            {% if data['suspects-last-name'] == null or data['suspects-last-name'] == '' %}
+              Not provided
+            {% else %}
+              {{ data['suspects-last-name'] }}
+            {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="suspects-details#section-suspects-last-name">
@@ -152,8 +160,10 @@
           <dd class="govuk-summary-list__value">
             {% if data['known-by-another-name'] == 'yes' %}
               {{ data['known-by-another-name-full-name'] }}
-            {% else %}
+            {% elif data['known-by-another-name'] == 'no' %}
               No
+            {% else %}
+              Not provided
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
@@ -167,7 +177,11 @@
             <span class="govuk-visually-hidden">Suspect's </span>National Insurance number
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['suspects-ni-number'] }}
+            {% if data['suspects-ni-number'] == null or data['suspects-ni-number'] == '' %}
+              Not provided
+            {% else %}
+              {{ data['suspects-ni-number'] }}
+            {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="suspects-details#section-suspects-ni-number">
@@ -180,40 +194,49 @@
             <span class="govuk-visually-hidden">Suspect's </span>Address
           </dt>
           <dd class="govuk-summary-list__value">
-            {% if data['suspects-address-line-1'] != '' %}
-              {{ data['suspects-address-line-1'] }}<br>
-            {% endif %}
-            {% if data['suspects-address-line-2'] != '' %}
-              {{ data['suspects-address-line-2'] }}<br>
-            {% endif %}
-            {% if data['suspects-address-town'] != '' %}
-              {{ data['suspects-address-town'] }}<br>
-            {% endif %}
-            {% if data['suspects-address-county'] != '' %}
-              {{ data['suspects-address-county'] }}<br>
-            {% endif %}
-            {% if data['suspects-address-postcode'] != '' %}
-              {{ data['suspects-address-postcode'] }}<br>
-            {% endif %}
-            {% if data['suspects-address-region'] != 'choose' %}
-              {% if data['suspects-address-region'] == 'centralengland' %}
-                Central England
-              {% elif data['suspects-address-region'] == 'londonandthehomecounties' %}
-                London and the Home Counties
-              {% elif data['suspects-address-region'] == 'northeastengland' %}
-                North East England
-              {% elif data['suspects-address-region'] == 'northernireland' %}
-                Northern Ireland
-              {% elif data['suspects-address-region'] == 'northwestengland' %}
-                North West England
-              {% elif data['suspects-address-region'] == 'scotland' %}
-                Scotland
-              {% elif data['suspects-address-region'] == 'southernengland' %}
-                Southern England
-              {% elif ['suspects-address-region'] == 'wales' %}
-                Wales
-              {% else %}
-                SOMEWHERE ELSE
+            {% if (data['suspects-address-line-1'] == null or data['suspects-address-line-1'] == '') and
+            (data['suspects-address-line-2'] == null or data['suspects-address-line-2'] == '') and
+            (data['suspects-address-town'] == null or data['suspects-address-town'] == '') and
+            (data['suspects-address-county'] == null or data['suspects-address-county'] == '') and
+            (data['suspects-address-postcode'] == null or data['suspects-address-postcode'] == '') and
+            data['suspects-address-region'] == 'choose' %}
+              Not provided
+            {% else %}
+              {% if data['suspects-address-line-1'] != '' %}
+                {{ data['suspects-address-line-1'] }}<br>
+              {% endif %}
+              {% if data['suspects-address-line-2'] != '' %}
+                {{ data['suspects-address-line-2'] }}<br>
+              {% endif %}
+              {% if data['suspects-address-town'] != '' %}
+                {{ data['suspects-address-town'] }}<br>
+              {% endif %}
+              {% if data['suspects-address-county'] != '' %}
+                {{ data['suspects-address-county'] }}<br>
+              {% endif %}
+              {% if data['suspects-address-postcode'] != '' %}
+                {{ data['suspects-address-postcode'] }}<br>
+              {% endif %}
+              {% if data['suspects-address-region'] != 'choose' %}
+                {% if data['suspects-address-region'] == 'centralengland' %}
+                  Central England
+                {% elif data['suspects-address-region'] == 'londonandthehomecounties' %}
+                  London and the Home Counties
+                {% elif data['suspects-address-region'] == 'northeastengland' %}
+                  North East England
+                {% elif data['suspects-address-region'] == 'northernireland' %}
+                  Northern Ireland
+                {% elif data['suspects-address-region'] == 'northwestengland' %}
+                  North West England
+                {% elif data['suspects-address-region'] == 'scotland' %}
+                  Scotland
+                {% elif data['suspects-address-region'] == 'southernengland' %}
+                  Southern England
+                {% elif ['suspects-address-region'] == 'wales' %}
+                  Wales
+                {% else %}
+                  Not provided
+                {% endif %}
               {% endif %}
             {% endif %}
           </dd>
@@ -254,7 +277,7 @@
             {% elif data['suspects-date-of-birth-month'] == '12' or data['suspects-date-of-birth-month'] == '12' %}
               December 
             {% else %}
-              January 
+              Not provided 
             {% endif %}
             {{ data['suspects-date-of-birth-year'] }}
           </dd>
@@ -463,10 +486,29 @@
           </dd>
         </div>
 
-        {# OTHER #}
+        {# NOT PROVIDING CARE #}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            Other
+            Not providing care
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['not-providing-care'] == 'not-providing-care' %}
+              {{ data['not-providing-care-hint'] }}
+            {% else %}
+              Not applicable
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="what-do-you-think-is-happening#not-providing-care">
+              Change<span class="govuk-visually-hidden"> not providing care</span>
+            </a>
+          </dd>
+        </div>
+
+        {# OTHER TYPES OF FRAUD #}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Other types of fraud
           </dt>
           <dd class="govuk-summary-list__value">
             {% if data['other'] == 'other' %}
@@ -477,7 +519,7 @@
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="what-do-you-think-is-happening#other">
-              Change<span class="govuk-visually-hidden"> other</span>
+              Change<span class="govuk-visually-hidden"> other types of fraud</span>
             </a>
           </dd>
         </div>
@@ -494,7 +536,11 @@
             <span class="govuk-visually-hidden">Submitter </span>First name
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['submitters-first-name'] }}
+            {% if data['submitters-first-name'] == null or data['submitters-first-name'] == '' %}
+              Not provided
+            {% else %}
+              {{ data['submitters-first-name'] }}
+            {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="submitters-details#section-submitters-first-name">
@@ -507,7 +553,11 @@
             <span class="govuk-visually-hidden">Submitter's </span>Last name
           </dt>
           <dd class="govuk-summary-list__value">
-            {{ data['submitters-last-name'] }}
+            {% if data['submitters-last-name'] == null or data['submitters-last-name'] == '' %}
+              Not provided
+            {% else %}
+              {{ data['submitters-last-name'] }}
+            {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="submitters-details#section-submitters-last-name">
@@ -521,7 +571,7 @@
           </dt>
           <dd class="govuk-summary-list__value">
             {% if data['submitters-email-address'] == null or data['submitters-email-address'] == '' %}
-              Not entered
+              Not provided
             {% else %}
               {{ data['submitters-email-address'] }}
             {% endif %}

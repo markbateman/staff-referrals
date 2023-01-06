@@ -23,7 +23,12 @@ router.post('/index', function(req, res) {
     req.session.data['suspects-date-of-birth-day'] = null;
     req.session.data['suspects-date-of-birth-month'] = null;
     req.session.data['suspects-date-of-birth-year'] = null;
-    req.session.data['suspects-telephone-number'] = null;
+    req.session.data['contact-telephone'] = null;
+    req.session.data['suspect-contact-telephone'] = null;
+    req.session.data['contact-mobile'] = null;
+    req.session.data['suspect-contact-mobile'] = null;
+    req.session.data['contact-email'] = null;
+    req.session.data['suspect-contact-email'] = null;
 
     // source-of-allegation.html
     req.session.data['source-of-allegation'] = null;
@@ -43,6 +48,8 @@ router.post('/index', function(req, res) {
     req.session.data['doubtful-disability-hint'] = null;
     req.session.data['housing-related'] = null;
     req.session.data['housing-related-hint'] = null;
+    req.session.data['not-providing-care'] = null;
+    req.session.data['not-providing-care-hint'] = null;
     req.session.data['other'] = null;
     req.session.data['other-hint'] = null;
 

@@ -206,18 +206,42 @@
                 </div>
               </div>
 
-              {# OTHER #}
+              {# NOT PROVIDING CARE #}
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="not-providing-care" name="not-providing-care" type="checkbox" value="not-providing-care" {{ checked("not-providing-care", "not-providing-care") }} data-aria-controls="conditional-not-providing-care">
+                <label class="govuk-label govuk-checkboxes__label" for="not-providing-care">
+                  Not providing care
+                </label>
+              </div>
+              <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-not-providing-care">
+                <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="1500">
+                  <div class="govuk-form-group">
+                    <label class="govuk-label" for="housing-related-hint">
+                      Include as much information as you can
+                    </label>
+                    <div id="housing-related-hint-hint" class="govuk-hint">
+                      For example why you think they are receiving benefit as a carer but not caring for a disabled person.
+                    </div>
+                    <textarea class="govuk-textarea govuk-js-character-count" id="not-providing-care-hint" name="not-providing-care-hint" rows="5" aria-describedby="not-providing-care-hint-info not-providing-care-hint-hint">{{ data['not-providing-care-hint'] }}</textarea>
+                  </div>
+                  <div id="not-providing-care-hint-info" class="govuk-hint govuk-character-count__message">
+                    You can enter up to 1,500 characters
+                  </div>
+                </div>
+              </div>
+
+              {# OTHER TYPES OF FRAUD #}
               <div class="govuk-checkboxes__item">
                 <input class="govuk-checkboxes__input" id="other" name="other" type="checkbox" value="other" {{ checked("other", "other") }} data-aria-controls="conditional-other">
                 <label class="govuk-label govuk-checkboxes__label" for="other">
-                  Other
+                  Other types of fraud
                 </label>
               </div>
               <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-other">
                 <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="1500">
                   <div class="govuk-form-group">
                     <label class="govuk-label" for="other-hint">
-                      Include details about the other type of fraud you think is being committed
+                      Include details about the other types of fraud you think are being committed
                     </label>
                     <textarea class="govuk-textarea govuk-js-character-count" id="other-hint" name="other-hint" rows="5" aria-describedby="other-hint-info">{{ data['other-hint'] }}</textarea>
                   </div>
