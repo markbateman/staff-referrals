@@ -1,6 +1,7 @@
 {% extends "../layouts/v2-layout.html" %}
 
 {% set serviceName %}
+
 {% endset %}
 
 {% block pageTitle %}
@@ -25,7 +26,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
       <h1 class="govuk-heading-xl">
-        Staff referrals
+        Fraud Referral Form
       </h1>
 
       <p class="govuk-body">
@@ -51,11 +52,48 @@
         </strong>
       </div>
 
+      {## Script, etc., to enable and disable START NOW on 'Terms' selection ##}
+      <script type="text/javascript">
+        function valueChanged() {
+          if ($('#agree').is(":checked")) {
+            $("#agree-disabled").hide();
+            $("#agree-enabled").show();
+          } else {
+            $("#agree-disabled").show();
+            $("#agree-enabled").hide();
+          }
+        }
+      </script>
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
       <form class="form" method="post">
-        {{ govukButton({
-          text: "Start now",
-          isStartButton: true
-        }) }}
+        <div class="govuk-form-group">
+          <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+            <div class="govuk-checkboxes__item govuk-!-margin-bottom-6">
+              <input class="govuk-checkboxes__input" id="agree" name="agree" type="checkbox" value="agree" onchange="valueChanged()">
+              <label class="govuk-label govuk-checkboxes__label" for="agree">
+                Agree to terms
+              </label>
+            </div>
+          </div>
+
+          <div class="row" id="agree-disabled">
+            {{ govukButton({
+              text: "Start now",
+              isStartButton: true,
+              disabled: true
+            }) }}
+          </div>
+
+          <div class="row" id="agree-enabled" style="display: none">
+            {{ govukButton({
+              text: "Start now",
+              isStartButton: true
+            }) }}
+          </div>
+
+        </div>
       </form>
 
     </div>

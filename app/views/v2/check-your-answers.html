@@ -1,5 +1,9 @@
 {% extends "../layouts/v2-layout.html" %}
 
+{% set serviceName %}
+  Fraud Referral Form
+{% endset %}
+
 {% block pageTitle %}
   Check your answers – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
@@ -59,7 +63,9 @@
             Source of allegation
           </dt>
           <dd class="govuk-summary-list__value">
-            {% if data['source-of-allegation'] == 'hmrc' %}
+            {% if data['source-of-allegation'] == 'dwp-staff-member' %}
+              DWP staff member
+            {% elif data['source-of-allegation'] == 'hmrc' %}
               HMRC
             {% elif data['source-of-allegation'] == 'internet' %}
               Internet
@@ -75,8 +81,6 @@
               Police
             {% elif data['source-of-allegation'] == 'spain-benefit-fraud-hotline' %}
               Spain Benefit Fraud Hotline
-            {% elif data['source-of-allegation'] == 'staff-referral' %}
-              Staff referral
             {% else %}
               Not provided
             {% endif %}

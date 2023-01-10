@@ -1,5 +1,9 @@
 {% extends "../layouts/v2-layout.html" %}
 
+{% set serviceName %}
+  Fraud Referral Form
+{% endset %}
+
 {% block pageTitle %}
   Source of allegation – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
@@ -33,88 +37,108 @@
               </h1>
             </legend>
             <div class="govuk-radios" data-module="govuk-radios">
+
+              {## DWP STAFF MEMBER ##}
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="source-of-allegation" name="source-of-allegation" type="radio" value="hmrc" {{ checked("source-of-allegation", "hmrc") }} >
+                <input class="govuk-radios__input" id="source-of-allegation" name="source-of-allegation" type="radio" value="dwp-staff-member" {{ checked("source-of-allegation", "dwp-staff-member") }} >
                 <label class="govuk-label govuk-radios__label" for="source-of-allegation">
-                  HMRC
+                  DWP staff member
                 </label>
                 {##<div id="source-of-allegation-item-hint" class="govuk-hint govuk-radios__hint">
+                  DWP staff member additional hint text.
+                </div>##}
+              </div>
+
+              {## HMRC ##}
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="source-of-allegation-2" name="source-of-allegation" type="radio" value="hmrc" {{ checked("source-of-allegation", "hmrc") }} >
+                <label class="govuk-label govuk-radios__label" for="source-of-allegation-2">
+                  HMRC
+                </label>
+                {##<div id="source-of-allegation-2-item-hint" class="govuk-hint govuk-radios__hint">
                   HMRC additional hint text.
                 </div>##}
               </div>
+ 
+              {## INTERNET ##}
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="source-of-allegation-2" name="source-of-allegation" type="radio" value="internet" {{ checked("source-of-allegation", "internet") }} >
-                <label class="govuk-label govuk-radios__label" for="source-of-allegation-2">
+                <input class="govuk-radios__input" id="source-of-allegation-3" name="source-of-allegation" type="radio" value="internet" {{ checked("source-of-allegation", "internet") }} >
+                <label class="govuk-label govuk-radios__label" for="source-of-allegation-3">
                   Internet
                 </label>
-                {##<div id="source-of-allegation-2-item-hint" class="govuk-hint govuk-radios__hint">
+                {##<div id="source-of-allegation-3-item-hint" class="govuk-hint govuk-radios__hint">
                   Internet additional hint text.
                 </div>##}
               </div>
+ 
+              {## LOCAL AUTHORITY ##}
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="source-of-allegation-3" name="source-of-allegation" type="radio" value="local-authority" {{ checked("source-of-allegation", "local-authority") }} >
-                <label class="govuk-label govuk-radios__label" for="source-of-allegation-3">
+                <input class="govuk-radios__input" id="source-of-allegation-4" name="source-of-allegation" type="radio" value="local-authority" {{ checked("source-of-allegation", "local-authority") }} >
+                <label class="govuk-label govuk-radios__label" for="source-of-allegation-4">
                   Local authority
                 </label>
-                {##<div id="source-of-allegation-3-item-hint" class="govuk-hint govuk-radios__hint">
+                {##<div id="source-of-allegation-4-item-hint" class="govuk-hint govuk-radios__hint">
                   Local authority additional hint text.
                 </div>##}
               </div>
+ 
+              {## MEMBER OF PUBLIC ##}
               <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="source-of-allegation-4" name="source-of-allegation" type="radio" value="member-of-public" {{ checked("source-of-allegation", "member-of-public") }} >
-                <label class="govuk-label govuk-radios__label" for="source-of-allegation-4">
+                <input class="govuk-radios__input" id="source-of-allegation-5" name="source-of-allegation" type="radio" value="member-of-public" {{ checked("source-of-allegation", "member-of-public") }} >
+                <label class="govuk-label govuk-radios__label" for="source-of-allegation-5">
                   Member of public
                 </label>
-                {##<div id="source-of-allegation-4-item-hint" class="govuk-hint govuk-radios__hint">
+                {##<div id="source-of-allegation-5-item-hint" class="govuk-hint govuk-radios__hint">
                   Member of public additional hint text.
                 </div>##}
               </div>
+
+              {## NATIONAL BENEFIT FRAUD NOTICE ##}
               <div class="govuk-radios" data-module="govuk-radios">
                 <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="source-of-allegation-5" name="source-of-allegation" type="radio" value="national-benefit-fraud-hotline" {{ checked("source-of-allegation", "national-benefit-fraud-hotline") }} >
-                  <label class="govuk-label govuk-radios__label" for="source-of-allegation-5">
+                  <input class="govuk-radios__input" id="source-of-allegation-6" name="source-of-allegation" type="radio" value="national-benefit-fraud-hotline" {{ checked("source-of-allegation", "national-benefit-fraud-hotline") }} >
+                  <label class="govuk-label govuk-radios__label" for="source-of-allegation-6">
                     National Benefit Fraud Hotline
                   </label>
-                  {##<div id="source-of-allegation-5-item-hint" class="govuk-hint govuk-radios__hint">
+                  {##<div id="source-of-allegation-6-item-hint" class="govuk-hint govuk-radios__hint">
                     National Benefit Fraud Hotline additional hint text.
                   </div>##}
                 </div>
+
+                {## PERFORMANCE MEASURE REFERRAL ##}
                 <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="source-of-allegation-6" name="source-of-allegation" type="radio" value="performance-measure-referral" {{ checked("source-of-allegation", "performance-measure-referral") }} >
-                  <label class="govuk-label govuk-radios__label" for="source-of-allegation-6">
+                  <input class="govuk-radios__input" id="source-of-allegation-7" name="source-of-allegation" type="radio" value="performance-measure-referral" {{ checked("source-of-allegation", "performance-measure-referral") }} >
+                  <label class="govuk-label govuk-radios__label" for="source-of-allegation-7">
                     Performance measure referral
                   </label>
-                  {##<div id="source-of-allegation-6-item-hint" class="govuk-hint govuk-radios__hint">
+                  {##<div id="source-of-allegation-7-item-hint" class="govuk-hint govuk-radios__hint">
                     Performance measure referral additional hint text.
                   </div>##}
                 </div>
+
+                {## POLICE ##}
                 <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="source-of-allegation-7" name="source-of-allegation" type="radio" value="police" {{ checked("source-of-allegation", "police") }} >
-                  <label class="govuk-label govuk-radios__label" for="source-of-allegation-7">
+                  <input class="govuk-radios__input" id="source-of-allegation-8" name="source-of-allegation" type="radio" value="police" {{ checked("source-of-allegation", "police") }} >
+                  <label class="govuk-label govuk-radios__label" for="source-of-allegation-8">
                     Police
                   </label>
-                  {##<div id="source-of-allegation-7-item-hint" class="govuk-hint govuk-radios__hint">
+                  {##<div id="source-of-allegation-8-item-hint" class="govuk-hint govuk-radios__hint">
                     Police additional hint text.
                   </div>##}
                 </div>
+
+                {## SPAIN BENEFIT FRAUD HOTLINE ##}
                 <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="source-of-allegation-8" name="source-of-allegation" type="radio" value="spain-benefit-fraud-hotline" {{ checked("source-of-allegation", "spain-benefit-fraud-hotline") }} >
-                  <label class="govuk-label govuk-radios__label" for="source-of-allegation-8">
+                  <input class="govuk-radios__input" id="source-of-allegation-9" name="source-of-allegation" type="radio" value="spain-benefit-fraud-hotline" {{ checked("source-of-allegation", "spain-benefit-fraud-hotline") }} >
+                  <label class="govuk-label govuk-radios__label" for="source-of-allegation-9">
                     Spain Benefit Fraud Hotline
                   </label>
-                  {##<div id="source-of-allegation-8-item-hint" class="govuk-hint govuk-radios__hint">
+                  {##<div id="source-of-allegation-9-item-hint" class="govuk-hint govuk-radios__hint">
                     Spanish Hotline additional hint text.
                   </div>##}
+
                 </div>
-                <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="source-of-allegation-9" name="source-of-allegation" type="radio" value="staff-referral" {{ checked("source-of-allegation", "staff-referral") }} >
-                  <label class="govuk-label govuk-radios__label" for="source-of-allegation-9">
-                    Staff referral
-                  </label>
-                  {##<div id="source-of-allegation-9-item-hint" class="govuk-hint govuk-radios__hint">
-                    Staff referral additional hint text.
-                  </div>##}
-                </div>
+
               </div>
 
           </fieldset>
