@@ -96,6 +96,29 @@
                 </div>
               </div>
 
+              {# ID FRAUD #}
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="id-fraud" name="id-fraud" type="checkbox" value="id-fraud" {{ checked("id-fraud", "id-fraud") }} data-aria-controls="conditional-id-fraud">
+                <label class="govuk-label govuk-checkboxes__label" for="id-fraud">
+                  ID fraud
+                </label>
+              </div>
+              <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-id-fraud">
+                <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="1500">
+                  <p class="govuk-body">You could include:</p>
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li>why you think the person is committing ID fraud</li>
+                    <li>the names they use</li>
+                    <li>the addresses they use</li>
+                    <li>the types of documents being used for the identity</li>
+                  </ul>
+                  <textarea class="govuk-textarea govuk-js-character-count" id="id-fraud-hint" name="id-fraud-hint" rows="5" aria-describedby="id-fraud-hint-info id-fraud-hint-hint">{{ data['id-fraud-hint'] }}</textarea>
+                  <div id="id-fraud-hint-info" class="govuk-hint govuk-character-count__message">
+                    You can enter up to 1,500 characters
+                  </div>
+                </div>
+              </div>
+
               {# CAPITAL #}
               <div class="govuk-checkboxes__item">
                 <input class="govuk-checkboxes__input" id="capital" name="capital" type="checkbox" value="capital" {{ checked("capital", "capital") }} data-aria-controls="conditional-capital">

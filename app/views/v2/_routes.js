@@ -11,8 +11,9 @@ router.post('/index', function(req, res) {
     // suspect-details.html
     req.session.data['suspects-first-name'] = null;
     req.session.data['suspects-last-name'] = null;
-    req.session.data['known-by-another-name'] = null
-    req.session.data['known-by-another-name-full-name'] = null
+    req.session.data['known-by-another-name'] = null;
+    req.session.data['known-by-another-name-full-name'] = null;
+    req.session.data['known-by-another-name-full-name_1'] = null;
     req.session.data['suspects-ni-number'] =null;
     req.session.data['suspects-address-line-1'] = null;
     req.session.data['suspects-address-line-2'] = null;

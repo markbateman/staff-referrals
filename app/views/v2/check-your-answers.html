@@ -162,10 +162,10 @@
             <span class="govuk-visually-hidden">Suspect </span>Known by another name
           </dt>
           <dd class="govuk-summary-list__value">
-            {% if data['known-by-another-name-full-name'] == null or data['known-by-another-name-full-name'] == '' %}
+            {% if data['known-by-another-name-full-name_1'] == null or data['known-by-another-name-full-name_1'] == '' %}
               Not provided
             {% else %}
-              {{ data['known-by-another-name-full-name'] }}
+              {{ data['known-by-another-name-full-name_1'] }}
             {% endif %}
 
             {##
@@ -177,9 +177,10 @@
               Not provided
             {% endif %}
             ##}
+
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="suspects-details#known-by-another-name-full-name">
+            <a class="govuk-link" href="suspects-details#known-by-another-name-full-name_1">
               Change<span class="govuk-visually-hidden"> known by another name</span>
             </a>
           </dd>
@@ -399,6 +400,25 @@
           <dd class="govuk-summary-list__actions">
             <a class="govuk-link" href="what-do-you-think-is-happening#working-and-claiming">
               Change<span class="govuk-visually-hidden"> working and claiming</span>
+            </a>
+          </dd>
+        </div>
+
+        {# ID FRAUD #}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            ID fraud
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['id-fraud'] == 'id-fraud' %}
+              {{ data['id-fraud-hint'] }}
+            {% else %}
+              Not provided
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="what-do-you-think-is-happening#id-fraud">
+              Change<span class="govuk-visually-hidden"> ID fraud</span>
             </a>
           </dd>
         </div>
