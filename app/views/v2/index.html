@@ -1,11 +1,10 @@
 {% extends "../layouts/v2-layout.html" %}
 
 {% set serviceName %}
-
 {% endset %}
 
 {% block pageTitle %}
-  Staff referrals – GOV.UK Prototype Kit
+    Fraud referral form – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block beforeContent %}
@@ -52,48 +51,11 @@
         </strong>
       </div>
 
-      {## Script, etc., to enable and disable START NOW on 'Terms' selection ##}
-      <script type="text/javascript">
-        function valueChanged() {
-          if ($('#agree').is(":checked")) {
-            $("#agree-disabled").hide();
-            $("#agree-enabled").show();
-          } else {
-            $("#agree-disabled").show();
-            $("#agree-enabled").hide();
-          }
-        }
-      </script>
-
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-
       <form class="form" method="post">
-        <div class="govuk-form-group">
-          <div class="govuk-checkboxes" data-module="govuk-checkboxes">
-            <div class="govuk-checkboxes__item govuk-!-margin-bottom-6">
-              <input class="govuk-checkboxes__input" id="agree" name="agree" type="checkbox" value="agree" onchange="valueChanged()">
-              <label class="govuk-label govuk-checkboxes__label" for="agree">
-                Agree to terms
-              </label>
-            </div>
-          </div>
-
-          <div class="row" id="agree-disabled">
-            {{ govukButton({
-              text: "Start now",
-              isStartButton: true,
-              disabled: true
-            }) }}
-          </div>
-
-          <div class="row" id="agree-enabled" style="display: none">
-            {{ govukButton({
-              text: "Start now",
-              isStartButton: true
-            }) }}
-          </div>
-
-        </div>
+        {{ govukButton({
+          text: "Accept and start now",
+          isStartButton: true
+        }) }}
       </form>
 
     </div>

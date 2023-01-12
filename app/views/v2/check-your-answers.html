@@ -1,7 +1,7 @@
 {% extends "../layouts/v2-layout.html" %}
 
 {% set serviceName %}
-  Fraud Referral Form
+  Fraud referral form
 {% endset %}
 
 {% block pageTitle %}
@@ -162,6 +162,13 @@
             <span class="govuk-visually-hidden">Suspect </span>Known by another name
           </dt>
           <dd class="govuk-summary-list__value">
+            {% if data['known-by-another-name-full-name'] == null or data['known-by-another-name-full-name'] == '' %}
+              Not provided
+            {% else %}
+              {{ data['known-by-another-name-full-name'] }}
+            {% endif %}
+
+            {##
             {% if data['known-by-another-name'] == 'yes' %}
               {{ data['known-by-another-name-full-name'] }}
             {% elif data['known-by-another-name'] == 'no' %}
@@ -169,9 +176,10 @@
             {% else %}
               Not provided
             {% endif %}
+            ##}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="suspects-details#section-known-by-another-name">
+            <a class="govuk-link" href="suspects-details#known-by-another-name-full-name">
               Change<span class="govuk-visually-hidden"> known by another name</span>
             </a>
           </dd>

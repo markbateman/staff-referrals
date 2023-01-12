@@ -52,15 +52,6 @@
               <input class="govuk-input" id="suspects-last-name" name="suspects-last-name" value="{{ data['suspects-last-name'] }}" type="text">
             </div>
 
-            {## Known by another name #}
-            <div class="govuk-form-group">
-              <label class="govuk-label govuk-label--m" for="known-by-another-name-full-name" id="known-by-another-name-full-name">
-                Known by another name? (optional)
-              </label>
-              <input class="govuk-input" id="known-by-another-name-full-name" name="known-by-another-name-full-name" value="{{ data['known-by-another-name-full-name'] }}" type="text" spellcheck="false">
-            </div>
-
-            {##
             <div class="govuk-form-group">
               <fieldset class="govuk-fieldset" aria-describedby="known-by-another-name">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--m" id="section-known-by-another-name">
@@ -90,7 +81,6 @@
                 </div>
               </fieldset>
             </div>
-            ##}
 
             <div class="govuk-form-group">
               <label class="govuk-label govuk-label--m" for="suspects-ni-number" id="section-suspects-ni-number">
@@ -207,7 +197,7 @@
               <fieldset class="govuk-fieldset" aria-describedby="suspects-contact-details-hint">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
                   <h2 class="govuk-fieldset__heading">
-                    Suspect's contact details (optional)
+                    Suspect's contact details
                   </h2>
                 </legend>
                 <div id="suspects-contact-details-hint" class="govuk-hint">

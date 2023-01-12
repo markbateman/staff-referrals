@@ -5,7 +5,7 @@
 {% endset %}
 
 {% block pageTitle %}
-  What do you think is happening? – {{ serviceName }} – GOV.UK Prototype Kit
+  What type of benefit fraud do you think has been committed? – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block beforeContent %}
@@ -33,11 +33,11 @@
           <fieldset class="govuk-fieldset" aria-describedby="what-do-you-think-is-happening-hint">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
-                What do you think is happening?
+                What type of benefit fraud do you think has been committed?
               </h1>
             </legend>
             <div id="what-do-you-think-is-happening-hint" class="govuk-hint">
-              Select only those that apply.
+              Select all options that apply to this referral. Include as much information as you can about the potential fraud you are reporting.
             </div>
 
             <div class="govuk-checkboxes" data-module="govuk-checkboxes">
@@ -51,15 +51,18 @@
               </div>
               <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-living-together">
                 <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="1500">
-                  <div class="govuk-form-group">
-                    <label class="govuk-label" for="living-together-hint">
-                      Include as much information as you can
-                    </label>
-                    <div id="living-together-hint-hint" class="govuk-hint">
-                      For example the alleged partner name and any addresses involved.
-                    </div>
-                    <textarea class="govuk-textarea govuk-js-character-count" id="living-together-hint" name="living-together-hint" rows="5" aria-describedby="living-together-hint-info living-together-hint-hint">{{ data['living-together-hint'] }}</textarea>
+                  <div id="living-together-hint-hint">
+                    <p class="govuk-body">You could include:</p>
+                    <ul class="govuk-list govuk-list--bullet">
+                      <li>the alleged partner's name</li>
+                      <li>any addresses involved</li>
+                      <li>details of their work (if they are working)</li>
+                      <li>details of their routine, for example times when they are at home</li>
+                      <li>the vehicles they use</li>
+                      <li>any children involved, including their names and ages</li>
+                    </ul>
                   </div>
+                  <textarea class="govuk-textarea govuk-js-character-count" id="living-together-hint" name="living-together-hint" rows="5" aria-describedby="living-together-hint-info living-together-hint-hint">{{ data['living-together-hint'] }}</textarea>
                   <div id="living-together-hint-info" class="govuk-hint govuk-character-count__message">
                     You can enter up to 1,500 characters
                   </div>
@@ -75,15 +78,18 @@
               </div>
               <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-working-and-claiming">
                 <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="1500">
-                  <div class="govuk-form-group">
-                    <label class="govuk-label" for="working-and-claiming-hint">
-                      Include as much information as you can
-                    </label>
-                    <div id="working-and-claiming-hint-hint" class="govuk-hint">
-                      For example their employer's details, how they travel to work and details of their routine.
-                    </div>
-                    <textarea class="govuk-textarea govuk-js-character-count" id="working-and-claiming-hint" name="working-and-claiming-hint" rows="5" aria-describedby="working-and-claiming-hint-info working-and-claiming-hint-hint">{{ data['working-and-claiming-hint'] }}</textarea>
-                  </div>
+                  <p class="govuk-body">You could include:</p>
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li>who is actually working</li>
+                    <li>their current employer's details, for example employer name</li>
+                    <li>if they are self-employed</li>
+                    <li>how they are paid</li>
+                    <li>how they travel to work</li>
+                    <li>their routine</li>
+                    <li>their uniform</li>
+                    <li>the vehicles they use</li>
+                  </ul>
+                  <textarea class="govuk-textarea govuk-js-character-count" id="working-and-claiming-hint" name="working-and-claiming-hint" rows="5" aria-describedby="working-and-claiming-hint-info working-and-claiming-hint-hint">{{ data['working-and-claiming-hint'] }}</textarea>
                   <div id="working-and-claiming-hint-info" class="govuk-hint govuk-character-count__message">
                     You can enter up to 1,500 characters
                   </div>
@@ -99,15 +105,16 @@
               </div>
               <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-capital">
                 <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="1500">
-                  <div class="govuk-form-group">
-                    <label class="govuk-label" for="capital-hint">
-                      Include as much information as you can
-                    </label>
-                    <div id="capital-hint-hint" class="govuk-hint">
-                      For example the amount, when they received it and where it came from.
-                    </div>
-                    <textarea class="govuk-textarea govuk-js-character-count" id="capital-hint" name="capital-hint" rows="5" aria-describedby="capital-hint-info capital-hint-hint">{{ data['capital-hint'] }}</textarea>
-                  </div>
+                  <p class="govuk-body">You could include:</p>
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li>the amount</li>
+                    <li>when they received it</li>
+                    <li>where and who it came from</li>
+                    <li>where it is kept</li>
+                    <li>any savings or income</li>
+                    <li>any examples of living beyond means, for example major purchases</li>
+                  </ul>
+                  <textarea class="govuk-textarea govuk-js-character-count" id="capital-hint" name="capital-hint" rows="5" aria-describedby="capital-hint-info capital-hint-hint">{{ data['capital-hint'] }}</textarea>
                   <div id="capital-hint-info" class="govuk-hint govuk-character-count__message">
                     You can enter up to 1,500 characters
                   </div>
@@ -123,15 +130,14 @@
               </div>
               <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-other-income">
                 <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="1500">
-                  <div class="govuk-form-group">
-                    <label class="govuk-label" for="other-income-hint">
-                      Include as much information as you can
-                    </label>
-                    <div id="other-income-hint-hint" class="govuk-hint">
-                      For example where the income comes from.
-                    </div>
-                    <textarea class="govuk-textarea govuk-js-character-count" id="other-income-hint" name="other-income-hint" rows="5" aria-describedby="other-income-hint-info other-income-hint-hint">{{ data['other-income-hint'] }}</textarea>
-                  </div>
+                  <p class="govuk-body">You could include:</p>
+                    <ul class="govuk-list govuk-list--bullet">
+                    <li>the amount</li>
+                    <li>where the income comes from, for example maintenance, a family member or shares</li>
+                    <li>who it comes from</li>
+                    <li>how often they receive it</li>
+                  </ul>
+                  <textarea class="govuk-textarea govuk-js-character-count" id="other-income-hint" name="other-income-hint" rows="5" aria-describedby="other-income-hint-info other-income-hint-hint">{{ data['other-income-hint'] }}</textarea>
                   <div id="other-income-hint-info" class="govuk-hint govuk-character-count__message">
                     You can enter up to 1,500 characters
                   </div>
@@ -147,15 +153,16 @@
               </div>
               <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-abroad-fraud">
                 <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="1500">
-                  <div class="govuk-form-group">
-                    <label class="govuk-label" for="abroad-fraud-hint">
-                      Include as much information as you can
-                    </label>
-                    <div id="abroad-fraud-hint-hint" class="govuk-hint">
-                      For example where they have gone, when they went and how long they have been abroad.
-                    </div>
-                    <textarea class="govuk-textarea govuk-js-character-count" id="abroad-fraud-hint" name="abroad-fraud-hint" rows="5" aria-describedby="abroad-fraud-hint-info abroad-fraud-hint-hint">{{ data['abroad-fraud-hint'] }}</textarea>
-                  </div>
+                  <p class="govuk-body">You could include:</p>
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li>where they have gone</li>
+                    <li>when they went abroad</li>
+                    <li>why they went abroad</li>
+                    <li>how long they have been abroad</li>
+                    <li>when they are coming back</li>
+                    <li>any property they own abroad</li>
+                  </ul>
+                  <textarea class="govuk-textarea govuk-js-character-count" id="abroad-fraud-hint" name="abroad-fraud-hint" rows="5" aria-describedby="abroad-fraud-hint-info abroad-fraud-hint-hint">{{ data['abroad-fraud-hint'] }}</textarea>
                   <div id="abroad-fraud-hint-info" class="govuk-hint govuk-character-count__message">
                     You can enter up to 1,500 characters
                   </div>
@@ -171,15 +178,19 @@
               </div>
               <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-doubtful-disability">
                 <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="1500">
-                  <div class="govuk-form-group">
-                    <label class="govuk-label" for="doubtful-disability-hint">
-                      Include as much information as you can
-                    </label>
-                    <div id="doubtful-disability-hint-hint" class="govuk-hint">
-                      For example the type of disability, any disability equipment they use, and why you think the disability is in doubt.
-                    </div>
-                    <textarea class="govuk-textarea govuk-js-character-count" id="doubtful-disability-hint" name="doubtful-disability-hint" rows="5" aria-describedby="doubtful-disability-hint-info doubtful-disability-hint-hint">{{ data['doubtful-disability-hint'] }}</textarea>
-                  </div>
+                  <p class="govuk-body">You could include:</p>
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li>the type of disability</li>
+                    <li>any disability equipment they use</li>
+                    <li>why you think the disability is in doubt</li>
+                    <li>activities outside of the property</li>
+                      <ul class="govuk-list govuk-list--bullet">
+                        <li>how often</li>
+                        <li>how long for</li>
+                      </ul>
+                    <li>people who are with them when they go out</li>
+                  </ul>
+                  <textarea class="govuk-textarea govuk-js-character-count" id="doubtful-disability-hint" name="doubtful-disability-hint" rows="5" aria-describedby="doubtful-disability-hint-info doubtful-disability-hint-hint">{{ data['doubtful-disability-hint'] }}</textarea>
                   <div id="doubtful-disability-hint-info" class="govuk-hint govuk-character-count__message">
                     You can enter up to 1,500 characters
                   </div>
@@ -195,15 +206,15 @@
               </div>
               <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-housing-related">
                 <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="1500">
-                  <div class="govuk-form-group">
-                    <label class="govuk-label" for="housing-related-hint">
-                      Include as much information as you can
-                    </label>
-                    <div id="housing-related-hint-hint" class="govuk-hint">
-                      For example why you think they are not at the address, and if they return to it.
-                    </div>
-                    <textarea class="govuk-textarea govuk-js-character-count" id="housing-related-hint" name="housing-related-hint" rows="5" aria-describedby="housing-related-hint-info housing-related-hint-hint">{{ data['housing-related-hint'] }}</textarea>
-                  </div>
+                  <p class="govuk-body">You could include:</p>
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li>why you think they are not at their address</li>
+                    <li>how long they have been away</li>
+                    <li>whether they return to their address</li>
+                    <li>where they are living</li>
+                    <li>is anyone paying rent to the property owner as a lodger or subletter?</li>
+                  </ul>
+                  <textarea class="govuk-textarea govuk-js-character-count" id="housing-related-hint" name="housing-related-hint" rows="5" aria-describedby="housing-related-hint-info housing-related-hint-hint">{{ data['housing-related-hint'] }}</textarea>
                   <div id="housing-related-hint-info" class="govuk-hint govuk-character-count__message">
                     You can enter up to 1,500 characters
                   </div>
@@ -219,15 +230,11 @@
               </div>
               <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-not-providing-care">
                 <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="1500">
-                  <div class="govuk-form-group">
-                    <label class="govuk-label" for="housing-related-hint">
-                      Include as much information as you can
-                    </label>
-                    <div id="housing-related-hint-hint" class="govuk-hint">
-                      For example why you think they are receiving benefit as a carer but not caring for a disabled person.
-                    </div>
-                    <textarea class="govuk-textarea govuk-js-character-count" id="not-providing-care-hint" name="not-providing-care-hint" rows="5" aria-describedby="not-providing-care-hint-info not-providing-care-hint-hint">{{ data['not-providing-care-hint'] }}</textarea>
-                  </div>
+                  <p class="govuk-body">You could include:</p>
+                    <ul class="govuk-list govuk-list--bullet">
+                    <li>why you think they are receiving benefit as a carer but not caring for a disabled person</li>
+                  </ul>
+                  <textarea class="govuk-textarea govuk-js-character-count" id="not-providing-care-hint" name="not-providing-care-hint" rows="5" aria-describedby="not-providing-care-hint-info not-providing-care-hint-hint">{{ data['not-providing-care-hint'] }}</textarea>
                   <div id="not-providing-care-hint-info" class="govuk-hint govuk-character-count__message">
                     You can enter up to 1,500 characters
                   </div>
@@ -243,12 +250,12 @@
               </div>
               <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-other">
                 <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="1500">
-                  <div class="govuk-form-group">
-                    <label class="govuk-label" for="other-hint">
-                      Include details about the other types of fraud you think are being committed
-                    </label>
-                    <textarea class="govuk-textarea govuk-js-character-count" id="other-hint" name="other-hint" rows="5" aria-describedby="other-hint-info">{{ data['other-hint'] }}</textarea>
-                  </div>
+                  <p class="govuk-body">You could include:</p>
+                  <ul class="govuk-list govuk-list--bullet">
+                    <li>the type or types of fraud you think are being committed, for example childcare fraud, household composition or imprisonment</li>
+                    <li>why you think this is happening</li>
+                  </ul>
+                  <textarea class="govuk-textarea govuk-js-character-count" id="other-hint" name="other-hint" rows="5" aria-describedby="other-hint-info">{{ data['other-hint'] }}</textarea>
                   <div id="other-hint-info" class="govuk-hint govuk-character-count__message">
                     You can enter up to 1,500 characters
                   </div>

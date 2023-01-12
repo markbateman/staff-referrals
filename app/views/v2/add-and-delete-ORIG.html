@@ -1,0 +1,111 @@
+{% extends "../layouts/v2-layout.html" %}
+
+{% if data['error'] == 'no-official-numbers' %}
+{% block pageTitle %}
+  Error - Enter official numbers
+{% endblock %}
+{% endif %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" onclick="history.back()" href="#">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    
+    {% if data['journey-type'] == 'find-ac' %}
+    <form class="form" method="post" novalidate>
+    {% else %}
+    <form action="update-ac" method="post">
+    {% endif %}
+    {% if data['error'] == 'no-official-numbers' %}
+      <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" data-module="govuk-error-summary">
+        <h2 class="govuk-error-summary__title" id="error-summary-title">
+          There is a problem
+        </h2>
+        <div class="govuk-error-summary__body">
+          <ul class="govuk-list govuk-error-summary__list">
+            <li>
+              <a href="#official-number-1">Enter at least one official number</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="govuk-form-group govuk-form-group--error">
+        <fieldset class="govuk-fieldset" aria-describedby="official-number-error">
+    {% else %}
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset">
+    {% endif %}
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+            Enter official numbers
+          </legend>
+          <p class="govuk-body-m">The official numbers are on the first page of the document, there may be more than one.</p>
+          {% if data['error'] == 'no-official-numbers' %}
+          <span id="official-number-error" class="govuk-error-message">
+            <span class="govuk-visually-hidden">Error:</span>Enter at least one official number, then continue
+          </span>
+          {% endif %}
+          <div class="container">
+            <div class='govuk-form-group' id='div_1'>
+              <label class="govuk-label" for="official-number_1">
+                Official number
+              </label>
+              <span class="govuk-hint">For example 20210001 or 2021-0001</span>
+              {% if data['error'] == 'no-official-numbers' %}
+              <input id="official-number-1" class="govuk-input govuk-!-width-one-quarter govuk-!-margin-right-6 govuk-input--error" type='text' name='official-number_1' value="{{ data['official-number_1'] }}" autocomplete="off" maxlength="9">
+              {% else %}
+              <input class="govuk-input govuk-!-width-one-quarter" type='text' name='official-number_1' value="{{ data['official-number_1'] }}"  autocomplete="off" maxlength="9">
+              {% endif %}
+            </div>
+
+            {% if data['official-number_2'] %}
+            <div class='govuk-form-group' id='div_2'>
+              <label class="govuk-label" for="official-number_2">
+                Official number
+              </label>
+              <input class="govuk-input govuk-!-width-one-quarter govuk-!-margin-right-6" type='text' name='official-number_2' value="{{ data['official-number_2'] }}"  autocomplete="off" maxlength="9"> 
+              <span id='remove_2' class='govuk-button govuk-button--secondary remove' aria-labelledby="remove_2">Remove</span>
+            </div>
+            {% endif %}
+
+            {% if data['official-number_3'] %}
+            <div class='govuk-form-group' id='div_3'>
+              <label class="govuk-label" for="official-number_3">
+                Official number
+              </label>
+              <input class="govuk-input govuk-!-width-one-quarter govuk-!-margin-right-6" type='text' name='official-number_3' value="{{ data['official-number_3'] }}"  autocomplete="off" maxlength="9"> 
+              <span id='remove_3' class="govuk-button govuk-button--secondary remove" aria-labelledby="remove_3">Remove</span>
+            </div>
+            {% endif %}
+          </div>
+        </fieldset>
+      </div>
+      <div class="govuk-button govuk-button--secondary govuk-!-margin-bottom-4 add" value="Add another number">Add another number
+      </div><br>
+      <button type="submit" class="govuk-button" data-module="govuk-button">
+        Continue
+      </button>
+    </form>
+  </div>
+  <div class="govuk-grid-column-one-third">
+    <div class="hmlr-preview-container" role="complementary" aria-label="preview area with document type shown">
+      <img src="/public/images/AC/AC3-2020-0437.png" alt="Document first page section" class="clip-doc">
+    </div>
+  </div>
+</div>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+    <details class="govuk-details doc-preview" data-module="govuk-details">
+      <summary class="govuk-details__summary">
+        <span class="govuk-details__summary-text">
+          View full document
+        </span>
+      </summary>
+      <img src="/public/images/AC/AC3-2020-0437.png" alt="Page 1 of 1" class="hmlr-scan-preview govuk-!-margin-bottom-9 govuk-!-margin-top-3" >
+    </details>
+  </div>
+</div>
+
+{% endblock %}
