@@ -1,0 +1,198 @@
+{% extends "../layouts/v2-layout.html" %}
+
+{% set serviceName %}
+  Fraud referral form
+{% endset %}
+
+{% block pageTitle %}
+  Suspect's personal details – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  <div class="govuk-phase-banner">
+    <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag govuk-tag--pink">
+      give feedback
+    </strong>
+      <span class="govuk-phase-banner__text">
+        This is a new service, <a class="govuk-link" href="#">help us to improve it</a>.
+      </span>
+    </p>
+  </div>
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form class="form" method="post">
+        <div class="govuk-form-group">
+          <h1 class="govuk-heading-l">
+            Suspect's personal details
+          </h1>
+         <fieldset class="govuk-fieldset">
+
+            {## FIRST NAME ##}
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-label--m" for="suspects-first-name" id="section-suspects-first-name">
+                First name (optional)
+              </label>
+              <input class="govuk-input" id="suspects-first-name" name="suspects-first-name" value="{{ data['suspects-first-name'] }}" type="text">
+            </div>
+
+            {## LAST NAME ##}
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-label--m" for="suspects-last-name" id="section-suspects-last-name">
+                Last name (optional)
+              </label>
+              <input class="govuk-input" id="suspects-last-name" name="suspects-last-name" value="{{ data['suspects-last-name'] }}" type="text">
+            </div>
+
+            {## KNOWN BY ANOTHER NAME #}
+            <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                Known by another name? (optional)
+              </legend>
+              <p class="govuk-body-m">
+                Enter any other names the suspect maybe known by.
+              </p>
+
+              <div class="container">
+                <div class='govuk-form-group' id='known-by-another-name-full-name_1'>
+                  <label class="govuk-label" for="known-by-another-name-full-name_1">
+                    Other name
+                  </label>
+                  <p class="govuk-body">
+                    <input class="govuk-input" type='text' name='known-by-another-name-full-name_1' value="{{ data['known-by-another-name-full-name_1'] }}" autocomplete="off">
+                  </p>
+                </div>
+
+                {% if data['known-by-another-name-full-name_2'] %}
+                <div class='govuk-form-group' id='known-by-another-name-full-name_2'>
+                  <label class="govuk-label" for="known-by-another-name-full-name_2">
+                    Name
+                  </label>
+                  <input class="govuk-input govuk-!-width-one-quarter govuk-!-margin-right-6" type='text' name='known-by-another-name-full-name_2' value="{{ data['known-by-another-name-full-name_2'] }}" autocomplete="off"> 
+                  <span id='remove_2' class='govuk-button govuk-button--secondary remove' aria-labelledby="remove_2">Remove</span>
+                </div>
+                {% endif %}
+
+                {% if data['known-by-another-name-full-name_3'] %}
+                <div class='govuk-form-group' id='known-by-another-name-full-name_3'>
+                  <label class="govuk-label" for="known-by-another-name-full-name_3">
+                    Name
+                  </label>
+                  <input class="govuk-input govuk-!-width-one-quarter govuk-!-margin-right-6" type='text' name='known-by-another-name-full-name_3' value="{{ data['known-by-another-name-full-name_3'] }}" autocomplete="off"> 
+                  <span id='remove_3' class="govuk-button govuk-button--secondary remove" aria-labelledby="remove_3">Remove</span>
+                </div>
+                {% endif %}
+              </div>
+            </fieldset>
+            <div class="govuk-button govuk-button--secondary govuk-!-margin-bottom-6 add" value="Add another name">
+              Add another name
+            </div>
+
+            {## NATIONAL INSURANCE NUMBER ##}         
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-label--m" for="suspects-ni-number" id="section-suspects-ni-number">
+                National Insurance number (optional)
+              </label>
+              <div id="suspects-ni-number-hint" class="govuk-hint">
+                For example, 'QQ 12 34 56 C'.
+              </div>
+              <input class="govuk-input govuk-input--width-10" id="suspects-ni-number" name="suspects-ni-number" value="{{ data['suspects-ni-number'] }}" type="text">
+            </div>
+
+            {## SUSPECT'S AGE ##}
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset" aria-describedby="suspects-age-hint">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                  <h2 class="govuk-fieldset__heading">
+                    Suspect's age (optional)
+                  </h2>
+                </legend>
+                <div id="suspects-age-hint" class="govuk-hint">
+                  Select one option.
+                </div>
+
+                {## SUSPECT'S DATE OF BIRTH ##}
+                <div class="govuk-radios" data-module="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="suspects-age" name="suspects-age" type="radio" value="date-of-birth" data-aria-controls="conditional-suspects-age" {{ checked("suspects-age", "date-of-birth") }}>
+                    <label class="govuk-label govuk-radios__label" for="suspects-age">
+                      Date of birth
+                    </label>
+                  </div>
+                  <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-suspects-age">
+                    <fieldset class="govuk-fieldset" role="group" aria-describedby="suspects-date-of-birth-hint">
+                      <div class="govuk-form-group">
+                        <label class="govuk-label" for="section-suspects-date-of-birth">
+                          Date of birth
+                        </label>
+                        <div id="suspects-date-of-birth-hint" class="govuk-hint">
+                          For example, 27 3 2004
+                        </div>
+                        <div class="govuk-date-input" id="suspects-date-of-birth">
+                          <div class="govuk-date-input__item">
+                            <div class="govuk-form-group">
+                              <label class="govuk-label govuk-date-input__label" for="suspects-date-of-birth-day">
+                                Day
+                              </label>
+                              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="suspects-date-of-birth-day" name="suspects-date-of-birth-day" value="{{ data['suspects-date-of-birth-day'] }}" type="text" inputmode="numeric">
+                            </div>
+                          </div>
+                          <div class="govuk-date-input__item">
+                            <div class="govuk-form-group">
+                              <label class="govuk-label govuk-date-input__label" for="suspects-date-of-birth-month">
+                                Month
+                              </label>
+                              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="suspects-date-of-birth-month" name="suspects-date-of-birth-month" value="{{ data['suspects-date-of-birth-month'] }}" type="text" inputmode="numeric">
+                           </div>
+                          </div>
+                          <div class="govuk-date-input__item">
+                            <div class="govuk-form-group">
+                              <label class="govuk-label govuk-date-input__label" for="suspects-date-of-birth-year">
+                                Year
+                              </label>
+                              <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="suspects-date-of-birth-year" name="suspects-date-of-birth-year" value="{{ data['suspects-date-of-birth-year'] }}" type="text" inputmode="numeric">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </fieldset>
+                  </div>
+
+                  {## APPROXIMATE AGE ##}
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="suspects-age-2" name="suspects-age" type="radio" value="approximate-age" data-aria-controls="conditional-suspects-age-2" {{ checked("suspects-age", "approximate-age") }}>
+                    <label class="govuk-label govuk-radios__label" for="suspects-age-2">
+                      Approximate age
+                    </label>
+                  </div>
+                  <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-suspects-age-2">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label" for="suspects-approximate-age">
+                        Approximate age in years
+                      </label>
+                      <input class="govuk-input govuk-!-width-one-third" id="suspects-approximate-age" name="suspects-approximate-age" value="{{ data['suspects-approximate-age'] }}">
+                    </div>
+                  </div>
+
+                </div>
+              </fieldset>
+            </div>
+          </fieldset>
+        </div>
+
+        {{ govukButton({
+          text: 'Continue',
+          classes: "govuk-!-margin-top-2"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

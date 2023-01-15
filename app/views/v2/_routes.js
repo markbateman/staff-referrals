@@ -21,9 +21,12 @@ router.post('/index', function(req, res) {
     req.session.data['suspects-address-county'] =null;
     req.session.data['suspects-address-postcode'] = null;
     req.session.data['suspects-address-region'] = null;
+    req.session.data['suspects-age'] = null;
     req.session.data['suspects-date-of-birth-day'] = null;
     req.session.data['suspects-date-of-birth-month'] = null;
     req.session.data['suspects-date-of-birth-year'] = null;
+    req.session.data['suspects-age-2'] = null;
+    req.session.data['suspects-approximate-age'] = null;
     req.session.data['contact-telephone'] = null;
     req.session.data['suspect-contact-telephone'] = null;
     req.session.data['contact-mobile'] = null;
@@ -70,12 +73,21 @@ router.post('/who-do-you-want-to-report', function(req, res) {
     if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
         res.redirect('check-your-answers#section-allegation-details');
     } else {
-        res.redirect('suspects-details');
+        res.redirect('suspects-personal-details');
     }
 })
 
-// suspects-details
-router.post('/suspects-details', function(req, res) {
+// suspects-personal-details
+router.post('/suspects-personal-details', function(req, res) {
+    if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
+        res.redirect('check-your-answers#section-suspects-details');
+    } else {
+        res.redirect('suspects-address-and-contact-details');
+    }
+})
+
+// suspects-address-and-contact-details
+router.post('/suspects-address-and-contact-details', function(req, res) {
     if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
         res.redirect('check-your-answers#section-suspects-details');
     } else {
