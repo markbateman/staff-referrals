@@ -59,34 +59,35 @@
               </p>
 
               <div class="container">
-                <div class='govuk-form-group' id='known-by-another-name-full-name_1'>
+                <div class='other-names-govuk-form-group' id='known-by-another-name-full-name_1'>
                   <label class="govuk-label" for="known-by-another-name-full-name_1">
                     Other name
                   </label>
                   <p class="govuk-body">
-                    <input class="govuk-input" type='text' name='known-by-another-name-full-name_1' value="{{ data['known-by-another-name-full-name_1'] }}" autocomplete="off">
+                    <input class="govuk-input govuk-!-width-two-thirds" type='text' name='known-by-another-name-full-name_1' value="{{ data['known-by-another-name-full-name_1'] }}" autocomplete="off">
                   </p>
                 </div>
 
                 {% if data['known-by-another-name-full-name_2'] %}
-                <div class='govuk-form-group' id='known-by-another-name-full-name_2'>
+                <div class='other-names-govuk-form-group' id='known-by-another-name-full-name_2'>
                   <label class="govuk-label" for="known-by-another-name-full-name_2">
                     Name
                   </label>
-                  <input class="govuk-input govuk-!-width-one-quarter govuk-!-margin-right-6" type='text' name='known-by-another-name-full-name_2' value="{{ data['known-by-another-name-full-name_2'] }}" autocomplete="off"> 
+                  <input class="govuk-input govuk-!-width-two-thirds govuk-!-margin-right-6" type='text' name='known-by-another-name-full-name_2' value="{{ data['known-by-another-name-full-name_2'] }}" autocomplete="off"> 
                   <span id='remove_2' class='govuk-button govuk-button--secondary remove' aria-labelledby="remove_2">Remove</span>
                 </div>
                 {% endif %}
 
                 {% if data['known-by-another-name-full-name_3'] %}
-                <div class='govuk-form-group' id='known-by-another-name-full-name_3'>
+                <div class='other-names-govuk-form-group' id='known-by-another-name-full-name_3'>
                   <label class="govuk-label" for="known-by-another-name-full-name_3">
                     Name
                   </label>
-                  <input class="govuk-input govuk-!-width-one-quarter govuk-!-margin-right-6" type='text' name='known-by-another-name-full-name_3' value="{{ data['known-by-another-name-full-name_3'] }}" autocomplete="off"> 
+                  <input class="other-names-govuk-input govuk-!-width-two-thirds govuk-!-margin-right-6" type='text' name='known-by-another-name-full-name_3' value="{{ data['known-by-another-name-full-name_3'] }}" autocomplete="off"> 
                   <span id='remove_3' class="govuk-button govuk-button--secondary remove" aria-labelledby="remove_3">Remove</span>
                 </div>
                 {% endif %}
+
               </div>
             </fieldset>
             <div class="govuk-button govuk-button--secondary govuk-!-margin-bottom-6 add" value="Add another name">
