@@ -11,9 +11,7 @@ router.post('/index', function(req, res) {
     // suspect-details.html
     req.session.data['suspects-first-name'] = null;
     req.session.data['suspects-last-name'] = null;
-    req.session.data['known-by-another-name'] = null;
-    req.session.data['known-by-another-name-full-name'] = null;
-    req.session.data['known-by-another-name-full-name_1'] = null;
+    req.session.data['known-by-other-names'] = null;
     req.session.data['suspects-ni-number'] =null;
     req.session.data['suspects-address-line-1'] = null;
     req.session.data['suspects-address-line-2'] = null;
@@ -74,8 +72,25 @@ router.post('/who-do-you-want-to-report', function(req, res) {
         res.redirect('check-your-answers#section-allegation-details');
     } else {
         res.redirect('suspects-personal-details');
-    }
+    }    
 })
+
+// who-do-you-want-to-report
+//router.post('/who-do-you-want-to-report', function(req, res) {
+//    if (req.session.data['who-do-you-want-to-report'] === '') {
+//        errorWhoDoYouWantToReport = true
+//        errors.push({
+//            text: 'Enter the country the entity was formed in',
+//            href: '#country'
+//        })
+//    } else {
+//        if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
+//            res.redirect('check-your-answers#section-allegation-details');
+//        } else {
+//            res.redirect('suspects-personal-details');
+//        }
+//    }
+//})
 
 // suspects-personal-details
 router.post('/suspects-personal-details', function(req, res) {

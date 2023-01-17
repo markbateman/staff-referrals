@@ -8,19 +8,6 @@
   Check your answers – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
-{% block beforeContent %}
-  <div class="govuk-phase-banner">
-    <p class="govuk-phase-banner__content">
-    <strong class="govuk-tag govuk-phase-banner__content__tag govuk-tag--pink">
-      give feedback
-    </strong>
-      <span class="govuk-phase-banner__text">
-        This is a new service, <a class="govuk-link" href="#">help us to improve it</a>.
-      </span>
-    </p>
-  </div>
-{% endblock %}
-
 {% block content %}
 
   <div class="govuk-grid-row">
@@ -159,34 +146,23 @@
         </div>
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            <span class="govuk-visually-hidden">Suspect </span>Known by another name
+            <span class="govuk-visually-hidden">Suspect's </span>Other names
           </dt>
           <dd class="govuk-summary-list__value">
-            {% if data['known-by-another-name-full-name_1'] == null or data['known-by-another-name-full-name_1'] == '' %}
+            {% if data['known-by-other-names'] == null or data['known-by-other-names'] == '' %}
               Not provided
             {% else %}
-              {{ data['known-by-another-name-full-name_1'] }}
+              {{ data['known-by-other-names'] }}
             {% endif %}
-
-            {##
-            {% if data['known-by-another-name'] == 'yes' %}
-              {{ data['known-by-another-name-full-name'] }}
-            {% elif data['known-by-another-name'] == 'no' %}
-              No
-            {% else %}
-              Not provided
-            {% endif %}
-            ##}
-
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="suspects-details#known-by-another-name-full-name_1">
-              Change<span class="govuk-visually-hidden"> known by another name</span>
+            <a class="govuk-link" href="suspects-personal-details#section-known-by-other-names">
+              Change<span class="govuk-visually-hidden"> suspect's other names</span>
             </a>
           </dd>
         </div>
 
-        {## NATIONAL INSURANCE NUMBER ##}
+        {# NATIONAL INSURANCE NUMBER #}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
             <span class="govuk-visually-hidden">Suspect's </span>National Insurance number
@@ -205,50 +181,65 @@
           </dd>
         </div>
 
-        {## DATE OF BIRTH ##}
-        {% if data['suspects-age'] == 'date-of-birth' %}
-          <div class="govuk-summary-list__row">
-            <dt class="govuk-summary-list__key">
+        {# DATE OF BIRTH OR APPROXIMATE AGE #}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            {% if (data['suspects-approximate-age'] > null or data['suspects-approximate-age'] > '') %}
+              <span class="govuk-visually-hidden">Suspect's </span>Approximate age
+            {% else %}
               <span class="govuk-visually-hidden">Suspect's </span>Date of birth
-            </dt>
-            <dd class="govuk-summary-list__value">
-              {{ data['suspects-date-of-birth-day'] }} 
-              {% if data['suspects-date-of-birth-month'] == '1' or data['suspects-date-of-birth-month'] == '01' %}
-                January 
-              {% elif data['suspects-date-of-birth-month'] == '2' or data['suspects-date-of-birth-month'] == '02' %}
-                February 
-              {% elif data['suspects-date-of-birth-month'] == '3' or data['suspects-date-of-birth-month'] == '03' %}
-                March 
-              {% elif data['suspects-date-of-birth-month'] == '4' or data['suspects-date-of-birth-month'] == '04' %}
-                April 
-              {% elif data['suspects-date-of-birth-month'] == '5' or data['suspects-date-of-birth-month'] == '05' %}
-                May 
-              {% elif data['suspects-date-of-birth-month'] == '6' or data['suspects-date-of-birth-month'] == '06' %}
-                June 
-              {% elif data['suspects-date-of-birth-month'] == '7' or data['suspects-date-of-birth-month'] == '07' %}
-                July 
-              {% elif data['suspects-date-of-birth-month'] == '8' or data['suspects-date-of-birth-month'] == '08' %}
-                August 
-              {% elif data['suspects-date-of-birth-month'] == '9' or data['suspects-date-of-birth-month'] == '09' %}
-                September 
-              {% elif data['suspects-date-of-birth-month'] == '10' or data['suspects-date-of-birth-month'] == '10' %}
-              October 
-              {% elif data['suspects-date-of-birth-month'] == '11' or data['suspects-date-of-birth-month'] == '11' %}
-                November 
-              {% elif data['suspects-date-of-birth-month'] == '12' or data['suspects-date-of-birth-month'] == '12' %}
-                December 
+            {% endif %}
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {# If approximate age has a value then show that, otherwise check if DOB has a value #}
+            {% if (data['suspects-approximate-age'] > null or data['suspects-approximate-age'] > '') %}
+              {{ data['suspects-approximate-age'] }}
+            {% else %}
+              {% if ((data['suspects-date-of-birth-day'] == null) or (data['suspects-date-of-birth-day'] == '')) and ((data['suspects-date-of-birth-month'] == null) or (data['suspects-date-of-birth-month'] == '')) and ((data['suspects-date-of-birth-year'] == null) or (data['suspects-date-of-birth-year'] == '')) %}
+                Not provided
               {% else %}
-                Not provided 
+                {{ data['suspects-date-of-birth-day'] }} 
+                {% if data['suspects-date-of-birth-month'] == '1' or data['suspects-date-of-birth-month'] == '01' %}
+                  January 
+                {% elif data['suspects-date-of-birth-month'] == '2' or data['suspects-date-of-birth-month'] == '02' %}
+                  February 
+                {% elif data['suspects-date-of-birth-month'] == '3' or data['suspects-date-of-birth-month'] == '03' %}
+                  March 
+                {% elif data['suspects-date-of-birth-month'] == '4' or data['suspects-date-of-birth-month'] == '04' %}
+                  April 
+                {% elif data['suspects-date-of-birth-month'] == '5' or data['suspects-date-of-birth-month'] == '05' %}
+                  May 
+                {% elif data['suspects-date-of-birth-month'] == '6' or data['suspects-date-of-birth-month'] == '06' %}
+                  June 
+                {% elif data['suspects-date-of-birth-month'] == '7' or data['suspects-date-of-birth-month'] == '07' %}
+                  July 
+                {% elif data['suspects-date-of-birth-month'] == '8' or data['suspects-date-of-birth-month'] == '08' %}
+                  August 
+                {% elif data['suspects-date-of-birth-month'] == '9' or data['suspects-date-of-birth-month'] == '09' %}
+                  September 
+                {% elif data['suspects-date-of-birth-month'] == '10' or data['suspects-date-of-birth-month'] == '10' %}
+                October 
+                {% elif data['suspects-date-of-birth-month'] == '11' or data['suspects-date-of-birth-month'] == '11' %}
+                  November 
+                {% elif data['suspects-date-of-birth-month'] == '12' or data['suspects-date-of-birth-month'] == '12' %}
+                  December 
+                {% endif %}
+                {{ data['suspects-date-of-birth-year'] }}
               {% endif %}
-              {{ data['suspects-date-of-birth-year'] }}
-            </dd>
-            <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="suspects-personal-details#suspects-age">
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            {% if (data['suspects-approximate-age'] > null or data['suspects-approximate-age'] > '') %}
+              <a class="govuk-link" href="suspects-personal-details#section-suspects-approximate-age">
+                Change<span class="govuk-visually-hidden"> suspect's approximate age</span>
+              </a>
+            {% else %}
+              <a class="govuk-link" href="suspects-personal-details#section-suspects-date-of-birth">
                 Change<span class="govuk-visually-hidden"> suspect's date of birth</span>
               </a>
-            </dd>
-          </div>
-        {% endif %}
+            {% endif %}
+          </dd>
+        </div>
 
         {## APPROXIMATE AGE ##}
         {% if data['suspects-age'] == 'approximate-age' %}
