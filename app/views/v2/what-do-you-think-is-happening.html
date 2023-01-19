@@ -5,7 +5,11 @@
 {% endset %}
 
 {% block pageTitle %}
-  What do you think is happening? – {{ serviceName }} – GOV.UK Prototype Kit
+  {% if data['page-errors'] == 'yes' %}
+    Error: What do you think is happening? – {{ serviceName }} – GOV.UK Prototype Kit
+  {% else %}
+    What do you think is happening? – {{ serviceName }} – GOV.UK Prototype Kit
+  {% endif %}
 {% endblock %}
 
 {% block beforeContent %}
@@ -17,10 +21,33 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <form class="form" method="post">
+      {% if data['page-errors'] == 'yes' %}
+        <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" id="error-summary" data-module="govuk-error-summary">
+          <h2 class="govuk-error-summary__title" id="error-summary-title">
+            There is a problem
+          </h2>
+          <div class="govuk-error-summary__body">
+            <ul class="govuk-list govuk-error-summary__list">
+              <li>
+                <a href="#what-do-you-think-is-happening">Select at least one potential benefit fraud type</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      {% else %}
+        {# Do nothing #}
+      {% endif %}
 
-        <div class="govuk-form-group">
-          <fieldset class="govuk-fieldset" aria-describedby="what-do-you-think-is-happening-hint">
+      <form class="form" method="post">
+        
+        {% if data['page-errors'] == 'yes' %}
+          <div class="govuk-form-group govuk-form-group--error">
+          <fieldset class="govuk-fieldset" id="what-do-you-think-is-happening" aria-describedby="what-do-you-think-is-happening-hint what-do-you-think-is-happening-error">
+        {% else %}
+          <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" id="what-do-you-think-is-happening" aria-describedby="what-do-you-think-is-happening-hint">
+        {% endif %}
+          <fieldset class="govuk-fieldset" id="what-do-you-think-is-happening" aria-describedby="what-do-you-think-is-happening-hint">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
               <h1 class="govuk-fieldset__heading">
                 What do you think is happening?
@@ -29,6 +56,12 @@
             <div id="what-do-you-think-is-happening-hint" class="govuk-hint">
               Select all options that apply to this referral. Include as much information as you can about the potential fraud you are reporting.
             </div>
+
+            {% if data['page-errors'] == 'yes' %}
+              <p id="what-do-you-think-is-happening-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> Select at least one potential benefit fraud type
+              </p>
+            {% endif %}
 
             <div class="govuk-checkboxes" data-module="govuk-checkboxes">
               

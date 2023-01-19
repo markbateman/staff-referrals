@@ -5,6 +5,10 @@ const router = express.Router()
 router.post('/index', function(req, res) {
     // Reset all known V2 variables, listed out by page
 
+    // NEED TO RECONSIDER THIS AS IT COULD BE 'ERROR-CAPTURE' FOR EXAMPLE AND
+    // RESET ON A PER COMPLETED BASIS READY FOR THE 'NEXT' PAGE
+    req.session.data['page-errors'] = 'no';
+
     // who-do-you-want-to-report.html
     req.session.data['who-do-you-want-to-report'] = null;
 
@@ -121,11 +125,29 @@ router.post('/source-of-allegation', function(req, res) {
 
 // what-do-you-think-is-happening
 router.post('/what-do-you-think-is-happening', function(req, res) {
-    if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
-        res.redirect('check-your-answers#section-what-do-you-think-is-happening');
-    } else {
-        res.redirect('how-long-has-the-fraud');
-    }
+
+    if (req.session.data['living-together'] == 'living-together' || 
+        req.session.data['working-and-claiming'] == 'working-and-claiming' || 
+        req.session.data['id-fraud'] == 'id-fraud' || 
+        req.session.data['capital'] == 'capital' || 
+        req.session.data['other-income'] == 'other-income' || 
+        req.session.data['abroad-fraud'] == 'abroad-fraud' || 
+        req.session.data['doubtful-disability'] == 'doubtful-disability' || 
+        req.session.data['housing-related'] == 'housing-related' || 
+        req.session.data['not-providing-care'] == 'not-providing-care' || 
+        req.session.data['other'] == 'other') {
+            if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
+                req.session.data['page-errors'] = 'no';
+                res.redirect('check-your-answers#section-what-do-you-think-is-happening');
+            } else {
+                req.session.data['page-errors'] = 'no';
+                res.redirect('how-long-has-the-fraud');
+            }
+        } else {
+            // Reload the same page, errors will now be flagged...
+            req.session.data['page-errors'] = 'yes';
+            res.redirect('what-do-you-think-is-happening#error-summary');
+        }
 })
 
 // how-long-has-the-fraud
