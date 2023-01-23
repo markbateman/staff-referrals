@@ -5,7 +5,11 @@
 {% endset %}
 
 {% block pageTitle %}
-  Suspect's address and contact details – {{ serviceName }} – GOV.UK Prototype Kit
+  {% if data['page-errors'] == 'yes' %}
+    Error: Suspect's address and contact details – {{ serviceName }} – GOV.UK Prototype Kit
+  {% else %}
+    Suspect's address and contact details – {{ serviceName }} – GOV.UK Prototype Kit
+  {% endif %}
 {% endblock %}
 
 {% block beforeContent %}
@@ -15,12 +19,57 @@
 {% block content %}
 
   <div class="govuk-grid-row">
-
     <div class="govuk-grid-column-two-thirds">
     
+      <p>
+        page errors: {{ data['page-errors']}}<br>
+        address 1: {{ data['suspects-address-line-1'] }} and length = {{ data['suspects-address-line-1']|length }}<br>
+        town/city: {{ data['suspects-address-town'] }}  and length = {{ data['suspects-address-town']|length }} <br>
+        post code: {{ data['suspects-address-postcode'] }} and length = {{ data['suspects-address-postcode']|length }}<br>
+        region   : {{ data['suspects-address-region'] }} and length = {{ data['suspects-address-region']|length }}
+      </p>
+
+      {% if data['page-errors'] == 'yes' %}
+        <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" id="error-summary" data-module="govuk-error-summary">
+          <h2 class="govuk-error-summary__title" id="error-summary-title">
+            There is a problem
+          </h2>
+          <div class="govuk-error-summary__body">
+            <ul class="govuk-list govuk-error-summary__list">
+              {% if (data['suspects-address-line-1']|length == 0 and data['page-errors'] == 'yes') %}
+              <li>
+                <a href="#suspects-address-line-1">Enter an address line 1</a>
+              </li>
+              {% endif %}
+              {% if data['suspects-address-town']|length == 0 %}
+              <li>
+                <a href="#address-town">Enter a town or city</a>
+              </li>
+              {% endif %}
+              {% if data['suspects-address-postcode']|length == 0 %}
+              <li>
+                <a href="#address-postcode">Enter a postcode</a>
+              </li>
+              {% endif %}
+              {% if data['suspects-address-region'] == "choose" %}
+              <li>
+                <a href="#address-region">Select a region</a>
+              </li>
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      {% else %}
+        {# Do nothing #}
+      {% endif %}
+
       <form class="form" method="post">
 
+        {% if data['page-errors'] == 'yes' %}
+        <div class="govuk-form-group govuk-form-group--error">
+        {% else %}
         <div class="govuk-form-group">
+        {% endif %}
 
           <h1 class="govuk-heading-l">
             Suspect's address and contact details
@@ -29,133 +78,161 @@
           <fieldset class="govuk-fieldset">
 
             {## ADDRESS ##}
-            <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              <h2 class="govuk-fieldset__heading" id="section-suspects-address">
+                Suspect's address
+              </h2>
+            </legend>
 
-              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-                <h2 class="govuk-fieldset__heading" id="section-suspects-address">
-                  Suspect's address
-                </h2>
-              </legend>
-
-              <div class="govuk-form-group">
-                <label class="govuk-label" for="suspects-address-line-1">
-                  Address line 1
-                </label>
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="suspects-address-line-1" id="address-line-1">
+                Address line 1
+              </label>
+              {% if (data['suspects-address-line-1']|length == 0 and data['page-errors'] == 'yes') %}
+                <p id="suspects-address-line-1-error" class="govuk-error-message">
+                  <span class="govuk-visually-hidden">Error:</span> Enter an address line 1
+                </p>
+              {% endif %}
+              {% if (data['suspects-address-line-1']|length == 0 and data['page-errors'] == 'yes') %}
+                <input class="govuk-input govuk-input--error" id="suspects-address-line-1" name="suspects-address-line-1" value="{{ data['suspects-address-line-1'] }}" type="text" autocomplete="address-line1">
+              {% else %}
                 <input class="govuk-input" id="suspects-address-line-1" name="suspects-address-line-1" value="{{ data['suspects-address-line-1'] }}" type="text" autocomplete="address-line1">
-              </div>
-
-              <div class="govuk-form-group">
-                <label class="govuk-label" for="suspects-address-line-2">
-                  Address line 2 (optional)
-                </label>
-                <input class="govuk-input" id="suspects-address-line-2" name="suspects-address-line-2" value="{{ data['suspects-address-line-2'] }}" type="text" autocomplete="address-line2">
-              </div>
-
-              <div class="govuk-form-group">
-                <label class="govuk-label" for="suspects-address-town">
-                  Town or city
-                </label>
-                <input class="govuk-input govuk-!-width-two-thirds" id="suspects-address-town" name="suspects-address-town" value="{{ data['suspects-address-town'] }}" type="text" autocomplete="address-level2">
-              </div>
-
-              <div class="govuk-form-group">
-                <label class="govuk-label" for="suspects-address-county">
-                  County (optional)
-                </label>
-                <input class="govuk-input govuk-!-width-two-thirds" id="suspects-address-county" name="suspects-address-county" value="{{ data['suspects-address-county'] }}" type="text">
-              </div>
-
-              <div class="govuk-form-group">
-                <label class="govuk-label" for="suspects-address-postcode">
-                  Postcode
-                </label>
-                <input class="govuk-input govuk-input--width-10" id="suspects-address-postcode" name="suspects-address-postcode" value="{{ data['suspects-address-postcode'] }}" type="text" autocomplete="postal-code">
-              </div>
-
-              <div class="govuk-form-group">
-                <label class="govuk-label" for="suspects-address-region">
-                  Region
-                </label>
-                <select class="govuk-select" id="suspects-address-region" name="suspects-address-region" aria-describedby="suspects-address-region">
-                  <option value="choose" {% if data['suspects-address-region'] == 'null' %} selected{% endif %}>Choose region</option>
-                  <option value="centralengland" {% if data['suspects-address-region'] == 'centralengland' %} selected{% endif %}>Central England</option>
-                  <option value="londonandthehomecounties" {% if data['suspects-address-region'] == 'londonandthehomecounties' %} selected{% endif %}>London and the Home Counties</option>
-                  <option value="northeastengland" {% if data['suspects-address-region'] == 'northeastengland' %} selected{% endif %}>North East England</option>
-                  <option value="northernireland" {% if data['suspects-address-region'] == 'northernireland' %} selected{% endif %}>Northern Ireland</option>
-                  <option value="northwestengland" {% if data['suspects-address-region'] == 'northwestengland' %} selected{% endif %}>North West England</option>
-                  <option value="scotland" {% if data['suspects-address-region'] == 'scotland' %} selected{% endif %}>Scotland</option>
-                  <option value="southernengland" {% if data['suspects-address-region'] == 'southernengland' %} selected{% endif %}>Southern England</option>
-                  <option value="wales" {% if data['suspects-address-region'] == 'wales' %} selected{% endif %}>Wales</option>
-                </select>
-              </div>
-
-            </fieldset>
-
-            {## CONTACT DETAILS ##}
-            <div class="govuk-form-group govuk-!-margin-top-7">
-              <fieldset class="govuk-fieldset" aria-describedby="suspects-contact-details-hint">
-                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
-                  <h2 class="govuk-fieldset__heading">
-                    Suspect's contact details (optional)
-                  </h2>
-                </legend>
-                <div id="suspects-contact-details-hint" class="govuk-hint">
-                  Select all contact details that are relevant to the suspect.
-                </div>
-                <div class="govuk-checkboxes" data-module="govuk-checkboxes">
-                  
-                  {# TELEPHONE NUMBER #}
-                  <div class="govuk-checkboxes__item">
-                    <input class="govuk-checkboxes__input" id="contact-telephone" name="contact-telephone" type="checkbox" value="telephone" {{ checked("contact-telephone", "telephone") }} data-aria-controls="conditional-contact-telephone">
-                    <label class="govuk-label govuk-checkboxes__label" for="contact-telephone">
-                      Telephone
-                    </label>
-                  </div>
-                  <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact-telephone">
-                    <div class="govuk-form-group">
-                      <label class="govuk-label" for="suspect-contact-telephone">
-                        Telephone number
-                      </label>
-                      <input class="govuk-input govuk-input--width-20" id="suspect-contact-telephone" name="suspect-contact-telephone" value="{{ data['suspect-contact-telephone'] }}" type="tel" autocomplete="tel">
-                    </div>
-                  </div>
-
-                  {# MOBILE TELEPHONE NUMBER #}
-                  <div class="govuk-checkboxes__item">
-                    <input class="govuk-checkboxes__input" id="contact-mobile" name="contact-mobile" type="checkbox" value="mobile" {{ checked("contact-mobile", "mobile") }} data-aria-controls="conditional-contact-mobile">
-                    <label class="govuk-label govuk-checkboxes__label" for="contact-mobile">
-                      Mobile
-                    </label>
-                  </div>
-                  <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact-mobile">
-                    <div class="govuk-form-group">
-                      <label class="govuk-label" for="suspect-contact-mobile">
-                        Mobile number
-                      </label>
-                      <input class="govuk-input govuk-input--width-20" id="suspect-contact-mobile" name="suspect-contact-mobile" value="{{ data['suspect-contact-mobile'] }}" type="tel" autocomplete="tel">
-                    </div>
-                  </div>
-                  
-                  {# EMAIL ADDRESS #}
-                  <div class="govuk-checkboxes__item">
-                    <input class="govuk-checkboxes__input" id="contact-email" name="contact-email" type="checkbox" value="email" {{ checked("contact-email", "email") }} data-aria-controls="conditional-contact-email">
-                    <label class="govuk-label govuk-checkboxes__label" for="contact-email">
-                      Email
-                    </label>
-                  </div>
-                  <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact-email">
-                    <div class="govuk-form-group">
-                      <label class="govuk-label" for="suspect-contact-email">
-                        Email address
-                      </label>
-                      <input class="govuk-input govuk-input--width-20" id="suspect-contact-email" name="suspect-contact-email" value="{{ data['suspect-contact-email'] }}" type="email" spellcheck="false" autocomplete="email">
-                    </div>
-                  </div>
-
-                </div>
-              </fieldset>
+              {% endif %}
             </div>
 
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="suspects-address-line-2">
+                Address line 2 (optional)
+              </label>
+              <input class="govuk-input" id="suspects-address-line-2" name="suspects-address-line-2" value="{{ data['suspects-address-line-2'] }}" type="text" autocomplete="address-line2">
+            </div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="suspects-address-town" id="address-town">
+                Town or city
+              </label>
+              {% if (data['suspects-address-town']|length == 0 and data['page-errors'] == 'yes') %}
+                <p id="suspect-address-town-error" class="govuk-error-message">
+                  <span class="govuk-visually-hidden">Error:</span> Enter a town or city
+                </p>
+              {% endif %}
+              {% if (data['suspects-address-town']|length == 0 and data['page-errors'] == 'yes') %}
+               <input class="govuk-input govuk-input--error govuk-!-width-two-thirds" id="suspects-address-town" name="suspects-address-town" value="{{ data['suspects-address-town'] }}" type="text" autocomplete="address-level2">
+              {% else %}
+                <input class="govuk-input govuk-!-width-two-thirds" id="suspects-address-town" name="suspects-address-town" value="{{ data['suspects-address-town'] }}" type="text" autocomplete="address-level2">
+              {% endif %}
+            </div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="suspects-address-county">
+                County (optional)
+              </label>
+              <input class="govuk-input govuk-!-width-two-thirds" id="suspects-address-county" name="suspects-address-county" value="{{ data['suspects-address-county'] }}" type="text">
+            </div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="suspects-address-postcode" id="address-postcode">
+                Postcode
+              </label>
+              {% if (data['suspects-address-postcode']|length == 0 and data['page-errors'] == 'yes') %}
+                <p id="suspects-address-postcode-error" class="govuk-error-message">
+                  <span class="govuk-visually-hidden">Error:</span> Enter a postcode
+                </p>
+              {% endif %}
+              {% if (data['suspects-address-postcode']|length == 0 and data['page-errors'] == 'yes') %}
+                <input class="govuk-input govuk-input--error govuk-input--width-10" id="suspects-address-postcode" name="suspects-address-postcode" value="{{ data['suspects-address-postcode'] }}" type="text" autocomplete="postal-code">
+              {% else %}
+                <input class="govuk-input govuk-input--width-10" id="suspects-address-postcode" name="suspects-address-postcode" value="{{ data['suspects-address-postcode'] }}" type="text" autocomplete="postal-code">
+              {% endif %}
+            </div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="suspects-address-region" id="address-region">
+                Region
+              </label>
+              {% if (data['suspects-address-region'] == "choose" and data['page-errors'] == 'yes') %}
+                <p id="address-rergion-error" class="govuk-error-message">
+                  <span class="govuk-visually-hidden">Error:</span> Select a region
+                </p>
+              {% endif %}
+              <select class="govuk-select" id="suspects-address-region" name="suspects-address-region" aria-describedby="suspects-address-region">
+                <option value="choose" {% if data['suspects-address-region'] == 'null' %} selected{% endif %}>Choose region</option>
+                <option value="centralengland" {% if data['suspects-address-region'] == 'centralengland' %} selected{% endif %}>Central England</option>
+                <option value="londonandthehomecounties" {% if data['suspects-address-region'] == 'londonandthehomecounties' %} selected{% endif %}>London and the Home Counties</option>
+                <option value="northeastengland" {% if data['suspects-address-region'] == 'northeastengland' %} selected{% endif %}>North East England</option>
+                <option value="northernireland" {% if data['suspects-address-region'] == 'northernireland' %} selected{% endif %}>Northern Ireland</option>
+                <option value="northwestengland" {% if data['suspects-address-region'] == 'northwestengland' %} selected{% endif %}>North West England</option>
+                <option value="scotland" {% if data['suspects-address-region'] == 'scotland' %} selected{% endif %}>Scotland</option>
+                <option value="southernengland" {% if data['suspects-address-region'] == 'southernengland' %} selected{% endif %}>Southern England</option>
+                <option value="wales" {% if data['suspects-address-region'] == 'wales' %} selected{% endif %}>Wales</option>
+              </select>
+            </div>
+
+          </fieldset>
+        </div>
+
+        {## CONTACT DETAILS ##}
+        <div class="govuk-form-group govuk-!-margin-top-7">
+          <fieldset class="govuk-fieldset" aria-describedby="suspects-contact-details-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              <h2 class="govuk-fieldset__heading">
+                Suspect's contact details (optional)
+              </h2>
+            </legend>
+            <div id="suspects-contact-details-hint" class="govuk-hint">
+              Select all contact details that are relevant to the suspect.
+            </div>
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              
+              {# TELEPHONE NUMBER #}
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="contact-telephone" name="contact-telephone" type="checkbox" value="telephone" {{ checked("contact-telephone", "telephone") }} data-aria-controls="conditional-contact-telephone">
+                <label class="govuk-label govuk-checkboxes__label" for="contact-telephone">
+                  Telephone
+                </label>
+              </div>
+              <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact-telephone">
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="suspect-contact-telephone">
+                    Telephone number
+                  </label>
+                  <input class="govuk-input govuk-input--width-20" id="suspect-contact-telephone" name="suspect-contact-telephone" value="{{ data['suspect-contact-telephone'] }}" type="tel" autocomplete="tel">
+                </div>
+              </div>
+
+              {# MOBILE TELEPHONE NUMBER #}
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="contact-mobile" name="contact-mobile" type="checkbox" value="mobile" {{ checked("contact-mobile", "mobile") }} data-aria-controls="conditional-contact-mobile">
+                <label class="govuk-label govuk-checkboxes__label" for="contact-mobile">
+                  Mobile
+                </label>
+              </div>
+              <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact-mobile">
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="suspect-contact-mobile">
+                    Mobile number
+                  </label>
+                  <input class="govuk-input govuk-input--width-20" id="suspect-contact-mobile" name="suspect-contact-mobile" value="{{ data['suspect-contact-mobile'] }}" type="tel" autocomplete="tel">
+                </div>
+              </div>
+              
+              {# EMAIL ADDRESS #}
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="contact-email" name="contact-email" type="checkbox" value="email" {{ checked("contact-email", "email") }} data-aria-controls="conditional-contact-email">
+                <label class="govuk-label govuk-checkboxes__label" for="contact-email">
+                  Email
+                </label>
+              </div>
+              <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact-email">
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="suspect-contact-email">
+                    Email address
+                  </label>
+                  <input class="govuk-input govuk-input--width-20" id="suspect-contact-email" name="suspect-contact-email" value="{{ data['suspect-contact-email'] }}" type="email" spellcheck="false" autocomplete="email">
+                </div>
+              </div>
+
+            </div>
           </fieldset>
         </div>
 
@@ -165,6 +242,10 @@
         }) }}
 
       </form>
+
+      <p class="govuk-body">Jump to <a href="source-of-allegation?page-errors=no" class="govuk-link">Source of allegation</a></p>
+
+      <p class="govuk-body"><a href="suspects-address-and-contact-details?page-errors=no" class="govuk-link">Page re-load with no errors</a></p>
 
     </div>
   </div>

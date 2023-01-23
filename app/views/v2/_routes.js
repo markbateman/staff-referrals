@@ -22,7 +22,7 @@ router.post('/index', function(req, res) {
     req.session.data['suspects-address-town'] = null;
     req.session.data['suspects-address-county'] =null;
     req.session.data['suspects-address-postcode'] = null;
-    req.session.data['suspects-address-region'] = null;
+    req.session.data['suspects-address-region'] = "choose";
     req.session.data['suspects-age'] = null;
     req.session.data['suspects-date-of-birth-day'] = null;
     req.session.data['suspects-date-of-birth-month'] = null;
@@ -105,14 +105,52 @@ router.post('/suspects-personal-details', function(req, res) {
     }
 })
 
+// WORKING
 // suspects-address-and-contact-details
 router.post('/suspects-address-and-contact-details', function(req, res) {
-    if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
-        res.redirect('check-your-answers#section-suspects-details');
+    if (req.session.data['suspects-address-line-1'].length == 0 || req.session.data['suspects-address-town'].length == 0 || req.session.data['suspects-address-postcode'].length == 0  || req.session.data['suspects-address-region'] == 'choose') {
+        // Reload the same page, errors will now be flagged...
+        req.session.data['page-errors'] = 'yes';
+        res.redirect('suspects-address-and-contact-details#error-summary');
     } else {
-        res.redirect('source-of-allegation');
+        if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
+            req.session.data['page-errors'] = 'no';
+            res.redirect('check-your-answers#section-suspects-details');
+        } else {
+            req.session.data['page-errors'] = 'no';
+            res.redirect('source-of-allegation');
+        }
     }
 })
+
+// suspects-address-and-contact-details
+//router.post('/suspects-address-and-contact-details', function(req, res) {
+//    if ((req.session.data['suspects-address-line-1'].length == 0) ||
+//        (req.session.data['suspects-address-town'].length == 0) ||
+//       (req.session.data['suspects-address-postcode'].length == 0) ||
+//        (req.session.data['suspects-address-region'] != 'choose')) {
+//        if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
+//            req.session.data['page-errors'] = 'no';
+//            res.redirect('check-your-answers#section-suspects-details');
+//        } else {
+//            req.session.data['page-errors'] = 'no';
+//            res.redirect('source-of-allegation');
+//        }
+//    } else {
+//        // Reload the same page, errors will now be flagged...
+//        req.session.data['page-errors'] = 'yes';
+//        res.redirect('suspects-address-and-contact-details#error-summary');
+//   }
+//})
+
+// suspects-address-and-contact-details
+//router.post('/suspects-address-and-contact-details', function(req, res) {
+//    if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
+//        res.redirect('check-your-answers#section-suspects-details');
+//    } else {
+//        res.redirect('source-of-allegation');
+//    }
+//})
 
 // source-of-allegation
 router.post('/source-of-allegation', function(req, res) {
@@ -123,9 +161,27 @@ router.post('/source-of-allegation', function(req, res) {
     }
 })
 
+// THIS DOESN'T WORK BUT IT SHOULD
+// what-do-you-think-is-happening
+//router.post('/what-do-you-think-is-happening', function(req, res) {
+//    if (req.session.data['living-together'] == null || req.session.data['working-and-claiming'] == null || req.session.data['id-fraud'] == null || req.session.data['capital'] == null || req.session.data['other-income'] == null || req.session.data['abroad-fraud'] == null || req.session.data['doubtful-disability'] == null || req.session.data['housing-related'] == null || req.session.data['not-providing-care'] == null || req.session.data['other'] == null) {
+//        // Reload the same page, errors will now be flagged...
+//        req.session.data['page-errors'] = 'yes';
+//        res.redirect('what-do-you-think-is-happening#error-summary');
+//    } else {
+//        if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
+//            req.session.data['page-errors'] = 'no';
+//            res.redirect('check-your-answers#section-what-do-you-think-is-happening');
+//        } else {
+//            req.session.data['page-errors'] = 'no';
+//            res.redirect('how-long-has-the-fraud');
+//        }
+//    }
+//})
+
+// THIS ONE WORKS BUT IT SHOULDN'T
 // what-do-you-think-is-happening
 router.post('/what-do-you-think-is-happening', function(req, res) {
-
     if (req.session.data['living-together'] == 'living-together' || 
         req.session.data['working-and-claiming'] == 'working-and-claiming' || 
         req.session.data['id-fraud'] == 'id-fraud' || 
@@ -136,18 +192,18 @@ router.post('/what-do-you-think-is-happening', function(req, res) {
         req.session.data['housing-related'] == 'housing-related' || 
         req.session.data['not-providing-care'] == 'not-providing-care' || 
         req.session.data['other'] == 'other') {
-            if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
-                req.session.data['page-errors'] = 'no';
-                res.redirect('check-your-answers#section-what-do-you-think-is-happening');
-            } else {
-                req.session.data['page-errors'] = 'no';
-                res.redirect('how-long-has-the-fraud');
-            }
+        if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
+            req.session.data['page-errors'] = 'no';
+            res.redirect('check-your-answers#section-what-do-you-think-is-happening');
         } else {
-            // Reload the same page, errors will now be flagged...
-            req.session.data['page-errors'] = 'yes';
-            res.redirect('what-do-you-think-is-happening#error-summary');
+            req.session.data['page-errors'] = 'no';
+            res.redirect('how-long-has-the-fraud');
         }
+    } else {
+        // Reload the same page, errors will now be flagged...
+        req.session.data['page-errors'] = 'yes';
+        res.redirect('what-do-you-think-is-happening#error-summary');
+    }
 })
 
 // how-long-has-the-fraud
@@ -159,12 +215,21 @@ router.post('/how-long-has-the-fraud', function(req, res) {
     }
 })
 
+// WORKING
 // submitters-details
 router.post('/submitters-details', function(req, res) {
-    if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
-        res.redirect('check-your-answers#section-submitters-details');
+    if (req.session.data['submitters-first-name'].length == 0 || req.session.data['submitters-last-name'].length == 0) {
+        // Reload the same page, errors will now be flagged...
+        req.session.data['page-errors'] = 'yes';
+        res.redirect('submitters-details#error-summary');
     } else {
-        res.redirect('check-your-answers');
+        if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
+            req.session.data['page-errors'] = 'no';
+            res.redirect('check-your-answers#section-submitters-details');
+        } else {
+            req.session.data['page-errors'] = 'no';
+            res.redirect('check-your-answers');
+        }
     }
 })
 
@@ -173,7 +238,10 @@ router.post('cbeck-your-answers', function(req, res) {
     res.redirect('confirmation');
 })
 
-// check-answers
+// give-feedback
+router.post('/give-feedback', function(req, res) {
+    res.redirect('feedback-confirmation');
+})
 
 // Add your routes here - above the module.exports line
 module.exports = router
