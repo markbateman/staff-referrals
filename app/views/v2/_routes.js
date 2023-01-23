@@ -44,6 +44,8 @@ router.post('/index', function(req, res) {
     req.session.data['living-together-hint'] = null;
     req.session.data['working-and-claiming'] = null;
     req.session.data['working-and-claiming-hint'] = null;
+    req.session.data['id-fraud'] = null;
+    req.session.data['id-fraud-hint'] = null;
     req.session.data['capital'] = null;
     req.session.data['capital-hint'] = null;
     req.session.data['other-income'] = null;
@@ -92,6 +94,25 @@ router.post('/who-do-you-want-to-report', function(req, res) {
 //            res.redirect('check-your-answers#section-allegation-details');
 //        } else {
 //            res.redirect('suspects-personal-details');
+//        }
+//    }
+//})
+
+// suspects-personal-details
+//router.post('/suspects-personal-details', function(req, res) {
+//    if (req.session.data['suspects-approximate-age'].length != 0) {
+//        req.session.data['page-errors'] = 'no';
+//    } else if (req.session.data['suspects-date-of-birth-day'].length == 0 || req.session.data['suspects-date-of-birth-month'].length == 0 || req.session.data['suspects-date-of-birth-year'].length == 0) {
+//        // Reload the same page, errors will now be flagged...
+//        req.session.data['page-errors'] = 'yes';
+//        res.redirect('suspects-personal-details#error-summary');
+//    } else {
+//        if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
+//            req.session.data['page-errors'] = 'no';
+//            res.redirect('check-your-answers#section-suspects-details');
+//        } else {
+//            req.session.data['page-errors'] = 'no';
+//            res.redirect('suspects-address-and-contact-details');
 //        }
 //    }
 //})

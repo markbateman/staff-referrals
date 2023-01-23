@@ -17,59 +17,8 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-{#
-      {% if errorList.length > 0 %}
-        {{ govukErrorSummary({
-          titleText: "There is a problem",
-          errorList: errorList
-        }) }}
-      {% endif %}
-#}
-
       <form class="form" method="post">
 
-<!--
-{% if errorWhoDoYouWantToReport == true %}
-        <div class="govuk-form-group govuk-form-group--error">
-          <fieldset class="govuk-fieldset">
-            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-              <h1 class="govuk-fieldset__heading">
-                Who do you want to report?
-              </h1>
-            </legend>
-            <p id="who-do-you-want-to-report-error" class="govuk-error-message">
-              <span class="govuk-visually-hidden">Error:</span> Choose someone to report
-            </p>
-            <div class="govuk-radios" data-module="govuk-radios">
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="who-do-you-want-to-report" name="who-do-you-want-to-report" type="radio" value="person" {{ checked("who-do-you-want-to-report", "person") }}>
-                <label class="govuk-label govuk-radios__label" for="who-do-you-want-to-report">
-                  A person
-                </label>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="who-do-you-want-to-report-2" name="who-do-you-want-to-report" type="radio" value="employer" {{ checked("who-do-you-want-to-report", "employer") }}>
-                <label class="govuk-label govuk-radios__label" for="who-do-you-want-to-report-2">
-                  An employer
-                </label>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="who-do-you-want-to-report-3" name="who-do-you-want-to-report" type="radio" value="organisation" {{ checked("who-do-you-want-to-report", "organisation") }}>
-                <label class="govuk-label govuk-radios__label" for="who-do-you-want-to-report-3">
-                  An organisation
-                </label>
-              </div>
-              <div class="govuk-radios__item">
-                <input class="govuk-radios__input" id="who-do-you-want-to-report-4" name="who-do-you-want-to-report" type="radio" value="dwp-staff-member" {{ checked("who-do-you-want-to-report", "dwp-staff-member") }}>
-                <label class="govuk-label govuk-radios__label" for="who-do-you-want-to-report-4">
-                  A DWP staff member
-                </label>
-              </div>
-            </div>
-          </fieldset>
-        </div>
-{% else %}
--->
         <div class="govuk-form-group">
           <fieldset class="govuk-fieldset" data-required data-error="Select who you want to report">
             <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
@@ -105,7 +54,6 @@
             </div>
           </fieldset>
         </div>
-<!--{% endif %}-->
 
         {{ govukButton({
           text: 'Continue',
@@ -114,7 +62,7 @@
 
       </form>
 
-      <p class="govuk-body">Jump to <a href="submitters-details" class="govuk-link">submitters-details</a></p>
+      {#<p class="govuk-body">Jump to <a href="submitters-details" class="govuk-link">submitters-details</a></p>#}
 
     </div>
   </div>

@@ -263,50 +263,39 @@
             <span class="govuk-visually-hidden">Suspect's </span>Address
           </dt>
           <dd class="govuk-summary-list__value">
-            {% if (data['suspects-address-line-1'] == null or data['suspects-address-line-1'] == '') and
-            (data['suspects-address-line-2'] == null or data['suspects-address-line-2'] == '') and
-            (data['suspects-address-town'] == null or data['suspects-address-town'] == '') and
-            (data['suspects-address-county'] == null or data['suspects-address-county'] == '') and
-            (data['suspects-address-postcode'] == null or data['suspects-address-postcode'] == '') and
-            data['suspects-address-region'] == 'choose' %}
-              Not provided
-            {% else %}
-              {% if data['suspects-address-line-1'] != '' %}
-                {{ data['suspects-address-line-1'] }}<br>
-              {% endif %}
-              {% if data['suspects-address-line-2'] != '' %}
-                {{ data['suspects-address-line-2'] }}<br>
-              {% endif %}
-              {% if data['suspects-address-town'] != '' %}
-                {{ data['suspects-address-town'] }}<br>
-              {% endif %}
-              {% if data['suspects-address-county'] != '' %}
-                {{ data['suspects-address-county'] }}<br>
-              {% endif %}
-              {% if data['suspects-address-postcode'] != '' %}
-                {{ data['suspects-address-postcode'] }}<br>
-              {% endif %}
-              {% if data['suspects-address-region'] != 'choose' %}
-                {% if data['suspects-address-region'] == 'centralengland' %}
-                  Central England
-                {% elif data['suspects-address-region'] == 'londonandthehomecounties' %}
-                  London and the Home Counties
-                {% elif data['suspects-address-region'] == 'northeastengland' %}
-                  North East England
-                {% elif data['suspects-address-region'] == 'northernireland' %}
-                  Northern Ireland
-                {% elif data['suspects-address-region'] == 'northwestengland' %}
-                  North West England
-                {% elif data['suspects-address-region'] == 'scotland' %}
-                  Scotland
-                {% elif data['suspects-address-region'] == 'southernengland' %}
-                  Southern England
-                {% elif ['suspects-address-region'] == 'wales' %}
-                  Wales
-                {% else %}
-                  Not provided
-                {% endif %}
-              {% endif %}
+            {{ data['suspects-address-line-1'] }}<br>
+
+            {# Address line 2 is optional #}
+            {% if data['suspects-address-line-2']|length > 0 %}
+              {{ data['suspects-address-line-2'] }}<br>
+            {% endif %}
+
+            {{ data['suspects-address-town'] }}<br>
+
+            {# County is optional #}
+            {% if data['suspects-address-county']|length > 0 %}
+              {{ data['suspects-address-county'] }}<br>
+            {% endif %}
+
+            {{ data['suspects-address-postcode'] }}<br>
+
+            {# Region is logic dependent on chosen value #}
+            {% if data['suspects-address-region'] == 'centralengland' %}
+              Central England
+            {% elif data['suspects-address-region'] == 'londonandthehomecounties' %}
+              London and the Home Counties
+            {% elif data['suspects-address-region'] == 'northeastengland' %}
+              North East England
+            {% elif data['suspects-address-region'] == 'northernireland' %}
+              Northern Ireland
+            {% elif data['suspects-address-region'] == 'northwestengland' %}
+              North West England
+            {% elif data['suspects-address-region'] == 'scotland' %}
+              Scotland
+            {% elif data['suspects-address-region'] == 'southernengland' %}
+              Southern England
+            {% elif ['suspects-address-region'] == 'wales' %}
+              Wales
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">

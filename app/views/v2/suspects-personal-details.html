@@ -5,7 +5,11 @@
 {% endset %}
 
 {% block pageTitle %}
-  Suspect's personal details – {{ serviceName }} – GOV.UK Prototype Kit
+  {% if data['page-errors'] == 'yes' %}
+    Error: Suspect's personal details – {{ serviceName }} – GOV.UK Prototype Kit
+  {% else %}
+    Suspect's personal details – {{ serviceName }} – GOV.UK Prototype Kit
+  {% endif %}
 {% endblock %}
 
 {% block beforeContent %}
@@ -16,6 +20,38 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+
+      {% if data['page-errors'] == 'yes' %}
+        <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" id="error-summary" data-module="govuk-error-summary">
+          <h2 class="govuk-error-summary__title" id="error-summary-title">
+            There is a problem
+          </h2>
+          <div class="govuk-error-summary__body">
+            <ul class="govuk-list govuk-error-summary__list">
+              {% if data['suspects-approximate-age']|length == 0 and data['page-errors'] == 'yes' %}
+                {% if (data['suspects-date-of-birth-day']|length == 0 or data['suspects-date-of-birth-month']|length == 0 or data['suspects-date-of-birth-year']|length == 0) and (data['page-errors'] == 'yes') %}
+                  <li>
+                    <a href="#suspects-date-of-birth">Enter a date of birth or approximate age</a>
+                  </li>
+                {% endif %}
+              {% endif %}
+            </ul>
+          </div>
+        </div>
+      {% else %}
+        {# Do nothing #}
+      {% endif %}
+
+      {#
+      <p>
+        page errors: {{ data['page-errors']}}<br>
+        birth day  : {{ data['suspects-date-of-birth-day'] }} and length = {{ data['suspects-date-of-birth-day']|length }}<br>
+        birth month: {{ data['suspects-date-of-birth-month'] }}  and length = {{ data['suspects-date-of-birth-month']|length }} <br>
+        birth year : {{ data['suspects-date-of-birth-year'] }} and length = {{ data['suspects-date-of-birth-year']|length }}<br>
+        approx age : {{ data['suspects-approximate-age'] }} and length = {{ data['suspects-approximate-age']|length }}
+      </p>
+      #}
+
       <form class="form" method="post">
         <div class="govuk-form-group">
           <h1 class="govuk-heading-l">
@@ -68,7 +104,12 @@
             </div>
 
             {# SUSPECT'S DATE OF BIRTH #}
+            {% if data['page-errors'] == 'yes' %}
+            <div class="govuk-form-group govuk-form-group--error">
+            {% else %}
             <div class="govuk-form-group">
+            {% endif %}
+
               <fieldset class="govuk-fieldset" role="group" aria-describedby="suspects-date-of-birth-hint">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--m govuk-body">
                   <h2 class="govuk-fieldset__heading" id="section-suspects-date-of-birth">
