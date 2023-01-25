@@ -117,14 +117,40 @@ router.post('/who-do-you-want-to-report', function(req, res) {
 //    }
 //})
 
+// WORKING
 // suspects-personal-details
 router.post('/suspects-personal-details', function(req, res) {
-    if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
-        res.redirect('check-your-answers#section-suspects-details');
+    if (req.session.data['suspects-age'] == 'date-of-birth' || req.session.data['suspects-age'] == 'approximate-age' || req.session.data['suspects-age'] == 'age-not-known') {
+        if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
+            req.session.data['page-errors'] = 'no';
+            res.redirect('check-your-answers#section-suspects-details');
+        } else {
+            req.session.data['page-errors'] = 'no';
+            res.redirect('suspects-address-and-contact-details');
+        }
     } else {
-        res.redirect('suspects-address-and-contact-details');
+        // Reload the same page, errors will now be flagged...
+        req.session.data['page-errors'] = 'yes';
+        res.redirect('suspects-personal-details#error-summary');
     }
 })
+
+// suspects-personal-details
+//router.post('/suspects-personal-details', function(req, res) {
+//    if (req.session.data['suspects-age'] != 'date-of-birth' || req.session.data['suspects-age'] != 'approximate-age' || req.session.data['suspects-age'] != 'age-not-known') {
+//        // Reload the same page, errors will now be flagged...
+//        req.session.data['page-errors'] = 'yes';
+//        res.redirect('suspects-personal-details#error-summary');
+//    } else {
+//        if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
+//            req.session.data['page-errors'] = 'no';
+//            res.redirect('check-your-answers#section-suspects-details');
+//        } else {
+//            req.session.data['page-errors'] = 'no';
+//            res.redirect('suspects-address-and-contact-details');
+//        }
+//    }
+//})
 
 // WORKING
 // suspects-address-and-contact-details
@@ -225,6 +251,16 @@ router.post('/what-do-you-think-is-happening', function(req, res) {
         req.session.data['page-errors'] = 'yes';
         res.redirect('what-do-you-think-is-happening#error-summary');
     }
+})
+
+// what-do-you-think-is-happening-v2
+router.post('/what-do-you-think-is-happening-v2', function(req, res) {
+    res.redirect('how-long-has-the-fraud-v2');
+})
+
+// how-long-has-the-fraud-v2
+router.post('/how-long-has-the-fraud-v2', function(req, res) {
+    res.redirect('submitters-details');
 })
 
 // how-long-has-the-fraud
