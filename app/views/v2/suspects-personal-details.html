@@ -30,7 +30,7 @@
             <ul class="govuk-list govuk-error-summary__list">
             {% if (data['suspects-age'] != 'date-of-birth' or data['suspects-age'] != 'approximate-age' or data['suspects-age'] != 'age-not-known') and (data['page-errors'] == 'yes') %}
               <li>
-                <a href="#suspects-date-of-birth">Enter a date of birth, an approximate age, or don't know either</a>
+                <a href="#suspects-date-of-birth">Select the suspect's date of birth or approximate age, or select "I do not know"</a>
               </li>
             {% endif %}
             </ul>
@@ -121,7 +121,7 @@
 
                 {% if data['page-errors'] == 'yes' %}
                   <p id="suspects-age-error" class="govuk-error-message">
-                    <span class="govuk-visually-hidden">Error:</span> Enter a date of birth, an approximate age, or don't know either
+                    <span class="govuk-visually-hidden">Error:</span> Select the suspect's date of birth or approximate age, or select "I do not know"
                   </p>
                 {% endif %}
 
@@ -188,11 +188,12 @@
                     </div>
                   </div>
 
-                  {# DON'T KNOW EITHER #}
+                  {# OR... DON'T KNOW EITHER #}
+                  <div class="govuk-radios__divider">or</div>
                   <div class="govuk-radios__item">
                     <input class="govuk-radios__input" id="suspects-age-3" name="suspects-age" type="radio" value="age-not-known" data-aria-controls="conditional-suspects-age-3" {{ checked("suspects-age", "age-not-known") }}>
                     <label class="govuk-label govuk-radios__label" for="suspects-age-3">
-                      Don't know either
+                      I do not know
                     </label>
                   </div>
 
