@@ -1,0 +1,117 @@
+{% extends "../layouts/v3-layout.html" %}
+
+{% set serviceName %}
+{% endset %}
+
+{% block pageTitle %}
+    Fraud referral form – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  <div class="govuk-phase-banner">
+    <p class="govuk-phase-banner__content">
+    <strong class="govuk-tag govuk-phase-banner__content__tag govuk-tag--pink">
+      give feedback
+    </strong>
+      <span class="govuk-phase-banner__text">
+        This is a new service <a class="govuk-link" href="give-feedback">tell us what you think</a> (it takes 30 seconds).
+      </span>
+    </p>
+  </div>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        Fraud referral form
+      </h1>
+
+      <p class="govuk-body">
+        Use this service to report someone you suspect of benefit fraud.
+      </p>
+
+      <p class="govuk-body">
+        Enter as much detail as you can, including the person's National Insurance number if you know it.
+      </p>
+
+      <div class="govuk-warning-text">
+        <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+        <strong class="govuk-warning-text__text">
+          <span class="govuk-warning-text__assistive">
+            Warning
+          </span>
+          Do not search any departmental systems for more details or to check any information you are given. This could be 
+          treated as unauthorised access and may result in disciplinary action.
+        </strong>
+      </div>
+
+      <h2 class="govuk-heading-m">Before you start</h2>
+
+      <p class="govuk-body">
+        By starting this referral, you are confirming that you have not searched departmental systems for information.
+      </p>
+
+      <form class="form" method="post">
+        {{ govukButton({
+          text: "Accept and start now",
+          isStartButton: true
+        }) }}
+      </form>
+
+    </div>
+
+    <div class="govuk-grid-column-one-third">
+      <aside class="app-related-items" role="complementary">
+        <h2 class="govuk-heading-m" id="subsection-title">
+          Useful phone numbers
+        </h2>
+        <nav role="navigation" aria-labelledby="subsection-title">
+
+        <h3 class="govuk-heading-s">Great Britain</h3>
+          <ul class="govuk-list govuk-!-font-size-16">
+            <li>
+              <strong>Benefit Fraud Hotline</strong>
+            </li>
+            <li>
+              0800 854 440 (English)
+            </li>
+            <li>
+              0800 678 3722 (Welsh)
+            </li>
+          </ul>
+          <ul class="govuk-list govuk-!-font-size-16">
+            <li>
+              <strong>Textphone users</strong>
+            </li>
+            <li>
+              0800 328 0512
+            </li>
+          </ul>
+
+        <h3 class="govuk-heading-s">Northern Ireland</h3>
+          <ul class="govuk-list govuk-!-font-size-16">
+            <li>
+              <strong>Benefit Fraud Hotline</strong>
+            </li>
+            <li>
+              0800 975 6050
+            </li>
+          </ul>
+          <ul class="govuk-list govuk-!-font-size-16">
+            <li>
+              <strong>Textphone users</strong>
+            </li>
+            <li>
+              028 9055 6991
+            </li>
+          </ul>
+         
+        </nav>
+      </aside>
+    </div>
+
+  </div>
+
+{% endblock %}

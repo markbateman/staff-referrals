@@ -32,7 +32,7 @@
 {% from "govuk/components/textarea/macro.njk"            import govukTextarea %}
 {% from "govuk/components/warning-text/macro.njk"        import govukWarningText %}
 
-{# set serviceName = "Prototype layout template V2" #}
+{# set serviceName = "Prototype layout template V3" #}
 
 {% block head %}
   {% include "includes/head.html" %}
@@ -46,7 +46,7 @@
   {{ govukHeader({
     homepageUrl: "/",
     serviceName: serviceName,
-    serviceUrl: "../v2/index",
+    serviceUrl: "../v3/index",
     containerClasses: "govuk-width-container"
   }) }}
 {% endblock %}
