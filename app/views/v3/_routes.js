@@ -74,7 +74,7 @@ router.post('/index', function(req, res) {
 
 // who-do-you-want-to-report
 router.post('/who-do-you-want-to-report', function(req, res) {
-    if (req.session.data["who-do-you-want-to-report"] == "person" || req.session.data['who-do-you-want-to-report'] == "dwp-staff-member") {
+    if (req.session.data["who-do-you-want-to-report"] == "person") {
         if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
             res.redirect('check-your-answers#section-allegation-details');
         } else {
