@@ -34,7 +34,7 @@
             {% elif data['who-do-you-want-to-report'] == 'organisation' %}
               An organisation
             {% elif data['who-do-you-want-to-report'] == 'dwp-staff-member' %}
-              A DWP staff member
+              A Department for Work and Pensions (DWP) staff member
             {% else %}
               Not provided
             {% endif %}
@@ -51,9 +51,9 @@
           </dt>
           <dd class="govuk-summary-list__value">
             {% if data['source-of-allegation'] == 'dwp-staff-member' %}
-              DWP staff member
+              Department for Work and Pensions (DWP) staff member
             {% elif data['source-of-allegation'] == 'hmrc' %}
-              HMRC
+              HM Revenue and Customs (HMRC)
             {% elif data['source-of-allegation'] == 'internet' %}
               Internet
             {% elif data['source-of-allegation'] == 'local-authority' %}

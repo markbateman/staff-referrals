@@ -156,9 +156,9 @@
                 (data['housing-related'] == 'housing-related' and data['housing-related-hint'].length == 0) or 
                 (data['not-providing-care'] == 'not-providing-care' and data['not-providing-care-hint'].length == 0) or 
                 (data['other'] == 'other' and data['other-hint'].length == 0) %}
-                  <p id="what-do-you-think-is-happening-error" class="govuk-error-message">
+                  {# <p id="what-do-you-think-is-happening-error" class="govuk-error-message">
                     <span class="govuk-visually-hidden">Error:</span> Enter the details of the fraud types you think is happening
-                  </p>
+                  </p> #}
               {% elif (data['living-together'] != 'living-together') or 
                 (data['working-and-claiming'] != 'working-and-claiming') or 
                 (data['id-fraud'] != 'id-fraud') or 
@@ -191,37 +191,41 @@
                 <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="1500">
                 {% if (data['living-together'] == 'living-together' and data['living-together-hint'].length == 0) %}
                   <div class="govuk-form-group govuk-form-group--error">
-                    <p class="govuk-body">You could include:</p>
-                    <ul class="govuk-list govuk-list--bullet">
-                      <li>the alleged partner's name</li>
-                      <li>any addresses involved</li>
-                      <li>details of their work (if they are working)</li>
-                      <li>details of their routine, for example times when they are at home</li>
-                      <li>the vehicles they use</li>
-                      <li>any children involved, including their names and ages</li>
-                      <li>any additional information</li>
-                    </ul>
+                    <label for="living-together-hint">
+                      <p class="govuk-body">You could include:</p>
+                      <ul class="govuk-list govuk-list--bullet">
+                        <li>the alleged partner's name</li>
+                        <li>any addresses involved</li>
+                        <li>details of their work (if they are working)</li>
+                        <li>details of their routine, for example times when they are at home</li>
+                        <li>the vehicles they use</li>
+                        <li>any children involved, including their names and ages</li>
+                        <li>any additional information</li>
+                      </ul>
+                    </label>
                     <p id="living-together-error" class="govuk-error-message">
                       <span class="govuk-visually-hidden">Error:</span> Enter the details of the living together fraud you think is happening
                     </p>
-                    <textarea class="govuk-textarea govuk-js-character-count govuk-input--error" id="living-together-hint" name="living-together-hint" rows="5" aria-describedby="living-together-hint-info living-together-hint-hint">{{ data['living-together-hint'] }}</textarea>
+                    <textarea class="govuk-textarea govuk-js-character-count govuk-input--error" id="living-together-hint" name="living-together-hint" rows="5" aria-describedby="living-together-hint-info">{{ data['living-together-hint'] }}</textarea>
                   </div>
                   <div id="living-together-hint-info" class="govuk-hint govuk-character-count__message">
                     You can enter up to 1,500 characters
                   </div>
                 {% else %}
                   <div class="govuk-form-group">
-                    <p class="govuk-body">You could include:</p>
-                    <ul class="govuk-list govuk-list--bullet">
-                      <li>the alleged partner's name</li>
-                      <li>any addresses involved</li>
-                      <li>details of their work (if they are working)</li>
-                      <li>details of their routine, for example times when they are at home</li>
-                      <li>the vehicles they use</li>
-                      <li>any children involved, including their names and ages</li>
-                      <li>any additional information</li>
-                    </ul>
-                    <textarea class="govuk-textarea govuk-js-character-count" id="living-together-hint" name="living-together-hint" rows="5" aria-describedby="living-together-hint-info living-together-hint-hint">{{ data['living-together-hint'] }}</textarea>
+                    <label for="living-together-hint">
+                      <p class="govuk-body">You could include:</p>
+                      <ul class="govuk-list govuk-list--bullet">
+                        <li>the alleged partner's name</li>
+                        <li>any addresses involved</li>
+                        <li>details of their work (if they are working)</li>
+                        <li>details of their routine, for example times when they are at home</li>
+                        <li>the vehicles they use</li>
+                        <li>any children involved, including their names and ages</li>
+                        <li>any additional information</li>
+                      </ul>
+                    </label>
+                    <textarea class="govuk-textarea govuk-js-character-count" id="living-together-hint" name="living-together-hint" rows="5" aria-describedby="living-together-hint-info">{{ data['living-together-hint'] }}</textarea>
                   </div>
                   <div id="living-together-hint-info" class="govuk-hint govuk-character-count__message">
                     You can enter up to 1,500 characters
@@ -241,41 +245,45 @@
                 <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="1500">
                 {% if (data['working-and-claiming'] == 'working-and-claiming' and data['working-and-claiming-hint'].length == 0) %}
                   <div class="govuk-form-group govuk-form-group--error">
-                    <p class="govuk-body">You could include:</p>
-                    <ul class="govuk-list govuk-list--bullet">
-                      <li>who is actually working</li>
-                      <li>their current employer's details, for example employer name</li>
-                      <li>if they are self-employed</li>
-                      <li>how they are paid</li>
-                      <li>how they travel to work</li>
-                      <li>their routine</li>
-                      <li>their uniform</li>
-                      <li>the vehicles they use</li>
-                      <li>any additional information</li>
-                    </ul>
+                    <label for="working-and-claiming-hint">
+                      <p class="govuk-body">You could include:</p>
+                      <ul class="govuk-list govuk-list--bullet">
+                        <li>who is actually working</li>
+                        <li>their current employer's details, for example employer name</li>
+                        <li>if they are self-employed</li>
+                        <li>how they are paid</li>
+                        <li>how they travel to work</li>
+                        <li>their routine</li>
+                        <li>their uniform</li>
+                        <li>the vehicles they use</li>
+                        <li>any additional information</li>
+                      </ul>
+                    </label>
                     <p id="working-and-claiming-error" class="govuk-error-message">
                       <span class="govuk-visually-hidden">Error:</span> Enter the details of the working and claiming fraud you think is happening
                     </p>
-                    <textarea class="govuk-textarea govuk-js-character-count govuk-input--error" id="working-and-claiming-hint" name="working-and-claiming-hint" rows="5" aria-describedby="working-and-claiming-hint-info working-and-claiming-hint-hint">{{ data['working-and-claiming-hint'] }}</textarea>
+                    <textarea class="govuk-textarea govuk-js-character-count govuk-input--error" id="working-and-claiming-hint" name="working-and-claiming-hint" rows="5" aria-describedby="working-and-claiming-hint-info">{{ data['working-and-claiming-hint'] }}</textarea>
                   </div>
                   <div id="working-and-claiming-hint-info" class="govuk-hint govuk-character-count__message">
                     You can enter up to 1,500 characters
                   </div>
                 {% else %}
                   <div class="govuk-form-group">
-                    <p class="govuk-body">You could include:</p>
-                    <ul class="govuk-list govuk-list--bullet">
-                      <li>who is actually working</li>
-                      <li>their current employer's details, for example employer name</li>
-                      <li>if they are self-employed</li>
-                      <li>how they are paid</li>
-                      <li>how they travel to work</li>
-                      <li>their routine</li>
-                      <li>their uniform</li>
-                      <li>the vehicles they use</li>
-                      <li>any additional information</li>
-                    </ul>
-                    <textarea class="govuk-textarea govuk-js-character-count" id="working-and-claiming-hint" name="working-and-claiming-hint" rows="5" aria-describedby="working-and-claiming-hint-info working-and-claiming-hint-hint">{{ data['working-and-claiming-hint'] }}</textarea>
+                    <label for="working-and-claiming-hint">
+                      <p class="govuk-body">You could include:</p>
+                      <ul class="govuk-list govuk-list--bullet">
+                        <li>who is actually working</li>
+                        <li>their current employer's details, for example employer name</li>
+                        <li>if they are self-employed</li>
+                        <li>how they are paid</li>
+                        <li>how they travel to work</li>
+                        <li>their routine</li>
+                        <li>their uniform</li>
+                        <li>the vehicles they use</li>
+                        <li>any additional information</li>
+                      </ul>
+                    </label>
+                    <textarea class="govuk-textarea govuk-js-character-count" id="working-and-claiming-hint" name="working-and-claiming-hint" rows="5" aria-describedby="working-and-claiming-hint-info">{{ data['working-and-claiming-hint'] }}</textarea>
                   </div>
                   <div id="working-and-claiming-hint-info" class="govuk-hint govuk-character-count__message">
                     You can enter up to 1,500 characters
@@ -295,33 +303,37 @@
                 <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="1500">
                 {% if (data['id-fraud'] == 'id-fraud' and data['id-fraud-hint'].length == 0) %}
                   <div class="govuk-form-group govuk-form-group--error">
-                    <p class="govuk-body">You could include:</p>
-                    <ul class="govuk-list govuk-list--bullet">
-                      <li>why you think the person is committing ID fraud</li>
-                      <li>the names they use</li>
-                      <li>the addresses they use</li>
-                      <li>the types of documents being used for the identity</li>
-                      <li>any additional information</li>
-                    </ul>
+                    <label for="id-fraud-hint">
+                      <p class="govuk-body">You could include:</p>
+                      <ul class="govuk-list govuk-list--bullet">
+                        <li>why you think the person is committing ID fraud</li>
+                        <li>the names they use</li>
+                        <li>the addresses they use</li>
+                        <li>the types of documents being used for the identity</li>
+                        <li>any additional information</li>
+                      </ul>
+                    </label>
                     <p id="id-fraud" class="govuk-error-message">
                       <span class="govuk-visually-hidden">Error:</span> Enter the details of the ID fraud you think is happening
                     </p>
-                    <textarea class="govuk-textarea govuk-js-character-count govuk-input--error" id="id-fraud-hint" name="id-fraud-hint" rows="5" aria-describedby="id-fraud-hint-info id-fraud-hint-hint">{{ data['id-fraud-hint'] }}</textarea>
+                    <textarea class="govuk-textarea govuk-js-character-count govuk-input--error" id="id-fraud-hint" name="id-fraud-hint" rows="5" aria-describedby="id-fraud-hint-info">{{ data['id-fraud-hint'] }}</textarea>
                   </div>
                   <div id="id-fraud-hint-info" class="govuk-hint govuk-character-count__message">
                     You can enter up to 1,500 characters
                   </div>
                 {% else %}
                   <div class="govuk-form-group">
-                    <p class="govuk-body">You could include:</p>
-                    <ul class="govuk-list govuk-list--bullet">
-                      <li>why you think the person is committing ID fraud</li>
-                      <li>the names they use</li>
-                      <li>the addresses they use</li>
-                      <li>the types of documents being used for the identity</li>
-                      <li>any additional information</li>
-                    </ul>
-                    <textarea class="govuk-textarea govuk-js-character-count" id="id-fraud-hint" name="id-fraud-hint" rows="5" aria-describedby="id-fraud-hint-info id-fraud-hint-hint">{{ data['id-fraud-hint'] }}</textarea>
+                    <label for="id-fraud-hint">
+                      <p class="govuk-body">You could include:</p>
+                      <ul class="govuk-list govuk-list--bullet">
+                        <li>why you think the person is committing ID fraud</li>
+                        <li>the names they use</li>
+                        <li>the addresses they use</li>
+                        <li>the types of documents being used for the identity</li>
+                        <li>any additional information</li>
+                      </ul>
+                    </label>
+                    <textarea class="govuk-textarea govuk-js-character-count" id="id-fraud-hint" name="id-fraud-hint" rows="5" aria-describedby="id-fraud-hint-info">{{ data['id-fraud-hint'] }}</textarea>
                   </div>
                   <div id="id-fraud-hint-info" class="govuk-hint govuk-character-count__message">
                     You can enter up to 1,500 characters
@@ -341,37 +353,41 @@
                 <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="1500">
                 {% if (data['capital'] == 'capital' and data['capital-hint'].length == 0) %}
                   <div class="govuk-form-group govuk-form-group--error">
-                    <p class="govuk-body">You could include:</p>
-                    <ul class="govuk-list govuk-list--bullet">
-                      <li>the amount</li>
-                      <li>when they received it</li>
-                      <li>where and who it came from</li>
-                      <li>where it is kept</li>
-                      <li>any savings or income</li>
-                      <li>any examples of living beyond means, for example major purchases</li>
-                      <li>any additional information</li>
-                    </ul>
+                    <label for="capital-hint">
+                      <p class="govuk-body">You could include:</p>
+                      <ul class="govuk-list govuk-list--bullet">
+                        <li>the amount</li>
+                        <li>when they received it</li>
+                        <li>where and who it came from</li>
+                        <li>where it is kept</li>
+                        <li>any savings or income</li>
+                        <li>any examples of living beyond means, for example major purchases</li>
+                        <li>any additional information</li>
+                      </ul>
+                    </label>
                     <p id="capital" class="govuk-error-message">
                       <span class="govuk-visually-hidden">Error:</span> Enter the details of the capital fraud you think is happening
                     </p>
-                    <textarea class="govuk-textarea govuk-js-character-count govuk-input--error" id="capital-hint" name="capital-hint" rows="5" aria-describedby="capital-hint-info capital-hint-hint">{{ data['capital-hint'] }}</textarea>
+                    <textarea class="govuk-textarea govuk-js-character-count govuk-input--error" id="capital-hint" name="capital-hint" rows="5" aria-describedby="capital-hint-info">{{ data['capital-hint'] }}</textarea>
                   </div>
                   <div id="capital-hint-info" class="govuk-hint govuk-character-count__message">
                     You can enter up to 1,500 characters
                   </div>
                 {% else %}
                   <div class="govuk-form-group">
-                    <p class="govuk-body">You could include:</p>
-                    <ul class="govuk-list govuk-list--bullet">
-                      <li>the amount</li>
-                      <li>when they received it</li>
-                      <li>where and who it came from</li>
-                      <li>where it is kept</li>
-                      <li>any savings or income</li>
-                      <li>any examples of living beyond means, for example major purchases</li>
-                      <li>any additional information</li>
-                    </ul>
-                    <textarea class="govuk-textarea govuk-js-character-count" id="capital-hint" name="capital-hint" rows="5" aria-describedby="capital-hint-info capital-hint-hint">{{ data['capital-hint'] }}</textarea>
+                    <label for="capital-hint">
+                      <p class="govuk-body">You could include:</p>
+                      <ul class="govuk-list govuk-list--bullet">
+                        <li>the amount</li>
+                        <li>when they received it</li>
+                        <li>where and who it came from</li>
+                        <li>where it is kept</li>
+                        <li>any savings or income</li>
+                        <li>any examples of living beyond means, for example major purchases</li>
+                        <li>any additional information</li>
+                      </ul>
+                    </label>
+                    <textarea class="govuk-textarea govuk-js-character-count" id="capital-hint" name="capital-hint" rows="5" aria-describedby="capital-hint-info">{{ data['capital-hint'] }}</textarea>
                   </div>
                   <div id="capital-hint-info" class="govuk-hint govuk-character-count__message">
                     You can enter up to 1,500 characters
@@ -391,33 +407,37 @@
                 <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="1500">
                 {% if (data['other-income'] == 'other-income' and data['other-income-hint'].length == 0) %}
                   <div class="govuk-form-group govuk-form-group--error">
-                    <p class="govuk-body">You could include:</p>
-                    <ul class="govuk-list govuk-list--bullet">
-                      <li>the amount</li>
-                      <li>where the income comes from, for example maintenance, a family member or shares</li>
-                      <li>who it comes from</li>
-                      <li>how often they receive it</li>
-                      <li>any additional information</li>
-                    </ul>
+                    <label for="other-income-hint">
+                      <p class="govuk-body">You could include:</p>
+                      <ul class="govuk-list govuk-list--bullet">
+                        <li>the amount</li>
+                        <li>where the income comes from, for example maintenance, a family member or shares</li>
+                        <li>who it comes from</li>
+                        <li>how often they receive it</li>
+                        <li>any additional information</li>
+                      </ul>
+                    </label>
                     <p id="other-income" class="govuk-error-message">
                       <span class="govuk-visually-hidden">Error:</span> Enter the details of the other income fraud you think is happening
                     </p>
-                    <textarea class="govuk-textarea govuk-js-character-count govuk-input--error" id="other-income-hint" name="other-income-hint" rows="5" aria-describedby="other-income-hint-info other-income-hint-hint">{{ data['other-income-hint'] }}</textarea>
+                    <textarea class="govuk-textarea govuk-js-character-count govuk-input--error" id="other-income-hint" name="other-income-hint" rows="5" aria-describedby="other-income-hint-info">{{ data['other-income-hint'] }}</textarea>
                   </div>
                   <div id="other-income-hint-info" class="govuk-hint govuk-character-count__message">
                     You can enter up to 1,500 characters
                   </div>
                 {% else %}
                   <div class="govuk-form-group">
-                    <p class="govuk-body">You could include:</p>
-                    <ul class="govuk-list govuk-list--bullet">
-                      <li>the amount</li>
-                      <li>where the income comes from, for example maintenance, a family member or shares</li>
-                      <li>who it comes from</li>
-                      <li>how often they receive it</li>
-                      <li>any additional information</li>
-                    </ul>
-                    <textarea class="govuk-textarea govuk-js-character-count" id="other-income-hint" name="other-income-hint" rows="5" aria-describedby="other-income-hint-info other-income-hint-hint">{{ data['other-income-hint'] }}</textarea>
+                    <label for="other-income-hint">
+                      <p class="govuk-body">You could include:</p>
+                      <ul class="govuk-list govuk-list--bullet">
+                        <li>the amount</li>
+                        <li>where the income comes from, for example maintenance, a family member or shares</li>
+                        <li>who it comes from</li>
+                        <li>how often they receive it</li>
+                        <li>any additional information</li>
+                      </ul>
+                    </label>
+                    <textarea class="govuk-textarea govuk-js-character-count" id="other-income-hint" name="other-income-hint" rows="5" aria-describedby="other-income-hint-info">{{ data['other-income-hint'] }}</textarea>
                   </div>
                   <div id="other-income-hint-info" class="govuk-hint govuk-character-count__message">
                     You can enter up to 1,500 characters
@@ -437,37 +457,41 @@
                 <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="1500">
                 {% if (data['abroad-fraud'] == 'abroad-fraud' and data['abroad-fraud-hint'].length == 0) %}
                   <div class="govuk-form-group govuk-form-group--error">
-                    <p class="govuk-body">You could include:</p>
-                    <ul class="govuk-list govuk-list--bullet">
-                      <li>where they have gone</li>
-                      <li>when they went abroad</li>
-                      <li>why they went abroad</li>
-                      <li>how long they have been abroad</li>
-                      <li>when they are coming back</li>
-                      <li>any property they own abroad</li>
-                      <li>any additional information</li>
-                    </ul>
+                    <label for="abroad-fraud-hint">
+                      <p class="govuk-body">You could include:</p>
+                      <ul class="govuk-list govuk-list--bullet">
+                        <li>where they have gone</li>
+                        <li>when they went abroad</li>
+                        <li>why they went abroad</li>
+                        <li>how long they have been abroad</li>
+                        <li>when they are coming back</li>
+                        <li>any property they own abroad</li>
+                        <li>any additional information</li>
+                      </ul>
+                    </label>
                     <p id="abroad-fraud" class="govuk-error-message">
                       <span class="govuk-visually-hidden">Error:</span> Enter the details of the abroad fraud you think is happening
                     </p>
-                    <textarea class="govuk-textarea govuk-js-character-count govuk-input--error" id="abroad-fraud-hint" name="abroad-fraud-hint" rows="5" aria-describedby="abroad-fraud-hint-info abroad-fraud-hint-hint">{{ data['abroad-fraud-hint'] }}</textarea>
+                    <textarea class="govuk-textarea govuk-js-character-count govuk-input--error" id="abroad-fraud-hint" name="abroad-fraud-hint" rows="5" aria-describedby="abroad-fraud-hint-info">{{ data['abroad-fraud-hint'] }}</textarea>
                   </div>
                   <div id="abroad-fraud-hint-info" class="govuk-hint govuk-character-count__message">
                     You can enter up to 1,500 characters
                   </div>
                 {% else %}
                   <div class="govuk-form-group">
-                    <p class="govuk-body">You could include:</p>
-                    <ul class="govuk-list govuk-list--bullet">
-                      <li>where they have gone</li>
-                      <li>when they went abroad</li>
-                      <li>why they went abroad</li>
-                      <li>how long they have been abroad</li>
-                      <li>when they are coming back</li>
-                      <li>any property they own abroad</li>
-                      <li>any additional information</li>
-                    </ul>
-                    <textarea class="govuk-textarea govuk-js-character-count" id="abroad-fraud-hint" name="abroad-fraud-hint" rows="5" aria-describedby="abroad-fraud-hint-info abroad-fraud-hint-hint">{{ data['abroad-fraud-hint'] }}</textarea>
+                    <label for="abroad-fraud-hint">
+                      <p class="govuk-body">You could include:</p>
+                      <ul class="govuk-list govuk-list--bullet">
+                        <li>where they have gone</li>
+                        <li>when they went abroad</li>
+                        <li>why they went abroad</li>
+                        <li>how long they have been abroad</li>
+                        <li>when they are coming back</li>
+                        <li>any property they own abroad</li>
+                        <li>any additional information</li>
+                      </ul>
+                    </label>
+                    <textarea class="govuk-textarea govuk-js-character-count" id="abroad-fraud-hint" name="abroad-fraud-hint" rows="5" aria-describedby="abroad-fraud-hint-info">{{ data['abroad-fraud-hint'] }}</textarea>
                   </div>
                   <div id="abroad-fraud-hint-info" class="govuk-hint govuk-character-count__message">
                     You can enter up to 1,500 characters
@@ -487,43 +511,47 @@
                 <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="1500">
                 {% if (data['doubtful-disability'] == 'doubtful-disability' and data['doubtful-disability-hint'].length == 0) %}
                   <div class="govuk-form-group govuk-form-group--error">
-                    <p class="govuk-body">You could include:</p>
-                    <ul class="govuk-list govuk-list--bullet">
-                      <li>the type of disability</li>
-                      <li>any disability equipment they use</li>
-                      <li>why you think the disability is in doubt</li>
-                      <li>activities outside of the property</li>
-                        <ul class="govuk-list govuk-list--bullet">
-                          <li>how often</li>
-                          <li>how long for</li>
-                        </ul>
-                      <li>people who are with them when they go out</li>
-                      <li>any additional information</li>
-                    </ul>
+                    <label for="doubtful-disability-hint">
+                      <p class="govuk-body">You could include:</p>
+                      <ul class="govuk-list govuk-list--bullet">
+                        <li>the type of disability</li>
+                        <li>any disability equipment they use</li>
+                        <li>why you think the disability is in doubt</li>
+                        <li>activities outside of the property</li>
+                          <ul class="govuk-list govuk-list--bullet">
+                            <li>how often</li>
+                            <li>how long for</li>
+                          </ul>
+                        <li>people who are with them when they go out</li>
+                        <li>any additional information</li>
+                      </ul>
+                    </label>
                     <p id="doubtful-disability" class="govuk-error-message">
                       <span class="govuk-visually-hidden">Error:</span> Enter the details of the doubtful disability fraud you think is happening
                     </p>
-                    <textarea class="govuk-textarea govuk-js-character-count govuk-input--error" id="doubtful-disability-hint" name="doubtful-disability-hint" rows="5" aria-describedby="doubtful-disability-hint-info doubtful-disability-hint-hint">{{ data['doubtful-disability-hint'] }}</textarea>
+                    <textarea class="govuk-textarea govuk-js-character-count govuk-input--error" id="doubtful-disability-hint" name="doubtful-disability-hint" rows="5" aria-describedby="doubtful-disability-hint-info">{{ data['doubtful-disability-hint'] }}</textarea>
                   </div>
                   <div id="doubtful-disability-hint-info" class="govuk-hint govuk-character-count__message">
                     You can enter up to 1,500 characters
                   </div>
                 {% else %}
                   <div class="govuk-form-group">
-                    <p class="govuk-body">You could include:</p>
-                    <ul class="govuk-list govuk-list--bullet">
-                      <li>the type of disability</li>
-                      <li>any disability equipment they use</li>
-                      <li>why you think the disability is in doubt</li>
-                      <li>activities outside of the property</li>
-                        <ul class="govuk-list govuk-list--bullet">
-                          <li>how often</li>
-                          <li>how long for</li>
-                        </ul>
-                      <li>people who are with them when they go out</li>
-                      <li>any additional information</li>
-                    </ul>
-                    <textarea class="govuk-textarea govuk-js-character-count" id="doubtful-disability-hint" name="doubtful-disability-hint" rows="5" aria-describedby="doubtful-disability-hint-info doubtful-disability-hint-hint">{{ data['doubtful-disability-hint'] }}</textarea>
+                    <label for="doubtful-disability-hint">
+                      <p class="govuk-body">You could include:</p>
+                      <ul class="govuk-list govuk-list--bullet">
+                        <li>the type of disability</li>
+                        <li>any disability equipment they use</li>
+                        <li>why you think the disability is in doubt</li>
+                        <li>activities outside of the property</li>
+                          <ul class="govuk-list govuk-list--bullet">
+                            <li>how often</li>
+                            <li>how long for</li>
+                          </ul>
+                        <li>people who are with them when they go out</li>
+                        <li>any additional information</li>
+                      </ul>
+                    </label>
+                    <textarea class="govuk-textarea govuk-js-character-count" id="doubtful-disability-hint" name="doubtful-disability-hint" rows="5" aria-describedby="doubtful-disability-hint-info">{{ data['doubtful-disability-hint'] }}</textarea>
                   </div>
                   <div id="doubtful-disability-hint-info" class="govuk-hint govuk-character-count__message">
                     You can enter up to 1,500 characters
@@ -543,35 +571,39 @@
                 <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="1500">
                 {% if (data['housing-related'] == 'housing-related' and data['housing-related-hint'].length == 0) %}
                   <div class="govuk-form-group govuk-form-group--error">
-                    <p class="govuk-body">You could include:</p>
-                    <ul class="govuk-list govuk-list--bullet">
-                      <li>why you think they are not at their address</li>
-                      <li>how long they have been away</li>
-                      <li>whether they return to their address</li>
-                      <li>where they are living</li>
-                      <li>is anyone paying rent to the property owner as a lodger or subletter?</li>
-                      <li>any additional information</li>
-                    </ul>
+                    <label for="housing-related-hint">
+                      <p class="govuk-body">You could include:</p>
+                      <ul class="govuk-list govuk-list--bullet">
+                        <li>why you think they are not at their address</li>
+                        <li>how long they have been away</li>
+                        <li>whether they return to their address</li>
+                        <li>where they are living</li>
+                        <li>is anyone paying rent to the property owner as a lodger or subletter?</li>
+                        <li>any additional information</li>
+                      </ul>
+                    </label>
                     <p id="housing-related" class="govuk-error-message">
                       <span class="govuk-visually-hidden">Error:</span> Enter the details of the housing related fraud you think is happening
                     </p>
-                    <textarea class="govuk-textarea govuk-js-character-count govuk-input--error" id="housing-related-hint" name="housing-related-hint" rows="5" aria-describedby="housing-related-hint-info housing-related-hint-hint">{{ data['housing-related-hint'] }}</textarea>
+                    <textarea class="govuk-textarea govuk-js-character-count govuk-input--error" id="housing-related-hint" name="housing-related-hint" rows="5" aria-describedby="housing-related-hint-info">{{ data['housing-related-hint'] }}</textarea>
                   </div>
                   <div id="housing-related-hint-info" class="govuk-hint govuk-character-count__message">
                     You can enter up to 1,500 characters
                   </div>
                 {% else %}
                   <div class="govuk-form-group">
-                    <p class="govuk-body">You could include:</p>
-                    <ul class="govuk-list govuk-list--bullet">
-                      <li>why you think they are not at their address</li>
-                      <li>how long they have been away</li>
-                      <li>whether they return to their address</li>
-                      <li>where they are living</li>
-                      <li>is anyone paying rent to the property owner as a lodger or subletter?</li>
-                      <li>any additional information</li>
-                    </ul>
-                    <textarea class="govuk-textarea govuk-js-character-count" id="housing-related-hint" name="housing-related-hint" rows="5" aria-describedby="housing-related-hint-info housing-related-hint-hint">{{ data['housing-related-hint'] }}</textarea>
+                    <label for="housing-related-hint">
+                      <p class="govuk-body">You could include:</p>
+                      <ul class="govuk-list govuk-list--bullet">
+                        <li>why you think they are not at their address</li>
+                        <li>how long they have been away</li>
+                        <li>whether they return to their address</li>
+                        <li>where they are living</li>
+                        <li>is anyone paying rent to the property owner as a lodger or subletter?</li>
+                        <li>any additional information</li>
+                      </ul>
+                    </label>
+                    <textarea class="govuk-textarea govuk-js-character-count" id="housing-related-hint" name="housing-related-hint" rows="5" aria-describedby="housing-related-hint-info">{{ data['housing-related-hint'] }}</textarea>
                   </div>
                   <div id="housing-related-hint-info" class="govuk-hint govuk-character-count__message">
                     You can enter up to 1,500 characters
@@ -591,27 +623,31 @@
                 <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="1500">
                 {% if (data['not-providing-care'] == 'not-providing-care' and data['not-providing-care-hint'].length == 0) %}
                   <div class="govuk-form-group govuk-form-group--error">
-                    <p class="govuk-body">You could include:</p>
-                    <ul class="govuk-list govuk-list--bullet">
-                      <li>why you think they are receiving benefit as a carer but not caring for a disabled person</li>
-                      <li>any additional information</li>
-                    </ul>
+                    <label for="not-providing-care-hint">
+                      <p class="govuk-body">You could include:</p>
+                      <ul class="govuk-list govuk-list--bullet">
+                        <li>why you think they are receiving benefit as a carer but not caring for a disabled person</li>
+                        <li>any additional information</li>
+                      </ul>
+                    </label>
                     <p id="not-providing-care" class="govuk-error-message">
                       <span class="govuk-visually-hidden">Error:</span> Enter the details of the not providing care fraud you think is happening
                     </p>
-                    <textarea class="govuk-textarea govuk-js-character-count govuk-input--error" id="not-providing-care-hint" name="not-providing-care-hint" rows="5" aria-describedby="not-providing-care-hint-info not-providing-care-hint-hint">{{ data['not-providing-care-hint'] }}</textarea>
+                    <textarea class="govuk-textarea govuk-js-character-count govuk-input--error" id="not-providing-care-hint" name="not-providing-care-hint" rows="5" aria-describedby="not-providing-care-hint-info">{{ data['not-providing-care-hint'] }}</textarea>
                   </div>
                   <div id="not-providing-care-hint-info" class="govuk-hint govuk-character-count__message">
                     You can enter up to 1,500 characters
                   </div>
                 {% else %}
                   <div class="govuk-form-group">
-                    <p class="govuk-body">You could include:</p>
-                    <ul class="govuk-list govuk-list--bullet">
-                      <li>why you think they are receiving benefit as a carer but not caring for a disabled person</li>
-                      <li>any additional information</li>
-                    </ul>
-                    <textarea class="govuk-textarea govuk-js-character-count" id="not-providing-care-hint" name="not-providing-care-hint" rows="5" aria-describedby="not-providing-care-hint-info not-providing-care-hint-hint">{{ data['not-providing-care-hint'] }}</textarea>
+                    <label for="not-providing-care-hint">
+                      <p class="govuk-body">You could include:</p>
+                      <ul class="govuk-list govuk-list--bullet">
+                        <li>why you think they are receiving benefit as a carer but not caring for a disabled person</li>
+                        <li>any additional information</li>
+                      </ul>
+                    </label>
+                    <textarea class="govuk-textarea govuk-js-character-count" id="not-providing-care-hint" name="not-providing-care-hint" rows="5" aria-describedby="not-providing-care-hint-info">{{ data['not-providing-care-hint'] }}</textarea>
                   </div>
                   <div id="not-providing-care-hint-info" class="govuk-hint govuk-character-count__message">
                     You can enter up to 1,500 characters
@@ -631,12 +667,14 @@
                 <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="1500">
                 {% if (data['other'] == 'other' and data['other-hint'].length == 0) %}
                   <div class="govuk-form-group govuk-form-group--error">
-                    <p class="govuk-body">You could include:</p>
-                    <ul class="govuk-list govuk-list--bullet">
-                      <li>the type or types of fraud you think are being committed, for example childcare fraud, household composition or imprisonment</li>
-                      <li>why you think this is happening</li>
-                      <li>any additional information</li>
-                    </ul>
+                    <label for="other-hint">
+                      <p class="govuk-body">You could include:</p>
+                      <ul class="govuk-list govuk-list--bullet">
+                        <li>the type or types of fraud you think are being committed, for example childcare fraud, household composition or imprisonment</li>
+                        <li>why you think this is happening</li>
+                        <li>any additional information</li>
+                      </ul>
+                    </label>
                     <p id="other" class="govuk-error-message">
                       <span class="govuk-visually-hidden">Error:</span> Enter the details of the other types of fraud you think is happening
                     </p>
@@ -647,12 +685,14 @@
                   </div>
                 {% else %}
                   <div class="govuk-form-group">
-                    <p class="govuk-body">You could include:</p>
-                    <ul class="govuk-list govuk-list--bullet">
-                      <li>the type or types of fraud you think are being committed, for example childcare fraud, household composition or imprisonment</li>
-                      <li>why you think this is happening</li>
-                      <li>any additional information</li>
-                    </ul>
+                    <label for="other-hint">
+                      <p class="govuk-body">You could include:</p>
+                      <ul class="govuk-list govuk-list--bullet">
+                        <li>the type or types of fraud you think are being committed, for example childcare fraud, household composition or imprisonment</li>
+                        <li>why you think this is happening</li>
+                        <li>any additional information</li>
+                      </ul>
+                    </label>
                     <textarea class="govuk-textarea govuk-js-character-count" id="other-hint" name="other-hint" rows="5" aria-describedby="other-hint-info">{{ data['other-hint'] }}</textarea>
                   </div>
                   <div id="other-hint-info" class="govuk-hint govuk-character-count__message">
