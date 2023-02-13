@@ -1,6 +1,15 @@
 const express = require('express')
 const router = express.Router()
 
+// _index
+//router.post('/_index', function(req, res) {
+//    if (req.session.data["prototype-variant"] == "two") {
+//        res.redirect('index?route=two"');
+//    } else {
+//        res.redirect('index?route=one"');
+//    } 
+//})
+
 // index
 router.post('/index', function(req, res) {
     // Reset all known V3 variables, listed out by page

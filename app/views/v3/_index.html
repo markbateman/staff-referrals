@@ -77,8 +77,51 @@
       </div>
     </dl>
 
+{#
+    <form class="form" method="post">
+      <div class="govuk-form-group">
+        <fieldset class="govuk-fieldset" data-required data-error="Select which prototype variant to run">
+          <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+            <h2 class="govuk-fieldset__heading">
+              Prototype variant to run
+            </h2>
+          </legend>
+          <div class="govuk-radios" data-module="govuk-radios">
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="prototype-variant" name="prototype-variant" type="radio" value="one" {{ checked("prototype-variant", "one") }}>
+              <label class="govuk-label govuk-radios__label" for="prototype-variant">
+                <strong>Route One</strong>
+              </label>
+              <div id="prototype-variant-hint" class="govuk-hint govuk-radios__hint">
+                The 'What do you think is happening?' page has fraud details and fraud durations combined as a single page.
+              </div>
+            </div>
+            <div class="govuk-radios__item">
+              <input class="govuk-radios__input" id="prototype-variant-2" name="prototype-variant" type="radio" value="two" {{ checked("prototype-variant", "two") }}>
+              <label class="govuk-label govuk-radios__label" for="prototype-variant-2">
+                <strong>Route Two</strong>
+              </label>
+              <div id="prototype-variant-2-hint" class="govuk-hint govuk-radios__hint">
+                The 'What do you think is happening?' details and fraud durations remain as two separate pages.
+              </div>
+            </div>
+          </div>
+        </fieldset>
+      </div>
+
+      {{ govukButton({
+        text: 'Continue',
+        classes: "govuk-!-margin-top-2"
+      }) }}
+
+    </form>
+#}
+
+    <h2 class="govuk-heading-l">
+      Prototype variant to run
+    </h2>
     <p class="govuk-body">
-      <strong>Route one:</strong> the 'What do you think is happening?' page has fraud details and fraud durations combined as a single page.
+      <strong>Route one:</strong><br>The 'What do you think is happening?' page has fraud details and fraud durations combined as a single page.
     </p>
     {{ govukButton({
       text: "Start route one now",
@@ -87,7 +130,7 @@
     }) }}
 
     <p class="govuk-body">
-      <strong>Route two:</strong> the 'What do you think is happening?' details and fraud durations remain as two separate pages.
+      <strong>Route two:</strong><br>The 'What do you think is happening?' details and fraud durations remain as two separate pages.
     </p>
     {{ govukButton({
       text: "Start route two now",
