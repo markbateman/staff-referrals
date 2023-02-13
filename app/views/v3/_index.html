@@ -50,7 +50,7 @@
           <ul class="govuk-list govuk-list">
             <li>
               <p class="govuk-body">Breakdown of journey into more discrete tasks with our hypothesis clearly defined using the <strong>we believe X will result in Y</strong> format.</p>
-              <p class="govuk-body"></p>Each is then tagged as to whether the hypothesis has been <strong>validated</strong>, or if <strong>more research is needed</strong>.</p>
+              <p class="govuk-body">Each is then tagged as to whether the hypothesis has been <strong>validated</strong>, or if <strong>more research is needed</strong>.</p>
               <div class="govuk-form-group">
                 <strong class="govuk-tag govuk-tag--green">
                   Validated
@@ -77,9 +77,21 @@
       </div>
     </dl>
 
+    <p class="govuk-body">
+      <strong>Route one:</strong> the 'What do you think is happening?' page has fraud details and fraud durations combined as a single page.
+    </p>
     {{ govukButton({
-      text: "Start now",
-      href: "../v3/index"
+      text: "Start route one now",
+      href: "../v3/index?route=one",
+      classes: "govuk-!-margin-bottom-8"
+    }) }}
+
+    <p class="govuk-body">
+      <strong>Route two:</strong> the 'What do you think is happening?' details and fraud durations remain as two separate pages.
+    </p>
+    {{ govukButton({
+      text: "Start route two now",
+      href: "../v3/index?route=two"
     }) }}
 
     <h2 class="govuk-heading-l govuk-!-margin-top-8">

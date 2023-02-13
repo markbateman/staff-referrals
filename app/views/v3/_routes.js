@@ -61,6 +61,18 @@ router.post('/index', function(req, res) {
     req.session.data['other'] = "";
     req.session.data['other-hint'] = "";
 
+    // how long duration of potential fraud
+    req.session.data['how-long-living-together'] = "";
+    req.session.data['how-long-working-and-claiming'] = "";
+    req.session.data['how-long-id-fraud'] = "";
+    req.session.data['how-long-capital'] = "";
+    req.session.data['how-long-other-income'] = "";
+    req.session.data['how-long-abroad-fraud'] = "";
+    req.session.data['how-long-doubtful-disability'] = "";
+    req.session.data['how-long-housing-related'] = null;
+    req.session.data['how-long-not-providing-care'] = "";
+    req.session.data['how-long-other'] = "";
+
     // how-long-has-the-fraud.html
     req.session.data['how-long-has-the-fraud'] = null;
     
@@ -118,12 +130,44 @@ router.post('/source-of-allegation', function(req, res) {
     if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
         res.redirect('check-your-answers#section-allegation-details');
     } else {
-        res.redirect('what-fraud-do-you-think-is-happening');
+        if (req.session.data['route'] == 'one') {
+            res.redirect('what-fraud-do-you-think-is-happening-route-one');
+        } else {
+            res.redirect('what-fraud-do-you-think-is-happening-route-two');
+        }
     }
 })
 
-// what-fraud-do-you-think-is-happening
-router.post('/what-fraud-do-you-think-is-happening', function(req, res) {
+// what-fraud-do-you-think-is-happening-route-one
+router.post('/what-fraud-do-you-think-is-happening-route-one', function(req, res) {
+    if ((req.session.data['living-together'] == 'living-together' && (req.session.data['living-together-hint'].length !== 0 && req.session.data['how-long-living-together'] !== "")) || 
+        (req.session.data['working-and-claiming'] == 'working-and-claiming' && (req.session.data['working-and-claiming-hint'].length !== 0 && req.session.data['how-long-working-and-claiming'] !== "")) || 
+        (req.session.data['id-fraud'] == 'id-fraud' && (req.session.data['id-fraud-hint'].length !== 0 && req.session.data['how-long-id-fraud'] !== "")) || 
+        (req.session.data['capital'] == 'capital' && (req.session.data['capital-hint'].length !== 0 && req.session.data['how-long-capital'] !== "")) || 
+        (req.session.data['other-income'] == 'other-income' && (req.session.data['other-income-hint'].length !== 0 && req.session.data['how-long-other-income'] !== "")) || 
+        (req.session.data['abroad-fraud'] == 'abroad-fraud' && (req.session.data['abroad-fraud-hint'].length !== 0 && req.session.data['how-long-abroad-fraud'] !== "")) || 
+        (req.session.data['doubtful-disability'] == 'doubtful-disability' && (req.session.data['doubtful-disability-hint'].length !== 0 && req.session.data['how-long-doubtful-disability'] !== "")) || 
+        (req.session.data['housing-related'] == 'housing-related' && (req.session.data['housing-related-hint'].length !== 0 && req.session.data['how-long-housing-related'] !== "")) || 
+        (req.session.data['not-providing-care'] == 'not-providing-care' && (req.session.data['not-providing-care-hint'].length !== 0 && req.session.data['how-long-not-providing-care'] !== "")) || 
+        (req.session.data['other'] == 'other' && (req.session.data['other-hint'].length !== 0 && req.session.data['how-long-other'] !== ""))) {
+
+        if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
+            req.session.data['page-errors'] = 'no';
+            res.redirect('check-your-answers#section-what-do-you-think-is-happening');
+        } else {
+            req.session.data['page-errors'] = 'no';
+            res.redirect('submitters-details');
+        }
+
+    } else {
+        // Reload the same page, errors will now be flagged...
+        req.session.data['page-errors'] = 'yes';
+        res.redirect('what-fraud-do-you-think-is-happening-route-one#error-summary');
+    }
+})
+
+// what-fraud-do-you-think-is-happening-route-two
+router.post('/what-fraud-do-you-think-is-happening-route-two', function(req, res) {
     if ((req.session.data['living-together'] == 'living-together' && req.session.data['living-together-hint'].length !== 0) || 
         (req.session.data['working-and-claiming'] == 'working-and-claiming' && req.session.data['working-and-claiming-hint'].length !== 0) || 
         (req.session.data['id-fraud'] == 'id-fraud' && req.session.data['id-fraud-hint'].length !== 0) || 
@@ -134,6 +178,7 @@ router.post('/what-fraud-do-you-think-is-happening', function(req, res) {
         (req.session.data['housing-related'] == 'housing-related' && req.session.data['housing-related-hint'].length !== 0) || 
         (req.session.data['not-providing-care'] == 'not-providing-care' && req.session.data['not-providing-care-hint'].length !== 0) || 
         (req.session.data['other'] == 'other' && req.session.data['other-hint'].length !== 0)) {
+
         if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
             req.session.data['page-errors'] = 'no';
             res.redirect('check-your-answers#section-what-do-you-think-is-happening');
@@ -144,7 +189,7 @@ router.post('/what-fraud-do-you-think-is-happening', function(req, res) {
     } else {
         // Reload the same page, errors will now be flagged...
         req.session.data['page-errors'] = 'yes';
-        res.redirect('what-fraud-do-you-think-is-happening#error-summary');
+        res.redirect('what-fraud-do-you-think-is-happening-route-two#error-summary');
     }
 })
 
@@ -161,7 +206,7 @@ router.post('/how-long-has-the-fraud-v2', function(req, res) {
 // how-long-has-the-fraud
 router.post('/how-long-has-the-fraud', function(req, res) {
     if ((req.session.data.gPreviousLocation).includes('check-your-answers')) {
-        res.redirect('check-your-answers#section-allegation-details');
+        res.redirect('check-your-answers#section-what-do-you-think-is-happening');
     } else {
         res.redirect('submitters-details');
     }

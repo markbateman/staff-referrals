@@ -78,31 +78,6 @@
             </a>
           </dd>
         </div>
-        <div class="govuk-summary-list__row">
-          <dt class="govuk-summary-list__key">
-            How long has the potential fraud been going on
-          </dt>
-          <dd class="govuk-summary-list__value">
-            {% if data['how-long-has-the-fraud'] == 'less-than-three-months' %}
-              Less than 3 months
-            {% elif data['how-long-has-the-fraud'] == 'three-to-six-months' %}
-              3 to 6 months
-            {% elif data['how-long-has-the-fraud'] == 'more-than-six-months-but-less-than-a-year' %}
-              More than 6 months but less than a year
-            {% elif data['how-long-has-the-fraud'] == 'more-than-a-year' %}
-              More than a year
-            {% elif data['how-long-has-the-fraud'] == 'i-dont-know' %}
-              I don't know
-            {% else %}
-              Not provided
-            {% endif %}
-          </dd>
-          <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="how-long-has-the-fraud">
-              Change<span class="govuk-visually-hidden"> how long the fraud has been going on</span>
-            </a>
-          </dd>
-        </div>
       </dl>
 
       {# SUSPECTS DETAILS #}
@@ -305,7 +280,7 @@
             <span class="govuk-visually-hidden">Suspect's </span>Telephone number
           </dt>
           <dd class="govuk-summary-list__value">
-            {% if data['contact-telephone'] == 'telephone' %}
+            {% if data['contact-telephone'] == 'telephone' and data['suspect-contact-telephone'] != '' %}
               {{ data['suspect-contact-telephone'] }}
             {% else %}
               Not provided
@@ -324,7 +299,7 @@
             <span class="govuk-visually-hidden">Suspect's </span>Mobile number
           </dt>
           <dd class="govuk-summary-list__value">
-            {% if data['contact-mobile'] == 'mobile' %}
+            {% if data['contact-mobile'] == 'mobile' and data['suspect-contact-mobile'] != '' %}
               {{ data['suspect-contact-mobile'] }}
             {% else %}
               Not provided
@@ -343,7 +318,7 @@
             <span class="govuk-visually-hidden">Suspect's </span>Email address
           </dt>
           <dd class="govuk-summary-list__value">
-            {% if data['contact-email'] == 'email' %}
+            {% if data['contact-email'] == 'email' and data['suspect-contact-email'] != '' %}
               {{ data['suspect-contact-email'] }}
             {% else %}
               Not provided
@@ -362,27 +337,463 @@
       <h2 class="govuk-heading-m" id="section-what-do-you-think-is-happening">
         What fraud do you think is happening?
       </h2>
+      {% if data['route'] == 'one' %}
 
-      {# LIVING TOGETHER #}
-      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        {# LIVING TOGETHER #}
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Living together
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['living-together'] == 'living-together' %}
+                {% if data['living-together-hint'].length === 0 %}
+                  Details to be entered
+                {% else %}
+                  <p class="govuk-body">
+                    {{ data['living-together-hint'] }}
+                  </p>
+                  <p class="govuk-body">
+                    {% if data['how-long-living-together'] == 'less-than-three-months' %}
+                      (Less than 3 months)
+                    {% elif data['how-long-living-together'] == 'three-to-six-months' %}
+                      (3 to 6 months)
+                    {% elif data['how-long-living-together'] == 'more-than-six-months-but-less-than-a-year' %}
+                      (More than 6 months but less than a year)
+                    {% elif data['how-long-living-together'] == 'more-than-a-year' %}
+                      (More than a year)
+                    {% elif data['how-long-living-together'] == 'i-dont-know' %}
+                      (I don't know)
+                    {% else %}
+                      (Not provided)
+                    {% endif %}
+                  </p>
+                {% endif %}
+              {% else %}
+                Not provided
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="what-fraud-do-you-think-is-happening-route-one#living-together">
+              {# <a class="govuk-link" href="what-fraud-do-you-think-is-happening-route-one#living-together?page-errors=unknown"> #}
+                Change<span class="govuk-visually-hidden"> living together</span>
+              </a>
+            </dd>
+          </div>
+
+          {# WORKING AND CLAIMING #}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Working and claiming
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['working-and-claiming'] == 'working-and-claiming' %}
+                {% if data['working-and-claiming-hint'].length === 0 %}
+                  Details to be entered
+                {% else %}
+                  <p class="govuk-body">
+                    {{ data['working-and-claiming-hint'] }}
+                  </p>
+                  <p class="govuk-body">
+                    {% if data['how-long-working-and-claiming'] == 'less-than-three-months' %}
+                      (Less than 3 months)
+                    {% elif data['how-long-working-and-claiming'] == 'three-to-six-months' %}
+                      (3 to 6 months)
+                    {% elif data['how-long-living-together'] == 'more-than-six-months-but-less-than-a-year' %}
+                      (More than 6 months but less than a year)
+                    {% elif data['how-long-working-and-claiming'] == 'more-than-a-year' %}
+                      (More than a year)
+                    {% elif data['how-long-working-and-claiming'] == 'i-dont-know' %}
+                      (I don't know)
+                    {% else %}
+                      (Not provided)
+                    {% endif %}
+                  </p>
+                {% endif %}
+              {% else %}
+                Not provided
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="what-fraud-do-you-think-is-happenin-route-one#working-and-claiming">
+                Change<span class="govuk-visually-hidden"> working and claiming</span>
+              </a>
+            </dd>
+          </div>
+
+          {# ID FRAUD #}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              ID fraud
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['id-fraud'] == 'id-fraud' %}
+                {% if data['id-fraud-hint'].length === 0 %}
+                  Details to be entered
+                {% else %}
+                  <p class="govuk-body">
+                    {{ data['id-fraud-hint'] }}
+                  </p>
+                  <p class="govuk-body">
+                    {% if data['how-long-id-fraud'] == 'less-than-three-months' %}
+                      (Less than 3 months)
+                    {% elif data['how-long-id-fraud'] == 'three-to-six-months' %}
+                      (3 to 6 months)
+                    {% elif data['how-long-id-fraud'] == 'more-than-six-months-but-less-than-a-year' %}
+                      (More than 6 months but less than a year)
+                    {% elif data['how-long-id-fraud'] == 'more-than-a-year' %}
+                      (More than a year)
+                    {% elif data['how-long-id-fraud'] == 'i-dont-know' %}
+                      (I don't know)
+                    {% else %}
+                      (Not provided)
+                    {% endif %}
+                  </p>
+                {% endif %}
+              {% else %}
+                Not provided
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="what-fraud-do-you-think-is-happening-route-one#id-fraud">
+                Change<span class="govuk-visually-hidden"> ID fraud</span>
+              </a>
+            </dd>
+          </div>
+
+          {# CAPITAL #}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Capital
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['capital'] == 'capital' %}
+                {% if data['capital-hint'].length === 0 %}
+                  Details to be entered
+                {% else %}
+                  <p class="govuk-body">
+                    {{ data['capital-hint'] }}
+                  </p>
+                  <p class="govuk-body">
+                    {% if data['how-long-capital'] == 'less-than-three-months' %}
+                      (Less than 3 months)
+                    {% elif data['how-long-capital'] == 'three-to-six-months' %}
+                      (3 to 6 months)
+                    {% elif data['how-long-capital'] == 'more-than-six-months-but-less-than-a-year' %}
+                      (More than 6 months but less than a year)
+                    {% elif data['how-long-capital'] == 'more-than-a-year' %}
+                      (More than a year)
+                    {% elif data['how-long-capital'] == 'i-dont-know' %}
+                      (I don't know)
+                    {% else %}
+                      (Not provided)
+                    {% endif %}
+                  </p>
+                {% endif %}
+              {% else %}
+                Not provided
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="what-fraud-do-you-think-is-happening-route-one#capital">
+                Change<span class="govuk-visually-hidden"> capital</span>
+              </a>
+            </dd>
+          </div>
+
+          {# OTHER INCOME #}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Other income
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['other-income'] == 'other-income' %}
+                {% if data['other-income-hint'].length === 0 %}
+                  Details to be entered
+                {% else %}
+                  <p class="govuk-body">
+                    {{ data['other-income-hint'] }}
+                  </p>
+                  <p class="govuk-body">
+                    {% if data['how-long-other-income'] == 'less-than-three-months' %}
+                      (Less than 3 months)
+                    {% elif data['how-long-other-income'] == 'three-to-six-months' %}
+                      (3 to 6 months)
+                    {% elif data['how-long-other-income'] == 'more-than-six-months-but-less-than-a-year' %}
+                      (More than 6 months but less than a year)
+                    {% elif data['how-long-other-income'] == 'more-than-a-year' %}
+                      (More than a year)
+                    {% elif data['how-long-other-income'] == 'i-dont-know' %}
+                      (I don't know)
+                    {% else %}
+                      (Not provided)
+                    {% endif %}
+                  </p>
+                {% endif %}
+              {% else %}
+                Not provided
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="what-fraud-do-you-think-is-happening-route-one#other-income">
+                Change<span class="govuk-visually-hidden"> other income</span>
+              </a>
+            </dd>
+          </div>
+
+          {# ABROAD FRAUD #}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Abroad fraud
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['abroad-fraud'] == 'abroad-fraud' %}
+                {% if data['abroad-fraud-hint'].length === 0 %}
+                  Details to be entered
+                {% else %}
+                  <p class="govuk-body">
+                    {{ data['abroad-fraud-hint'] }}
+                  </p>
+                  <p class="govuk-body">
+                    {% if data['how-long-abroad-fraud'] == 'less-than-three-months' %}
+                      (Less than 3 months)
+                    {% elif data['how-long-abroad-fraud'] == 'three-to-six-months' %}
+                      (3 to 6 months)
+                    {% elif data['how-long-abroad-fraud'] == 'more-than-six-months-but-less-than-a-year' %}
+                      (More than 6 months but less than a year)
+                    {% elif data['how-long-abroad-fraud'] == 'more-than-a-year' %}
+                      (More than a year)
+                    {% elif data['how-long-abroad-fraud'] == 'i-dont-know' %}
+                      (I don't know)
+                    {% else %}
+                      (Not provided)
+                    {% endif %}
+                  </p>
+                {% endif %}
+              {% else %}
+                Not provided
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="what-fraud-do-you-think-is-happening-route-one#abroad-fraud">
+                Change<span class="govuk-visually-hidden"> abroad fraud</span>
+              </a>
+            </dd>
+          </div>
+
+          {# DOUBTFUL DISABILITY #}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Doubtful disability
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['doubtful-disability'] == 'doubtful-disability' %}
+                {% if data['doubtful-disability-hint'].length === 0 %}
+                  Details to be entered
+                {% else %}
+                  <p class="govuk-body">
+                    {{ data['doubtful-disability-hint'] }}
+                  </p>
+                  <p class="govuk-body">
+                    {% if data['how-long-doubtful-disability'] == 'less-than-three-months' %}
+                      (Less than 3 months)
+                    {% elif data['how-long-doubtful-disability'] == 'three-to-six-months' %}
+                      (3 to 6 months)
+                    {% elif data['how-long-doubtful-disability'] == 'more-than-six-months-but-less-than-a-year' %}
+                      (More than 6 months but less than a year)
+                    {% elif data['how-long-doubtful-disability'] == 'more-than-a-year' %}
+                      (More than a year)
+                    {% elif data['how-long-doubtful-disability'] == 'i-dont-know' %}
+                      (I don't know)
+                    {% else %}
+                      (Not provided)
+                    {% endif %}
+                  </p>
+                {% endif %}
+              {% else %}
+                Not provided
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="what-fraud-do-you-think-is-happening-route-one#doubtful-disability">
+                Change<span class="govuk-visually-hidden"> doubtful disability</span>
+              </a>
+            </dd>
+          </div>
+
+          {# HOUSING RELATED #}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Housing related
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['housing-related'] == 'housing-related' %}
+                {% if data['housing-related-hint'].length === 0 %}
+                  Details to be entered
+                {% else %}
+                  <p class="govuk-body">
+                    {{ data['housing-related-hint'] }}
+                  </p>
+                  <p class="govuk-body">
+                    {% if data['how-long-housing-related'] == 'less-than-three-months' %}
+                      (Less than 3 months)
+                    {% elif data['how-long-housing-related'] == 'three-to-six-months' %}
+                      (3 to 6 months)
+                    {% elif data['how-long-housing-related'] == 'more-than-six-months-but-less-than-a-year' %}
+                      (More than 6 months but less than a year)
+                    {% elif data['how-long-housing-related'] == 'more-than-a-year' %}
+                      (More than a year)
+                    {% elif data['how-long-housing-related'] == 'i-dont-know' %}
+                      (I don't know)
+                    {% else %}
+                      (Not provided)
+                    {% endif %}
+                  </p>
+                {% endif %}
+              {% else %}
+                Not provided
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="what-fraud-do-you-think-is-happening-route-one#housing-related">
+                Change<span class="govuk-visually-hidden"> housing related</span>
+              </a>
+            </dd>
+          </div>
+
+          {# NOT PROVIDING CARE #}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Not providing care
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['not-providing-care'] == 'not-providing-care' %}
+                {% if data['not-providing-care-hint'].length === 0 %}
+                  Details to be entered
+                {% else %}
+                  <p class="govuk-body">
+                    {{ data['not-providing-care-hint'] }}
+                  </p>
+                  <p class="govuk-body">
+                    {% if data['how-long-not-providing-care'] == 'less-than-three-months' %}
+                      (Less than 3 months)
+                    {% elif data['how-long-not-providing-care'] == 'three-to-six-months' %}
+                      (3 to 6 months)
+                    {% elif data['how-long-not-providing-care'] == 'more-than-six-months-but-less-than-a-year' %}
+                      (More than 6 months but less than a year)
+                    {% elif data['how-long-not-providing-care'] == 'more-than-a-year' %}
+                      (More than a year)
+                    {% elif data['how-long-not-providing-care'] == 'i-dont-know' %}
+                      (I don't know)
+                    {% else %}
+                      (Not provided)
+                    {% endif %}
+                  </p>
+                {% endif %}
+              {% else %}
+                Not provided
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="what-fraud-do-you-think-is-happening-route-one#not-providing-care">
+                Change<span class="govuk-visually-hidden"> not providing care</span>
+              </a>
+            </dd>
+          </div>
+
+          {# OTHER TYPES OF FRAUD #}
+          <div class="govuk-summary-list__row">
+            <dt class="govuk-summary-list__key">
+              Other types of fraud
+            </dt>
+            <dd class="govuk-summary-list__value">
+              {% if data['other'] == 'other' %}
+                {% if data['other-hint'].length === 0 %}
+                  Details to be entered
+                {% else %}
+                  <p class="govuk-body">
+                    {{ data['other-hint'] }}
+                  </p>
+                  <p class="govuk-body">
+                    {% if data['how-long-other'] == 'less-than-three-months' %}
+                      (Less than 3 months)
+                    {% elif data['how-long-other'] == 'three-to-six-months' %}
+                      (3 to 6 months)
+                    {% elif data['how-long-other'] == 'more-than-six-months-but-less-than-a-year' %}
+                      (More than 6 months but less than a year)
+                    {% elif data['how-long-other'] == 'more-than-a-year' %}
+                      (More than a year)
+                    {% elif data['how-long-other'] == 'i-dont-know' %}
+                      (I don't know)
+                    {% else %}
+                      (Not provided)
+                    {% endif %}
+                  </p>
+                {% endif %}
+              {% else %}
+                Not provided
+              {% endif %}
+            </dd>
+            <dd class="govuk-summary-list__actions">
+              <a class="govuk-link" href="what-fraud-do-you-think-is-happening-route-one#other">
+                Change<span class="govuk-visually-hidden"> other types of fraud</span>
+              </a>
+            </dd>
+          </div>
+        </dl>
+
+      {# ROUTE TWO #}
+      {% elif data['route'] == 'two' %}
+        <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+
+        {# LIVING TOGETHER #}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
             Living together
           </dt>
           <dd class="govuk-summary-list__value">
             {% if data['living-together'] == 'living-together' %}
-              {% if data['living-together-hint'].length === 0 %}
-                Details to be entered
-              {% else %}
+              <p class="govuk-body">
                 {{ data['living-together-hint'] }}
-              {% endif %}
+              </p>
             {% else %}
               Not provided
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="what-fraud-do-you-think-is-happening#living-together">
-            {# <a class="govuk-link" href="what-fraud-do-you-think-is-happening#living-together?page-errors=unknown"> #}
+            <a class="govuk-link" href="what-fraud-do-you-think-is-happening-route-two#living-together">
+              Change<span class="govuk-visually-hidden"> living together</span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            How long has the<span class="govuk-visually-hidden"> potential living together</span> fraud been going on
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['living-together'] == 'living-together' %}
+              <p class="govuk-body">
+                {% if data['how-long-living-together'] == 'less-than-three-months' %}
+                  Less than 3 months
+                {% elif data['how-long-living-together'] == 'three-to-six-months' %}
+                  3 to 6 months
+                {% elif data['how-long-living-together'] == 'more-than-six-months-but-less-than-a-year' %}
+                  More than 6 months but less than a year
+                {% elif data['how-long-living-together'] == 'more-than-a-year' %}
+                  More than a year
+                {% elif data['how-long-living-together'] == 'i-dont-know' %}
+                  I don't know
+                {% else %}
+                  Not provided
+                {% endif %}
+              </p>
+            {% else %}
+              Not provided
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="how-long-has-the-fraud#living-together">
               Change<span class="govuk-visually-hidden"> living together</span>
             </a>
           </dd>
@@ -395,17 +806,47 @@
           </dt>
           <dd class="govuk-summary-list__value">
             {% if data['working-and-claiming'] == 'working-and-claiming' %}
-              {% if data['working-and-claiming-hint'].length === 0 %}
-                Details to be entered
-              {% else %}
+              <p class="govuk-body">
                 {{ data['working-and-claiming-hint'] }}
-              {% endif %}
+              </p>
             {% else %}
               Not provided
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="what-fraud-do-you-think-is-happening#working-and-claiming">
+            <a class="govuk-link" href="what-fraud-do-you-think-is-happening-route-two#working-and-claiming">
+              Change<span class="govuk-visually-hidden"> working and claiming</span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            How long has the<span class="govuk-visually-hidden"> potential working and claiming</span> fraud been going on
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['working-and-claiming'] == 'working-and-claiming' %}
+              <p class="govuk-body">
+                {% if data['how-long-working-and-claiming'] == 'less-than-three-months' %}
+                  Less than 3 months
+                {% elif data['how-long-working-and-claiming'] == 'three-to-six-months' %}
+                  3 to 6 months
+                {% elif data['how-long-working-and-claiming'] == 'more-than-six-months-but-less-than-a-year' %}
+                  More than 6 months but less than a year
+                {% elif data['how-long-working-and-claiming'] == 'more-than-a-year' %}
+                  More than a year
+                {% elif data['how-long-working-and-claiming'] == 'i-dont-know' %}
+                  I don't know
+                {% else %}
+                  Not provided
+                {% endif %}
+              </p>
+            {% else %}
+              Not provided
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="how-long-has-the-fraud#working-and-claiming">
               Change<span class="govuk-visually-hidden"> working and claiming</span>
             </a>
           </dd>
@@ -418,17 +859,47 @@
           </dt>
           <dd class="govuk-summary-list__value">
             {% if data['id-fraud'] == 'id-fraud' %}
-              {% if data['id-fraud-hint'].length === 0 %}
-                Details to be entered
-              {% else %}
+              <p class="govuk-body">
                 {{ data['id-fraud-hint'] }}
-              {% endif %}
+              </p>
             {% else %}
               Not provided
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="what-fraud-do-you-think-is-happening#id-fraud">
+            <a class="govuk-link" href="what-fraud-do-you-think-is-happening-route-two#id-fraud">
+              Change<span class="govuk-visually-hidden"> ID fraud</span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            How long has the<span class="govuk-visually-hidden"> potential ID</span> fraud been going on
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['id-fraud'] == 'id-fraud' %}
+              <p class="govuk-body">
+                {% if data['how-long-id-fraud'] == 'less-than-three-months' %}
+                  Less than 3 months
+                {% elif data['how-long-id-fraud'] == 'three-to-six-months' %}
+                  3 to 6 months
+                {% elif data['how-long-id-fraud'] == 'more-than-six-months-but-less-than-a-year' %}
+                  More than 6 months but less than a year
+                {% elif data['how-long-id-fraud'] == 'more-than-a-year' %}
+                  More than a year
+                {% elif data['how-long-id-fraud'] == 'i-dont-know' %}
+                  I don't know
+                {% else %}
+                  Not provided
+                {% endif %}
+              </p>
+            {% else %}
+              Not provided
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="how-long-has-the-fraud#id-fraud">
               Change<span class="govuk-visually-hidden"> ID fraud</span>
             </a>
           </dd>
@@ -441,17 +912,47 @@
           </dt>
           <dd class="govuk-summary-list__value">
             {% if data['capital'] == 'capital' %}
-              {% if data['capital-hint'].length === 0 %}
-                Details to be entered
-              {% else %}
+              <p class="govuk-body">
                 {{ data['capital-hint'] }}
-              {% endif %}
+              </p>
             {% else %}
               Not provided
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="what-fraud-do-you-think-is-happening#capital">
+            <a class="govuk-link" href="what-fraud-do-you-think-is-happening-route-two#capital">
+              Change<span class="govuk-visually-hidden"> capital</span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            How long has the<span class="govuk-visually-hidden"> potential capital</span> fraud been going on
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['capital'] == 'capital' %}
+              <p class="govuk-body">
+                {% if data['how-long-capital'] == 'less-than-three-months' %}
+                  Less than 3 months
+                {% elif data['how-long-capital'] == 'three-to-six-months' %}
+                  3 to 6 months
+                {% elif data['how-long-capital'] == 'more-than-six-months-but-less-than-a-year' %}
+                  More than 6 months but less than a year
+                {% elif data['how-long-capital'] == 'more-than-a-year' %}
+                  More than a year
+                {% elif data['how-long-capital'] == 'i-dont-know' %}
+                  I don't know
+                {% else %}
+                  Not provided
+                {% endif %}
+              </p>
+            {% else %}
+              Not provided
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="how-long-has-the-fraud#capital">
               Change<span class="govuk-visually-hidden"> capital</span>
             </a>
           </dd>
@@ -464,17 +965,47 @@
           </dt>
           <dd class="govuk-summary-list__value">
             {% if data['other-income'] == 'other-income' %}
-              {% if data['other-income-hint'].length === 0 %}
-                Details to be entered
-              {% else %}
+              <p class="govuk-body">
                 {{ data['other-income-hint'] }}
-              {% endif %}
+              </p>
             {% else %}
               Not provided
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="what-fraud-do-you-think-is-happening#other-income">
+            <a class="govuk-link" href="what-fraud-do-you-think-is-happening-route-two#other-income">
+              Change<span class="govuk-visually-hidden"> other income</span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            How long has the<span class="govuk-visually-hidden"> potential other income</span> fraud been going on
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['other-income'] == 'other-income' %}
+              <p class="govuk-body">
+                {% if data['how-long-other-income'] == 'less-than-three-months' %}
+                  Less than 3 months
+                {% elif data['how-long-other-income'] == 'three-to-six-months' %}
+                  3 to 6 months
+                {% elif data['how-long-other-income'] == 'more-than-six-months-but-less-than-a-year' %}
+                  More than 6 months but less than a year
+                {% elif data['how-long-other-income'] == 'more-than-a-year' %}
+                  More than a year
+                {% elif data['how-long-other-income'] == 'i-dont-know' %}
+                  I don't know
+                {% else %}
+                  Not provided
+                {% endif %}
+              </p>
+            {% else %}
+              Not provided
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="how-long-has-the-fraud#other-income">
               Change<span class="govuk-visually-hidden"> other income</span>
             </a>
           </dd>
@@ -487,17 +1018,47 @@
           </dt>
           <dd class="govuk-summary-list__value">
             {% if data['abroad-fraud'] == 'abroad-fraud' %}
-              {% if data['abroad-fraud-hint'].length === 0 %}
-                Details to be entered
-              {% else %}
+              <p class="govuk-body">
                 {{ data['abroad-fraud-hint'] }}
-              {% endif %}
+              </p>
             {% else %}
               Not provided
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="what-fraud-do-you-think-is-happening#abroad-fraud">
+            <a class="govuk-link" href="what-fraud-do-you-think-is-happening-route-two#abroad-fraud">
+              Change<span class="govuk-visually-hidden"> abroad fraud</span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            How long has the<span class="govuk-visually-hidden"> potential abroad</span> fraud been going on
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['abroad-fraud'] == 'abroad-fraud' %}
+              <p class="govuk-body">
+                {% if data['how-long-abroad-fraud'] == 'less-than-three-months' %}
+                  Less than 3 months
+                {% elif data['how-long-abroad-fraud'] == 'three-to-six-months' %}
+                  3 to 6 months
+                {% elif data['how-long-abroad-fraud'] == 'more-than-six-months-but-less-than-a-year' %}
+                  More than 6 months but less than a year
+                {% elif data['how-long-abroad-fraud'] == 'more-than-a-year' %}
+                  More than a year
+                {% elif data['how-long-abroad-fraud'] == 'i-dont-know' %}
+                  I don't know
+                {% else %}
+                  Not provided
+                {% endif %}
+              </p>
+            {% else %}
+              Not provided
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="how-long-has-the-fraud#abroad-fraud">
               Change<span class="govuk-visually-hidden"> abroad fraud</span>
             </a>
           </dd>
@@ -510,17 +1071,47 @@
           </dt>
           <dd class="govuk-summary-list__value">
             {% if data['doubtful-disability'] == 'doubtful-disability' %}
-              {% if data['doubtful-disability-hint'].length === 0 %}
-                Details to be entered
-              {% else %}
+              <p class="govuk-body">
                 {{ data['doubtful-disability-hint'] }}
-              {% endif %}
+              </p>
             {% else %}
               Not provided
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="what-fraud-do-you-think-is-happening#doubtful-disability">
+            <a class="govuk-link" href="what-fraud-do-you-think-is-happening-route-two#doubtful-disability">
+              Change<span class="govuk-visually-hidden"> doubtful-disability</span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            How long has the<span class="govuk-visually-hidden"> potential doubtful disability</span> fraud been going on
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['doubtful-disability'] == 'doubtful-disability' %}
+              <p class="govuk-body">
+                {% if data['how-long-doubtful-disability'] == 'less-than-three-months' %}
+                  Less than 3 months
+                {% elif data['how-long-doubtful-disability'] == 'three-to-six-months' %}
+                  3 to 6 months
+                {% elif data['how-long-doubtful-disability'] == 'more-than-six-months-but-less-than-a-year' %}
+                  More than 6 months but less than a year
+                {% elif data['how-long-doubtful-disability'] == 'more-than-a-year' %}
+                  More than a year
+                {% elif data['how-long-doubtful-disability'] == 'i-dont-know' %}
+                  I don't know
+                {% else %}
+                  Not provided
+                {% endif %}
+              </p>
+            {% else %}
+              Not provided
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="how-long-has-the-fraud#doubtful-disability">
               Change<span class="govuk-visually-hidden"> doubtful disability</span>
             </a>
           </dd>
@@ -533,17 +1124,47 @@
           </dt>
           <dd class="govuk-summary-list__value">
             {% if data['housing-related'] == 'housing-related' %}
-              {% if data['housing-related-hint'].length === 0 %}
-                Details to be entered
-              {% else %}
+              <p class="govuk-body">
                 {{ data['housing-related-hint'] }}
-              {% endif %}
+              </p>
             {% else %}
               Not provided
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="what-fraud-do-you-think-is-happening#housing-related">
+            <a class="govuk-link" href="what-fraud-do-you-think-is-happening-route-two#housing-related">
+              Change<span class="govuk-visually-hidden"> housing related</span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            How long has the<span class="govuk-visually-hidden"> potential housing related</span> fraud been going on
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['housing-related'] == 'housing-related' %}
+              <p class="govuk-body">
+                {% if data['how-long-housing-related'] == 'less-than-three-months' %}
+                  Less than 3 months
+                {% elif data['how-long-housing-related'] == 'three-to-six-months' %}
+                  3 to 6 months
+                {% elif data['how-long-housing-related'] == 'more-than-six-months-but-less-than-a-year' %}
+                  More than 6 months but less than a year
+                {% elif data['how-long-housing-related'] == 'more-than-a-year' %}
+                  More than a year
+                {% elif data['how-long-housing-related'] == 'i-dont-know' %}
+                  I don't know
+                {% else %}
+                  Not provided
+                {% endif %}
+              </p>
+            {% else %}
+              Not provided
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="how-long-has-the-fraud#housing-related">
               Change<span class="govuk-visually-hidden"> housing related</span>
             </a>
           </dd>
@@ -556,18 +1177,48 @@
           </dt>
           <dd class="govuk-summary-list__value">
             {% if data['not-providing-care'] == 'not-providing-care' %}
-              {% if data['not-providing-care-hint'].length === 0 %}
-                Details to be entered
-              {% else %}
+              <p class="govuk-body">
                 {{ data['not-providing-care-hint'] }}
-              {% endif %}
+              </p>
             {% else %}
               Not provided
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="what-fraud-do-you-think-is-happening#not-providing-care">
-              Change<span class="govuk-visually-hidden"> not providing care</span>
+            <a class="govuk-link" href="what-fraud-do-you-think-is-happening-route-two#not-providing-care">
+              Change<span class="govuk-visually-hidden"> housing related</span>
+            </a>
+          </dd>
+        </div>
+
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            How long has the<span class="govuk-visually-hidden"> potential housing related</span> fraud been going on
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['not-providing-care'] == 'not-providing-care' %}
+              <p class="govuk-body">
+                {% if data['how-long-not-providing-care'] == 'less-than-three-months' %}
+                  Less than 3 months
+                {% elif data['how-long-not-providing-care'] == 'three-to-six-months' %}
+                  3 to 6 months
+                {% elif data['how-long-not-providing-care'] == 'more-than-six-months-but-less-than-a-year' %}
+                  More than 6 months but less than a year
+                {% elif data['how-long-not-providing-care'] == 'more-than-a-year' %}
+                  More than a year
+                {% elif data['how-long-not-providing-care'] == 'i-dont-know' %}
+                  I don't know
+                {% else %}
+                  Not provided
+                {% endif %}
+              </p>
+            {% else %}
+              Not provided
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="how-long-has-the-fraud#not-providing-care">
+              Change<span class="govuk-visually-hidden"> housing related</span>
             </a>
           </dd>
         </div>
@@ -579,23 +1230,54 @@
           </dt>
           <dd class="govuk-summary-list__value">
             {% if data['other'] == 'other' %}
-              {% if data['other-hint'].length === 0 %}
-                Details to be entered
-              {% else %}
+              <p class="govuk-body">
                 {{ data['other-hint'] }}
-              {% endif %}
+              </p>
             {% else %}
               Not provided
             {% endif %}
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="what-fraud-do-you-think-is-happening#other">
+            <a class="govuk-link" href="what-fraud-do-you-think-is-happening-route-two#other">
               Change<span class="govuk-visually-hidden"> other types of fraud</span>
             </a>
           </dd>
         </div>
 
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            How long has the<span class="govuk-visually-hidden"> potential other types of</span> fraud been going on
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['other'] == 'other' %}
+              <p class="govuk-body">
+                {% if data['how-long-other'] == 'less-than-three-months' %}
+                  Less than 3 months
+                {% elif data['how-long-other'] == 'three-to-six-months' %}
+                  3 to 6 months
+                {% elif data['how-long-other'] == 'more-than-six-months-but-less-than-a-year' %}
+                  More than 6 months but less than a year
+                {% elif data['how-long-other'] == 'more-than-a-year' %}
+                  More than a year
+                {% elif data['how-long-other'] == 'i-dont-know' %}
+                  I don't know
+                {% else %}
+                  Not provided
+                {% endif %}
+              </p>
+            {% else %}
+              Not provided
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="how-long-has-the-fraud#other">
+              Change<span class="govuk-visually-hidden"> other types of fraud</span>
+            </a>
+          </dd>
+        </div>
       </dl>
+      
+      {% endif %}
 
       {# SUBMITTER'S DETAILS #}
       <h2 class="govuk-heading-m" id="section-submitters-details">

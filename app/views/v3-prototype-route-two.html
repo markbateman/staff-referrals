@@ -1,0 +1,30 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Loading {{ serviceName }} prototype
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <script language="javascript" type="text/javascript">
+    window.setTimeout('location.replace("v3/index?route=two")',5000);
+  </script>
+    
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-l spinner-text">
+        Loading "Fraud referral form" prototype...
+      </h1>
+      <p class="govuk-body spinner-text">
+        Follow this <a href="v3/index?route=two" class="govuk-link">link</a> in the event your browser hasn't forwarded you to the service start page.
+      </p>
+    </div>
+  </div>
+
+  <div class="spinner">
+  </div>
+</div>
+
+{% endblock %}
