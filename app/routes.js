@@ -3,6 +3,11 @@ const router = express.Router()
 
 // Add your routes here - above the module.exports line
 
+// Import V4 routes
+router.use('/v4/', (req, res, next) => {
+  return require(`./views/v4/_routes`)(req, res, next);
+})
+
 // Import V3 routes
 router.use('/v3/', (req, res, next) => {
   return require(`./views/v3/_routes`)(req, res, next);

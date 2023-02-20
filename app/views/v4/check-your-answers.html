@@ -1,0 +1,847 @@
+{% extends "../layouts/v4-layout.html" %}
+
+{% set serviceName %}
+  Fraud referral form
+{% endset %}
+
+{% block pageTitle %}
+  Check your answers – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">
+        Check your answers
+      </h1>
+
+      {# WHO DO YOU WANT TO REPORT? and SOURCE OF ALLEGATION #}
+      {# Two seperate pages brought into a single grouped section as they're contextual #}
+      <h2 class="govuk-heading-m" id="section-allegation-details">
+        Allegation details
+      </h2>
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Who do you want to report?
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['who-do-you-want-to-report'] == 'person' %}
+              A person
+            {% elif data['who-do-you-want-to-report'] == 'employer' %}
+              An employer
+            {% elif data['who-do-you-want-to-report'] == 'organisation' %}
+              An organisation
+            {% elif data['who-do-you-want-to-report'] == 'dwp-staff-member' %}
+              A Department for Work and Pensions (DWP) staff member
+            {% else %}
+              Not provided
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="who-do-you-want-to-report">
+              Change<span class="govuk-visually-hidden"> who do you want to report</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Source of allegation
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['source-of-allegation'] == 'dwp-staff-member' %}
+              Department for Work and Pensions (DWP) staff member
+            {% elif data['source-of-allegation'] == 'hmrc' %}
+              HM Revenue and Customs (HMRC)
+            {% elif data['source-of-allegation'] == 'internet' %}
+              Internet
+            {% elif data['source-of-allegation'] == 'local-authority' %}
+              Local authority
+            {% elif data['source-of-allegation'] == 'member-of-public' %}
+              Member of public
+            {% elif data['source-of-allegation'] == 'national-benefit-fraud-hotline' %}
+              National Benefit Fraud Hotline (NBFH)
+            {% elif data['source-of-allegation'] == 'performance-measure-referral' %}
+              Performance measure referral
+            {% elif data['source-of-allegation'] == 'police' %}
+              Police
+            {% elif data['source-of-allegation'] == 'spain-benefit-fraud-hotline' %}
+              Spain Benefit Fraud Hotline
+            {% else %}
+              Not provided
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="source-of-allegation">
+              Change<span class="govuk-visually-hidden"> source of allegation</span>
+            </a>
+          </dd>
+        </div>
+      </dl>
+
+      {# SUSPECTS DETAILS #}
+      <h2 class="govuk-heading-m" id="section-suspects-details">
+        Suspect's details
+      </h2>
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            <span class="govuk-visually-hidden">Suspect's </span>First name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['suspects-first-name'] == null or data['suspects-first-name'] == '' %}
+              Not provided
+            {% else %}
+              {{ data['suspects-first-name'] }}
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="suspects-personal-details#section-suspects-first-name">
+              Change<span class="govuk-visually-hidden"> suspect's first name</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            <span class="govuk-visually-hidden">Suspect's </span>Last name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['suspects-last-name'] == null or data['suspects-last-name'] == '' %}
+              Not provided
+            {% else %}
+              {{ data['suspects-last-name'] }}
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="suspects-personal-details#section-suspects-last-name">
+              Change<span class="govuk-visually-hidden"> suspect's last name</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            <span class="govuk-visually-hidden">Suspect's </span>Other names
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['known-by-other-names'] == null or data['known-by-other-names'] == '' %}
+              Not provided
+            {% else %}
+              {{ data['known-by-other-names'] }}
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="suspects-personal-details#section-known-by-other-names">
+              Change<span class="govuk-visually-hidden"> suspect's other names</span>
+            </a>
+          </dd>
+        </div>
+
+        {# NATIONAL INSURANCE NUMBER #}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            <span class="govuk-visually-hidden">Suspect's </span>National Insurance number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['suspects-ni-number'] == null or data['suspects-ni-number'] == '' %}
+              Not provided
+            {% else %}
+              {{ data['suspects-ni-number'] }}
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="suspects-personal-details#section-suspects-ni-number">
+              Change<span class="govuk-visually-hidden"> suspect's National Insurance number</span>
+            </a>
+          </dd>
+        </div>
+
+        {# DATE OF BIRTH OR APPROXIMATE AGE #}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            {% if data['suspects-age'] == 'date-of-birth' %}
+              <span class="govuk-visually-hidden">Suspect's </span>Date of birth
+            {% elif data['suspects-age'] == 'approximate-age' %}
+              <span class="govuk-visually-hidden">Suspect's </span>Approximate age
+            {% elif data['suspects-age'] == 'age-not-known' %}
+              <span class="govuk-visually-hidden">Suspect's </span>Date of birth or approximate age
+            {% endif %}
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {# If approximate age has a value then show that, otherwise check if DOB has a value #}
+            {% if data['suspects-age'] == 'age-not-known' %}
+              Not provided
+            {% elif data['suspects-age'] == 'approximate-age' %}
+              {% if data['suspects-approximate-age'] == null or data['suspects-approximate-age'] == '' %}
+                Not provided
+              {% else %}
+                {{ data['suspects-approximate-age'] }} years
+              {% endif %}
+            {% else %}
+              {% if ((data['suspects-date-of-birth-day'] == null) or (data['suspects-date-of-birth-day'] == '')) and ((data['suspects-date-of-birth-month'] == null) or (data['suspects-date-of-birth-month'] == '')) and ((data['suspects-date-of-birth-year'] == null) or (data['suspects-date-of-birth-year'] == '')) %}
+                Not provided
+              {% else %}
+                {{ data['suspects-date-of-birth-day'] }} 
+                {% if data['suspects-date-of-birth-month'] == '1' or data['suspects-date-of-birth-month'] == '01' %}
+                  January 
+                {% elif data['suspects-date-of-birth-month'] == '2' or data['suspects-date-of-birth-month'] == '02' %}
+                  February 
+                {% elif data['suspects-date-of-birth-month'] == '3' or data['suspects-date-of-birth-month'] == '03' %}
+                  March 
+                {% elif data['suspects-date-of-birth-month'] == '4' or data['suspects-date-of-birth-month'] == '04' %}
+                  April 
+                {% elif data['suspects-date-of-birth-month'] == '5' or data['suspects-date-of-birth-month'] == '05' %}
+                  May 
+                {% elif data['suspects-date-of-birth-month'] == '6' or data['suspects-date-of-birth-month'] == '06' %}
+                  June 
+                {% elif data['suspects-date-of-birth-month'] == '7' or data['suspects-date-of-birth-month'] == '07' %}
+                  July 
+                {% elif data['suspects-date-of-birth-month'] == '8' or data['suspects-date-of-birth-month'] == '08' %}
+                  August 
+                {% elif data['suspects-date-of-birth-month'] == '9' or data['suspects-date-of-birth-month'] == '09' %}
+                  September 
+                {% elif data['suspects-date-of-birth-month'] == '10' or data['suspects-date-of-birth-month'] == '10' %}
+                  October 
+                {% elif data['suspects-date-of-birth-month'] == '11' or data['suspects-date-of-birth-month'] == '11' %}
+                  November 
+                {% elif data['suspects-date-of-birth-month'] == '12' or data['suspects-date-of-birth-month'] == '12' %}
+                  December 
+                {% endif %}
+                {{ data['suspects-date-of-birth-year'] }}
+              {% endif %}
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            {% if data['suspects-age'] == 'date-of-birth' %}
+              <a class="govuk-link" href="suspects-personal-details#suspects-date-of-birth">
+                Change<span class="govuk-visually-hidden"> suspect's date of birth</span>
+              </a>
+            {% elif data['suspects-age'] == 'approximate-age' %}
+              <a class="govuk-link" href="suspects-personal-details#suspects-date-of-birth">
+                Change<span class="govuk-visually-hidden"> suspect's approximate age</span>
+              </a>
+            {% elif data['suspects-age'] == 'age-not-known' %}
+              <a class="govuk-link" href="suspects-personal-details#suspects-date-of-birth">
+                Change<span class="govuk-visually-hidden"> suspect's date of birth or approximate age</span>
+              </a>
+            {% endif %}
+          </dd>
+        </div>
+
+        {# ADDRESS #}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            <span class="govuk-visually-hidden">Suspect's </span>Address
+          </dt>
+          <dd class="govuk-summary-list__value">
+
+            {% if (data['suspects-address-line-1']|length == 0) and (data['suspects-address-line-2']|length == 0) and (data['suspects-address-town']|length == 0) and (data['suspects-address-county']|length == 0) and (data['suspects-address-postcode']|length == 0) %}
+              Not provided
+            {% else %}
+
+              {# Address line 1 #}
+              {% if data['suspects-address-line-1']|length > 0 %}
+                {{ data['suspects-address-line-1'] }}<br>
+              {% endif %}
+            
+              {# Address line 2 #}
+              {% if data['suspects-address-line-2']|length > 0 %}
+                {{ data['suspects-address-line-2'] }}<br>
+              {% endif %}
+
+              {# Town #}
+              {% if data['suspects-address-town']|length > 0 %}
+                {{ data['suspects-address-town'] }}<br>
+              {% endif %}
+
+              {# County #}
+              {% if data['suspects-address-county']|length > 0 %}
+                {{ data['suspects-address-county'] }}<br>
+              {% endif %}
+
+              {# Postcode #}
+              {% if data['suspects-address-postcode']|length > 0 %}
+                {{ data['suspects-address-postcode'] }}<br>
+              {% endif %}
+
+            {% endif %}
+
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="suspects-address-and-contact-details#section-suspects-address">
+              Change<span class="govuk-visually-hidden"> suspect's address</span>
+            </a>
+          </dd>
+        </div>
+
+        {# TELEPHONE NUMBER #}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            <span class="govuk-visually-hidden">Suspect's </span>Telephone number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['contact-telephone'] == 'telephone' and data['suspect-contact-telephone'] != '' %}
+              {{ data['suspect-contact-telephone'] }}
+            {% else %}
+              Not provided
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="suspects-address-and-contact-details#contact-telephone">
+              Change<span class="govuk-visually-hidden"> suspect's telephone number</span>
+            </a>
+          </dd>
+        </div>
+
+        {# MOBILE NUMBER #}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            <span class="govuk-visually-hidden">Suspect's </span>Mobile number
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['contact-mobile'] == 'mobile' and data['suspect-contact-mobile'] != '' %}
+              {{ data['suspect-contact-mobile'] }}
+            {% else %}
+              Not provided
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="suspects-address-and-contact-details#contact-mobile">
+              Change<span class="govuk-visually-hidden"> suspect's mobile number</span>
+            </a>
+          </dd>
+        </div>
+
+        {# EMAIL ADDRESS #}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            <span class="govuk-visually-hidden">Suspect's </span>Email address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['contact-email'] == 'email' and data['suspect-contact-email'] != '' %}
+              {{ data['suspect-contact-email'] }}
+            {% else %}
+              Not provided
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="suspects-address-and-contact-details#contact-email">
+              Change<span class="govuk-visually-hidden"> suspect's email address</span>
+            </a>
+          </dd>
+        </div>
+
+      </dl>
+
+      {# WHAT FRAUD DO YOU THINK IS HAPPENING? #}
+      <h2 class="govuk-heading-m" id="section-what-do-you-think-is-happening">
+        What fraud do you think is happening?
+      </h2>
+
+      {% if data['living-together'] == 'living-together' and data['working-and-claiming'] == 'working-and-claiming' and data['id-fraud'] == 'id-fraud' and data['capital'] == 'capital' and data['other-income'] == 'other-income' and data['abroad-fraud'] == 'abroad-fraud' and data['doubtful-disability'] == 'doubtful-disability' and data['housing-related'] == 'housing-related' and data['not-providing-care'] == 'not-providing-care' and data['other'] == 'other' %}
+        {# Adjust summary-list bottom margin as the additional messaging won't be #}
+        <dl class="govuk-summary-list govuk-!-margin-bottom-8">
+      {% else %}
+        {# Do not adjust the summary-list bottom margin, rather show the additional messaging as it's bottom-margin will be applied instead #}
+        <dl class="govuk-summary-list">
+      {% endif %}
+
+      {# LIVING TOGETHER #}
+      {% if data['living-together'] == 'living-together' %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Living together
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['living-together'] == 'living-together' %}
+              {% if data['living-together-hint'].length === 0 %}
+                Details to be entered
+              {% else %}
+                <p class="govuk-body">
+                  {{ data['living-together-hint'] }}
+                </p>
+                <p class="govuk-body">
+                  {% if data['how-long-living-together'] == 'less-than-three-months' %}
+                    (Less than 3 months)
+                  {% elif data['how-long-living-together'] == 'three-to-six-months' %}
+                    (3 to 6 months)
+                  {% elif data['how-long-living-together'] == 'more-than-six-months-but-less-than-a-year' %}
+                    (More than 6 months but less than a year)
+                  {% elif data['how-long-living-together'] == 'more-than-a-year' %}
+                    (More than a year)
+                  {% elif data['how-long-living-together'] == 'i-dont-know' %}
+                    (I don't know)
+                  {% else %}
+                    (Not provided)
+                  {% endif %}
+                </p>
+              {% endif %}
+            {% else %}
+              Not provided
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="what-fraud-do-you-think-is-happening#living-together">
+              Change<span class="govuk-visually-hidden"> living together</span>
+            </a>
+          </dd>
+        </div>
+      {% endif %}
+
+      {# WORKING AND CLAIMING #}
+      {% if data['working-and-claiming'] == 'working-and-claiming' %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Working and claiming
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['working-and-claiming'] == 'working-and-claiming' %}
+              {% if data['working-and-claiming-hint'].length === 0 %}
+                Details to be entered
+              {% else %}
+                <p class="govuk-body">
+                  {{ data['working-and-claiming-hint'] }}
+                </p>
+                <p class="govuk-body">
+                  {% if data['how-long-working-and-claiming'] == 'less-than-three-months' %}
+                    (Less than 3 months)
+                  {% elif data['how-long-working-and-claiming'] == 'three-to-six-months' %}
+                    (3 to 6 months)
+                  {% elif data['how-long-living-together'] == 'more-than-six-months-but-less-than-a-year' %}
+                    (More than 6 months but less than a year)
+                  {% elif data['how-long-working-and-claiming'] == 'more-than-a-year' %}
+                    (More than a year)
+                  {% elif data['how-long-working-and-claiming'] == 'i-dont-know' %}
+                    (I don't know)
+                  {% else %}
+                    (Not provided)
+                  {% endif %}
+                </p>
+              {% endif %}
+            {% else %}
+              Not provided
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="what-fraud-do-you-think-is-happenin#working-and-claiming">
+              Change<span class="govuk-visually-hidden"> working and claiming</span>
+            </a>
+          </dd>
+        </div>
+      {% endif %}
+
+      {# ID FRAUD #}
+      {% if data['id-fraud'] == 'id-fraud' %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            ID fraud
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['id-fraud'] == 'id-fraud' %}
+              {% if data['id-fraud-hint'].length === 0 %}
+                Details to be entered
+              {% else %}
+                <p class="govuk-body">
+                  {{ data['id-fraud-hint'] }}
+                </p>
+                <p class="govuk-body">
+                  {% if data['how-long-id-fraud'] == 'less-than-three-months' %}
+                    (Less than 3 months)
+                  {% elif data['how-long-id-fraud'] == 'three-to-six-months' %}
+                    (3 to 6 months)
+                  {% elif data['how-long-id-fraud'] == 'more-than-six-months-but-less-than-a-year' %}
+                    (More than 6 months but less than a year)
+                  {% elif data['how-long-id-fraud'] == 'more-than-a-year' %}
+                    (More than a year)
+                  {% elif data['how-long-id-fraud'] == 'i-dont-know' %}
+                    (I don't know)
+                  {% else %}
+                    (Not provided)
+                  {% endif %}
+                </p>
+              {% endif %}
+            {% else %}
+              Not provided
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="what-fraud-do-you-think-is-happening#id-fraud">
+              Change<span class="govuk-visually-hidden"> ID fraud</span>
+            </a>
+          </dd>
+        </div>
+      {% endif %}
+
+      {# CAPITAL #}
+      {% if data['capital'] == 'capital' %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Capital
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['capital'] == 'capital' %}
+              {% if data['capital-hint'].length === 0 %}
+                Details to be entered
+              {% else %}
+                <p class="govuk-body">
+                  {{ data['capital-hint'] }}
+                </p>
+                <p class="govuk-body">
+                  {% if data['how-long-capital'] == 'less-than-three-months' %}
+                    (Less than 3 months)
+                  {% elif data['how-long-capital'] == 'three-to-six-months' %}
+                    (3 to 6 months)
+                  {% elif data['how-long-capital'] == 'more-than-six-months-but-less-than-a-year' %}
+                    (More than 6 months but less than a year)
+                  {% elif data['how-long-capital'] == 'more-than-a-year' %}
+                    (More than a year)
+                  {% elif data['how-long-capital'] == 'i-dont-know' %}
+                    (I don't know)
+                  {% else %}
+                    (Not provided)
+                  {% endif %}
+                </p>
+              {% endif %}
+            {% else %}
+              Not provided
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="what-fraud-do-you-think-is-happening#capital">
+              Change<span class="govuk-visually-hidden"> capital</span>
+            </a>
+          </dd>
+        </div>
+      {% endif %}
+
+      {# OTHER INCOME #}
+      {% if data['other-income'] == 'other-income' %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Other income
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['other-income'] == 'other-income' %}
+              {% if data['other-income-hint'].length === 0 %}
+                Details to be entered
+              {% else %}
+                <p class="govuk-body">
+                  {{ data['other-income-hint'] }}
+                </p>
+                <p class="govuk-body">
+                  {% if data['how-long-other-income'] == 'less-than-three-months' %}
+                    (Less than 3 months)
+                  {% elif data['how-long-other-income'] == 'three-to-six-months' %}
+                    (3 to 6 months)
+                  {% elif data['how-long-other-income'] == 'more-than-six-months-but-less-than-a-year' %}
+                    (More than 6 months but less than a year)
+                  {% elif data['how-long-other-income'] == 'more-than-a-year' %}
+                    (More than a year)
+                  {% elif data['how-long-other-income'] == 'i-dont-know' %}
+                    (I don't know)
+                  {% else %}
+                    (Not provided)
+                  {% endif %}
+                </p>
+              {% endif %}
+            {% else %}
+              Not provided
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="what-fraud-do-you-think-is-happening#other-income">
+              Change<span class="govuk-visually-hidden"> other income</span>
+            </a>
+          </dd>
+        </div>
+      {% endif %}
+
+      {# ABROAD FRAUD #}
+      {% if data['abroad-fraud'] == 'abroad-fraud' %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Abroad fraud
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['abroad-fraud'] == 'abroad-fraud' %}
+              {% if data['abroad-fraud-hint'].length === 0 %}
+                Details to be entered
+              {% else %}
+                <p class="govuk-body">
+                  {{ data['abroad-fraud-hint'] }}
+                </p>
+                <p class="govuk-body">
+                  {% if data['how-long-abroad-fraud'] == 'less-than-three-months' %}
+                    (Less than 3 months)
+                  {% elif data['how-long-abroad-fraud'] == 'three-to-six-months' %}
+                    (3 to 6 months)
+                  {% elif data['how-long-abroad-fraud'] == 'more-than-six-months-but-less-than-a-year' %}
+                    (More than 6 months but less than a year)
+                  {% elif data['how-long-abroad-fraud'] == 'more-than-a-year' %}
+                    (More than a year)
+                  {% elif data['how-long-abroad-fraud'] == 'i-dont-know' %}
+                    (I don't know)
+                  {% else %}
+                    (Not provided)
+                  {% endif %}
+                </p>
+              {% endif %}
+            {% else %}
+              Not provided
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="what-fraud-do-you-think-is-happening#abroad-fraud">
+              Change<span class="govuk-visually-hidden"> abroad fraud</span>
+            </a>
+          </dd>
+        </div>
+      {% endif %}
+
+      {# DOUBTFUL DISABILITY #}
+      {% if data['doubtful-disability'] == 'doubtful-disability' %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Doubtful disability
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['doubtful-disability'] == 'doubtful-disability' %}
+              {% if data['doubtful-disability-hint'].length === 0 %}
+                Details to be entered
+              {% else %}
+                <p class="govuk-body">
+                  {{ data['doubtful-disability-hint'] }}
+                </p>
+                <p class="govuk-body">
+                  {% if data['how-long-doubtful-disability'] == 'less-than-three-months' %}
+                    (Less than 3 months)
+                  {% elif data['how-long-doubtful-disability'] == 'three-to-six-months' %}
+                    (3 to 6 months)
+                  {% elif data['how-long-doubtful-disability'] == 'more-than-six-months-but-less-than-a-year' %}
+                    (More than 6 months but less than a year)
+                  {% elif data['how-long-doubtful-disability'] == 'more-than-a-year' %}
+                    (More than a year)
+                  {% elif data['how-long-doubtful-disability'] == 'i-dont-know' %}
+                    (I don't know)
+                  {% else %}
+                    (Not provided)
+                  {% endif %}
+                </p>
+              {% endif %}
+            {% else %}
+              Not provided
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="what-fraud-do-you-think-is-happening#doubtful-disability">
+              Change<span class="govuk-visually-hidden"> doubtful disability</span>
+            </a>
+          </dd>
+        </div>
+      {% endif %}
+
+      {# HOUSING RELATED #}
+      {% if data['housing-related'] == 'housing-related' %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Housing related
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['housing-related'] == 'housing-related' %}
+              {% if data['housing-related-hint'].length === 0 %}
+                Details to be entered
+              {% else %}
+                <p class="govuk-body">
+                  {{ data['housing-related-hint'] }}
+                </p>
+                <p class="govuk-body">
+                  {% if data['how-long-housing-related'] == 'less-than-three-months' %}
+                    (Less than 3 months)
+                  {% elif data['how-long-housing-related'] == 'three-to-six-months' %}
+                    (3 to 6 months)
+                  {% elif data['how-long-housing-related'] == 'more-than-six-months-but-less-than-a-year' %}
+                    (More than 6 months but less than a year)
+                  {% elif data['how-long-housing-related'] == 'more-than-a-year' %}
+                    (More than a year)
+                  {% elif data['how-long-housing-related'] == 'i-dont-know' %}
+                    (I don't know)
+                  {% else %}
+                    (Not provided)
+                  {% endif %}
+                </p>
+              {% endif %}
+            {% else %}
+              Not provided
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="what-fraud-do-you-think-is-happening#housing-related">
+              Change<span class="govuk-visually-hidden"> housing related</span>
+            </a>
+          </dd>
+        </div>
+      {% endif %}
+
+      {# NOT PROVIDING CARE #}
+      {% if data['not-providing-care'] == 'not-providing-care' %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Not providing care
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['not-providing-care'] == 'not-providing-care' %}
+              {% if data['not-providing-care-hint'].length === 0 %}
+                Details to be entered
+              {% else %}
+                <p class="govuk-body">
+                  {{ data['not-providing-care-hint'] }}
+                </p>
+                <p class="govuk-body">
+                  {% if data['how-long-not-providing-care'] == 'less-than-three-months' %}
+                    (Less than 3 months)
+                  {% elif data['how-long-not-providing-care'] == 'three-to-six-months' %}
+                    (3 to 6 months)
+                  {% elif data['how-long-not-providing-care'] == 'more-than-six-months-but-less-than-a-year' %}
+                    (More than 6 months but less than a year)
+                  {% elif data['how-long-not-providing-care'] == 'more-than-a-year' %}
+                    (More than a year)
+                  {% elif data['how-long-not-providing-care'] == 'i-dont-know' %}
+                    (I don't know)
+                  {% else %}
+                    (Not provided)
+                  {% endif %}
+                </p>
+              {% endif %}
+            {% else %}
+              Not provided
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="what-fraud-do-you-think-is-happening#not-providing-care">
+              Change<span class="govuk-visually-hidden"> not providing care</span>
+            </a>
+          </dd>
+        </div>
+      {% endif %}
+
+      {# OTHER TYPES OF FRAUD #}
+      {% if data['other'] == 'other' %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            Other types of fraud
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['other'] == 'other' %}
+              {% if data['other-hint'].length === 0 %}
+                Details to be entered
+              {% else %}
+                <p class="govuk-body">
+                  {{ data['other-hint'] }}
+                </p>
+                <p class="govuk-body">
+                  {% if data['how-long-other'] == 'less-than-three-months' %}
+                    (Less than 3 months)
+                  {% elif data['how-long-other'] == 'three-to-six-months' %}
+                    (3 to 6 months)
+                  {% elif data['how-long-other'] == 'more-than-six-months-but-less-than-a-year' %}
+                    (More than 6 months but less than a year)
+                  {% elif data['how-long-other'] == 'more-than-a-year' %}
+                    (More than a year)
+                  {% elif data['how-long-other'] == 'i-dont-know' %}
+                    (I don't know)
+                  {% else %}
+                    (Not provided)
+                  {% endif %}
+                </p>
+              {% endif %}
+            {% else %}
+              Not provided
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="what-fraud-do-you-think-is-happening#other">
+              Change<span class="govuk-visually-hidden"> other types of fraud</span>
+            </a>
+          </dd>
+        </div>
+      {% endif %}
+  
+      </dl>
+
+      {% if data['living-together'] == 'living-together' and data['working-and-claiming'] == 'working-and-claiming' and data['id-fraud'] == 'id-fraud' and data['capital'] == 'capital' and data['other-income'] == 'other-income' and data['abroad-fraud'] == 'abroad-fraud' and data['doubtful-disability'] == 'doubtful-disability' and data['housing-related'] == 'housing-related' and data['not-providing-care'] == 'not-providing-care' and data['other'] == 'other' %}
+        {# Do nothing as all fraud types have been chosen #}
+      {% else %}
+        <p class="govuk-body govuk-!-margin-bottom-8">
+          <a class="govuk-link" href="what-fraud-do-you-think-is-happening">Add another potential fraud type</a>.
+        </p>
+      {% endif %}
+
+      {# SUBMITTER'S DETAILS #}
+      <h2 class="govuk-heading-m" id="section-submitters-details">
+        Submitter's details
+      </h2>
+      <dl class="govuk-summary-list govuk-!-margin-bottom-9">
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            <span class="govuk-visually-hidden">Submitter </span>First name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['submitters-first-name'] == null or data['submitters-first-name'] == '' %}
+              Not provided
+            {% else %}
+              {{ data['submitters-first-name'] }}
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="submitters-details#section-submitters-first-name">
+              Change<span class="govuk-visually-hidden"> submitter's first name</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            <span class="govuk-visually-hidden">Submitter's </span>Last name
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['submitters-last-name'] == null or data['submitters-last-name'] == '' %}
+              Not provided
+            {% else %}
+              {{ data['submitters-last-name'] }}
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="submitters-details#section-submitters-last-name">
+              Change<span class="govuk-visually-hidden"> submitter's last name</span>
+            </a>
+          </dd>
+        </div>
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            <span class="govuk-visually-hidden">Submitter's </span>Email address
+          </dt>
+          <dd class="govuk-summary-list__value">
+            {% if data['submitters-email-address'] == null or data['submitters-email-address'] == '' %}
+              Not provided
+            {% else %}
+              {{ data['submitters-email-address'] }}
+            {% endif %}
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="submitters-details#section-submitters-email-address">
+              Change<span class="govuk-visually-hidden"> submitter's email address</span>
+            </a>
+          </dd>
+        </div>
+      </dl>
+
+      <form action="confirmation" method="post" novalidate>
+        <input type="hidden" name="answers-checked" value="true">
+          <button data-prevent-double-click="true" class="govuk-button" data-module="govuk-button">
+            Confirm and submit
+          </button>
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

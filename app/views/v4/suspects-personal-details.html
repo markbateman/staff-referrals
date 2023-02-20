@@ -1,0 +1,220 @@
+{% extends "../layouts/v4-layout.html" %}
+
+{% set serviceName %}
+  Fraud referral form
+{% endset %}
+
+{% block pageTitle %}
+  {% if data['page-errors'] == 'yes' %}
+    Error: Suspect's personal details – {{ serviceName }} – GOV.UK Prototype Kit
+  {% else %}
+    Suspect's personal details – {{ serviceName }} – GOV.UK Prototype Kit
+  {% endif %}
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      {% if data['page-errors'] == 'yes' %}
+        <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" id="error-summary" data-module="govuk-error-summary">
+          <h2 class="govuk-error-summary__title" id="error-summary-title">
+            There is a problem
+          </h2>
+          <div class="govuk-error-summary__body">
+            <ul class="govuk-list govuk-error-summary__list">
+            {% if (data['suspects-age'] != 'date-of-birth' or data['suspects-age'] != 'approximate-age' or data['suspects-age'] != 'age-not-known') and (data['page-errors'] == 'yes') %}
+              <li>
+                <a href="#suspects-date-of-birth">Select the suspect's date of birth or approximate age, or select "I do not know"</a>
+              </li>
+            {% endif %}
+            </ul>
+          </div>
+        </div>
+      {% else %}
+        {# Do nothing #}
+      {% endif %}
+
+      {#
+      <p>
+        page errors: {{ data['page-errors']}}<br>
+        birth day  : {{ data['suspects-date-of-birth-day'] }} and length = {{ data['suspects-date-of-birth-day']|length }}<br>
+        birth month: {{ data['suspects-date-of-birth-month'] }}  and length = {{ data['suspects-date-of-birth-month']|length }} <br>
+        birth year : {{ data['suspects-date-of-birth-year'] }} and length = {{ data['suspects-date-of-birth-year']|length }}<br>
+        approx age : {{ data['suspects-approximate-age'] }} and length = {{ data['suspects-approximate-age']|length }}
+      </p>
+      #}
+
+      <form class="form" method="post">
+        <div class="govuk-form-group">
+          <h1 class="govuk-heading-l">
+            Suspect's personal details
+          </h1>
+          
+          <fieldset class="govuk-fieldset">
+
+            {# FIRST NAME #}
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-label--m" for="suspects-first-name" id="section-suspects-first-name">
+                First name (optional)
+              </label>
+              <input class="govuk-input" id="suspects-first-name" name="suspects-first-name" value="{{ data['suspects-first-name'] }}" type="text">
+            </div>
+
+            {# LAST NAME #}
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-label--m" for="suspects-last-name" id="section-suspects-last-name">
+                Last name (optional)
+              </label>
+              <input class="govuk-input" id="suspects-last-name" name="suspects-last-name" value="{{ data['suspects-last-name'] }}" type="text">
+            </div>
+
+            {# OTHER NAMES #}
+            <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="200" id="section-known-by-other-names">
+              <div class="govuk-form-group">
+                <h2 class="govuk-label-wrapper"><label class="govuk-label govuk-label--m" for="known-by-other-names">
+                    Other names (optional)
+                  </label>
+                </h2>
+                <div id="known-by-other-names-hint" class="govuk-hint">
+                  Enter any other names the suspect maybe known by.
+                </div>
+                <textarea class="govuk-textarea govuk-js-character-count" id="known-by-other-names" name="known-by-other-names" rows="5" aria-describedby="known-by-other-names-info known-by-other-names-hint">{{ data['known-by-other-names'] }}</textarea>
+              </div>
+              <div id="known-by-other-names-info" class="govuk-hint govuk-character-count__message">
+                You can enter up to 200 characters
+              </div>
+            </div>
+
+            {# NATIONAL INSURANCE NUMBER #}         
+            <div class="govuk-form-group">
+              <label class="govuk-label govuk-label--m" for="suspects-ni-number" id="section-suspects-ni-number">
+                National Insurance number (optional)
+              </label>
+              <div id="suspects-ni-number-hint" class="govuk-hint">
+                For example, 'QQ 12 34 56 C'.
+              </div>
+              <input class="govuk-input govuk-input--width-10" id="suspects-ni-number" name="suspects-ni-number" value="{{ data['suspects-ni-number'] }}" type="text">
+            </div>
+
+            <p>{{ data['suspects-age'] }}</p>
+
+            {# SUSPECT'S DATE OF BIRTH OR APPROXIMATE AGE #}
+            {% if data['page-errors'] == 'yes' %}
+            <div class="govuk-form-group govuk-form-group--error" id="suspects-date-of-birth">
+              <fieldset class="govuk-fieldset" aria-describedby="suspects-age-error">
+            {% else %}
+            <div class="govuk-form-group">
+              <fieldset class="govuk-fieldset" aria-describedby="suspects-age" id="suspects-date-of-birth">
+            {% endif %}
+
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                  <h2 class="govuk-fieldset__heading">
+                    Suspect's date of birth or approximate age
+                  </h2>
+                </legend>
+                <div id="suspects-age-hint" class="govuk-hint">
+                  Select one option.
+                </div>
+
+                {% if data['page-errors'] == 'yes' %}
+                  <p id="suspects-age-error" class="govuk-error-message">
+                    <span class="govuk-visually-hidden">Error:</span> Select the suspect's date of birth or approximate age, or select "I do not know"
+                  </p>
+                {% endif %}
+
+                {# SUSPECT'S DATE OF BIRTH #}
+                <div class="govuk-radios" data-module="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="suspects-age" name="suspects-age" type="radio" value="date-of-birth" data-aria-controls="conditional-suspects-age" {{ checked("suspects-age", "date-of-birth") }}>
+                    <label class="govuk-label govuk-radios__label" for="suspects-age">
+                      Date of birth
+                    </label>
+                  </div>
+                  <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-suspects-age">
+                    <fieldset class="govuk-fieldset" role="group" aria-describedby="suspects-date-of-birth-hint">
+                      <div class="govuk-form-group">
+                        <label class="govuk-label" for="section-suspects-date-of-birth">
+                          Suspect's date of birth
+                        </label>
+                        <div id="suspects-date-of-birth-hint" class="govuk-hint">
+                          For example, 27 3 2004
+                        </div>
+                        <div class="govuk-date-input" id="suspects-date-of-birth">
+                          <div class="govuk-date-input__item">
+                            <div class="govuk-form-group">
+                              <label class="govuk-label govuk-date-input__label" for="suspects-date-of-birth-day">
+                                Day
+                              </label>
+                              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="suspects-date-of-birth-day" name="suspects-date-of-birth-day" value="{{ data['suspects-date-of-birth-day'] }}" type="text" inputmode="numeric">
+                            </div>
+                          </div>
+                          <div class="govuk-date-input__item">
+                            <div class="govuk-form-group">
+                              <label class="govuk-label govuk-date-input__label" for="suspects-date-of-birth-month">
+                                Month
+                              </label>
+                              <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="suspects-date-of-birth-month" name="suspects-date-of-birth-month" value="{{ data['suspects-date-of-birth-month'] }}" type="text" inputmode="numeric">
+                           </div>
+                          </div>
+                          <div class="govuk-date-input__item">
+                            <div class="govuk-form-group">
+                              <label class="govuk-label govuk-date-input__label" for="suspects-date-of-birth-year">
+                                Year
+                              </label>
+                              <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="suspects-date-of-birth-year" name="suspects-date-of-birth-year" value="{{ data['suspects-date-of-birth-year'] }}" type="text" inputmode="numeric">
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </fieldset>
+                  </div>
+
+                  {# APPROXIMATE AGE #}
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="suspects-age-2" name="suspects-age" type="radio" value="approximate-age" data-aria-controls="conditional-suspects-age-2" {{ checked("suspects-age", "approximate-age") }}>
+                    <label class="govuk-label govuk-radios__label" for="suspects-age-2">
+                      Approximate age
+                    </label>
+                  </div>
+                  <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-suspects-age-2">
+                    <div class="govuk-form-group">
+                      <label class="govuk-label" for="suspects-approximate-age">
+                        Suspect's approximate age in years
+                      </label>
+                      <input class="govuk-input govuk-!-width-one-third" id="suspects-approximate-age" name="suspects-approximate-age" value="{{ data['suspects-approximate-age'] }}">
+                    </div>
+                  </div>
+
+                  {# OR... DON'T KNOW EITHER #}
+                  <div class="govuk-radios__divider">or</div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="suspects-age-3" name="suspects-age" type="radio" value="age-not-known" data-aria-controls="conditional-suspects-age-3" {{ checked("suspects-age", "age-not-known") }}>
+                    <label class="govuk-label govuk-radios__label" for="suspects-age-3">
+                      I do not know
+                    </label>
+                  </div>
+
+                </div>
+              </fieldset>
+            </div>
+
+          </fieldset>
+
+        </div>
+
+        {{ govukButton({
+          text: 'Continue'
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

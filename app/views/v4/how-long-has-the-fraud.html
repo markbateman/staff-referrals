@@ -1,0 +1,466 @@
+{% extends "../layouts/v4-layout.html" %}
+
+{% set serviceName %}
+  Fraud referral form
+{% endset %}
+
+{% block pageTitle %}
+  How long has the potential fraud been going on? – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <form class="form" method="post">
+
+        <h1 class="govuk-heading-l">
+          How long has the potential fraud been going on?
+        </h1>
+
+        {# LIVING TOGETHER #}
+        {% if (data['living-together'] == 'living-together') %}
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" data-required data-error="Select how long the potential living together fraud has been going on">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m" id="living-togther">
+                  <strong>Living together</strong>
+              </legend>
+              <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-long-living-together" name="how-long-living-together" type="radio" value="less-than-three-months" {{ checked("how-long-living-together", "less-than-three-months") }}>
+                  <label class="govuk-label govuk-radios__label" for="how-long-living-together">
+                    Less than 3 months
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-long-living-together-2" name="how-long-living-together" type="radio" value="three-to-six-months" {{ checked("how-long-living-together", "three-to-six-months") }}>
+                  <label class="govuk-label govuk-radios__label" for="how-long-living-together-2">
+                    3 to 6 months
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-long-living-together-3" name="how-long-living-together" type="radio" value="more-than-six-months-but-less-than-a-year" {{ checked("how-long-living-together", "more-than-six-months-but-less-than-a-year") }}>
+                  <label class="govuk-label govuk-radios__label" for="how-long-living-together-3">
+                    More than 6 months but less than a year
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-long-living-together-4" name="how-long-living-together" type="radio" value="more-than-a-year" {{ checked("how-long-living-together", "more-than-a-year") }}>
+                  <label class="govuk-label govuk-radios__label" for="how-long-living-together-4">
+                    More than a year
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-long-living-together-5" name="how-long-living-together" type="radio" value="i-dont-know" {{ checked("how-long-living-together", "i-dont-know") }}>
+                  <label class="govuk-label govuk-radios__label" for="how-long-living-together-5">
+                    I don't know
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        {% endif %}
+
+        {# WORKING AND CLAIMING #}
+        {% if (data['working-and-claiming'] == 'working-and-claiming') %}
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" data-required data-error="Select how long the potential working and claiming fraud has been going on">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m" id="working-and-claiming">
+                  <strong>Working and claiming</strong>
+              </legend>
+              <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-long-working-and-claiming" name="how-long-working-and-claiming" type="radio" value="less-than-three-months" {{ checked("how-long-working-and-claiming", "less-than-three-months") }}>
+                  <label class="govuk-label govuk-radios__label" for="how-long-working-and-claiming">
+                    Less than 3 months
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-long-working-and-claiming-2" name="how-long-working-and-claiming" type="radio" value="three-to-six-months" {{ checked("how-long-working-and-claiming", "three-to-six-months") }}>
+                  <label class="govuk-label govuk-radios__label" for="how-long-working-and-claiming-2">
+                    3 to 6 months
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-long-working-and-claiming-3" name="how-long-working-and-claiming" type="radio" value="more-than-six-months-but-less-than-a-year" {{ checked("how-long-working-and-claiming", "more-than-six-months-but-less-than-a-year") }}>
+                  <label class="govuk-label govuk-radios__label" for="how-long-working-and-claiming-3">
+                    More than 6 months but less than a year
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-long-working-and-claiming-4" name="how-long-working-and-claiming" type="radio" value="more-than-a-year" {{ checked("how-long-working-and-claiming", "more-than-a-year") }}>
+                  <label class="govuk-label govuk-radios__label" for="how-long-working-and-claiming-4">
+                    More than a year
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-long-working-and-claiming-5" name="how-long-working-and-claiming" type="radio" value="i-dont-know" {{ checked("how-long-working-and-claiming", "i-dont-know") }}>
+                  <label class="govuk-label govuk-radios__label" for="how-long-working-and-claiming-5">
+                    I don't know
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        {% endif %}
+
+        {# ID FRAUD #}
+        {% if (data['id-fraud'] == 'id-fraud') %}
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" data-required data-error="Select how long the potential ID fraud has been going on">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m" id="id-fraud">
+                  <strong>ID fraud</strong>
+              </legend>
+              <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-long-id-fraud" name="how-long-id-fraud" type="radio" value="less-than-three-months" {{ checked("how-long-id-fraud", "less-than-three-months") }}>
+                  <label class="govuk-label govuk-radios__label" for="how-long-id-fraud">
+                    Less than 3 months
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-long-id-fraud-2" name="how-long-id-fraud" type="radio" value="three-to-six-months" {{ checked("how-long-id-fraud", "three-to-six-months") }}>
+                  <label class="govuk-label govuk-radios__label" for="how-long-id-fraud-2">
+                    3 to 6 months
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-long-id-fraud-3" name="how-long-id-fraud" type="radio" value="more-than-six-months-but-less-than-a-year" {{ checked("how-long-id-fraud", "more-than-six-months-but-less-than-a-year") }}>
+                  <label class="govuk-label govuk-radios__label" for="how-long-id-fraud-3">
+                    More than 6 months but less than a year
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-long-id-fraud-4" name="how-long-id-fraud" type="radio" value="more-than-a-year" {{ checked("how-long-id-fraud", "more-than-a-year") }}>
+                  <label class="govuk-label govuk-radios__label" for="how-long-id-fraud-4">
+                    More than a year
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-long-id-fraud-5" name="how-long-id-fraud" type="radio" value="i-dont-know" {{ checked("how-long-id-fraud", "i-dont-know") }}>
+                  <label class="govuk-label govuk-radios__label" for="how-long-id-fraud-5">
+                    I don't know
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        {% endif %}
+
+        {# CAPITAL #}
+        {% if (data['capital'] == 'capital') %}
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" data-required data-error="Select how long the potential capital fraud has been going on">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m" id="capital">
+                  <strong>Capital</strong>
+              </legend>
+              <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-long-capital" name="how-long-capital" type="radio" value="less-than-three-months" {{ checked("how-long-capital", "less-than-three-months") }}>
+                  <label class="govuk-label govuk-radios__label" for="how-long-capital">
+                    Less than 3 months
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-long-capital-2" name="how-long-capital" type="radio" value="three-to-six-months" {{ checked("how-long-capital", "three-to-six-months") }}>
+                  <label class="govuk-label govuk-radios__label" for="how-long-capital-2">
+                    3 to 6 months
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-long-capital-3" name="how-long-capital" type="radio" value="more-than-six-months-but-less-than-a-year" {{ checked("how-long-capital", "more-than-six-months-but-less-than-a-year") }}>
+                  <label class="govuk-label govuk-radios__label" for="how-long-capital-3">
+                    More than 6 months but less than a year
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-long-capital-4" name="how-long-capital" type="radio" value="more-than-a-year" {{ checked("how-long-capital", "more-than-a-year") }}>
+                  <label class="govuk-label govuk-radios__label" for="how-long-capital-4">
+                    More than a year
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-long-capital-5" name="how-long-capital" type="radio" value="i-dont-know" {{ checked("how-long-capital", "i-dont-know") }}>
+                  <label class="govuk-label govuk-radios__label" for="how-long-capital-5">
+                    I don't know
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        {% endif %}
+
+        {# OTHER INCOME #}
+        {% if (data['other-income'] == 'other-income') %}
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" data-required data-error="Select how long the potential other income fraud has been going on">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m" id="other-income">
+                  <strong>Other income</strong>
+              </legend>
+              <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-long-other-income" name="how-long-other-income" type="radio" value="less-than-three-months" {{ checked("how-long-other-income", "less-than-three-months") }}>
+                  <label class="govuk-label govuk-radios__label" for="how-long-other-income">
+                    Less than 3 months
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-long-other-income-2" name="how-long-other-income" type="radio" value="three-to-six-months" {{ checked("how-long-other-income", "three-to-six-months") }}>
+                  <label class="govuk-label govuk-radios__label" for="how-long-other-income-2">
+                    3 to 6 months
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-long-other-income-3" name="how-long-other-income" type="radio" value="more-than-six-months-but-less-than-a-year" {{ checked("how-long-other-income", "more-than-six-months-but-less-than-a-year") }}>
+                  <label class="govuk-label govuk-radios__label" for="how-long-other-income-3">
+                    More than 6 months but less than a year
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-long-other-income-4" name="how-long-other-income" type="radio" value="more-than-a-year" {{ checked("how-long-other-income", "more-than-a-year") }}>
+                  <label class="govuk-label govuk-radios__label" for="how-long-other-income-4">
+                    More than a year
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-long-other-income-5" name="how-long-other-income" type="radio" value="i-dont-know" {{ checked("how-long-other-income", "i-dont-know") }}>
+                  <label class="govuk-label govuk-radios__label" for="how-long-other-income-5">
+                    I don't know
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        {% endif %}
+
+        {# ABROAD FRAUD #}
+        {% if (data['abroad-fraud'] == 'abroad-fraud') %}
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" data-required data-error="Select how long the potential abroad fraud has been going on">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m" id="abroad-fraud">
+                  <strong>Abroad fraud</strong>
+              </legend>
+              <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-long-abroad-fraud" name="how-long-abroad-fraud" type="radio" value="less-than-three-months" {{ checked("how-long-abroad-fraud", "less-than-three-months") }}>
+                  <label class="govuk-label govuk-radios__label" for="how-long-abroad-fraud">
+                    Less than 3 months
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-long-abroad-fraud-2" name="how-long-abroad-fraud" type="radio" value="three-to-six-months" {{ checked("how-long-abroad-fraud", "three-to-six-months") }}>
+                  <label class="govuk-label govuk-radios__label" for="how-long-abroad-fraud-2">
+                    3 to 6 months
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-long-abroad-fraud-3" name="how-long-abroad-fraud" type="radio" value="more-than-six-months-but-less-than-a-year" {{ checked("how-long-abroad-fraud", "more-than-six-months-but-less-than-a-year") }}>
+                  <label class="govuk-label govuk-radios__label" for="how-long-abroad-fraud-3">
+                    More than 6 months but less than a year
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-long-abroad-fraud-4" name="how-long-abroad-fraud" type="radio" value="more-than-a-year" {{ checked("how-long-abroad-fraud", "more-than-a-year") }}>
+                  <label class="govuk-label govuk-radios__label" for="how-long-abroad-fraud-4">
+                    More than a year
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-long-abroad-fraud-5" name="how-long-abroad-fraud" type="radio" value="i-dont-know" {{ checked("how-long-abroad-fraud", "i-dont-know") }}>
+                  <label class="govuk-label govuk-radios__label" for="how-long-abroad-fraud-5">
+                    I don't know
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        {% endif %}
+
+        {# DOUBTFUL DISABILITY #}
+        {% if (data['doubtful-disability'] == 'doubtful-disability') %}
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" data-required data-error="Select how long the potential doubtful disability fraud has been going on">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m" id="doubtful-disability">
+                  <strong>Doubtful disability</strong>
+              </legend>
+              <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-long-doubtful-disability" name="how-long-doubtful-disability" type="radio" value="less-than-three-months" {{ checked("how-long-doubtful-disability", "less-than-three-months") }}>
+                  <label class="govuk-label govuk-radios__label" for="how-long-doubtful-disability">
+                    Less than 3 months
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-long-doubtful-disability-2" name="how-long-doubtful-disability" type="radio" value="three-to-six-months" {{ checked("how-long-doubtful-disability", "three-to-six-months") }}>
+                  <label class="govuk-label govuk-radios__label" for="how-long-doubtful-disability-2">
+                    3 to 6 months
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-long-doubtful-disability-3" name="how-long-doubtful-disability" type="radio" value="more-than-six-months-but-less-than-a-year" {{ checked("how-long-doubtful-disability", "more-than-six-months-but-less-than-a-year") }}>
+                  <label class="govuk-label govuk-radios__label" for="how-long-doubtful-disability-3">
+                    More than 6 months but less than a year
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-long-doubtful-disability-4" name="how-long-doubtful-disability" type="radio" value="more-than-a-year" {{ checked("how-long-doubtful-disability", "more-than-a-year") }}>
+                  <label class="govuk-label govuk-radios__label" for="how-long-doubtful-disability-4">
+                    More than a year
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-long-doubtful-disability-5" name="how-long-doubtful-disability" type="radio" value="i-dont-know" {{ checked("how-long-doubtful-disability", "i-dont-know") }}>
+                  <label class="govuk-label govuk-radios__label" for="how-long-doubtful-disability-5">
+                    I don't know
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        {% endif %}
+
+        {# HOUSING RELATED #}
+        {% if (data['housing-related'] == 'housing-related') %}
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" data-required data-error="Select how long the potential housing related fraud has been going on">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m" id="housing-related">
+                  <strong>Housing related</strong>
+              </legend>
+              <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-long-housing-related" name="how-long-housing-related" type="radio" value="less-than-three-months" {{ checked("how-long-housing-related", "less-than-three-months") }}>
+                  <label class="govuk-label govuk-radios__label" for="how-long-housing-related">
+                    Less than 3 months
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-long-housing-related-2" name="how-long-housing-related" type="radio" value="three-to-six-months" {{ checked("how-long-housing-related", "three-to-six-months") }}>
+                  <label class="govuk-label govuk-radios__label" for="how-long-housing-related-2">
+                    3 to 6 months
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-long-housing-related-3" name="how-long-housing-related" type="radio" value="more-than-six-months-but-less-than-a-year" {{ checked("how-long-housing-related", "more-than-six-months-but-less-than-a-year") }}>
+                  <label class="govuk-label govuk-radios__label" for="how-long-housing-related-3">
+                    More than 6 months but less than a year
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-long-housing-related-4" name="how-long-housing-related" type="radio" value="more-than-a-year" {{ checked("how-long-housing-related", "more-than-a-year") }}>
+                  <label class="govuk-label govuk-radios__label" for="how-long-housing-related-4">
+                    More than a year
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-long-housing-related-5" name="how-long-housing-related" type="radio" value="i-dont-know" {{ checked("how-long-housing-related", "i-dont-know") }}>
+                  <label class="govuk-label govuk-radios__label" for="how-long-housing-related-5">
+                    I don't know
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        {% endif %}
+
+        {# NOT PROVIDING CARE #}
+        {% if (data['not-providing-care'] == 'not-providing-care') %}
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" data-required data-error="Select how long the potential not providing care fraud has been going on">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m" id="not-providing-care">
+                  <strong>Not providing care</strong>
+              </legend>
+              <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-long-not-providing-care" name="how-long-not-providing-care" type="radio" value="less-than-three-months" {{ checked("how-long-not-providing-care", "less-than-three-months") }}>
+                  <label class="govuk-label govuk-radios__label" for="how-long-not-providing-care">
+                    Less than 3 months
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-long-not-providing-care-2" name="how-long-not-providing-care" type="radio" value="three-to-six-months" {{ checked("how-long-not-providing-care", "three-to-six-months") }}>
+                  <label class="govuk-label govuk-radios__label" for="how-long-not-providing-care-2">
+                    3 to 6 months
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-long-not-providing-care-3" name="how-long-not-providing-care" type="radio" value="more-than-six-months-but-less-than-a-year" {{ checked("how-long-not-providing-care", "more-than-six-months-but-less-than-a-year") }}>
+                  <label class="govuk-label govuk-radios__label" for="how-long-not-providing-care-3">
+                    More than 6 months but less than a year
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-long-not-providing-care-4" name="how-long-not-providing-care" type="radio" value="more-than-a-year" {{ checked("how-long-not-providing-care", "more-than-a-year") }}>
+                  <label class="govuk-label govuk-radios__label" for="how-long-not-providing-care-4">
+                    More than a year
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-long-not-providing-care-5" name="how-long-not-providing-care" type="radio" value="i-dont-know" {{ checked("how-long-not-providing-care", "i-dont-know") }}>
+                  <label class="govuk-label govuk-radios__label" for="how-long-not-providing-care-5">
+                    I don't know
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        {% endif %}
+
+        {# OTHER TYPES OF FRAUD #}
+        {% if (data['other'] == 'other') %}
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset" data-required data-error="Select how long the potential other types of fraud has been going on">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m" id="other">
+                  <strong>Other types of fraud</strong>
+              </legend>
+              <div class="govuk-radios" data-module="govuk-radios">
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-long-other" name="how-long-other" type="radio" value="less-than-three-months" {{ checked("how-long-other", "less-than-three-months") }}>
+                  <label class="govuk-label govuk-radios__label" for="how-long-other">
+                    Less than 3 months
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-long-other-2" name="how-long-other" type="radio" value="three-to-six-months" {{ checked("how-long-other", "three-to-six-months") }}>
+                  <label class="govuk-label govuk-radios__label" for="how-long-other-2">
+                    3 to 6 months
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-long-other-3" name="how-long-other" type="radio" value="more-than-six-months-but-less-than-a-year" {{ checked("how-long-other", "more-than-six-months-but-less-than-a-year") }}>
+                  <label class="govuk-label govuk-radios__label" for="how-long-other-3">
+                    More than 6 months but less than a year
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-long-other-4" name="how-long-other" type="radio" value="more-than-a-year" {{ checked("how-long-other", "more-than-a-year") }}>
+                  <label class="govuk-label govuk-radios__label" for="how-long-other-4">
+                    More than a year
+                  </label>
+                </div>
+                <div class="govuk-radios__item">
+                  <input class="govuk-radios__input" id="how-long-other-5" name="how-long-other" type="radio" value="i-dont-know" {{ checked("how-long-other", "i-dont-know") }}>
+                  <label class="govuk-label govuk-radios__label" for="how-long-other-5">
+                    I don't know
+                  </label>
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        {% endif %}
+
+        {{ govukButton({
+          text: 'Continue',
+          classes: "govuk-!-margin-top-2"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
