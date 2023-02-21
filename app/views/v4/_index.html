@@ -77,9 +77,24 @@
       </div>
     </dl>
 
+    <h2 class="govuk-heading-l">
+      Prototype variant to run
+    </h2>
+    <p class="govuk-body">
+      <strong>Route one:</strong><br>Acknowledge/warning Interruption styled page.
+    </p>
     {{ govukButton({
-      text: "Start now",
-      href: "../v4/index"
+      text: "Start route one now",
+      href: "../v4/index?acknowledge=one",
+      classes: "govuk-!-margin-bottom-8"
+    }) }}
+
+    <p class="govuk-body">
+      <strong>Route two:</strong><br>Acknowledge/warning makes use of Notification styled component.
+    </p>
+    {{ govukButton({
+      text: "Start route two now",
+      href: "../v4/index?acknowledge=two"
     }) }}
 
     <h2 class="govuk-heading-l govuk-!-margin-top-8">

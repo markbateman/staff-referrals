@@ -81,7 +81,14 @@ router.post('/index', function(req, res) {
     req.session.data['submitters-last-name'] = null;
     req.session.data['submitters-email-address'] = null;
 
-    res.redirect('who-do-you-want-to-report');
+//    res.redirect('who-do-you-want-to-report');
+
+    if (req.session.data['acknowledge'] == 'one') {
+        res.redirect('acknowledge');
+    } else {
+        res.redirect('acknowledge-2');
+    }
+
 })
 
 // who-do-you-want-to-report

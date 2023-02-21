@@ -1,0 +1,181 @@
+{% extends "../layouts/v4-layout.html" %}
+
+{% set serviceName %}
+  Fraud referral form
+{% endset %}
+
+{% block pageTitle %}
+  Employer's name, address and contact details – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+    
+      <form class="form" method="post">
+
+        <div class="govuk-form-group">
+
+          <h1 class="govuk-heading-l">
+            Employer's name, address and contact details
+          </h1>
+
+          {# EMPLOYER NAME #}
+          <label class="govuk-label govuk-label--m" for="employers-first-name" id="section-employers-first-name">
+            Employer's name (optional)
+          </label>
+          <input class="govuk-input govuk-!-margin-bottom-7" id="employers-first-name" name="employers-first-name" value="{{ data['employers-first-name'] }}" type="text">
+
+          <fieldset class="govuk-fieldset">
+
+            {# EMPLOYER ADDRESS #}
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              <h2 class="govuk-fieldset__heading" id="section-employers-address">
+                Employer's address (optional)
+              </h2>
+            </legend>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="employers-address-line-1" id="address-line-1">
+                Address line 1
+              </label>
+              <input class="govuk-input" id="employers-address-line-1" name="employers-address-line-1" value="{{ data['employers-address-line-1'] }}" type="text" autocomplete="address-line1">
+            </div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="employers-address-line-2">
+                Address line 2
+              </label>
+              <input class="govuk-input" id="employers-address-line-2" name="employers-address-line-2" value="{{ data['employers-address-line-2'] }}" type="text" autocomplete="address-line2">
+            </div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="employers-address-town" id="address-town">
+                Town or city
+              </label>
+              <input class="govuk-input govuk-!-width-two-thirds" id="employers-address-town" name="employers-address-town" value="{{ data['employers-address-town'] }}" type="text" autocomplete="address-level2">
+            </div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="employers-address-county">
+                County
+              </label>
+              <input class="govuk-input govuk-!-width-two-thirds" id="employers-address-county" name="employers-address-county" value="{{ data['employers-address-county'] }}" type="text">
+            </div>
+
+            <div class="govuk-form-group">
+              <label class="govuk-label" for="employers-address-postcode" id="address-postcode">
+                Postcode
+              </label>
+              <input class="govuk-input govuk-input--width-10" id="employers-address-postcode" name="employers-address-postcode" value="{{ data['employers-address-postcode'] }}" type="text" autocomplete="postal-code">
+            </div>
+            
+          </fieldset>
+        </div>
+
+        {# EMPLOYER CONTACT DETAILS #}
+        <div class="govuk-form-group govuk-!-margin-top-7">
+          <fieldset class="govuk-fieldset" aria-describedby="employers-contact-details-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              <h2 class="govuk-fieldset__heading">
+                Employer's contact details (optional)
+              </h2>
+            </legend>
+            <div id="employers-contact-details-hint" class="govuk-hint">
+              Select all contact details that are relevant to the employer.
+            </div>
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              
+              {# EMPLOYER TELEPHONE NUMBER #}
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="contact-telephone" name="contact-telephone" type="checkbox" value="telephone" {{ checked("contact-telephone", "telephone") }} data-aria-controls="conditional-contact-telephone">
+                <label class="govuk-label govuk-checkboxes__label" for="contact-telephone">
+                  Telephone
+                </label>
+              </div>
+              <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact-telephone">
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="employer-contact-telephone">
+                    Telephone number
+                  </label>
+                  <input class="govuk-input govuk-input--width-20" id="employer-contact-telephone" name="employer-contact-telephone" value="{{ data['employer-contact-telephone'] }}" type="tel" autocomplete="tel">
+                </div>
+              </div>
+
+              {# EMPLOYER MOBILE TELEPHONE NUMBER #}
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="contact-mobile" name="contact-mobile" type="checkbox" value="mobile" {{ checked("contact-mobile", "mobile") }} data-aria-controls="conditional-contact-mobile">
+                <label class="govuk-label govuk-checkboxes__label" for="contact-mobile">
+                  Mobile
+                </label>
+              </div>
+              <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact-mobile">
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="employer-contact-mobile">
+                    Mobile number
+                  </label>
+                  <input class="govuk-input govuk-input--width-20" id="employer-contact-mobile" name="employer-contact-mobile" value="{{ data['employer-contact-mobile'] }}" type="tel" autocomplete="tel">
+                </div>
+              </div>
+              
+              {# EMPLOYER EMAIL ADDRESS #}
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="contact-email" name="contact-email" type="checkbox" value="email" {{ checked("contact-email", "email") }} data-aria-controls="conditional-contact-email">
+                <label class="govuk-label govuk-checkboxes__label" for="contact-email">
+                  Email
+                </label>
+              </div>
+              <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-contact-email">
+                <div class="govuk-form-group">
+                  <label class="govuk-label" for="employer-contact-email">
+                    Email address
+                  </label>
+                  <input class="govuk-input govuk-input--width-20" id="employer-contact-email" name="employer-contact-email" value="{{ data['employer-contact-email'] }}" type="email" spellcheck="false" autocomplete="email">
+                </div>
+              </div>
+
+            </div>
+          </fieldset>
+        </div>
+
+        {# PERSON ASSISTING WITHIN THE BUSINESS ASSISTING? #}
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+              <h2 class="govuk-fieldset__heading">
+                Is there a person within the business that is assisting with the suspected fraud?
+              </h2>
+            </legend>
+            <div class="govuk-radios" data-module="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="employer-person-assisting" name="employer-person-assisting" type="radio" value="yes">
+                <label class="govuk-label govuk-radios__label" for="employer-person-assisting">
+                  Yes
+                </label>
+              </div>
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="employer-person-assisting-2" name="employer-person-assisting" type="radio" value="no">
+                <label class="govuk-label govuk-radios__label" for="employer-person-assisting-2">
+                  No
+                </label>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+
+        {{ govukButton({
+          text: 'Continue',
+          classes: "govuk-!-margin-top-2"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
