@@ -6044,3 +6044,67 @@ x:-moz-any-link {
 .spinner-text {
   text-align: center;
 }
+
+.govuk-panel--informational {
+  background-color: #1d70b8;
+  color: #ffffff;
+  margin-bottom: 40px;
+}
+
+.govuk-panel--small {
+  text-align: left;
+  padding: 10px;
+  margin-bottom: 25px;
+}
+.govuk-panel--small .govuk-panel__title {
+  font-family: Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 700;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.25;
+  font-size: 19px;
+  font-size: 1.1875rem;
+  line-height: 1.3157894737;
+  margin-bottom: 0;
+}
+.govuk-panel--small .govuk-panel__body {
+  font-family: Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.25;
+  font-size: 19px;
+  font-size: 1.1875rem;
+  line-height: 1.3157894737;
+  margin: 0;
+}
+
+.govuk-panel--interruption {
+  background-color: #1d70b8;
+  text-align: left;
+}
+.govuk-panel--interruption * {
+  color: #ffffff;
+}
+.govuk-panel--interruption .govuk-radios__label::before, .govuk-panel--interruption ::after {
+  color: #0b0c0c;
+  border-color: #0b0c0c;
+  background-color: #ffffff;
+}
+.govuk-panel--interruption .govuk-list--definition dt,
+.govuk-panel--interruption .govuk-list--definition dd {
+  color: #1d70b8;
+}
+.govuk-panel--interruption .govuk-button,
+.govuk-panel--interruption .govuk-button:disabled:hover {
+  color: #0b0c0c;
+  background-color: #ffffff;
+  box-shadow: 0 2px 0 #003078;
+}
+.govuk-panel--interruption .govuk-button:hover {
+  background-color: #f3f2f1;
+}
