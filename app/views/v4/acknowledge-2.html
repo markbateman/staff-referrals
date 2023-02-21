@@ -16,25 +16,21 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-      <form class="form" method="post">
-        <div class="govuk-panel govuk-panel--interruption govuk-form-group">
-          <h1 class="govuk-heading-l">
-            Acknowledgement
-          </h1>
-          <p class="govuk-body">
+      <div class="govuk-notification-banner" role="region" aria-labelledby="descriptor" data-module="govuk-notification-banner">
+        <div class="govuk-notification-banner__content">
+          <h1 class="govuk-heading-s" id="descriptor">
             You should only include the information given to you.
-          </p>
+          </h1>
           <p class="govuk-body">
             You must not search any departmental systems to check information or get any detail.
           </p>
           {{ govukButton({
             text: 'I understand',
-            classes: "govuk-!-margin-top-2 govuk-!-margin-bottom-0 govuk-button govuk-button--secondary",
+            classes: "govuk-!-margin-top-2 govuk-!-margin-bottom-2 govuk-button",
             href: "who-do-you-want-to-report"
           }) }}
         </div>
-      </form>
-
+      </div>
     </div>
   </div>
 
