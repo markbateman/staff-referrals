@@ -44,12 +44,29 @@
 
 {% block header %}
   {# Set serviceName in config.js. #}
+{#
   {{ govukHeader({
     homepageUrl: "/",
     serviceName: serviceName,
     serviceUrl: "./index",
     containerClasses: "govuk-width-container"
   }) }}
+#}
+
+  <header class="govuk-header " role="banner" data-module="govuk-header">
+    <div class="govuk-header__container govuk-width-container">
+      <div class="govuk-header__logo">
+        <a href="./index" class="govuk-header__link govuk-header__link--homepage">
+          <span class="govuk-header__logotype">
+            <span class="govuk-header__logotype-text">
+              {{ serviceName }}
+            </span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </header>
+
 {% endblock %}
 
 {% set mainClasses = mainClasses | default("govuk-main-wrapper--auto-spacing") %}
