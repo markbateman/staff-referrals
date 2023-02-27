@@ -32,7 +32,7 @@
 {% from "govuk/components/textarea/macro.njk"            import govukTextarea %}
 {% from "govuk/components/warning-text/macro.njk"        import govukWarningText %}
 
-{% set serviceName = "Dev/Stable" %}
+{# set serviceName = "Prototype Dev/Stable layout" #}
 
 {% block head %}
   {% include "includes/head.html" %}
@@ -43,20 +43,11 @@
 {% endblock %}
 
 {% block header %}
-  {# Set serviceName in config.js. #}
-{#
-  {{ govukHeader({
-    homepageUrl: "/",
-    serviceName: serviceName,
-    serviceUrl: "./index",
-    containerClasses: "govuk-width-container"
-  }) }}
-#}
 
-  <header class="govuk-header " role="banner" data-module="govuk-header">
-    <div class="govuk-header__container govuk-width-container">
+  <header class="govuk-header govuk-!-padding-bottom-2" role="banner" data-module="govuk-header">
+    <div class="govuk-header__container govuk-width-container" style="border-bottom: 0">
       <div class="govuk-header__logo">
-        <a href="./index" class="govuk-header__link govuk-header__link--homepage">
+        <a href="../dev-stable/index" class="govuk-header__link govuk-header__link--homepage">
           <span class="govuk-header__logotype">
             <span class="govuk-header__logotype-text">
               {{ serviceName }}

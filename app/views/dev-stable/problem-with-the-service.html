@@ -1,32 +1,43 @@
 {% extends "../layouts/dev-stable-layout.html" %}
 
-{% block pageTitle %}
-  Problem with the service – {{ serviceName }} – GOV.UK
-{% endblock %}
+{% set serviceName %}
+  Fraud referral form
+{% endset %}
 
-{% block beforeContent %}
-  {{ govukPhaseBanner({
-    tag: {
-      text: "beta"
-    },
-    html: 'This is a new service - your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
-  }) }}
+{% block pageTitle %}
+  Sorry, there is a problem with the service – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block content %}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-l">
-        Sorry, there is a problem with the service
-      </h1>
-      <p class="govuk-body">
-        Try again later.
-      </p>
-      <p class="govuk-body">
-        If the problem continues <a href="#" class="govuk-link">contact {support channel}</a>.
-      </p>
-    </div>
+  <div class="govuk-width-container">
+    <main class="govuk-main-wrapper govuk-main-wrapper--l" id="main-content" role="main">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <h1 class="govuk-heading-l">
+            Sorry, there is a problem with the service
+          </h1>
+          
+          <p class="govuk-body">
+            At the moment, you cannot report an employer, organisation or DWP staff member using this form. This will be available in the future.
+          </p>
+          
+          <p class="govuk-body">
+            If you need to report an employer, organisation or DWP staff member now, visit the current FRF.
+          </p>
+
+          {# <p class="govuk-body">
+            If you need to report an employer or organisation now, visit <a class="govuk-link" href="#">{link to where they can do this}</a>.
+          </p> #}
+        
+          <p class="govuk-body">
+            Return to <a href="index" class="govuk-link">service start page</a>.
+          </p>
+
+        </div>
+      </div>
+    </main>
   </div>
 
 {% endblock %}

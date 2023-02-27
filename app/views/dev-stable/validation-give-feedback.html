@@ -1,0 +1,92 @@
+{% extends "../layouts/dev-stable-layout.html" %}
+
+{% set serviceName %}
+  Fraud referral form
+{% endset %}
+
+{% block pageTitle %}
+  Error: Give feedback – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" id="error-summary" data-module="govuk-error-summary">
+        <h2 class="govuk-error-summary__title" id="error-summary-title">
+          There is a problem
+        </h2>
+        <div class="govuk-error-summary__body">
+          <ul class="govuk-list govuk-error-summary__list">
+            <li>
+              <a href="#provide-details">Enter the details of the feedback</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <form class="form" method="post">
+        <div class="govuk-form-group">
+          <h1 class="govuk-heading-l">
+            Give feedback
+          </h1>
+
+          <h2 class="govuk-heading-m">
+            How could we improve this service?
+          </h2>
+          <p class="govuk-body">
+            Do not include any sensitive or customer information. When you sumbit this form, the Fraud referral form 
+            product team will see your name and email address.
+          </p>
+          <p class="govuk-body">
+            We review feedback monthly and use it to improve the service. We will contact you if we need more information.
+          </p>
+          <p class="govuk-body">You could include:</p>
+          <ul class="govuk-list govuk-list--bullet govuk-!-padding-bottom-2">
+            <li>what you were doing</li>
+            <li>what helped or made it difficult</li>
+            <li>the impact of this</li>
+          </ul>
+
+          {# PROVIDE DETAILS #}
+          <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="1200" id="provide-details">
+            <div class="govuk-form-group govuk-form-group--error">
+              <h2 class="govuk-label-wrapper"><label class="govuk-label govuk-label--m" for="provide-details">
+                  Provide details
+                </label>
+              </h2>
+              <p id="provide-details-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> Enter the details of the feedback
+              </p>
+              <textarea class="govuk-textarea govuk-input--error govuk-js-character-count" id="provide-details-textxbox" name="provide-details" rows="10" aria-describedby="provide-details-info"></textarea>
+            </div>
+            <div id="provide-details-info" class="govuk-hint govuk-character-count__message">
+              You can enter up to 1200 characters
+            </div>
+          </div>
+
+          <div class="govuk-warning-text">
+            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+            <strong class="govuk-warning-text__text">
+              <span class="govuk-warning-text__assistive">Warning</span>
+              This form is for your Fraud referral form feedback. To report system errors you must raise an incident on DWP Place.
+            </strong>
+          </div>
+
+        </div>
+
+        <div class="govuk-button-group">
+          {{ govukButton({
+            text: "Send feedback",
+            href: "index"
+          }) }}
+          <a class="govuk-link" href="index">Cancel</a>
+        </div>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "../layouts/dev-stable-layout.html" %}
+
+{% set serviceName %}
+  Fraud referral form
+{% endset %}
+
+{% block pageTitle %}
+  Acknowledgement – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <form class="form" method="post">
+        <div class="govuk-panel govuk-panel--interruption govuk-form-group">
+          <h1 class="govuk-heading-s">
+            You should only include the information given to you.
+          </h1>
+          <p class="govuk-body">
+            You must not search any departmental systems to check information or get any detail.
+          </p>
+          {{ govukButton({
+            text: 'I understand',
+            classes: "govuk-!-margin-top-2 govuk-!-margin-bottom-0 govuk-button govuk-button--secondary",
+            href: "index"
+          }) }}
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

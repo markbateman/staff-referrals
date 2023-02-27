@@ -1,0 +1,97 @@
+{% extends "../layouts/dev-stable-layout.html" %}
+
+{% set serviceName %}
+  Fraud referral form
+{% endset %}
+
+{% block pageTitle %}
+  Error: Submitter's details – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" id="error-summary" data-module="govuk-error-summary">
+        <h2 class="govuk-error-summary__title" id="error-summary-title">
+          There is a problem
+        </h2>
+        <div class="govuk-error-summary__body">
+          <ul class="govuk-list govuk-error-summary__list">
+            <li>
+              <a href="#submitters-first-name">Enter a first name</a>
+            </li>
+            <li>
+              <a href="#submitters-last-name">Enter a last name</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <form class="form" method="post">
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                Submitter's details
+              </h1>
+            </legend>
+
+            <div class="govuk-form-group govuk-form-group--error">
+              <h2 class="govuk-label-wrapper">
+                <label class="govuk-label govuk-label--m" for="submitters-first-name" id="section-submitters-first-name">
+                  First name
+                </label>
+              </h2>
+              <p id="submitters-first-name-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> Enter a first name
+              </p>
+              <input class="govuk-input govuk-input--error" id="submitters-first-name" name="submitters-first-name" type="text">
+            </div>
+
+            <div class="govuk-form-group govuk-form-group--error">
+              <h2 class="govuk-label-wrapper">
+                <label class="govuk-label govuk-label--m" for="submitters-last-name" id="section-submitters-last-name">
+                  Last name
+                </label>
+              </h2>
+              <p id="submitters-last-name-error" class="govuk-error-message">
+                <span class="govuk-visually-hidden">Error:</span> Enter a last name
+              </p>
+              <input class="govuk-input govuk-input--error" id="submitters-last-name" name="submitters-last-name" type="text">
+            </div>
+
+            <div class="govuk-form-group">
+              <h2 class="govuk-label-wrapper"><label class="govuk-label govuk-label--m" for="submitters-email-address" id="section-submitters-email-address">
+                  Email address (optional)
+                </label>
+              </h2>
+              <div id="submitters-email-address-hint" class="govuk-hint">
+                For example, a DWP email address.
+              </div>
+              <input class="govuk-input" id="submitters-email-address" name="submitters-email-address" type="email" spellcheck="false" aria-describedby="submitters-email-address-hint" autocomplete="email">
+              <div class="govuk-inset-text">
+                We will only use this to contact you if we need further information, or to let you know the outcome.
+              </div>
+            </div>
+
+          </fieldset>
+        
+        </div>
+
+        {{ govukButton({
+          text: 'Continue',
+          classes: "govuk-!-margin-top-2",
+          href: "index"
+        }) }}
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

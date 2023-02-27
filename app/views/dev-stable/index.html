@@ -22,56 +22,61 @@
 		  href: '/index'
 		})}}
 	</div>
-	{#
-	<div class="govuk-grid-column-full">
-		<h1 class="govuk-heading-l">Journey map</h1>
-		<p class="govuk-body">
-			<img src="/public/images/journey-map.jpg" alt="Prototype template, end to end journey map. This would also link out to a Miro or Mural board if one should be available.">
-			<a href="#" class="govuk-link">{Link through to Miro/Mural board}</a>
-		</p>
-	</div>
-	#}
-	<div class="govuk-grid-column-one-quarter">
+
+	<div class="govuk-grid-column-one-third">
 		<h2 class="govuk-heading-l">Pages</h2>
-		<div class="govuk-form-group">
-			<ol class="govuk-list govuk-list--number to-do">
-				<li class="done"><a href="/dev-stable/start">Start</a></li>
-				<li class="done"><a href="/dev-stable/content">Content</a></li>
-				<li class="done"><a href="/dev-stable/what-is-your-name">What is your name?</a></li>
-				<li class="done"><a href="/dev-stable/what-is-your-date-of-birth">What is your date birth?</a></li>
-				<li class="done"><a href="/dev-stable/what-is-your-address">What is your address?</a></li>
-				<li class="done"><a href="/dev-stable/contact-details">Contact details</a></li>
-				<li class="done"><a href="/dev-stable/check-your-answers">Check your answers</a></li>
-				<li class="done"><a href="/dev-stable/confirmation">Confirmation</a></li>
-			</ol>
-		</div>
+		<ol class="govuk-list govuk-list--number govuk-list--spaced">
+			<li><a href="/dev-stable/service-start">Service start</a></li>
+			<li>Acknowledgement</a></li>
+			<ul class="govuk-list govuk-list--bullet">
+				<li><a href="/dev-stable/acknowledge-variant-1">Variation 1</a></li>
+				<li><a href="/dev-stable/acknowledge-variant-2">Variation 2</a></li>
+			</ul>
+			<li><a href="/dev-stable/who-do-you-want-to-report">Who do you want to report?</a></li>
+			<li><a href="/dev-stable/problem-with-the-service">Sorry, there is a problem with the serivce (who to report is not a person)</a></li>
+			<li><a href="/dev-stable/suspects-personal-details">Suspect's personal details</a></li>
+			<li><a href="/dev-stable/suspects-address-and-contact-details">Suspect's address and contact details</a></li>
+			<li><a href="/dev-stable/source-of-allegation">Source of allegation</a></li>
+			<li><a href="/dev-stable/what-fraud-do-you-think-is-happening">What type of fraud do you think is happening?</a></li>
+			<li><a href="/dev-stable/submitters-details">Submitter's details</a></li>
+			<li>Check your answers</li>
+			<ul class="govuk-list govuk-list--bullet">
+				<li><a href="/dev-stable/check-your-answers-maximum">Maximum fraud types chosen</a></li>
+				<li><a href="/dev-stable/check-your-answers">Less than 10 fraud types chosen</a></li>
+			</ul>
+			<li><a href="/dev-stable/confirmation">Referral submitted confirmation</a></li>
+			<li><a href="/dev-stable/give-feedback">Give feedback</a></li>
+			<li><a href="/dev-stable/feedback-confirmation">Feedback submitted confirmation</a></li>
+		</ol>
 	</div>
-	<div class="govuk-grid-column-one-quarter">
+	<div class="govuk-grid-column-one-third">
 		<h2 class="govuk-heading-l">Validation</h2>
-		<div class="govuk-form-group">
+		<ol class="govuk-list govuk-list--number govuk-list--spaced">
+			<li><a href="/dev-stable/validation-who-do-you-want-to-report">Who do you want to report?</a></li>
+			<li>Suspect's personal details</li>
 			<ul class="govuk-list govuk-list--bullet">
-				<li class="done"><a href="/dev-stable/validation-what-is-your-name">What is your name?</a></li>
-				<li class="done"><a href="/dev-stable/validation-what-is-your-date-of-birth">What is your date of birth?</a></li>
+				<li><a href="/dev-stable/validation-suspects-personal-details">No mandatory option chosen</a></li>
+				<li><a href="/dev-stable/validation-suspects-personal-details-dob">Date of birth</a></li>
+				<li><a href="/dev-stable/validation-suspects-personal-details-age">Approximate age</a></li>
 			</ul>
-		</div>
-	</div>
-	<div class="govuk-grid-column-one-quarter">
-		<h2 class="govuk-heading-l">Emails</h2>
-		<div class="govuk-form-group">
+			<li><a href="/dev-stable/validation-suspects-address-and-contact-details">Suspect's address and contact details</a></li>
+			<li><a href="/dev-stable/validation-source-of-allegation">Source of allegation</a></li>
+			<li>What type of fraud do you think is happening?</a></li>
 			<ul class="govuk-list govuk-list--bullet">
-				<li class="done"><a href="/dev-stable/emails/submission-confirmation">Submission confirmation</a></li>
-				<li class="done"><a href="/dev-stable/emails/application-received">Application received</a></li>
-				<li class="done"><a href="/dev-stable/emails/application-rejected">Application rejected</a></li>
+				<li><a href="/dev-stable/validation-what-fraud-do-you-think-is-happening-no-fraud-chosen.html">No fraud type chosen</a></li>
+				<li><a href="/dev-stable/validation-what-fraud-do-you-think-is-happening-no-details-or-duration.html">No fraud details entered or duration selected</a></li>
 			</ul>
-		</div>
+			<li><a href="/dev-stable/validation-submitters-details">Submitter's details</a></li>
+			<li><a href="/dev-stable/validation-give-feedback">Give feedback</a></li>
+		</ol>
 	</div>
-	<div class="govuk-grid-column-one-quarter">
+	<div class="govuk-grid-column-one-third">
 		<div class="govuk-form-group">
 			<h2 class="govuk-heading-l">Defaults</h2>
 			<ul class="govuk-list govuk-list--bullet">
-				<li class="done"><a href="/dev-stable/page-not-found">Page not found</a> <strong class="govuk-tag govuk-tag--turquoise">Done</strong></li>
-				<li class="done"><a href="/dev-stable/problem-with-the-service">Problem with the service</a> <strong class="govuk-tag govuk-tag--turquoise">Done</strong></li>
-				<li class="done"><a href="/dev-stable/service-unavailable">Service unavailable</a> <strong class="govuk-tag govuk-tag--turquoise">Done</strong></li>
+				<li><a href="/dev-stable/default-page-not-found">Page not found</a></li>
+				<li><a href="/dev-stable/default-problem-with-the-service">Problem with the service</a></li>
+				<li><a href="/dev-stable/default-service-unavailable">Service unavailable</a></li>
 			</ul>
 		</div>
 	</div>

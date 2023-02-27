@@ -1,0 +1,877 @@
+{% extends "../layouts/dev-stable-layout.html" %}
+
+{% set serviceName %}
+  Fraud referral form
+{% endset %}
+
+{% block pageTitle %}
+  Error: What type of fraud do you think is happening? – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" tabindex="-1" id="error-summary" data-module="govuk-error-summary">
+        <h2 class="govuk-error-summary__title" id="error-summary-title">
+          There is a problem
+        </h2>
+        <div class="govuk-error-summary__body">
+          <ul class="govuk-list govuk-error-summary__list">
+            <li>
+              <a href="#living-together-hint">Enter the details of the living together fraud you think is happening</a>
+            </li>
+            <li>
+              <a href="#how-long-living-together">Select how long the potential living together fraud has been going on</a>
+            </li>
+            <li>
+              <a href="#working-and-claiming-hint">Enter the details of the working and claiming fraud you think is happening</a>
+            </li>
+            <li>
+              <a href="#how-long-working-and-claiming">Select how long the potential working and claiming fraud has been going on</a>
+            </li>
+            <li>
+              <a href="#id-fraud-hint">Enter the details of the ID fraud you think is happening</a>
+            </li>
+            <li>
+              <a href="#how-long-id-fraud">Select how long the potential ID fraud has been going on</a>
+            </li>
+            <li>
+              <a href="#capital-hint">Enter the details of the capital fraud you think is happening</a>
+            </li>
+            <li>
+              <a href="#how-long-capital">Select how long the potential capital fraud has been going on</a>
+            </li>
+            <li>
+              <a href="#other-income-hint">Enter the details of the other income fraud you think is happening</a>
+            </li>
+            <li>
+              <a href="#how-long-other-income">Select how long the potential other income fraud has been going on</a>
+            </li>
+            <li>
+              <a href="#abroad-fraud-hint">Enter the details of the abroad fraud you think is happening</a>
+            </li>
+            <li>
+              <a href="#how-long-abroad-fraud">Select how long the potential abroad fraud has been going on</a>
+            </li>
+            <li>
+              <a href="#doubtful-disability-hint">Enter the details of the doubtful disability fraud you think is happening</a>
+            </li>
+            <li>
+              <a href="#how-long-doubtful-disability">Select how long the potential doubtful disability fraud has been going on</a>
+            </li>
+            <li>
+              <a href="#housing-related-hint">Enter the details of the housing related fraud you think is happening</a>
+            </li>
+            <li>
+              <a href="#how-long-housing-related">Select how long the potential housing related fraud has been going on</a>
+            </li>
+            <li>
+              <a href="#not-providing-care-hint">Enter the details of the not providing care fraud you think is happening</a>
+            </li>
+            <li>
+              <a href="#how-long-not-providing-care">Select how long the potential not providing care fraud has been going on</a>
+            </li>
+            <li>
+              <a href="#other-hint">Enter the details of the other types of fraud you think is happening</a>
+            </li>
+            <li>
+              <a href="#how-long-other">Select how long the potential other types of fraud has been going on</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <form class="form" method="post">
+
+        <div class="govuk-form-group govuk-form-group--error">
+          <fieldset class="govuk-fieldset" id="what-do-you-think-is-happening" aria-describedby="what-do-you-think-is-happening-hint what-do-you-think-is-happening-error">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+              <h1 class="govuk-fieldset__heading">
+                What type of fraud do you think is happening?
+              </h1>
+            </legend>
+            <div id="what-do-you-think-is-happening-hint" class="govuk-hint">
+              Select all options that apply to this referral. Include as much information as you can about the potential fraud you are reporting.
+            </div>
+
+            <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+              
+              {# LIVING TOGETHER #}
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="living-together" name="living-together" type="checkbox" value="living-together" checked data-aria-controls="conditional-living-together">
+                <label class="govuk-label govuk-checkboxes__label" for="living-together">
+                  <strong>Living together</strong>
+                </label>
+              </div>
+              <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-living-together">
+                <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="1500">
+                  <div class="govuk-form-group govuk-form-group--error">
+                    <label for="living-together-hint">
+                      <p class="govuk-body">You could include:</p>
+                      <ul class="govuk-list govuk-list--bullet">
+                        <li>the alleged partner's name</li>
+                        <li>any addresses involved</li>
+                        <li>details of their work (if they are working)</li>
+                        <li>details of their routine, for example times when they are at home</li>
+                        <li>the vehicles they use</li>
+                        <li>any children involved, including their names and ages</li>
+                        <li>any additional information</li>
+                      </ul>
+                    </label>
+                    <p id="living-together-error" class="govuk-error-message">
+                      <span class="govuk-visually-hidden">Error:</span> Enter the details of the living together fraud you think is happening
+                    </p>
+                    <textarea class="govuk-textarea govuk-js-character-count govuk-input--error" id="living-together-hint" name="living-together-hint" rows="5" aria-describedby="living-together-hint-info"></textarea>
+                  </div>
+                  <div id="living-together-hint-info" class="govuk-hint govuk-character-count__message">
+                    You can enter up to 1,500 characters
+                  </div>
+
+                  {# LIVING TOGETHER - HOW LONG BEEN GOING ON? #}
+                  <div class="govuk-form-group govuk-!-margin-top-6 govuk-form-group--error">
+                    <fieldset class="govuk-fieldset">
+                      <legend class="govuk-fieldset__legend">
+                          <strong>How long has the potential <span class="govuk-visually-hidden">living together</span> fraud been going on?</strong>
+                      </legend>
+                      <p id="living-together-error" class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span> Select how long the potential living together fraud has been going on
+                      </p>
+                      <div class="govuk-radios govuk-radios--small" data-module="govuk-radios">
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="how-long-living-together" name="how-long-living-together" type="radio" value="less-than-three-months">
+                          <label class="govuk-label govuk-radios__label" for="how-long-living-together">
+                            Less than 3 months
+                          </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="how-long-living-together-2" name="how-long-living-together" type="radio" value="three-to-six-months">
+                          <label class="govuk-label govuk-radios__label" for="how-long-living-together-2">
+                            3 to 6 months
+                          </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="how-long-living-together-3" name="how-long-living-together" type="radio" value="more-than-six-months-but-less-than-a-year">
+                          <label class="govuk-label govuk-radios__label" for="how-long-living-together-3">
+                            More than 6 months but less than a year
+                          </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="how-long-living-together-4" name="how-long-living-together" type="radio" value="more-than-a-year">
+                          <label class="govuk-label govuk-radios__label" for="how-long-living-together-4">
+                            More than a year
+                          </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="how-long-living-together-5" name="how-long-living-together" type="radio" value="i-dont-know">
+                          <label class="govuk-label govuk-radios__label" for="how-long-living-together-5">
+                            I don't know
+                          </label>
+                        </div>
+                      </div>
+                    </fieldset>
+                  </div>
+                </div>
+              </div>
+
+              {# WORKING AND CLAIMING #}
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="working-and-claiming" name="working-and-claiming" type="checkbox" value="working-and-claiming" checked data-aria-controls="conditional-working-and-claiming">
+                <label class="govuk-label govuk-checkboxes__label" for="working-and-claiming">
+                  <strong>Working and claiming</strong>
+                </label>
+              </div>
+              <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-working-and-claiming">
+                <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="1500">
+                  <div class="govuk-form-group govuk-form-group--error">
+                    <label for="working-and-claiming-hint">
+                      <p class="govuk-body">You could include:</p>
+                      <ul class="govuk-list govuk-list--bullet">
+                      <li>who is actually working</li>
+                      <li>their current employer's details, for example employer name</li>
+                      <li>if they are self-employed</li>
+                      <li>how they are paid</li>
+                      <li>how they travel to work</li>
+                      <li>their routine</li>
+                      <li>their uniform</li>
+                      <li>the vehicles they use</li>
+                      <li>any additional information</li>
+                      </ul>
+                    </label>
+                    <p id="working-and-claiming-error" class="govuk-error-message">
+                      <span class="govuk-visually-hidden">Error:</span> Enter the details of the working and claiming fraud you think is happening
+                    </p>
+                    <textarea class="govuk-textarea govuk-js-character-count govuk-input--error" id="working-and-claiming-hint" name="working-and-claiming-hint" rows="5" aria-describedby="working-and-claiming-hint-info"></textarea>
+                  </div>
+                  <div id="working-and-claiming-hint-info" class="govuk-hint govuk-character-count__message">
+                    You can enter up to 1,500 characters
+                  </div>
+
+                  {# WORKING AND CLAIMING - HOW LONG BEEN GOING ON? #}
+                  <div class="govuk-form-group govuk-!-margin-top-6 govuk-form-group--error">
+                    <fieldset class="govuk-fieldset">
+                      <legend class="govuk-fieldset__legend">
+                          <strong>How long has the potential <span class="govuk-visually-hidden">working and claiming</span> fraud been going on?</strong>
+                      </legend>
+                      <p id="working-and-claiming-error" class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span> Select how long the potential working and claiming fraud has been going on
+                      </p>
+                      <div class="govuk-radios govuk-radios--small" data-module="govuk-radios">
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="how-long-working-and-claiming" name="how-long-working-and-claiming" type="radio" value="less-than-three-months">
+                          <label class="govuk-label govuk-radios__label" for="how-long-working-and-claiming">
+                            Less than 3 months
+                          </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="how-long-working-and-claiming-2" name="how-long-working-and-claiming" type="radio" value="three-to-six-months">
+                          <label class="govuk-label govuk-radios__label" for="how-long-working-and-claiming-2">
+                            3 to 6 months
+                          </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="how-long-working-and-claiming-3" name="how-long-working-and-claiming" type="radio" value="more-than-six-months-but-less-than-a-year">
+                          <label class="govuk-label govuk-radios__label" for="how-long-working-and-claiming-3">
+                            More than 6 months but less than a year
+                          </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="how-long-working-and-claiming-4" name="how-long-working-and-claiming" type="radio" value="more-than-a-year">
+                          <label class="govuk-label govuk-radios__label" for="how-long-working-and-claiming-4">
+                            More than a year
+                          </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="how-long-working-and-claiming-5" name="how-long-working-and-claiming" type="radio" value="i-dont-know">
+                          <label class="govuk-label govuk-radios__label" for="how-long-working-and-claiming-5">
+                            I don't know
+                          </label>
+                        </div>
+                      </div>
+                    </fieldset>
+                  </div>
+                </div>
+              </div>
+
+              {# ID FRAUD #}
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="id-fraud" name="id-fraud" type="checkbox" value="id-fraud" checked data-aria-controls="conditional-id-fraud">
+                <label class="govuk-label govuk-checkboxes__label" for="id-fraud">
+                  <strong>ID fraud</strong>
+                </label>
+              </div>
+              <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-id-fraud">
+                <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="1500">
+
+                  <div class="govuk-form-group govuk-form-group--error">
+                    <label for="id-fraud-hint">
+                      <p class="govuk-body">You could include:</p>
+                      <ul class="govuk-list govuk-list--bullet">
+                        <li>why you think the person is committing ID fraud</li>
+                        <li>the names they use</li>
+                        <li>the addresses they use</li>
+                        <li>the types of documents being used for the identity</li>
+                        <li>any additional information</li>
+                      </ul>
+                    </label>
+                    <p id="id-fraud-error" class="govuk-error-message">
+                      <span class="govuk-visually-hidden">Error:</span> Enter the details of the ID fraud you think is happening
+                    </p>
+                    <textarea class="govuk-textarea govuk-js-character-count govuk-input--error" id="id-fraud-hint" name="id-fraud-hint" rows="5" aria-describedby="id-fraud-hint-info"></textarea>
+                  </div>
+                  <div id="id-fraud-hint-info" class="govuk-hint govuk-character-count__message">
+                    You can enter up to 1,500 characters
+                  </div>
+
+                  {# ID FRAUD - HOW LONG BEEN GOING ON? #}
+                  <div class="govuk-form-group govuk-!-margin-top-6 govuk-form-group--error">
+                    <fieldset class="govuk-fieldset">
+                      <legend class="govuk-fieldset__legend">
+                          <strong>How long has the potential <span class="govuk-visually-hidden">ID</span> fraud been going on?</strong>
+                      </legend>
+                      <p id="id-fraud-error" class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span> Select how long the potential ID fraud has been going on
+                      </p>
+                      <div class="govuk-radios govuk-radios--small" data-module="govuk-radios">
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="how-long-id-fraud" name="how-long-id-fraud" type="radio" value="less-than-three-months">
+                          <label class="govuk-label govuk-radios__label" for="how-long-id-fraud">
+                            Less than 3 months
+                          </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="how-long-id-fraud-2" name="how-long-id-fraud" type="radio" value="three-to-six-months">
+                          <label class="govuk-label govuk-radios__label" for="how-long-id-fraud-2">
+                            3 to 6 months
+                          </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="how-long-id-fraud-3" name="how-long-id-fraud" type="radio" value="more-than-six-months-but-less-than-a-year">
+                          <label class="govuk-label govuk-radios__label" for="how-long-id-fraud-3">
+                            More than 6 months but less than a year
+                          </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="how-long-id-fraud-4" name="how-long-id-fraud" type="radio" value="more-than-a-year">
+                          <label class="govuk-label govuk-radios__label" for="how-long-id-fraud-4">
+                            More than a year
+                          </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="how-long-id-fraud-5" name="how-long-id-fraud" type="radio" value="i-dont-know">
+                          <label class="govuk-label govuk-radios__label" for="how-long-id-fraud-5">
+                            I don't know
+                          </label>
+                        </div>
+                      </div>
+                    </fieldset>
+                  </div>
+                </div>
+              </div>
+
+              {# CAPITAL #}
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="capital" name="capital" type="checkbox" value="capital" checked data-aria-controls="conditional-capital">
+                <label class="govuk-label govuk-checkboxes__label" for="capital">
+                  <strong>Capital</strong>
+                </label>
+              </div>
+              <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-capital">
+                <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="1500">
+                  <div class="govuk-form-group govuk-form-group--error">
+                    <label for="capital-hint">
+                      <p class="govuk-body">You could include:</p>
+                      <ul class="govuk-list govuk-list--bullet">
+                      <li>the amount</li>
+                      <li>when they received it</li>
+                      <li>where and who it came from</li>
+                      <li>where it is kept</li>
+                      <li>any savings or income</li>
+                      <li>any examples of living beyond means, for example major purchases</li>
+                      <li>any additional information</li>
+                      </ul>
+                    </label>
+                    <p id="capital-error" class="govuk-error-message">
+                      <span class="govuk-visually-hidden">Error:</span> Enter the details of the capital fraud you think is happening
+                    </p>
+                    <textarea class="govuk-textarea govuk-js-character-count govuk-input--error" id="capital-hint" name="capital-hint" rows="5" aria-describedby="capital-hint-info"></textarea>
+                  </div>
+                  <div id="capital-hint-info" class="govuk-hint govuk-character-count__message">
+                    You can enter up to 1,500 characters
+                  </div>
+
+                  {# CAPITAL - HOW LONG BEEN GOING ON? #}
+                  <div class="govuk-form-group govuk-!-margin-top-6 govuk-form-group--error">
+                    <fieldset class="govuk-fieldset">
+                      <legend class="govuk-fieldset__legend">
+                          <strong>How long has the potential <span class="govuk-visually-hidden">capital</span> fraud been going on?</strong>
+                      </legend>
+                      <p id="capital-error" class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span> Select how long the potential capital fraud has been going on
+                      </p>
+                      <div class="govuk-radios govuk-radios--small" data-module="govuk-radios">
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="how-long-capital" name="how-long-capital" type="radio" value="less-than-three-months">
+                          <label class="govuk-label govuk-radios__label" for="how-long-capital">
+                            Less than 3 months
+                          </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="how-long-capital-2" name="how-long-capital" type="radio" value="three-to-six-months">
+                          <label class="govuk-label govuk-radios__label" for="how-long-capital-2">
+                            3 to 6 months
+                          </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="how-long-capital-3" name="how-long-capital" type="radio" value="more-than-six-months-but-less-than-a-year">
+                          <label class="govuk-label govuk-radios__label" for="how-long-capital-3">
+                            More than 6 months but less than a year
+                          </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="how-long-capital-4" name="how-long-capital" type="radio" value="more-than-a-year">
+                          <label class="govuk-label govuk-radios__label" for="how-long-capital-4">
+                            More than a year
+                          </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="how-long-capital-5" name="how-long-capital" type="radio" value="i-dont-know">
+                          <label class="govuk-label govuk-radios__label" for="how-long-capital-5">
+                            I don't know
+                          </label>
+                        </div>
+                      </div>
+                    </fieldset>
+                  </div>              
+                </div>
+              </div>
+
+              {# OTHER INCOME #}
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="other-income" name="other-income" type="checkbox" value="other-income" checked data-aria-controls="conditional-other-income">
+                <label class="govuk-label govuk-checkboxes__label" for="other-income">
+                  <strong>Other income</strong>
+                </label>
+              </div>
+              <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-other-income">
+                <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="1500">
+                  <div class="govuk-form-group govuk-form-group--error">
+                    <label for="other-income-hint">
+                      <p class="govuk-body">You could include:</p>
+                      <ul class="govuk-list govuk-list--bullet">
+                      <li>the amount</li>
+                      <li>where the income comes from, for example maintenance, a family member or shares</li>
+                      <li>who it comes from</li>
+                      <li>how often they receive it</li>
+                      <li>any additional information</li>
+                      </ul>
+                    </label>
+                    <p id="other-income-error" class="govuk-error-message">
+                      <span class="govuk-visually-hidden">Error:</span> Enter the details of the other income fraud you think is happening
+                    </p>
+                    <textarea class="govuk-textarea govuk-js-character-count govuk-input--error" id="other-income-hint" name="other-income-hint" rows="5" aria-describedby="other-income-hint-info"></textarea>
+                  </div>
+                  <div id="other-income-hint-info" class="govuk-hint govuk-character-count__message">
+                    You can enter up to 1,500 characters
+                  </div>
+
+                  {# OTHER INCOME - HOW LONG BEEN GOING ON? #}
+                  <div class="govuk-form-group govuk-!-margin-top-6 govuk-form-group--error">
+                    <fieldset class="govuk-fieldset">
+                      <legend class="govuk-fieldset__legend">
+                          <strong>How long has the potential <span class="govuk-visually-hidden">other income</span> fraud been going on?</strong>
+                      </legend>
+                      <p id="other-income-error" class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span> Select how long the potential other income fraud has been going on
+                      </p>
+                      <div class="govuk-radios govuk-radios--small" data-module="govuk-radios">
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="how-long-other-income" name="how-long-other-income" type="radio" value="less-than-three-months">
+                          <label class="govuk-label govuk-radios__label" for="how-long-other-income">
+                            Less than 3 months
+                          </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="how-long-other-income-2" name="how-long-other-income" type="radio" value="three-to-six-months">
+                          <label class="govuk-label govuk-radios__label" for="how-long-other-income-2">
+                            3 to 6 months
+                          </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="how-long-other-income-3" name="how-long-other-income" type="radio" value="more-than-six-months-but-less-than-a-year">
+                          <label class="govuk-label govuk-radios__label" for="how-long-other-income-3">
+                            More than 6 months but less than a year
+                          </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="how-long-other-income-4" name="how-long-other-income" type="radio" value="more-than-a-year">
+                          <label class="govuk-label govuk-radios__label" for="how-long-other-income-4">
+                            More than a year
+                          </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="how-long-other-income-5" name="how-long-other-income" type="radio" value="i-dont-know">
+                          <label class="govuk-label govuk-radios__label" for="how-long-other-income-5">
+                            I don't know
+                          </label>
+                        </div>
+                      </div>
+                    </fieldset>
+                  </div>
+                </div>
+              </div>
+
+              {# ABROAD FRAUD #}
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="abroad-fraud" name="abroad-fraud" type="checkbox" value="abroad-fraud" checked data-aria-controls="conditional-abroad-fraud">
+                <label class="govuk-label govuk-checkboxes__label" for="abroad-fraud">
+                  <strong>Abroad fraud</strong>
+                </label>
+              </div>
+              <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-abroad-fraud">
+                <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="1500">
+                  <div class="govuk-form-group govuk-form-group--error">
+                    <label for="abroad-fraud-hint">
+                      <p class="govuk-body">You could include:</p>
+                      <ul class="govuk-list govuk-list--bullet">
+                      <li>where they have gone</li>
+                      <li>when they went abroad</li>
+                      <li>why they went abroad</li>
+                      <li>how long they have been abroad</li>
+                      <li>when they are coming back</li>
+                      <li>any property they own abroad</li>
+                      <li>any additional information</li>
+                      </ul>
+                    </label>
+                    <p id="abroad-fraud-error" class="govuk-error-message">
+                      <span class="govuk-visually-hidden">Error:</span> Enter the details of the abroad fraud you think is happening
+                    </p>
+                    <textarea class="govuk-textarea govuk-js-character-count govuk-input--error" id="abroad-fraud-hint" name="abroad-fraud-hint" rows="5" aria-describedby="abroad-fraud-hint-info"></textarea>
+                  </div>
+                  <div id="abroad-fraud-hint-info" class="govuk-hint govuk-character-count__message">
+                    You can enter up to 1,500 characters
+                  </div>
+
+                  {# ABROAD FRAUD - HOW LONG BEEN GOING ON? #}
+                  <div class="govuk-form-group govuk-!-margin-top-6 govuk-form-group--error">
+                    <fieldset class="govuk-fieldset">
+                      <legend class="govuk-fieldset__legend">
+                          <strong>How long has the potential <span class="govuk-visually-hidden">abroad</span> fraud been going on?</strong>
+                      </legend>
+                      <p id="abroad-fraud-error" class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span> Select how long the potential abroad fraud has been going on
+                      </p>
+                      <div class="govuk-radios govuk-radios--small" data-module="govuk-radios">
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="how-long-abroad-fraud" name="how-long-abroad-fraud" type="radio" value="less-than-three-months">
+                          <label class="govuk-label govuk-radios__label" for="how-long-abroad-fraud">
+                            Less than 3 months
+                          </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="how-long-abroad-fraud-2" name="how-long-abroad-fraud" type="radio" value="three-to-six-months">
+                          <label class="govuk-label govuk-radios__label" for="how-long-abroad-fraud-2">
+                            3 to 6 months
+                          </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="how-long-abroad-fraud-3" name="how-long-abroad-fraud" type="radio" value="more-than-six-months-but-less-than-a-year">
+                          <label class="govuk-label govuk-radios__label" for="how-long-abroad-fraud-3">
+                            More than 6 months but less than a year
+                          </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="how-long-abroad-fraud-4" name="how-long-abroad-fraud" type="radio" value="more-than-a-year">
+                          <label class="govuk-label govuk-radios__label" for="how-long-abroad-fraud-4">
+                            More than a year
+                          </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="how-long-abroad-fraud-5" name="how-long-abroad-fraud" type="radio" value="i-dont-know">
+                          <label class="govuk-label govuk-radios__label" for="how-long-abroad-fraud-5">
+                            I don't know
+                          </label>
+                        </div>
+                      </div>
+                    </fieldset>
+                  </div>
+                </div>
+              </div>
+
+              {# DOUBTFUL DISABILITY #}
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="doubtful-disability" name="doubtful-disability" type="checkbox" value="doubtful-disability" checked data-aria-controls="conditional-doubtful-disability">
+                <label class="govuk-label govuk-checkboxes__label" for="doubtful-disability">
+                  <strong>Doubtful disability</strong>
+                </label>
+              </div>
+              <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-doubtful-disability">
+                <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="1500">
+                  <div class="govuk-form-group govuk-form-group--error">
+                    <label for="doubtful-disability-hint">
+                      <p class="govuk-body">You could include:</p>
+                      <ul class="govuk-list govuk-list--bullet">
+                      <li>the type of disability</li>
+                      <li>any disability equipment they use</li>
+                      <li>why you think the disability is in doubt</li>
+                      <li>activities outside of the property</li>
+                        <ul class="govuk-list govuk-list--bullet">
+                          <li>how often</li>
+                          <li>how long for</li>
+                        </ul>
+                      <li>people who are with them when they go out</li>
+                      <li>any additional information</li>
+                      </ul>
+                    </label>
+                    <p id="doubtful-disability-error" class="govuk-error-message">
+                      <span class="govuk-visually-hidden">Error:</span> Enter the details of the doubtful disability fraud you think is happening
+                    </p>
+                    <textarea class="govuk-textarea govuk-js-character-count govuk-input--error" id="doubtful-disability-hint" name="doubtful-disability-hint" rows="5" aria-describedby="doubtful-disability-hint-info"></textarea>
+                  </div>
+                  <div id="doubtful-disability-hint-info" class="govuk-hint govuk-character-count__message">
+                    You can enter up to 1,500 characters
+                  </div>
+                  {# DOUBTFUL DISABILITY - HOW LONG BEEN GOING ON? #}
+                  <div class="govuk-form-group govuk-!-margin-top-6 govuk-form-group--error">
+                    <fieldset class="govuk-fieldset">
+                      <legend class="govuk-fieldset__legend">
+                          <strong>How long has the potential <span class="govuk-visually-hidden">doubtful disability</span> fraud been going on?</strong>
+                      </legend>
+                      <p id="doubtful-disability-error" class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span> Select how long the potential doubtful disability fraud has been going on
+                      </p>
+                      <div class="govuk-radios govuk-radios--small" data-module="govuk-radios">
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="how-long-doubtful-disability" name="how-long-doubtful-disability" type="radio" value="less-than-three-months">
+                          <label class="govuk-label govuk-radios__label" for="how-long-doubtful-disability">
+                            Less than 3 months
+                          </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="how-long-doubtful-disability-2" name="how-long-doubtful-disability" type="radio" value="three-to-six-months">
+                          <label class="govuk-label govuk-radios__label" for="how-long-doubtful-disability-2">
+                            3 to 6 months
+                          </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="how-long-doubtful-disability-3" name="how-long-doubtful-disability" type="radio" value="more-than-six-months-but-less-than-a-year">
+                          <label class="govuk-label govuk-radios__label" for="how-long-doubtful-disability-3">
+                            More than 6 months but less than a year
+                          </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="how-long-doubtful-disability-4" name="how-long-doubtful-disability" type="radio" value="more-than-a-year">
+                          <label class="govuk-label govuk-radios__label" for="how-long-doubtful-disability-4">
+                            More than a year
+                          </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="how-long-doubtful-disability-5" name="how-long-doubtful-disability" type="radio" value="i-dont-know">
+                          <label class="govuk-label govuk-radios__label" for="how-long-doubtful-disability-5">
+                            I don't know
+                          </label>
+                        </div>
+                      </div>
+                    </fieldset>
+                  </div>
+                </div>
+              </div>
+
+              {# HOUSING RELATED #}
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="housing-related" name="housing-related" type="checkbox" value="housing-related" checked data-aria-controls="conditional-housing-related">
+                <label class="govuk-label govuk-checkboxes__label" for="housing-related">
+                  <strong>Housing related</strong>
+                </label>
+              </div>
+              <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-housing-related">
+                <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="1500">
+                  <div class="govuk-form-group govuk-form-group--error">
+                    <label for="housing-related-hint">
+                      <p class="govuk-body">You could include:</p>
+                      <ul class="govuk-list govuk-list--bullet">
+                      <li>why you think they are not at their address</li>
+                      <li>how long they have been away</li>
+                      <li>whether they return to their address</li>
+                      <li>where they are living</li>
+                      <li>is anyone paying rent to the property owner as a lodger or subletter?</li>
+                      <li>any additional information</li>
+                      </ul>
+                    </label>
+                    <p id="housing-related-error" class="govuk-error-message">
+                      <span class="govuk-visually-hidden">Error:</span> Enter the details of the housing related fraud you think is happening
+                    </p>
+                    <textarea class="govuk-textarea govuk-js-character-count govuk-input--error" id="housing-related-hint" name="housing-related-hint" rows="5" aria-describedby="housing-related-hint-info"></textarea>
+                  </div>
+                  <div id="housing-related-hint-info" class="govuk-hint govuk-character-count__message">
+                    You can enter up to 1,500 characters
+                  </div>
+                  {# HOUSING RELATED - HOW LONG BEEN GOING ON? #}
+                  <div class="govuk-form-group govuk-!-margin-top-6 govuk-form-group--error">
+                    <fieldset class="govuk-fieldset">
+                      <legend class="govuk-fieldset__legend">
+                          <strong>How long has the potential <span class="govuk-visually-hidden">housing related</span> fraud been going on?</strong>
+                      </legend>
+                      <p id="housing-related-error" class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span> Select how long the potential housing related fraud has been going on
+                      </p>
+                      <div class="govuk-radios govuk-radios--small" data-module="govuk-radios">
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="how-long-housing-related" name="how-long-housing-related" type="radio" value="less-than-three-months">
+                          <label class="govuk-label govuk-radios__label" for="how-long-housing-related">
+                            Less than 3 months
+                          </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="how-long-housing-related-2" name="how-long-housing-related" type="radio" value="three-to-six-months">
+                          <label class="govuk-label govuk-radios__label" for="how-long-housing-related-2">
+                            3 to 6 months
+                          </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="how-long-housing-related-3" name="how-long-housing-related" type="radio" value="more-than-six-months-but-less-than-a-year">
+                          <label class="govuk-label govuk-radios__label" for="how-long-housing-related-3">
+                            More than 6 months but less than a year
+                          </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="how-long-housing-related-4" name="how-long-housing-related" type="radio" value="more-than-a-year">
+                          <label class="govuk-label govuk-radios__label" for="how-long-housing-related-4">
+                            More than a year
+                          </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="how-long-housing-related-5" name="how-long-housing-related" type="radio" value="i-dont-know">
+                          <label class="govuk-label govuk-radios__label" for="how-long-housing-related-5">
+                            I don't know
+                          </label>
+                        </div>
+                      </div>
+                    </fieldset>
+                  </div>
+                </div>
+              </div>
+
+              {# NOT PROVIDING CARE #}
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="not-providing-care" name="not-providing-care" type="checkbox" value="not-providing-care" checked data-aria-controls="conditional-not-providing-care">
+                <label class="govuk-label govuk-checkboxes__label" for="not-providing-care">
+                  <strong>Not providing care</strong>
+                </label>
+              </div>
+              <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-not-providing-care">
+                <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="1500">
+                  <div class="govuk-form-group govuk-form-group--error">
+                    <label for="not-providing-care-hint">
+                      <p class="govuk-body">You could include:</p>
+                      <ul class="govuk-list govuk-list--bullet">
+                        <li>why you think they are receiving benefit as a carer but not caring for a disabled person</li>
+                        <li>any additional information</li>
+                      </ul>
+                    </label>
+                    <p id="not-providing-care-error" class="govuk-error-message">
+                      <span class="govuk-visually-hidden">Error:</span> Enter the details of the not providing care fraud you think is happening
+                    </p>
+                    <textarea class="govuk-textarea govuk-js-character-count govuk-input--error" id="not-providing-care-hint" name="not-providing-care-hint" rows="5" aria-describedby="not-providing-care-hint-info"></textarea>
+                  </div>
+                  <div id="not-providing-care-hint-info" class="govuk-hint govuk-character-count__message">
+                    You can enter up to 1,500 characters
+                  </div>
+                  {# NOT PROVIDING CARE - HOW LONG BEEN GOING ON? #}
+                  <div class="govuk-form-group govuk-!-margin-top-6 govuk-form-group--error">
+                    <fieldset class="govuk-fieldset">
+                      <legend class="govuk-fieldset__legend">
+                          <strong>How long has the potential <span class="govuk-visually-hidden">not providing care</span> fraud been going on?</strong>
+                      </legend>
+                      <p id="not-providing-care-error" class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span> Select how long the potential not providing care fraud has been going on
+                      </p>
+                      <div class="govuk-radios govuk-radios--small" data-module="govuk-radios">
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="how-long-not-providing-care" name="how-long-not-providing-care" type="radio" value="less-than-three-months">
+                          <label class="govuk-label govuk-radios__label" for="how-long-not-providing-care">
+                            Less than 3 months
+                          </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="how-long-not-providing-care-2" name="how-long-not-providing-care" type="radio" value="three-to-six-months">
+                          <label class="govuk-label govuk-radios__label" for="how-long-not-providing-care-2">
+                            3 to 6 months
+                          </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="how-long-not-providing-care-3" name="how-long-not-providing-care" type="radio" value="more-than-six-months-but-less-than-a-year">
+                          <label class="govuk-label govuk-radios__label" for="how-long-not-providing-care-3">
+                            More than 6 months but less than a year
+                          </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="how-long-not-providing-care-4" name="how-long-not-providing-care" type="radio" value="more-than-a-year">
+                          <label class="govuk-label govuk-radios__label" for="how-long-not-providing-care-4">
+                            More than a year
+                          </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="how-long-not-providing-care-5" name="how-long-not-providing-care" type="radio" value="i-dont-know">
+                          <label class="govuk-label govuk-radios__label" for="how-long-not-providing-care-5">
+                            I don't know
+                          </label>
+                        </div>
+                      </div>
+                    </fieldset>
+                  </div>
+                </div>
+              </div>
+
+              {# OTHER TYPES OF FRAUD #}
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="other" name="other" type="checkbox" value="other" checked data-aria-controls="conditional-other">
+                <label class="govuk-label govuk-checkboxes__label" for="other">
+                  <strong>Other types of fraud</strong>
+                </label>
+              </div>
+              <div class="govuk-checkboxes__conditional govuk-checkboxes__conditional--hidden" id="conditional-other">
+                <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="1500">
+                  <div class="govuk-form-group govuk-form-group--error">
+                    <label for="other-hint">
+                      <p class="govuk-body">You could include:</p>
+                      <ul class="govuk-list govuk-list--bullet">
+                      <li>the type or types of fraud you think are being committed, for example childcare fraud, household composition or imprisonment</li>
+                      <li>why you think this is happening</li>
+                      <li>any additional information</li>
+                      </ul>
+                    </label>
+                    <p id="other-error" class="govuk-error-message">
+                      <span class="govuk-visually-hidden">Error:</span> Enter the details of the other types of fraud you think is happening
+                    </p>
+                    <textarea class="govuk-textarea govuk-js-character-count govuk-input--error" id="other-hint" name="other-hint" rows="5" aria-describedby="other-hint-info"></textarea>
+                  </div>
+                  <div id="other-hint-info" class="govuk-hint govuk-character-count__message">
+                    You can enter up to 1,500 characters
+                  </div>
+                  {# OTHER TYPES OF FRAUD - HOW LONG BEEN GOING ON? #}
+                  <div class="govuk-form-group govuk-!-margin-top-6 govuk-form-group--error">
+                    <fieldset class="govuk-fieldset">
+                      <legend class="govuk-fieldset__legend">
+                          <strong>How long has the potential <span class="govuk-visually-hidden">other types of</span> fraud been going on?</strong>
+                      </legend>
+                      <p id="other-error" class="govuk-error-message">
+                        <span class="govuk-visually-hidden">Error:</span> Select how long the potential other types of fraud has been going on
+                      </p>
+                      <div class="govuk-radios govuk-radios--small" data-module="govuk-radios">
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="how-long-other" name="how-long-other" type="radio" value="less-than-three-months">
+                          <label class="govuk-label govuk-radios__label" for="how-long-other">
+                            Less than 3 months
+                          </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="how-long-other-2" name="how-long-other" type="radio" value="three-to-six-months">
+                          <label class="govuk-label govuk-radios__label" for="how-long-other-2">
+                            3 to 6 months
+                          </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="how-long-other-3" name="how-long-other" type="radio" value="more-than-six-months-but-less-than-a-year">
+                          <label class="govuk-label govuk-radios__label" for="how-long-other-3">
+                            More than 6 months but less than a year
+                          </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="how-long-other-4" name="how-long-other" type="radio" value="more-than-a-year">
+                          <label class="govuk-label govuk-radios__label" for="how-long-other-4">
+                            More than a year
+                          </label>
+                        </div>
+                        <div class="govuk-radios__item">
+                          <input class="govuk-radios__input" id="how-long-other-5" name="how-long-other" type="radio" value="i-dont-know">
+                          <label class="govuk-label govuk-radios__label" for="how-long-other-5">
+                            I don't know
+                          </label>
+                        </div>
+                      </div>
+                    </fieldset>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </fieldset>
+        </div>
+
+        {{ govukButton({
+          text: 'Continue',
+          classes: "govuk-!-margin-top-2",
+          href: "index"
+        }) }}
+
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

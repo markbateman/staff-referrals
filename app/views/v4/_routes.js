@@ -197,7 +197,7 @@ router.post('/submitters-details', function(req, res) {
 })
 
 // cbeck-your-answers
-router.post('cbeck-your-answers', function(req, res) {
+router.post('/check-your-answers', function(req, res) {
     res.redirect('confirmation');
 })
 

@@ -834,11 +834,11 @@
         </div>
       </dl>
 
-      <form action="confirmation" method="post" novalidate>
-        <input type="hidden" name="answers-checked" value="true">
-          <button data-prevent-double-click="true" class="govuk-button" data-module="govuk-button">
-            Confirm and submit
-          </button>
+      <form class="form" method="post">
+        {{ govukButton({
+          text: "Confirm and submit",
+          preventDoubleClick: true
+        }) }}
       </form>
 
     </div>
